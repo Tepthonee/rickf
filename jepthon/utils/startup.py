@@ -173,9 +173,9 @@ async def load_plugins(folder):
                             if check > 5:
                                 break
                 else:
-                    os.remove(Path(f"userbot/{folder}/{shortname}.py"))
+                    os.remove(Path(f"jepthon/{folder}/{shortname}.py"))
             except Exception as e:
-                os.remove(Path(f"userbot/{folder}/{shortname}.py"))
+                os.remove(Path(f"jepthon/{folder}/{shortname}.py"))
                 LOGS.info(
                     f"⌯︙غير قادر على التحميل {shortname} يوجد هناك خطا بسبب : {e}"
                 )
