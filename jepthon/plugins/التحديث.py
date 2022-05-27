@@ -121,7 +121,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_APP_NAME is None:
         await event.edit(
             "`Please set up the` **HEROKU_APP_NAME** `Var`"
-            " to be able to deploy your userbot...`"
+            " to be able to deploy your jepthon...`"
         )
         repo.__del__()
         return
@@ -131,7 +131,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             break
     if heroku_app is None:
         await event.edit(
-            f"{txt}\n" "`Invalid Heroku credentials for deploying userbot dyno.`"
+            f"{txt}\n" "`Invalid Heroku credentials for deploying jepthon dyno.`"
         )
         return repo.__del__()
     jasme = await event.edit(
