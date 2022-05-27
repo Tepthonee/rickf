@@ -122,7 +122,7 @@ async def bad(event):
     pattern="تخصيص (pmpermit|pmpic|pmblock|startmsg)$",
     command=("تخصيص", plugin_category),
     info={
-        "header": "To customize your CatUserbot.",
+        "header": "To customize your jepthon.",
         "options": {
             "pmpermit": "To customize pmpermit text. ",
             "pmblock": "To customize pmpermit block message.",
@@ -152,7 +152,7 @@ async def bad(event):
     },
 )
 async def custom_catuserbot(event):
-    "To customize your CatUserbot."
+    "To customize your jepthon."
     reply = await event.get_reply_message()
     text = None
     if reply:
