@@ -4,7 +4,7 @@
 import requests
 from validators.url import url
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_delete, edit_or_reply
 
