@@ -3,7 +3,7 @@ from datetime import datetime
 
 from telethon.errors import BadRequestError, FloodWaitError, ForbiddenError
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..Config import Config
 from ..core.logger import logging
