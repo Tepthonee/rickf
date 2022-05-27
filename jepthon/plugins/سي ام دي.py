@@ -26,7 +26,7 @@ async def install(event):
         try:
             downloaded_file_name = await event.client.download_media(
                 await event.get_reply_message(),
-                "userbot/plugins/",
+                "jepthon/plugins/",
             )
             if "(" not in downloaded_file_name:
                 path1 = Path(downloaded_file_name)
@@ -61,7 +61,7 @@ async def install(event):
 async def unload(event):
     "To uninstall a plugin."
     shortname = event.pattern_match.group(1)
-    path = Path(f"userbot/plugins/{shortname}.py")
+    path = Path(f"jepthon/plugins/{shortname}.py")
     if not os.path.exists(path):
         return await edit_delete(
             event, f"⌯︙لا يوجد هكذا ملف مع المسار {path} لحذفه"
