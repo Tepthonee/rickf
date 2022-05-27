@@ -1,5 +1,5 @@
-# WRITE  BY @VUUZZ - @RR9R7
-# PLUGIN FOR JepThon USERBOT
+# WRITE  BY JEPTHON
+# PLUGIN FOR JepThon 
 # @JepThon
 
 import random
@@ -7,10 +7,10 @@ from telethon import events
 import random, re
 from ..Config import Config
 
-from userbot.utils import admin_cmd
+from jepthon.utils import admin_cmd
 
 import asyncio
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_or_reply
 from ..sql_helper.globals import gvarstatus
