@@ -5,9 +5,9 @@ import aiohttp
 from telethon.errors import ChatAdminRequiredError as no_admin
 from telethon.tl.functions.messages import ExportChatInviteRequest
 
-from Jmthon.razan.resources.strings import *
-from userbot import jmthon
-from userbot.utils import admin_cmd
+from JepIQ.razan.resources.strings import *
+from jepthon import jmthon
+from jepthon.utils import admin_cmd
 
 from ..core.managers import edit_or_reply
 from ..core.managers import edit_or_reply as eod
