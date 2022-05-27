@@ -1,5 +1,5 @@
 # WRITE  BY @lMl10l
-# PLUGIN FOR JepThon USERBOT
+# PLUGIN FOR JepThon jepthon
 # @JepThon
 
 import random
