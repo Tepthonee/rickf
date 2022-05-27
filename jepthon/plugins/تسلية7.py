@@ -6,7 +6,7 @@ import os
 
 from telegraph import exceptions, upload_file
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_or_reply
 from ..helpers.utils import _cattools, reply_id
