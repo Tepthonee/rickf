@@ -9,8 +9,8 @@ import requests
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest
 
-from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-from userbot import jmthon
+from jepthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from jepthon import jmthon
 
 from ..Config import Config
 from ..core.logger import logging
