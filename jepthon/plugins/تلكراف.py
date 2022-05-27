@@ -1,4 +1,4 @@
-#JepThon USERBOT
+#JepThon
 #- - - - - - - - - - - - -
 #L 2 O : @GGGNE
 #MUHAMMED : @RR9R7
