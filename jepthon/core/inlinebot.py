@@ -423,7 +423,7 @@ async def inline_handler(event):  # sourcery no-metrics
             _result = main_menu()
             result = builder.article(
                 title="© jepthon Help",
-                description="Help menu for JmthonUserbot",
+                description="Help menu for jepthon",
                 text=_result[0],
                 buttons=_result[1],
                 link_preview=False,
