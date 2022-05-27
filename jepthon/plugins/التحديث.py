@@ -225,7 +225,7 @@ async def upstream(event):
             return await event.edit(
                 f"`Unfortunately, the directory {error} "
                 "does not seem to be a git repository.\n"
-                "But we can fix that by force updating the userbot using "
+                "But we can fix that by force updating the jepthon using "
                 ".تحديث الان.`"
             )
         repo = Repo.init()
@@ -268,7 +268,7 @@ async def upstream(event):
 
     if force_update:
         await event.edit(
-            "`Force-Syncing to latest stable userbot code, please wait...`"
+            "`Force-Syncing to latest stable jepthon code, please wait...`"
         )
     if conf == "الان":
         await event.edit("** ⌯︙جار تحـديـث سـورس جيـبثون انـتـظـر قـليـلا 🔨**")
