@@ -8,7 +8,7 @@ import heroku3
 import requests
 import urllib3
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
@@ -117,7 +117,7 @@ async def variable(var):  # sourcery no-metrics
     pattern="استخدامي$",
     command=("استخدامي", plugin_category),
     info={
-        "header": "To Check dyno usage of userbot and also to know how much left.",
+        "header": "To Check dyno usage of jepthon and also to know how much left.",
         "usage": "{tr}usage",
     },
 )
