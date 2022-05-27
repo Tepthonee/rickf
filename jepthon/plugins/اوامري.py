@@ -3,9 +3,9 @@ import re
 from telethon import Button, events
 from telethon.events import CallbackQuery
 
-from Jmthon.razan.resources.assistant import *
-from Jmthon.razan.resources.mybot import *
-from userbot import jmthon
+from JepIQ.razan.resources.assistant import *
+from JepIQ.razan.resources.mybot import *
+from jepthon import jmthon
 from ..core import check_owner
 from ..Config import Config
 
