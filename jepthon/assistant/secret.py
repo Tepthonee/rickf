@@ -10,8 +10,8 @@ from jepthon import jmthon
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(b"rzan_(.*)")))
 async def on_plug_in_callback_query_handler(event):
     timestamp = int(event.pattern_match.group(1).decode("UTF-8"))
-    if os.path.exists("./userbot/secrets.txt"):
-        jsondata = json.load(open("./userbot/secrets.txt"))
+    if os.path.exists("./jepthon/secrets.txt"):
+        jsondata = json.load(open("./jepthon/secrets.txt"))
         try:
             message = jsondata[f"{timestamp}"]
             userid = message["userid"]
