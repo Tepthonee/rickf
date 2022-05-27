@@ -82,10 +82,10 @@ async def _(event):
         "**State changed from up to starting**",
         "**Stopping all processes with SIGTERM**",
         "**Process exited with** `status 143`",
-        "**Starting process with command** `python3 -m userbot`",
+        "**Starting process with command** `python3 -m jepthon`",
         "**State changed from starting to up**",
-        "__INFO:Userbot:Logged in as 557667062__",
-        "__INFO:Userbot:Successfully loaded all plugins__",
+        "__INFO:jepthon:Logged in as 557667062__",
+        "__INFO:jepthon:Successfully loaded all plugins__",
         "**Build Succeeded**",
     ]
     for i in animation_ttl:
