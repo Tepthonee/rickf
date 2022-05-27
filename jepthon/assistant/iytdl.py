@@ -18,7 +18,7 @@ from telethon.events import CallbackQuery
 from telethon.utils import get_attributes
 from wget import download
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..Config import Config
 from ..core import check_owner, pool
