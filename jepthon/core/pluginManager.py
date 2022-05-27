@@ -2,9 +2,7 @@
 # Copyright (C) 2021 - Jepthon-AR
 # All rights reserved.
 #
-# This file is a part of < https://github.com/USERBOTJEPTHON/JEPTHON-AR >
 # Please read the GNU Affero General Public License in;
-# < https://github.com/USERBOTJEPTHON/JEPTHON-AR/blob/master/LICENSE
 # ===============================================================
 import asyncio
 import os
@@ -84,7 +82,7 @@ async def restart_script(client: TelegramClient, jasme):
     except Exception as e:
         LOGS.error(e)
     executable = sys.executable.replace(" ", "\\ ")
-    args = [executable, "-m", "userbot"]
+    args = [executable, "-m", "jepthon"]
     os.execle(executable, *args, os.environ)
     sys.exit(0)
 
