@@ -1,7 +1,7 @@
 from asyncio import sleep
 
-from userbot import jmthon
-from userbot.core.logger import logging
+from jepthon import jmthon
+from jepthon.core.logger import logging
 
 plugin_category = "tools"
 LOGS = logging.getLogger(__name__)
