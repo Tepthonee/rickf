@@ -1,6 +1,6 @@
 from telethon import *
-from userbot import jmthon
-from userbot.sql_helper.autopost_sql import add_post, get_all_post, is_post, remove_post
+from jepthon import jmthon
+from jepthon.sql_helper.autopost_sql import add_post, get_all_post, is_post, remove_post
 from . import *
 
 @jmthon.on(admin_cmd(pattern="نشر_التلقائي ?(.*)"))
