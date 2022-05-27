@@ -7,7 +7,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from userbot import bot
+from jepthon import bot
 from .. import *
 
 OWNER_ID = bot.uid
