@@ -11,7 +11,7 @@ from telethon.errors import QueryIdInvalidError
 from telethon.events import CallbackQuery, InlineQuery
 from youtubesearchpython import VideosSearch
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..Config import Config
 from ..helpers.functions import rand_key
@@ -300,7 +300,7 @@ async def inline_handler(event):  # sourcery no-metrics
             query = query[7:]
             user, txct = query.split(" ", 1)
             builder = event.builder
-            troll = os.path.join("./userbot", "troll.txt")
+            troll = os.path.join("./jepthon", "troll.txt")
             try:
                 jsondata = json.load(open(troll))
             except Exception:
