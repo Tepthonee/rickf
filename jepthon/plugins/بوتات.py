@@ -4,7 +4,7 @@ from asyncio.exceptions import TimeoutError
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from userbot import jmthon
+from jepthon import jmthon
 
 # الي يخمط ويكول من كتابتي الا امه انيجه وقد اعذر من انذر
 @jmthon.on(admin_cmd(pattern="حالتي ?(.*)"))
