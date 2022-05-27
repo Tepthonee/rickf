@@ -29,8 +29,8 @@ def load_module(shortname, plugin_path=None):
         LOGS.info("⌯︙تم بنجاح تحميل ملف " + shortname)
     else:
         if plugin_path is None:
-            path = Path(f"userbot/plugins/{shortname}.py")
-            name = f"userbot.plugins.{shortname}"
+            path = Path(f"jepthon/plugins/{shortname}.py")
+            name = f"jepthon.plugins.{shortname}"
         else:
             path = Path((f"{plugin_path}/{shortname}.py"))
             name = f"{plugin_path}/{shortname}".replace("/", ".")
