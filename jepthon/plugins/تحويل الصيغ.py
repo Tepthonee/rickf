@@ -1,5 +1,4 @@
 #Copyright  By  @JepThon  © 2021
-#WRITE BY  @RR9R7 - @GGGNE
 
 import asyncio
 import base64
@@ -20,7 +19,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.functions.messages import SendMediaRequest
 from telethon.utils import get_attributes
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
