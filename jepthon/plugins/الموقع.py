@@ -1,7 +1,7 @@
 from geopy.geocoders import Nominatim
 from telethon.tl import types
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_or_reply
 from ..helpers import reply_id
