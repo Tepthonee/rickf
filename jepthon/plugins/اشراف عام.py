@@ -87,7 +87,7 @@ async def gben(jepthon):
         return await razan.edit(f"**▾∮ هنالك شي خطأ**")
     if user:
         telchanel = [d.entity.id
-                     for d in await userbot.client.get_dialogs()
+                     for d in await jepthon.client.get_dialogs()
                      if (d.is_group or d.is_channel)
                      ]
         rgt = ChatAdminRights(add_admins=True,
