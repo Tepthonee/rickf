@@ -7,8 +7,8 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import get_input_location
 from ..sql_helper.globals import gvarstatus
 
-from userbot import jmthon
-from userbot.core.logger import logging
+from jepthon import jmthon
+from jepthon.core.logger import logging
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
