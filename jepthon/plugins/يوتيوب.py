@@ -9,7 +9,7 @@ import re
 import time
 from datetime import datetime
 
-from userbot.utils import sudo_cmd
+from jepthon.utils import sudo_cmd
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import types
 from telethon.utils import get_attributes
@@ -25,7 +25,6 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
-#Translate by  @RR7PP  -  @UUNZZ
 from ..helpers.utils import _format
 from . import jmthon, edit_delete, edit_or_reply, hmention, progress, reply_id, ytsearch
 
@@ -376,7 +375,7 @@ async def kakashi(event):
     )
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from userbot import jmthon
+from jepthon import jmthon
 
 
 @jmthon.on(admin_cmd(pattern="تيك توك(?: |$)(.*)"))
