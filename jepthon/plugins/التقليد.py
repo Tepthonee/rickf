@@ -3,7 +3,7 @@ created by @RR7PP
 Idea by @JepThon
 """
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.echo_sql import (
