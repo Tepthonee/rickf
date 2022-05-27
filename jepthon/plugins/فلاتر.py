@@ -6,9 +6,9 @@ from typing import Optional, Tuple
 from PIL import Image, ImageDraw, ImageFont
 import PIL.ImageOps
 
-from userbot.utils import admin_cmd, sudo_cmd
-from userbot import LOGS, bot as jmthon
-from userbot.helpers.functions import (
+from jepthon.utils import admin_cmd, sudo_cmd
+from jepthon import LOGS, bot as jmthon
+from jepthon.helpers.functions import (
     convert_toimage,
     convert_tosticker,
     flip_image,
@@ -18,7 +18,7 @@ from userbot.helpers.functions import (
     solarize,
 )
 
-from userbot.helpers.utils.tools import take_screen_shot
+from jepthon.helpers.utils.tools import take_screen_shot
 
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     args = shlex.split(cmd)
