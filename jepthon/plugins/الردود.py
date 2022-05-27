@@ -1,6 +1,6 @@
 import re
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_or_reply
 from ..sql_helper.filter_sql import (
