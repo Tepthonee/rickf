@@ -3,7 +3,7 @@ from telethon.errors.rpcerrorlist import UserAdminInvalidError, UserIdInvalidErr
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_or_reply
 from ..helpers.utils import _format
