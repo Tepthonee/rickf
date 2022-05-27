@@ -12,9 +12,9 @@ from telethon.tl.types import (ChannelParticipantsAdmins,
                                    ChatBannedRights,
                                      MessageEntityMentionName,
                                        MessageMediaPhoto)
-from userbot.utils import admin_cmd
+from jepthon.utils import admin_cmd
 from ..Config import Config
-from userbot import CMD_HELP, jmthon
+from jepthon import CMD_HELP, jmthon
 up_admin = Config.UP_ET or "ارفع"
 down_admin = Config.DOWN_ET or "تزل"
 async def get_full_user(event):  
