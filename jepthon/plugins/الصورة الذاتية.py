@@ -1,5 +1,5 @@
-from userbot import *
-from userbot import jmthon
+from jepthon import *
+from jepthon import jmthon
 from ..Config import Config
 from ..sql_helper.globals import gvarstatus
 
