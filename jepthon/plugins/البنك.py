@@ -1,13 +1,9 @@
-#======================================================================================================================================
-#ping -> edited ping with pic by  @RR7PP
-#كتابة الملف لسورس جـيبثون فقط ممنوع نسبه لنفسك 
-#تخمط دليل فشلك اخمط وكول اني مطور 😂😂
 
 import os
 import asyncio
 from datetime import datetime
 
-from userbot import CMD_HELP, jmthon
+from jepthon import CMD_HELP, jmthon
 from . import hmention, reply_id
 
 """
