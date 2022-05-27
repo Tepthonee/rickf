@@ -122,7 +122,7 @@ async def nekobot(cat):
     info={
         "header": "kanna chan sticker with given custom text",
         "usage": "{tr}كانا text",
-        "examples": "{tr}kanna Catuserbot is One of the Popular userbot",
+        "examples": "{tr}kanna jepthon is One of the Popular jepthon",
     },
 )
 async def nekobot(cat):
@@ -153,7 +153,7 @@ async def nekobot(cat):
     info={
         "header": "The desired person tweet sticker with given custom text",
         "usage": "{tr}تويت <username> ; <text>",
-        "examples": "{tr}tweet iamsrk ; Catuserbot is One of the Popular userbot",
+        "examples": "{tr}tweet iamsrk ; jepthon is One of the Popular jepthon",
     },
 )
 async def nekobot(cat):
