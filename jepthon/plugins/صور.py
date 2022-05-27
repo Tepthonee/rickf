@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_or_reply
 from ..helpers.google_image_download import googleimagesdownload
