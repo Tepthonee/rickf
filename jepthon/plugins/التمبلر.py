@@ -2,13 +2,13 @@ import random
 from telethon import events
 import random, re
 
-from userbot.utils import admin_cmd
+from jepthon.utils import admin_cmd
 
 import asyncio
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_or_reply
-from Jmthon.razan.resources.strings import *
+from JepIQ.razan.resources.strings import *
 
 plugin_category = "extra" 
 
