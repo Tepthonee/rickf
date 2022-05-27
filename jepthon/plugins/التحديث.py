@@ -135,7 +135,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         )
         return repo.__del__()
     jasme = await event.edit(
-        "`Userbot dyno build in progress, please wait until the process finishes it usually takes 4 to 5 minutes .`"
+        "`jepthon dyno build in progress, please wait until the process finishes it usually takes 4 to 5 minutes .`"
     )
     try:
         ulist = get_collectionlist_items()
@@ -187,7 +187,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     pattern="تحديث(| الان)?$",
     command=("تحديث", plugin_category),
     info={
-        "header": "To update userbot.",
+        "header": "To update jepthon.",
         "description": "I recommend you to do update deploy atlest once a week.",
         "options": {
             "now": "Will update bot but requirements doesnt update.",
