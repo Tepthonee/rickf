@@ -59,22 +59,22 @@ async def get_user_from_id(user, event):
         return None
     return user_obj
 @jmthon.on(admin_cmd(pattern="{up_admin} ?(.*)"))
-async def gben(userbot):
-    dc = razan = userbot
+async def gben(jepthon):
+    dc = razan = jepthon
     i = 0
     sender = await dc.get_sender()
-    me = await userbot.client.get_me()
+    me = await jepthon.client.get_me()
     await razan.edit("▾∮ يتم رفع المستخدم في جميع المجموعات")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    await userbot.get_chat()
-    if userbot.is_private:
-        user = userbot.chat
-        rank = userbot.pattern_match.group(1)
+    await jepthon.get_chat()
+    if jepthon.is_private:
+        user = jepthon.chat
+        rank = jepthon.pattern_match.group(1)
     else:
-        userbot.chat.title
+        jepthon.chat.title
     try:
-        user, rank = await get_full_user(userbot)
+        user, rank = await get_full_user(jepthon)
     except:
         pass
     if me == user:
@@ -98,7 +98,7 @@ async def gben(userbot):
                                    pin_messages=True)
         for x in telchanel:
           try:
-             await userbot.client(EditAdminRequest(x, user, rgt, rank))
+             await jepthon.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
              await razan.edit(f"**▾∮ يتم الرفع في **: `{i}` من المجموعات")
           except:
@@ -110,22 +110,22 @@ async def gben(userbot):
     )
 
 @jmthon.on(admin_cmd(pattern="{down_admin} ?(.*)"))
-async def gben(userbot):
-    dc = razan = userbot
+async def gben(jepthon):
+    dc = razan = jepthon
     i = 0
     sender = await dc.get_sender()
-    me = await userbot.client.get_me()
+    me = await jepthon.client.get_me()
     await razan.edit("**▾∮ يتم تنزيل الشخص من رتبة الاشراف في جميع الكروبات**")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    await userbot.get_chat()
-    if userbot.is_private:
-        user = userbot.chat
-        rank = userbot.pattern_match.group(1)
+    await jepthon.get_chat()
+    if jepthon.is_private:
+        user = jepthon.chat
+        rank = jepthon.pattern_match.group(1)
     else:
-        userbot.chat.title
+        jepthon.chat.title
     try:
-        user, rank = await get_full_user(userbot)
+        user, rank = await get_full_user(jepthon)
     except:
         pass
     if me == user:
@@ -138,7 +138,7 @@ async def gben(userbot):
         return await razan.edit(f"**▾∮ هنالك شي خطأ**")
     if user:
         telchanel = [d.entity.id
-                     for d in await userbot.client.get_dialogs()
+                     for d in await jepthon.client.get_dialogs()
                      if (d.is_group or d.is_channel)
                      ]
         rgt = ChatAdminRights(add_admins=None,
@@ -149,7 +149,7 @@ async def gben(userbot):
                                    pin_messages=None)
         for x in telchanel:
           try:
-             await userbot.client(EditAdminRequest(x, user, rgt, rank))
+             await jepthon.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
              await razan.edit(f"**▾∮ يتم تنزيله في **: `{i}` من المجموعات")
           except:
