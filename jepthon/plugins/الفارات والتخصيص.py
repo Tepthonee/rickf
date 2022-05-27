@@ -186,7 +186,7 @@ async def custom_catuserbot(event):
     pattern="ازالة تخصيص (pmpermit|pmpic|pmblock|startmsg)$",
     command=("ازالة تخصيص", plugin_category),
     info={
-        "header": "To delete costomization of your CatUserbot.",
+        "header": "To delete costomization of your jepthon.",
         "options": {
             "pmpermit": "To delete custom pmpermit text",
             "pmblock": "To delete custom pmpermit block message",
@@ -200,7 +200,7 @@ async def custom_catuserbot(event):
     },
 )
 async def custom_catuserbot(event):
-    "To delete costomization of your CatUserbot."
+    "To delete costomization of your jepthon."
     input_str = event.pattern_match.group(1)
     if input_str == "pmpermit":
         if gvarstatus("pmpermit_txt") is None:
