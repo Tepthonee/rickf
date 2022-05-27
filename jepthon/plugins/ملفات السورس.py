@@ -26,7 +26,7 @@ async def _(event):
     pattern="فاراتي$",
     command=("فاراتي", plugin_category),
     info={
-        "header": "To list all environment values in userbot.",
+        "header": "To list all environment values in jepthon.",
         "description": "to show all heroku vars/Config values in your userbot",
         "usage": "{tr}env",
     },
