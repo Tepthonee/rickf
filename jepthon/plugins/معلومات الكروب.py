@@ -18,7 +18,7 @@ from telethon.tl.types import (
 )
 from telethon.utils import get_input_location
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
