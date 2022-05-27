@@ -19,7 +19,7 @@ from telethon.tl.types import (
     UserStatusOnline,
     UserStatusRecently,
 )
-from userbot import jmthon
+from jepthon import jmthon
 from .. import jmthon
 from ..core.logger import logging
 from ..helpers.utils import reply_id
