@@ -2,7 +2,7 @@ from urlextract import URLExtract
 from validators.url import url
 
 from jepthon import jmthon
-from userbot.core.logger import logging
+from jepthon.core.logger import logging
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
