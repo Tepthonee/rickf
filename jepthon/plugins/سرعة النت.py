@@ -6,7 +6,7 @@ from time import time
 
 import speedtest
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_or_reply
 from ..helpers.utils import reply_id
