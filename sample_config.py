@@ -122,7 +122,7 @@ class Config(object):
     FINISHED_PROGRESS_STR = os.environ.get("FINISHED_PROGRESS_STR", "▰")
     UNFINISHED_PROGRESS_STR = os.environ.get("UNFINISHED_PROGRESS_STR", "▱")
 
-    # API VARS FOR USERBOT
+    # API VARS FOR jepthon
     # Get your own ACCESS_KEY from http://api.screenshotlayer.com/api/capture for screen shot
     SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get("SCREEN_SHOT_LAYER_ACCESS_KEY", None)
     # Get your own APPID from https://api.openweathermap.org/data/2.5/weather
