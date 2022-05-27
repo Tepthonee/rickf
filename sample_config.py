@@ -85,7 +85,7 @@ class Config(object):
         or 0
     )
 
-    # Custom vars for userbot
+    # Custom vars for jepthon
     # set this will channel id of your custom plugins
     PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL") or 0)
     # set this value with your required name for telegraph plugin
@@ -94,7 +94,7 @@ class Config(object):
     THUMB_IMAGE = os.environ.get(
         "THUMB_IMAGE", "https://telegra.ph/file/ca95524e4734b0d5461b5.jpg"
     )
-    # specify NO_LOAD with plugin names for not loading in userbot
+    # specify NO_LOAD with plugin names for not loading in jepthon
     NO_LOAD = [x for x in os.environ.get("NO_LOAD", "").split()]
     # for custom pic for .digitalpfp
     DIGITAL_PIC = os.environ.get("DIGITAL_PIC", None)
