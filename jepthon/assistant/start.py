@@ -1,6 +1,6 @@
 #    جميع الحقوق لمطوري سورس جـيبثون حصريا لهم فقط
 #    اذا تخمط الملف اذك الحقوق وكاتبيه ومطوريه لا تحذف الحقوق وتصير فاشل 👍
-#    كتابة محمد الزهيري 
+#    كتابة الشسد 
 import asyncio
 import io
 import re
@@ -8,14 +8,14 @@ import re
 from telethon import Button, custom, events
 from telethon.tl.functions.users import GetFullUserRequest
 from . import *
-from userbot import bot
-from userbot.sql_helper.blacklist_assistant import (
+from jepthon import bot
+from jepthon.sql_helper.blacklist_assistant import (
     add_nibba_in_db,
     is_he_added,
     removenibba,
 )
-from userbot.sql_helper.botusers_sql import add_me_in_db, his_userid
-from userbot.sql_helper.idadder_sql import (
+from jepthon.sql_helper.botusers_sql import add_me_in_db, his_userid
+from jepthon.sql_helper.idadder_sql import (
     add_usersid_in_db,
     already_added,
     get_all_users,
