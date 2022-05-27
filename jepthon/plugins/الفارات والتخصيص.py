@@ -1,7 +1,7 @@
 from urlextract import URLExtract
 from validators.url import url
 
-from userbot import jmthon
+from jepthon import jmthon
 from userbot.core.logger import logging
 
 from ..Config import Config
