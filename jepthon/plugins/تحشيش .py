@@ -7,10 +7,10 @@ from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import get_input_location
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..Config import Config
-from Jmthon.razan.resources.strings import *
+from JepIQ.razan.resources.strings import *
 from ..core.managers import edit_or_reply
 from ..helpers import get_user_from_event, reply_id
 from . import spamwatch
