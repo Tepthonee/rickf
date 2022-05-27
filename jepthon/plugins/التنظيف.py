@@ -1,4 +1,4 @@
-# Userbot module for purging unneeded messages(usually spam or ot).
+# jepthon module for purging unneeded messages(usually spam or ot).
 import re
 from asyncio import sleep
 
