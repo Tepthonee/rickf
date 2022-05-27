@@ -16,7 +16,7 @@ plugin_category = "tools"
 )
 async def _(event):
     "To list all plugins in userbot"
-    cmd = "ls userbot/plugins"
+    cmd = "ls jepthon/plugins"
     o = (await _catutils.runcmd(cmd))[0]
     OUTPUT = f"**[جيـبثون](tg://need_update_for_some_feature/) الـمـلفـات:**\n{o}"
     await edit_or_reply(event, OUTPUT)
@@ -32,7 +32,7 @@ async def _(event):
     },
 )
 async def _(event):
-    "To show all config values in userbot"
+    "To show all config values in jepthon"
     cmd = "env"
     o = (await _catutils.runcmd(cmd))[0]
     OUTPUT = (
