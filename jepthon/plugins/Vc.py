@@ -2,12 +2,11 @@ import asyncio
 from collections import deque
 from random import choice
 
-from userbot import jmthon
 from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
 from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
-from userbot import jmthon
+from jepthon import jmthon
 from ..core.managers import edit_delete, edit_or_reply
 
 async def get_call(event):
