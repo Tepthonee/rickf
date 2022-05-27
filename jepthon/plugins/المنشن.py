@@ -1,6 +1,6 @@
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..helpers.utils import get_user_from_event, reply_id
 
