@@ -155,7 +155,7 @@ async def add_new_filter(new_handler):
     command=("الردود", plugin_category),
     info={
         "header": "To list all filters in that chat.",
-        "description": "Lists all active (of your userbot) filters in a chat.",
+        "description": "Lists all active (of your jepthon) filters in a chat.",
         "usage": "{tr}filters",
     },
 )
