@@ -164,7 +164,7 @@ async def load_plugins(folder):
                         try:
                             load_module(
                                 shortname.replace(".py", ""),
-                                plugin_path=f"userbot/{folder}",
+                                plugin_path=f"jepthon/{folder}",
                             )
                             break
                         except ModuleNotFoundError as e:
