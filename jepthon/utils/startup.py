@@ -31,7 +31,7 @@ bot = jmthon
 
 async def setup_bot():
     """
-    To set up bot for userbot
+    To set up bot for jepthon
     """
     try:
         await jmthon.connect()
@@ -149,7 +149,7 @@ async def load_plugins(folder):
     """
     To load plugins from the mentioned folder
     """
-    path = f"userbot/{folder}/*.py"
+    path = f"jepthon/{folder}/*.py"
     files = glob.glob(path)
     files.sort()
     for name in files:
@@ -232,7 +232,7 @@ async def verifyLoggerGroup():
             )
     else:
         descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @Jepthon"
-        photobt = await jmthon.upload_file(file="Jmthon/razan/resources/start/Jepthon.jpg")
+        photobt = await jmthon.upload_file(file="JepIQ/razan/resources/start/Jepthon.jpg")
         _, groupid = await create_supergroup(
             "مجموعة اشعارات جيبثون ", jmthon, Config.TG_BOT_USERNAME, descript, photobt
         )
@@ -261,7 +261,7 @@ async def verifyLoggerGroup():
             )
     else:
         descript = "⌯︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @Jepthon"
-        photobt = await jmthon.upload_file(file="Jmthon/razan/resources/start/Jepthon2.jpg")
+        photobt = await jmthon.upload_file(file="JepIQ/razan/resources/start/Jepthon2.jpg")
         _, groupid = await create_supergroup(
             "مجموعة التخزين", jmthon, Config.TG_BOT_USERNAME, descript, photobt
         )
@@ -270,6 +270,6 @@ async def verifyLoggerGroup():
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
-        args = [executable, "-m", "userbot"]
+        args = [executable, "-m", "jepthon"]
         os.execle(executable, *args, os.environ)
         sys.exit(0)
