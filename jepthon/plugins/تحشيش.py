@@ -6,8 +6,8 @@ from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import get_input_location
 
-from userbot import jmthon
-from Jmthon.razan.resources.strings import *
+from jepthon import jmthon
+from JepIQ.razan.resources.strings import *
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
