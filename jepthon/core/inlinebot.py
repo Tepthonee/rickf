@@ -350,7 +350,7 @@ async def inline_handler(event):  # sourcery no-metrics
             query = query[7:]
             user, txct = query.split(" ", 1)
             builder = event.builder
-            secret = os.path.join("./userbot", "secrets.txt")
+            secret = os.path.join("./jepthon", "secrets.txt")
             try:
                 jsondata = json.load(open(secret))
             except Exception:
@@ -399,7 +399,7 @@ async def inline_handler(event):  # sourcery no-metrics
         elif match3:
             query = query[5:]
             builder = event.builder
-            hide = os.path.join("./userbot", "hide.txt")
+            hide = os.path.join("./jepthon", "hide.txt")
             try:
                 jsondata = json.load(open(hide))
             except Exception:
@@ -422,7 +422,7 @@ async def inline_handler(event):  # sourcery no-metrics
         elif string == "help":
             _result = main_menu()
             result = builder.article(
-                title="© JmthonUserbot Help",
+                title="© jepthon Help",
                 description="Help menu for JmthonUserbot",
                 text=_result[0],
                 buttons=_result[1],
@@ -582,7 +582,7 @@ async def inline_handler(event):  # sourcery no-metrics
         result = types.InputBotInlineResult(
             id=str(uuid4()),
             type="photo",
-            title="Jmthon UserBot 🧸♥",
+            title="Jmthon 🧸♥",
             description="ادخـل كـروب المسـاعدة",
             url="https://t.me/Jepthon1",
             thumb=photo,
