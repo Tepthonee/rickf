@@ -57,7 +57,7 @@ def load_module(shortname, plugin_path=None):
         mod.borg = jmthon
         spec.loader.exec_module(mod)
         # for imports
-        sys.modules["userbot.plugins." + shortname] = mod
+        sys.modules["jepthon.plugins." + shortname] = mod
         LOGS.info("⌯︙تم بنجاح تحميل ملف " + shortname)
 
 
@@ -83,7 +83,7 @@ def remove_plugin(shortname):
     except BaseException:
         pass
     try:
-        name = f"userbot.plugins.{shortname}"
+        name = f"jepthon.plugins.{shortname}"
         for i in reversed(range(len(jmthon._event_builders))):
             ev, cb = jmthon._event_builders[i]
             if cb.__module__ == name:
@@ -111,8 +111,8 @@ def start_assistant(shortname):
         import sys
         from pathlib import Path
 
-        path = Path(f"userbot/plugins/assistant/{shortname}.py")
-        name = "userbot.plugins.assistant.{}".format(shortname)
+        path = Path(f"jepthon/plugins/assistant/{shortname}.py")
+        name = "jepthon.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
@@ -123,11 +123,11 @@ def start_assistant(shortname):
         import sys
         from pathlib import Path
 
-        path = Path(f"userbot/plugins/assistant/{shortname}.py")
-        name = "userbot.plugins.assistant.{}".format(shortname)
+        path = Path(f"jepthon/plugins/assistant/{shortname}.py")
+        name = "jepthon.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.tgbot = bot.tgbot
         spec.loader.exec_module(mod)
-        sys.modules["userbot.plugins.assistant" + shortname] = mod
+        sys.modules["jepthon.plugins.assistant" + shortname] = mod
         print("بنجاح يتم تحميل " + shortname)
