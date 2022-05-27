@@ -27,9 +27,9 @@ LOGS = logging.getLogger(__name__)
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
-autopic_path = os.path.join(os.getcwd(), "userbot", "original_pic.png")
-digitalpic_path = os.path.join(os.getcwd(), "userbot", "digital_pic.png")
-autophoto_path = os.path.join(os.getcwd(), "userbot", "photo_pfp.png")
+autopic_path = os.path.join(os.getcwd(), "jepthon", "original_pic.png")
+digitalpic_path = os.path.join(os.getcwd(), "jepthon", "digital_pic.png")
+autophoto_path = os.path.join(os.getcwd(), "jepthon", "photo_pfp.png")
 
 digitalpfp = Config.DIGITAL_PIC or "https://telegra.ph/file/63a826d5e5f0003e006a0.jpg"
 RR7PP = Config.TIME_JEP or ""
