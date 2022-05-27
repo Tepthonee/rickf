@@ -5,8 +5,8 @@ import random, re
 from userbot.utils import admin_cmd
 
 import asyncio
-from userbot import jmthon
-from Jmthon.razan._islam import *
+from jepthon import jmthon
+from JepIQ.razan._islam import *
 from ..core.managers import edit_or_reply
 
 plugin_category = "extra" 
