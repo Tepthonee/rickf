@@ -1,6 +1,6 @@
-from userbot import *
-from userbot import jmthon
-from userbot.utils import admin_cmd
+from jepthon import *
+from jepthon import jmthon
+from jepthon.utils import admin_cmd
 from telethon.tl.types import Channel, Chat, User
 from telethon.tl import functions, types
 from telethon.tl.functions.messages import  CheckChatInviteRequest, GetFullChatRequest
