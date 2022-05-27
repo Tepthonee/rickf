@@ -1,11 +1,10 @@
 #edit  ~ @RR9R7 for Jmthon 
 
 from telethon import events
-from userbot.utils import admin_cmd
-from userbot import jmthon
+from jepthon.utils import admin_cmd
+from jepthon import jmthon
 from . import *
-
-#edit  ~ @RR9R7 for Jmthon 
+ 
 #جميع الحقوق محفوظة لسـورس جـيبثون تخـمط تبيـن فشلـك
 
 plugin_category = "extra"
