@@ -44,7 +44,7 @@ def get_key(val):
     },
 )
 async def chat_blacklist(event):
-    "To enable or disable sudo of your CatUserbot."
+    "To enable or disable sudo of your jepthon."
     input_str = event.pattern_match.group(1)
     sudousers = _sudousers_list()
     if input_str == "on":
@@ -255,7 +255,7 @@ async def _(event):  # sourcery no-metrics
         for plugin in input_str:
             if plugin not in PLG_INFO:
                 errors += (
-                    f"`{plugin}` __There is no such plugin in your CatUserbot__.\n"
+                    f"`{plugin}` __There is no such plugin in your jepthon__.\n"
                 )
             else:
                 loadcmds += PLG_INFO[plugin]
