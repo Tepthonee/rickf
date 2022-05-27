@@ -2,7 +2,7 @@ import sys
 from asyncio.exceptions import CancelledError
 from time import sleep
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.logger import logging
 from ..core.managers import edit_or_reply
