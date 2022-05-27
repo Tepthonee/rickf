@@ -1,7 +1,7 @@
 import asyncio
 
-from userbot import jmthon
-from userbot.core.logger import logging
+from jepthon import jmthon
+from jepthon.core.logger import logging
 
 from ..Config import Config
 from ..core.managers import edit_delete
