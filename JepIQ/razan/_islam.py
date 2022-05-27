@@ -1,6 +1,6 @@
 #from here loaded islamic 
-#For jmthon only
-from userbot.Config import roza_config 
+
+from jepthon.Config import roza_config 
 
 razan = [
 """
