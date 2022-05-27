@@ -15,7 +15,7 @@ from PIL import Image
 from telegraph import Telegraph, exceptions, upload_file
 from telethon.utils import get_display_name
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..Config import Config
 from ..core.logger import logging
