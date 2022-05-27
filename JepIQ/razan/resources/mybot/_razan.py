@@ -1,5 +1,5 @@
-from userbot.Config import Config
-from userbot.plugins import mention
+from jepthon.Config import Config
+from jepthon.plugins import mention
 
 RAZAN = Config.TG_BOT_USERNAME
 # for alive
