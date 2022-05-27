@@ -14,7 +14,7 @@ from PIL import Image
 from search_engine_parser import BingSearch, GoogleSearch, YahooSearch
 from search_engine_parser.core.exceptions import NoResultsOrTrafficError
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
