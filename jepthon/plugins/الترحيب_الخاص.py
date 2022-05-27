@@ -6,7 +6,7 @@ from asyncio import sleep
 
 from telethon import events
 
-from userbot import jmthon
+from jepthon import jmthon
 from ..Config import Config
 
 
