@@ -4,7 +4,7 @@ from telethon import Button
 from telethon.errors import MessageNotModifiedError
 from telethon.events import CallbackQuery
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..Config import Config
 from ..core.logger import logging
