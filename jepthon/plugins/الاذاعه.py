@@ -3,7 +3,7 @@ import os
 from telethon import events
 from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.types import ChatAdminRights
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..core.managers import edit_or_reply
 
