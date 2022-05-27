@@ -20,11 +20,11 @@ if Config.PLUGIN_CHANNEL:
         for module in range(total):
             plugin_to_install = documentss[module].id
             plugin_name = documentss[module].file.name
-            if os.path.exists(f"userbot/plugins/{plugin_name}"):
+            if os.path.exists(f"jepthon/plugins/{plugin_name}"):
                 return
             downloaded_file_name = await jmthon.download_media(
                 await jmthon.get_messages(Config.PLUGIN_CHANNEL, ids=plugin_to_install),
-                "userbot/plugins/",
+                "jepthon/plugins/",
             )
             path1 = Path(downloaded_file_name)
             shortname = path1.stem
@@ -46,5 +46,3 @@ if Config.PLUGIN_CHANNEL:
                 )
 
     jmthon.loop.create_task(install())
-
-#كـتابة  @RR7PP
