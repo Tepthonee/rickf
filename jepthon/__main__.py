@@ -17,13 +17,13 @@ from .utils import (
 
 LOGS = logging.getLogger("JepThon")
 
-print(userbot.__copyright__)
-print("Licensed under the terms of the " + userbot.__license__)
+print(jepthon.__copyright__)
+print("Licensed under the terms of the " + jepthon.__license__)
 
 cmdhr = Config.COMMAND_HAND_LER
 
 try:
-    LOGS.info("Starting Userbot")
+    LOGS.info("Starting jepthon")
     jmthon.loop.run_until_complete(setup_bot())
     LOGS.info("TG Bot Startup Completed")
 except Exception as e:
