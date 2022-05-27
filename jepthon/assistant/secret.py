@@ -4,7 +4,7 @@ import re
 
 from telethon.events import CallbackQuery
 
-from userbot import jmthon
+from jepthon import jmthon
 
 
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(b"rzan_(.*)")))
