@@ -1,5 +1,5 @@
-from userbot import CMD_HELP, jmthon
-from userbot.utils import admin_cmd
+from jepthon import CMD_HELP, jmthon
+from jepthon.utils import admin_cmd
 #jepthon 
 
 @jmthon.on(admin_cmd(pattern="خاص ?(.*)"))
