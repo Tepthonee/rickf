@@ -2,7 +2,7 @@ import random
 from telethon import events
 import random, re
 
-from userbot.utils import admin_cmd
+from jepthon.utils import admin_cmd
 
 import asyncio
 from jepthon import jmthon
