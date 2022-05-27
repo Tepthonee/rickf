@@ -7,7 +7,7 @@ from datetime import datetime
 
 from telethon.tl import functions, types
 
-from userbot import jmthon
+from jepthon import jmthon
 
 from ..Config import Config
 from ..core.logger import logging
