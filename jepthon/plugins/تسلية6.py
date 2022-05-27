@@ -30,7 +30,7 @@ plugin_category = "fun"
     info={
         "header": "trump tweet sticker with given custom text",
         "usage": "{tr}ترامب <text>",
-        "examples": "{tr}trump Catuserbot is One of the Popular userbot",
+        "examples": "{tr}trump Catuserbot is One of the Popular jepthon",
     },
 )
 async def nekobot(cat):
@@ -92,7 +92,7 @@ async def nekobot(cat):
     info={
         "header": "Change my mind banner with given custom text",
         "usage": "{tr}غير عقلي <text>",
-        "examples": "{tr}غير عقلي Catuserbot is One of the Popular userbot",
+        "examples": "{tr}غير عقلي Catuserbot is One of the Popular jepthon",
     },
 )
 async def nekobot(cat):
