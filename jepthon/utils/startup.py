@@ -4,7 +4,7 @@ import os
 import sys
 from datetime import timedelta
 from pathlib import Path
-
+import requests
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest
 
