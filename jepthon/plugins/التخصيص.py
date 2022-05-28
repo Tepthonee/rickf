@@ -75,7 +75,7 @@ async def custom_jepthon(event):
     if BOTLOG_CHATID:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"#وضع_فار\
+            f"#اضف_فار\
                     \n**{input_str}** تم تحديثه بنجاح في قاعده البيانات كـ:",
         )
 
