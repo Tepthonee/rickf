@@ -8,7 +8,7 @@ from telethon.utils import get_input_location
 
 from jepthon import jmthon
 from JepIQ.razan.resources.strings import *
-
+from telethon import events
 from ..Config import Config
 from ..core.managers import edit_or_reply
 from ..helpers import get_user_from_event, reply_id
