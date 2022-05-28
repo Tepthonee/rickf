@@ -99,6 +99,30 @@ async def startupmessage():
         LOGS.error(e)
         return None
 
+
+async def mybot():
+    JEPTH_USER = bot.me.first_name
+    The_razan = bot.uid
+    rz_ment = f"[{JEPTH_USER}](tg://user?id={The_razan})"
+    f"ـ {rz_ment}"
+    f"⪼ هذا هو بوت خاص بـ {rz_ment} يمكنك التواصل معه هنا"
+    starkbot = await jmthon.tgbot.get_me()
+    perf = "[ جيبثون ]"
+    bot_name = starkbot.first_name
+    botname = f"@{starkbot.username}"
+    if bot_name.endswith("Assistant"):
+        print("تم تشغيل البوت")
+    else:
+        try:
+            await bot.send_message("@BotFather", "/setinline")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", perf)
+            await asyncio.sleep(2)
+        except Exception as e:
+            print(e)
+
 async def ipchange():
     """
     Just to check if ip change or not
