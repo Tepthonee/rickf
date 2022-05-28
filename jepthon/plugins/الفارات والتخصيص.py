@@ -21,7 +21,7 @@ oldvars = {
 
 
 @jmthon.ar_cmd(pattern="اضف (.*)")
-async def custom_catuserbot(event):
+async def custom_jepthon(event):
     reply = await event.get_reply_message()
     text = None
     if reply:
@@ -81,7 +81,7 @@ async def custom_catuserbot(event):
 
 
 @jmthon.ar_cmd(pattern="حذف (.*)")
-async def custom_catuserbot(event):
+async def custom_jepthon(event):
     input_str = event.pattern_match.group(1)
     if (
         input_str == "كليشة الحماية"
