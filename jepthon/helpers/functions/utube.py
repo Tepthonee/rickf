@@ -32,9 +32,9 @@ name_dl = (
 )
 
 
-async def yt_search(jmthon):
+async def yt_search(jepthon):
     try:
-        jmthon = urllib.parse.quote(jmthon)
+        jepthon = urllib.parse.quote(jmthon)
         html = urllib.request.urlopen(
             f"https://www.youtube.com/results?search_query={jmthon}"
         )
