@@ -33,8 +33,8 @@ SONG_SENDING_STRING = "<code>جارِ الارسال انتظر قليلا...</c
 
 
 @jmthon.ar_cmd(
-    pattern="اغنية(320)?(?:\s|$)([\s\S]*)",
-    command=("اغنية", plugin_category),
+    pattern="بحث(320)?(?:\s|$)([\s\S]*)",
+    command=("بحث", plugin_category),
     info={
         "header": "To get songs from youtube.",
         "description": "Basically this command searches youtube and send the first video as audio file.",
@@ -109,8 +109,8 @@ async def _(event):
 
 
 @jmthon.ar_cmd(
-    pattern="vsong(?:\s|$)([\s\S]*)",
-    command=("vsong", plugin_category),
+    pattern="فيديو(?:\s|$)([\s\S]*)",
+    command=("فيديو", plugin_category),
     info={
         "header": "To get video songs from youtube.",
         "description": "Basically this command searches youtube and sends the first video",
@@ -127,13 +127,13 @@ async def _(event):
     elif reply and reply.message:
         query = reply.message
     else:
-        return await edit_or_reply(event, "`What I am Supposed to find`")
+        return await edit_or_reply(event, "⌔∮ يرجى الرد على ما تريد البحث عنه")
     cat = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
-    catevent = await edit_or_reply(event, "`wi8..! I am finding your song....`")
+    catevent = await edit_or_reply(event, "⌔∮ جاري البحث عن المطلوب انتظر")
     video_link = await yt_search(str(query))
     if not url(video_link):
         return await catevent.edit(
-            f"Sorry!. I can't find any related video/audio for `{query}`"
+            f"⌔∮ عذرا لم استطع ايجاد مقاطع ذات صلة بـ `{query}`"
         )
     try:
         cat = Get(cat)
@@ -157,9 +157,9 @@ async def _(event):
         vsong_file = Path(f"{catname}.mkv")
     elif not os.path.exists(vsong_file):
         return await catevent.edit(
-            f"Sorry!. I can't find any related video/audio for `{query}`"
+            f"⌔∮ عذرا لم استطع ايجاد مقاطع ذات صلة بـ `{query}`"
         )
-    await catevent.edit("`yeah..! i found something wi8..🥰`")
+    await catevent.edit("**⌔∮ جاري الارسال انتظر قليلا**")
     catthumb = Path(f"{catname}.jpg")
     if not os.path.exists(catthumb):
         catthumb = Path(f"{catname}.webp")
@@ -218,8 +218,8 @@ async def shazamcmd(event):
 
 
 @jmthon.ar_cmd(
-    pattern="اغنية2(?:\s|$)([\s\S]*)",
-    command=("اغنية2", plugin_category),
+    pattern="بحث2(?:\s|$)([\s\S]*)",
+    command=("بحث2", plugin_category),
     info={
         "header": "To search songs and upload to telegram",
         "description": "Searches the song you entered in query and sends it quality of it is 320k",
