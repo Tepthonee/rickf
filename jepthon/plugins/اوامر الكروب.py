@@ -27,6 +27,7 @@ from ..sql_helper.locks_sql import *
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import readable_time
 from . import BOTLOG, BOTLOG_CHATID
+from telethon import events
 
 LOGS = logging.getLogger(__name__)
 plugin_category = "admin"
