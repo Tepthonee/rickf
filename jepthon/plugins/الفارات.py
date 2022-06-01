@@ -556,7 +556,7 @@ async def variable(event):
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
         else:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
-       del heroku_var[variable] = variable
+       del heroku_var[variable]
 
 
 @jmthon.ar_cmd(pattern="استخدامي$")
