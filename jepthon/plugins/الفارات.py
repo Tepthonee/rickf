@@ -254,7 +254,7 @@ async def variable(event):
         del heroku_var[variable]
 
 
-@jmthon.ar_cmd(pattern="تايم(?:\s|$)([\s\S]*)")
+@jmthon.ar_cmd(pattern="وقت(?:\s|$)([\s\S]*)")
 async def variable(event):
     if Config.HEROKU_API_KEY is None:
         return await edit_delete(
