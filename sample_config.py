@@ -46,6 +46,7 @@ class Config(object):
     UP_ET = os.environ.get("UP_ET", None)
     DOWN_ET = os.environ.get("DOWN_ET", None)
     WEL_ET = os.environ.get("WEL_ET", None)
+    DEFAULT_PIC = os.environ.get("DEFAULT_PIC", None)
     RMVWEL_ET = os.environ.get("RMVWEL_ET", None)
     ALLWEL_ET = os.environ.get("ALLWEL_ET", None)
     SCPIC_CMD = os.environ.get("SCPIC_CMD", None)    
