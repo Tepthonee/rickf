@@ -373,7 +373,7 @@ async def variable(event):
             )
         heroku_var[variable] = Syria
         
-@jmthon.ar_cmd(pattern="الوقتية(?:\s|$)([\s\S]*)")
+@jmthon.ar_cmd(pattern="زخرفة الصورة(?:\s|$)([\s\S]*)")
 async def variable(event):
     if Config.HEROKU_API_KEY is None:
         return await ed(
