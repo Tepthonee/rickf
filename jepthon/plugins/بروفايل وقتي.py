@@ -33,7 +33,7 @@ autophoto_path = os.path.join(os.getcwd(), "jepthon", "photo_pfp.png")
 
 digitalpfp = Config.DIGITAL_PIC or "https://telegra.ph/file/63a826d5e5f0003e006a0.jpg"
 lMl10l = Config.TIME_JEP or ""
-jep = Config.DEFAULT_PIC or "jepthon/helpers/styles/rasool.ttf"
+jep = Config.DEFAULT_PIC or "jepthon/helpers/styles/PaybAck.ttf"
 
 normzltext = "1234567890"
 namerzfont = Config.JP_FN or "𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵𝟬"
