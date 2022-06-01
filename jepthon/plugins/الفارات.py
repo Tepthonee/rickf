@@ -389,7 +389,7 @@ async def variable(event):
         )
     input_str = event.pattern_match.group(1)
     heroku_var = app.config()
-    jep = await edit_or_reply(event, "**جـاري اضـافة زخـرفـة الوقتيـه لـ بوتـك 💞🦾 . . .**")
+    jep = await edit_or_reply(event, "**جـاري اضـافة زخـرفـة الوقتيـه لـ حسابك ✅ . . .**")
     if input_str == "1":
         variable = "DEFAULT_PIC"
         zinfo = "jepthon/helpers/styles/jepthon.ttf"
