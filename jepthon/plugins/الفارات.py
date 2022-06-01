@@ -252,6 +252,18 @@ async def variable(event):
             "**⌔∮ تم بنجاح حذف فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
         )
         del heroku_var[variable]
+    if exe == "زخرفة الصورة":
+        variable = "DEFAULT_PIC"
+        await asyncio.sleep(1)
+        if variable not in heroku_var:
+            return await edit_or_reply(
+                event, "**⌔∮ لم تتم اضافه فار زخرفة الصورة بالاصل.**"
+            )
+        await edit_or_reply(
+            event,
+            "**⌔∮ تم بنجاح حذف فار زخرفة الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
+        )
+        del heroku_var[variable]
 
 
 @jmthon.ar_cmd(pattern="وقت(?:\s|$)([\s\S]*)")
@@ -530,30 +542,6 @@ async def variable(event):
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
         else:
             await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
-        heroku_var[variable] = zinfo
-        
-@jmthon.ar_cmd(pattern="مسح(?:\s|$)([\s\S]*)")
-async def variable(event):
-    if Config.HEROKU_API_KEY is None:
-        return await ed(
-            event,
-            "اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ",
-        )
-    if Config.HEROKU_APP_NAME is not None:
-        app = Heroku.app(Config.HEROKU_APP_NAME)
-    else:
-        return await ed(
-            event,
-            "اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_APP_NAME` اسم التطبيق اذا كنت لاتعلم.",
-        )
-    if input_str == "1":
-        variable = "DEFAULT_PIC"
-        zinfo = "jepthon/helpers/styles/PaybAck.ttf"
-        await asyncio.sleep(1.5)
-        if variable in heroku_var:
-            await jep.edit("**⌔∮ تم بنجاح ازالة زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
-        else:
-            await jep.edit("**⌔∮ تم بنجاح ازالة زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
         heroku_var[variable] = zinfo
 
 
