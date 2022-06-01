@@ -212,7 +212,7 @@ async def shazamcmd(event):
     image = track["images"]["background"]
     song = track["share"]["subject"]
     await event.client.send_file(
-        event.chat_id, image, caption=f"**Song:** `{song}`", reply_to=reply
+        event.chat_id, image, caption=f"**الاغنية:** `{song}`", reply_to=reply
     )
     await catevent.delete()
 
