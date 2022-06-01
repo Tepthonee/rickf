@@ -45,8 +45,8 @@ async def get_tz(con):
 
 
 @jmthon.ar_cmd(
-    pattern="وقت(?:\s|$)([\s\S]*)(?<![0-9])(?: |$)([0-9]+)?",
-    command=("وقت", plugin_category),
+    pattern="توقيت(?:\s|$)([\s\S]*)(?<![0-9])(?: |$)([0-9]+)?",
+    command=("توقيت", plugin_category),
     info={
         "header": "To get current time of a paticular country",
         "note": "For country names check [this link](https://telegra.ph/country-names-10-24)",
