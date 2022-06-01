@@ -32,7 +32,8 @@ digitalpic_path = os.path.join(os.getcwd(), "jepthon", "digital_pic.png")
 autophoto_path = os.path.join(os.getcwd(), "jepthon", "photo_pfp.png")
 
 digitalpfp = Config.DIGITAL_PIC or "https://telegra.ph/file/63a826d5e5f0003e006a0.jpg"
-RR7PP = Config.TIME_JEP or ""
+lMl10l = Config.TIME_JEP or ""
+jep = Config.DEFAULT_PIC or "jepthon/helpers/styles/rasool.ttf"
 
 normzltext = "1234567890"
 namerzfont = Config.JP_FN or "𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵𝟬"
@@ -54,10 +55,7 @@ async def digitalpicloop():
         current_time = datetime.now().strftime("%I:%M")
         img = Image.open(autophoto_path)
         drawn_text = ImageDraw.Draw(img)
-        roz = str(base64.b64decode("amVwdGhvbi9oZWxwZXJzL3N0eWxlcy9QYXliQWNrLnR0Zg=="))[
-            2:36
-        ]
-        fnt = ImageFont.truetype(roz, 65)
+        fnt = ImageFont.truetype(jep, 55)
         drawn_text.text((300, 400), current_time, font=fnt, fill=(280, 280, 280))
         img.save(autophoto_path)
         file = await jmthon.upload_file(autophoto_path)
@@ -86,7 +84,7 @@ async def autoname_loop():
             if normal in normzltext:
                 namefont = namerzfont[normzltext.index(normal)]
                 HM = HM.replace(normal, namefont)
-        name = f"{RR7PP} {HM}"
+        name = f"{lMl10l} {HM}"
         LOGS.info(name)
         try:
             await jmthon(functions.account.UpdateProfileRequest(first_name=name))
