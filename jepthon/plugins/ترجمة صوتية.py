@@ -25,7 +25,7 @@ async def _(event):
         if not input_str:
             return await edit_or_reply(event, "- هذا نص غير صحيح")
         text = input_str
-        lan = "ar"
+        lan = "ar-XA"
     jepthonevent = await edit_or_reply(event, "⌔∮ جـار التسجيل انتـظر قليلا")
     text = deEmojify(text.strip())
     lan = lan.strip()
