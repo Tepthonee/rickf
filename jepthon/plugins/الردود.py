@@ -176,8 +176,8 @@ async def on_snip_list(event):
 
 
 @jmthon.ar_cmd(
-    pattern="حذف رد ([\s\S]*)",
-    command=("حذف رد", plugin_category),
+    pattern="مسح رد ([\s\S]*)",
+    command=("مسح رد", plugin_category),
     info={
         "header": "To delete that filter . so if user send that keyword bot will not reply",
         "usage": "{tr}stop <keyword>",
@@ -193,8 +193,8 @@ async def remove_a_filter(r_handler):
 
 
 @jmthon.ar_cmd(
-    pattern="حذف الردود$",
-    command=("حذف الردود", plugin_category),
+    pattern="مسح الردود$",
+    command=("مسح الردود", plugin_category),
     info={
         "header": "To delete all filters in that group.",
         "usage": "{tr}rmfilters",
