@@ -55,8 +55,8 @@ async def digitalpicloop():
         current_time = datetime.now().strftime("%I:%M")
         img = Image.open(autophoto_path)
         drawn_text = ImageDraw.Draw(img)
-        fnt = ImageFont.truetype(jep, 55)
-        drawn_text.text((300, 400), current_time, font=fnt, fill=(280, 280, 280))
+        fnt = ImageFont.truetype(jep, 65)
+        drawn_text.text((300, 400), current_time, font=fnt, fill=(280, 0, 0))
         img.save(autophoto_path)
         file = await jmthon.upload_file(autophoto_path)
         try:
