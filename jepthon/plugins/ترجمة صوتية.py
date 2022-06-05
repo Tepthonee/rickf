@@ -106,7 +106,7 @@ async def _(event):
 
             required_file_name,
 
-            reply_to=reply_to_id,
+            reply_to=event.message.reply_to_msg_id,
 
             allow_cache=False,
 
