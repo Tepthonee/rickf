@@ -155,6 +155,20 @@ async def variable(var):
                 "**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
             )
         heroku_var[variable] = vra
+    if exe == "لون الوقت":
+        variable = "COLOR_TIME"
+        await asyncio.sleep(1)
+        if variable in heroku_var:
+            await edit_or_reply(
+                var,
+                "**⌔∮ تم بنجاح تغيير لون الوقت \n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
+            )
+        else:
+            await edit_or_reply(
+                var,
+                "**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
+            )
+        heroku_var[variable] = vra
 
 
 @jmthon.ar_cmd(pattern="ازالة (.*)")
