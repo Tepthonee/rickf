@@ -1,13 +1,15 @@
 # اذا تخمط اذكر الحقوق رجـاءا  - 
 # كتابة وتعديل وترتيب  ~ @lMl10l
 # For ~ @Jepthon
-
+#تعديل Reda / رضا
+import webcolors
 import asyncio
 import base64
 import os
 import shutil
 import time
 from datetime import datetime
+from . import BOTLOG_CHATID
 
 from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
@@ -31,10 +33,10 @@ autopic_path = os.path.join(os.getcwd(), "jepthon", "original_pic.png")
 digitalpic_path = os.path.join(os.getcwd(), "jepthon", "digital_pic.png")
 autophoto_path = os.path.join(os.getcwd(), "jepthon", "photo_pfp.png")
 
+
 digitalpfp = Config.DIGITAL_PIC or "https://telegra.ph/file/63a826d5e5f0003e006a0.jpg"
 lMl10l = Config.TIME_JEP or ""
 jep = Config.DEFAULT_PIC or "jepthon/helpers/styles/PaybAck.ttf"
-color = Config.COLOR_TIME or "(280, 280, 280)"
 
 normzltext = "1234567890"
 namerzfont = Config.JP_FN or "𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵𝟬"
@@ -44,6 +46,7 @@ phow8t = Config.PHOTO_ET or "الصورة الوقتية"
 
 async def digitalpicloop():
     DIGITALPICSTART = gvarstatus("digitalpic") == "true"
+    colorco = gvarstatus("digitalpiccolor") or Config.DIGITAL_PIC_COLOR
     i = 0
     while DIGITALPICSTART:
         if not os.path.exists(digitalpic_path):
@@ -57,7 +60,7 @@ async def digitalpicloop():
         img = Image.open(autophoto_path)
         drawn_text = ImageDraw.Draw(img)
         fnt = ImageFont.truetype(jep, 65)
-        drawn_text.text((300, 400), current_time, font=fnt, fill=exec(color))
+        drawn_text.text((200, 200), current_time, font=fnt, fill=webcolors.name_to_rgb(colorco) or (250, 0, 0))
         img.save(autophoto_path)
         file = await jmthon.upload_file(autophoto_path)
         try:
@@ -74,7 +77,6 @@ async def digitalpicloop():
         except BaseException:
             return
         DIGITALPICSTART = gvarstatus("digitalpic") == "true"
-
 
 async def autoname_loop():
     AUTONAMESTART = gvarstatus("autoname") == "true"
