@@ -1,5 +1,4 @@
 from urlextract import URLExtract
-
 from jepthon import jmthon
 from jepthon.core.logger import logging
 
@@ -19,11 +18,25 @@ oldvars = {
     "PM_BLOCK": "pmblock",
 }
 
+@jmthon.ar_cmd(pattern="جلب (.*)")
+async def getvar(event):
+    input = event.pattern_match.group(1)
+    if input is None:
+        await edit_or_reply(event, "`ضع فار لجلب قيمته`")
+
+        return
+    if gvarstatus(input) is None:
+            return await edit_delete(
+                event, "**⎙ :: عزيزي المستخدم انت لم تقوم باضافه هذا الفار اصلا**"
+            )
+    await edit_or_reply(event, gvarstatus(input))
+
 
 @jmthon.ar_cmd(pattern="اضف (.*)")
 async def custom_jepthon(event):
     reply = await event.get_reply_message()
     text = None
+    var = None
     if reply:
         text = reply.text
     if text is None:
@@ -38,18 +51,34 @@ async def custom_jepthon(event):
         or input_str == "كليشه الحمايه"
     ):
         addgvar("pmpermit_txt", text)
+        var = "pmpermit_txt"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         addgvar("ALIVE_TEMPLATE", text)
+        var = "ALIVE_TEMPLATE"
     if input_str == "كليشة الحظر" or input_str == "كليشه الحظر":
         addgvar("pmblock", text)
+        var = "pmblock"
     if input_str == "كليشة البوت" or input_str == "كليشه البوت":
         addgvar("START_TEXT", text)
+        var = "START_TEXT"
     if input_str == "ايموجي الفحص":
         addgvar("ALIVE_EMOJI", text)
+        var = "ALIVE_EMOJI"
     if input_str == "نص الفحص":
         addgvar("ALIVE_TEXT", text)
+        var = "ALIVE_TEXT"
     if input_str == "عدد التحذيرات":
         addgvar("MAX_FLOOD_IN_PMS", text)
+        var = "MAX_FLOOD_IN_PMS"
+    if (
+        input_str == "لون الوقتي"
+        or input_str == "لون وقتي"
+        or input_str == "لون صوره وقتيه"
+        or input_str == "لون الصوره الوقتيه"
+        or input_str == "لون"
+    ):
+       addgvar("digitalpiccolor", text)
+       var = "digitalpiccolor"
     if (
         input_str == "صورة الحماية"
         or input_str == "صورة الحمايه"
@@ -63,17 +92,21 @@ async def custom_jepthon(event):
             )
         text = " ".join(urls)
         addgvar("pmpermit_pic", text)
+        var = "pmpermit_pic"
     if input_str == "صورة الفحص" or input_str == "صوره الفحص":
         urls = extractor.find_urls(reply.text)
         if not urls:
             return await edit_delete(
                 event, "**⪼ يجب عليك الرد على رابط تلجراف اولا**", 5
             )
-        text = " ".join(urls)
-        addgvar("ALIVE_PIC", text)
-    await edit_or_reply(event, f"**₰ تم بنجاح تحديث فار {input_str} بنجاح 𓆰،**")
+        if var == "ALIVE_PIC":
+            text = " ".join(urls)
+    
+    await edit_or_reply(event, f"**₰ تم بنجاح تحديث فار {input_str} 𓆰،**")
+    delgvar(var)
+    addgvar(var, text)
     if BOTLOG_CHATID:
-        await event.client.send_message(
+            await event.client.send_message(
             BOTLOG_CHATID,
             f"#اضف_فار\
                     \n**{input_str}** تم تحديثه بنجاح في قاعده البيانات كـ:",
@@ -117,6 +150,17 @@ async def custom_jepthon(event):
                 event, "**⎙ :: عزيزي المستخدم انت لم تقوم باضافه هذا الفار اصلا**"
             )
         delgvar("pmpermit_pic")
+    if (
+        input_str == "لون الوقتي"
+        or input_str == "لون وقتي"
+        or input_str == "لون صوره وقتيه"
+        or input_str == "لون الصوره الوقتيه"
+    ):
+        if gvarstatus("digitalpiccolor") is None:
+            return await edit_delete(
+                event, "**لم تضيف الفار اصلاً**"
+            )
+        delgvar("digitalpiccolor")
     if input_str == "صورة الفحص" or input_str == "صوره الفحص":
         if gvarstatus("ALIVE_PIC") is None:
             return await edit_delete(
