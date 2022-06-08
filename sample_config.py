@@ -100,6 +100,7 @@ class Config(object):
     NO_LOAD = [x for x in os.environ.get("NO_LOAD", "").split()]
     # for custom pic for .digitalpfp
     DIGITAL_PIC = os.environ.get("DIGITAL_PIC", None)
+    DIGITAL_PIC_COLOR = os.environ.get("DIGITAL_PIC_COLOR", None)
     # your default pic telegraph link
     DEFAULT_PIC = os.environ.get("DEFAULT_PIC", None)
     # set this with your default bio
