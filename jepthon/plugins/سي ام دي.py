@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+import imp
 from ..Config import Config
 from ..utils import load_module, remove_plugin
 from . import CMD_HELP, CMD_LIST, SUDO_LIST, jmthon, edit_delete, edit_or_reply, reply_id
@@ -10,6 +10,21 @@ plugin_category = "tools"
 DELETE_TIMEOUT = 5
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 
+@jmthon.ar_cmd(
+    pattern="جد بكج (.*)",
+    command=("جد بكج", plugin_category),
+    info={
+        "header": "البحث عن بكج.",
+        "description": "لمعرفة هل ان البكج موجود ام لا.",
+    },
+)
+async def findpkg(event):
+    pkgname = event.pattern_match.group(1)
+    try:
+         imp.find_module(pkgname)
+         await edit_or_reply(event, f"⌯︙الباكج موجود ✓\n{pkgname}")
+    except ImportError:
+         await edit_or_reply(event, f"⌯︙الباكج غير موجود X \n{pkgname}")
 
 @jmthon.ar_cmd(
     pattern="تنصيب$",
