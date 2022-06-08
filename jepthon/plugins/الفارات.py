@@ -57,6 +57,20 @@ async def variable(var):
                 "**⌔∮ تم بنجاح تغيير الوقت الخاص بك\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
             )
         heroku_var[variable] = vra
+    if exe == "لون وقتي" or "لون الوقتي" or "اللون الوقتي":
+        variable = "DIGITAL_PIC_COLOR"
+        await asyncio.sleep(1)
+        if variable in heroku_var:
+            await edit_or_reply(
+                var,
+                "**⌔∮ تم بنجاح تغيير فار لون الوقتي\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
+            )
+        else:
+            await edit_or_reply(
+                var,
+                "**⌔∮ تم بنجاح تغيير فار لون الوقتي \n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
+            )
+        heroku_var[variable] = vra
     if exe == "رمز الاسم":
         variable = "TIME_JEP"
         await asyncio.sleep(1)
@@ -87,6 +101,20 @@ async def variable(var):
         heroku_var[variable] = vra
     if exe == "الصورة" or exe == "الصوره":
         variable = "DIGITAL_PIC"
+        await asyncio.sleep(1)
+        if variable in heroku_var:
+            await edit_or_reply(
+                var,
+                "**⌔∮ تم بنجاح تغيير فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
+            )
+        else:
+            await edit_or_reply(
+                var,
+                "**⌔∮ تم بنجاح تغيير فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
+            )
+        heroku_var[variable] = vra
+    if exe == "لون" or exe == "اللون":
+        variable = "DIGITAL_PIC_COLOR"
         await asyncio.sleep(1)
         if variable in heroku_var:
             await edit_or_reply(
@@ -148,20 +176,6 @@ async def variable(var):
             await edit_or_reply(
                 var,
                 "**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
-            )
-        else:
-            await edit_or_reply(
-                var,
-                "**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
-            )
-        heroku_var[variable] = vra
-    if exe == "لون الوقت":
-        variable = "COLOR_TIME"
-        await asyncio.sleep(1)
-        if variable in heroku_var:
-            await edit_or_reply(
-                var,
-                "**⌔∮ تم بنجاح تغيير لون الوقت \n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
             )
         else:
             await edit_or_reply(
