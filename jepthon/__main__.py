@@ -13,6 +13,7 @@ from .utils import (
     setup_bot,
     startupmessage,
     verifyLoggerGroup,
+    saves,
 )
 
 LOGS = logging.getLogger("JepThon")
@@ -55,6 +56,7 @@ async def startup_process():
     )
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     await verifyLoggerGroup()
+    await saves()
     await add_bot_to_logger_group(BOTLOG_CHATID)
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
