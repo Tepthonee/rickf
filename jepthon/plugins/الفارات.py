@@ -450,9 +450,9 @@ async def variable(event):
         zinfo = "jepthon/helpers/styles/Terserah.ttf"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await jep.edit("**✾╎تم تغييـر زغـرفـة البروفـايل الوقـتي {} بنجـاح ☑️**\n**✾╎بعـد اعـادة التشغيـل ارسـل ↶** .الصورة الوقتية\n\n**✾╎يتم الان اعـادة تشغيـل بـوت زد ثـون يستغـرق الامر 2-1 دقيقـه ▬▭ ...**".format(input_str))
+            await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
         else:
-            await jep.edit("**✾╎تم اضـافة زغـرفة البروفـايل الوقـتي {} بنجـاح ☑️** \n**✾╎بعـد اعـادة التشغيـل ارسـل ↶** .الصورة الوقتية\n\n**✾╎يتم الان اعـادة تشغيـل بـوت زد ثـون يستغـرق الامر 2-1 دقيقـه ▬▭ ...**".format(input_str))
+            await jep.edit("**⌔∮ تم بنجاح تغيير زخرفة الصورة الوقتية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**".format(input_str))
         heroku_var[variable] = zinfo
     elif input_str == "5":
         variable = "DEFAULT_PIC"
