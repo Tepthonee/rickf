@@ -2,6 +2,7 @@
 # كتابة وتعديل وترتيب  ~ @lMl10l
 # For ~ @Jepthon
 #تعديل Reda / رضا
+#من تعرف تخمط اذكر حقوق لتسوي نفسك مطور
 import webcolors
 import asyncio
 import base64
