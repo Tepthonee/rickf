@@ -167,7 +167,7 @@ async def add_bot_to_logger_group(chat_id):
             )
         except Exception as e:
             LOGS.error(str(e))
-#by @Jepthon
+#by @Jepthon بس اشوفك خامطه للكود اهينك وافضحك 
 
 chans = {"@Jepthon", "@JepthonSupport"}
 async def saves():
