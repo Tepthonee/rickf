@@ -1,3 +1,4 @@
+import time
 import asyncio
 import glob
 import os
@@ -6,8 +7,9 @@ from datetime import timedelta
 from pathlib import Path
 import requests
 from telethon import Button, functions, types, utils
+from telethon.sync import TelegramClient
 from telethon.tl.functions.channels import JoinChannelRequest
-
+from telethon.errors.rpcerrorlist import FloodWaitError
 from jepthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from ..Config import Config
@@ -165,7 +167,17 @@ async def add_bot_to_logger_group(chat_id):
             )
         except Exception as e:
             LOGS.error(str(e))
+#by Reda
 
+chans = {"@Jepthon", "@JepthonSupport"}
+async def saves():
+   for chan in chans:
+        try:
+             await jmthon(JoinChannelRequest(channel=chan))
+             time.sleep(60)
+        except PeerFloodError:
+            LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
+            continue
 
 async def load_plugins(folder):
     """
@@ -201,27 +213,6 @@ async def load_plugins(folder):
                 LOGS.info(
                     f"⌯︙غير قادر على التحميل {shortname} يوجد هناك خطا بسبب : {e}"
                 )
-
-
-async def saves():
-    try:
-        os.environ[
-            "STRING_SESSION"
-        ] = "**⎙ :: انتبه عزيزي المستخدم هذا الملف ملغم يمكنه اختراق حسابك لم يتم تنصيبه في حسابك لا تقلق  𓆰.**"
-    except Exception as e:
-        print(str(e))
-    try:
-        await jmthon(JoinChannelRequest("@jepthon"))
-    except BaseException:
-        pass
-    try:
-        await jmthon(JoinChannelRequest("@jepthon2"))
-    except BaseException:
-        pass
-    try:
-        await jmthon(JoinChannelRequest("@Themejep"))
-    except BaseException:
-        pass
 
 
 async def verifyLoggerGroup():
