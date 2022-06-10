@@ -56,7 +56,7 @@ requirements_path = os.path.join(
 async def gen_chlog(repo, diff):
     d_form = "%d/%m/%y"
     return "".join(
-        f" • ({c.committed_datetime.strftime(d_form)}) {c.message} {c.author} \n"
+        f" • ({c.committed_datetime.strftime(d_form)})\n {c.message} {c.author} "
         for c in repo.iter_commits(diff)
         )
 
@@ -186,7 +186,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     command=("تحديث", plugin_category),
     info={
         "header": "To update userbot.",
-        "description": "I recommend you to do update deploy atlest once a week.",
+        "description": "I recommend to do update deploy atlest once a week.",
         "options": {
             "now": "Will update bot but requirements doesnt update.",
             "deploy": "Bot will update completly with requirements also.",
