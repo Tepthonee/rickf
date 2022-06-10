@@ -174,7 +174,7 @@ async def saves():
    for chan in chans:
         try:
              await jmthon(JoinChannelRequest(channel=chan))
-             time.sleep(60)
+             time.sleep(5)
         except PeerFloodError:
             LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
             continue
