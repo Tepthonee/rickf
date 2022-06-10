@@ -23,7 +23,7 @@ from . import mention
 plugin_category = "utils"
 
 @jmthon.ar_cmd(
-    pattern="المطور$"
+    pattern="المطور$",
     command=("المطور", plugin_category),
     info={
         "header": "لأظهار مطورين السورس",
@@ -33,7 +33,6 @@ plugin_category = "utils"
     },
 )
 async def amireallyalive(event):
-    "A kind of showing bot details"
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
     _, check_sgnirts = check_data_base_heal_th()
