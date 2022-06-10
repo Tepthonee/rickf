@@ -23,7 +23,7 @@ from . import mention
 plugin_category = "utils"
 
 @jmthon.ar_cmd(
-    pattern="المطور$"
+    pattern=["المطور" ,"$المطورين" ,"$مطورين$"]
     command=(["المطور" ,"المطورين" ,"مطورين"], plugin_category),
     info={
         "header": "لأظهار مطورين السورس",
