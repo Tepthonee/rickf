@@ -1,4 +1,4 @@
-# Copyright (C) 2021 JepThon TEAM
+# Copyright (C) 2021 JepThon Team
 # FILES WRITTEN BY  @RR7PP
 
 import requests
