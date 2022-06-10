@@ -93,15 +93,20 @@ async def custom_jepthon(event):
         text = " ".join(urls)
         addgvar("pmpermit_pic", text)
         var = "pmpermit_pic"
-    if input_str == "صورة الفحص" or input_str == "صوره الفحص":
+    if (
+        input_str == "صورة الفحص"
+        or input_str == "صورة فحص"
+        or input_str == "صوره الفحص"
+        or input_str == "صوره فحص"
+    ):
         urls = extractor.find_urls(reply.text)
         if not urls:
             return await edit_delete(
                 event, "**⪼ يجب عليك الرد على رابط تلجراف اولا**", 5
             )
-        if var == "ALIVE_PIC":
-            text = " ".join(urls)
-            addgvar("ALIVE_PIC", text)
+        text = " ".join(urls)
+        addgvar("ALIVE_PIC", text)
+        var = "ALIVE_PIC"
     await edit_or_reply(event, f"**₰ تم بنجاح تحديث فار {input_str} 𓆰،**")
     delgvar(var)
     addgvar(var, text)
