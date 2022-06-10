@@ -6,7 +6,6 @@ import heroku3
 import urllib3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
-
 from jepthon import HEROKU_APP, UPSTREAM_REPO_URL, jmthon, CMD_HELP
 
 from ..Config import Config
