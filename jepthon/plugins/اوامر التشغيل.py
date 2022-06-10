@@ -19,8 +19,8 @@ plugin_category = "tools"
 
 
 @jmthon.ar_cmd(
-    pattern="تحديث$",
-    command=("تحديث", plugin_category),
+    pattern="اعادة تشغيل$",
+    command=("اعادة تشغيل", plugin_category),
     info={
         "header": "Restarts the bot !!",
         "usage": "{tr}restart",
