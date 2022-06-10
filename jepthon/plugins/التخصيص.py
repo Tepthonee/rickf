@@ -101,7 +101,7 @@ async def custom_jepthon(event):
             )
         if var == "ALIVE_PIC":
             text = " ".join(urls)
-            var = "ALIVE_PIC"
+            addgvar("ALIVE_PIC", text)
     await edit_or_reply(event, f"**₰ تم بنجاح تحديث فار {input_str} 𓆰،**")
     delgvar(var)
     addgvar(var, text)
