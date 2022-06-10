@@ -1,21 +1,8 @@
 import asyncio
-import base64
-import io
 import logging
 import os
 import time
 from datetime import datetime
-from io import BytesIO
-from shutil import copyfile
-
-import fitz
-from PIL import Image, ImageDraw, ImageFilter, ImageOps
-from pymediainfo import MediaInfo
-from telethon import types
-from telethon.errors import PhotoInvalidDimensionsError
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from telethon.tl.functions.messages import SendMediaRequest
-from telethon.utils import get_attributes
 
 from jepthon import jmthon
 
@@ -25,18 +12,11 @@ from ..helpers import media_type, progress, thumb_from_audio
 from ..helpers.functions import (
     convert_toimage,
     convert_tosticker,
-    invert_frames,
-    l_frames,
-    r_frames,
-    spin_frames,
-    ud_frames,
     vid_to_gif,
 )
 from ..helpers.utils import _cattools, _catutils, _format, parse_pre, reply_id
-from . import make_gif
 
 plugin_category = "misc"
-
 
 if not os.path.isdir("./temp"):
     os.makedirs("./temp")
