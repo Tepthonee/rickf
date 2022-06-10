@@ -24,7 +24,7 @@ plugin_category = "tools"
 cmdhd = Config.COMMAND_HAND_LER
 
 LOGS = logging.getLogger(__name__)
-# -- ثـوابت -- #
+# --- ثـوابت --- #
 
 HEROKU_APP_NAME = Config.HEROKU_APP_NAME or None
 HEROKU_API_KEY = Config.HEROKU_API_KEY or None
