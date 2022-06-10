@@ -56,10 +56,10 @@ requirements_path = os.path.join(
 
 async def gen_chlog(repo, diff):
     d_form = "%d/%m/%y"
-    if c.summary == "Update":
-         c.summary == "تحديث"
-    if c.author == "redaiq90":
-         c.author == "بواسطة رضا"
+    if {c.summary} == "Update":
+         {c.summary} == "تحديث"
+    if {c.author} == "redaiq90":
+         {c.author} == "بواسطة رضا"
     return "".join(
         f" {c.summary} ({c.committed_datetime.strftime(d_form)}) {c.message} {c.author} • \n"
         for c in repo.iter_commits(diff)
