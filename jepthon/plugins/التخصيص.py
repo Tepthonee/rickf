@@ -99,7 +99,7 @@ async def custom_jepthon(event):
             return await edit_delete(
                 event, "**⪼ يجب عليك الرد على رابط تلجراف اولا**", 5
             )
-        if var == "ALIVE_PIC":
+        if var == "A_PIC":
             text = " ".join(urls)
     
     await edit_or_reply(event, f"**₰ تم بنجاح تحديث فار {input_str} 𓆰،**")
