@@ -53,17 +53,12 @@ requirements_path = os.path.join(
 )
 
 
-def check_repo(arg):
-	if arg == "Update":
-		return c.summary == "تحديث"
 async def gen_chlog(repo, diff):
     d_form = "%d/%m/%y"
     return "".join(
         f" {c.summary} ({c.committed_datetime.strftime(d_form)}) {c.message} {c.author} • \n"
-                if check_repo(c.summary)
-                else check_repo(c.summary)
         for c in repo.iter_commits(diff)
-)
+        )
 
 
 async def print_changelogs(event, ac_br, changelog):
