@@ -16,7 +16,7 @@ from jepthon.utils import admin_cmd
 from ..Config import Config
 from jepthon import CMD_HELP, jmthon
 up_admin = Config.UP_ET or "ارفع"
-down_admin = Config.DOWN_ET or "تزل"
+down_admin = Config.DOWN_ET or "نزل"
 async def get_full_user(event):  
     args = event.pattern_match.group(1).split(':', 1)
     extra = None
