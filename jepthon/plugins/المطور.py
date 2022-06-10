@@ -24,7 +24,7 @@ plugin_category = "utils"
 
 @jmthon.ar_cmd(
     pattern="المطور$"
-    command=(["المطور", "المطورين", "مطورين"], plugin_category),
+    command=(["المطور" ,"المطورين" ,"مطورين"], plugin_category),
     info={
         "header": "لأظهار مطورين السورس",
         "usage": [
