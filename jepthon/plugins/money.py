@@ -627,8 +627,7 @@ Done All Commands .
 
 
                  
-#jmthon.tgbot.on(CallbackQuery(data=lambda call: True)
-
+@jmthon.tgbot.on(CallbackQuery(func=lambda call: True)
 
 async def qwere(call):
 
@@ -636,13 +635,13 @@ async def qwere(call):
     if call.data == "RebackBank":
 
 
-        RebackBank(call.message)
+        Bankre(call.message)
 
 
     if call.data == "SpaceBank":
 
 
-        SpaceBank(call.message)
+        Bankar(call.message)
 
 
     if call.data == "d":
@@ -653,18 +652,18 @@ async def qwere(call):
 
 
 
-@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"d")))
-@check_owner
-async def _(message):
-    mee = await event.client.get_me()
+#@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"d")))
+#@check_owner
+async def d(message):
+    mee = await message.client.get_me()
     os.system(f"rm -rf {mee.id}.txt")
-    cb = await message.respond("تم حذف حسابك", buttons=Button.clear())
+    cb = await message.respond("تم حذف حسابك المصرفي", buttons=Button.clear())
 
 
 
-@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
-@check_owner
-async def _(message):
+#@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
+#@check_owner
+async def Bankre(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
@@ -684,9 +683,9 @@ async def _(message):
         except:
             pass
 
-@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"SpaceBank")))
-@check_owner    
-async def _(message):
+#@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"SpaceBank")))
+#@check_owner    
+async def bankar(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
