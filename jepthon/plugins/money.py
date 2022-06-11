@@ -294,7 +294,7 @@ def mounth(message):
         msg1 = message.text
 
 
-        sent = edit_or_reply(message, <strong>Send Bank Name :\nSpaceBank .\nRebackBank.\n\nChoice From List ?</strong>",parse_mode="html")
+        sent = await edit_or_reply(message, "Send Bank Name :\nSpaceBank .\nRebackBank.\n\nChoice From List ?",parse_mode="html")
 
 
 
