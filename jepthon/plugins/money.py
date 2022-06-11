@@ -237,7 +237,7 @@ async def a(message):
 
 
           mounth(message)
-
+teX = "اختر بنك لانشاء حساب به"
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
 
     @tgbot.on(events.InlineQuery)
@@ -253,9 +253,9 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                Button.inline("SpaceBank.", data = "SpaceBank")
                ]
           ]
-         result = builder.article(
+            result = builder.article(
                     title="JEPTHON",
-                    text="اختر بنك لانشاء الحساب,
+                    text=teX,
                     buttons=buttons,
                     link_preview=False,
                 )
