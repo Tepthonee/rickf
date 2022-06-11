@@ -35,20 +35,20 @@ plugin_category = "utils"
     command=("البنك", plugin_category),
 )
 async def start(event):
-
+    me = await event.client.get_me()
     aw = glob.glob('./*.txt')
 
 
-    if f"c{event.client.id}.txt" not in aw:
+    if f"c{me.id}.txt" not in aw:
 
 
-        with open(f"c{event.client.id}.txt","a")as xs:
+        with open(f"c{me.id}.txt","a")as xs:
 
 
             sta = await edit_or_reply(event, f"""<strong>
 
 
-👋 Hi {event.client.first_name},
+👋 Hi {me.first_name},
 
 
 - Wellcome To ReBackBank Bot! .
@@ -90,7 +90,7 @@ Send : /MakeAccount To Make Account! .
         af = await edit_or_reply(event, f"""
 
 
-👋 Hi {event.client.first_name},
+👋 Hi {me.first_name},
 
 
 - Wellcome To ReBackBank Bot! .
