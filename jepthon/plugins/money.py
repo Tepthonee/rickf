@@ -139,7 +139,7 @@ async def a(message):
     ba = await edit_or_reply(message,f"<strong>Your Balance : {apcc} 💵</strong>",parse_mode="html")
 
 
-@jmthon.ar_cmd(commands="my")
+@jmthon.ar_cmd(command="my")
 
 
 async def a(message):
@@ -241,7 +241,7 @@ async def a(message):
           mounth(message)
 
 
-@jmthon.ar_cmd(commands="MakeAccount")
+@jmthon.ar_cmd(command="MakeAccount")
 
 
 async def mounth(message):
