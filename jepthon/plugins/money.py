@@ -6,15 +6,11 @@ import telebot,os
 
 import glob, os
 
-
-from telebot import types
-
+from telethon import types
 
 from random import randint
 
-
 import random
-
 
 from . import jmthon
 
