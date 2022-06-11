@@ -221,7 +221,7 @@ async def a(message):
 
 
           az = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
-          deB = ch3
+          Button.inline("Delete Account.", data = "d")
 
          
 
