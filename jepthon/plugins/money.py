@@ -1,5 +1,8 @@
 import json
 import re
+from ..Config import Config
+from JepIQ.razan.resources.assistant import *
+from JepIQ.razan.resources.mybot import *
 from ..core.decorators import check_owner
 from telethon import Button, events
 from ..helpers import get_user_from_event
@@ -221,8 +224,7 @@ async def a(message):
 
 
           az = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
-          Button.inline("Delete Account.", data = "d")
-
+   
          
 
 
@@ -237,11 +239,43 @@ async def a(message):
 
           mounth(message)
 
+if Config.TG_BOT_USERNAME is not None and tgbot is not None:
 
-@jmthon.ar_cmd(
-    pattern="انشاء حساب(?:\s|$)([\s\S]*)",
-    command=("انشاء حساب", plugin_category),
-)
+    @tgbot.on(events.InlineQuery)
+    async def inline_handler(event):
+        builder = event.builder
+        result = None
+        query = event.text
+        await bot.get_me()
+        if query.startswith("انشاء حساب") and event.query.user_id == bot.uid:
+            buttons = [
+          [
+               Button.inline("RebackBank.", data = "RebackBank"),
+               Button.inline("SpaceBank.", data = "SpaceBank")
+               ]
+          ]
+         result = builder.article(
+                    title="JEPTHON",
+                    text="اختر بنك لانشاء الحساب,
+                    buttons=buttons,
+                    link_preview=False,
+                )
+        await event.answer([result] if result else None)
+
+@bot.on(ar_cmd(outgoing=True, pattern="انشاء حساب"))
+async def repo(event):
+    if event.fwd_from:
+        return
+    RR7PP = Config.TG_BOT_USERNAME
+    if event.reply_to_msg_id:
+        await event.get_reply_message()
+    response = await bot.inline_query(RR7PP, "انشاء حساب")
+    await response[0].click(event.chat_id)
+    await event.delete()
+#@jmthon.ar_cmd(
+#    pattern="انشاء حساب(?:\s|$)([\s\S]*)",
+#    command=("انشاء حساب", plugin_category),
+#)
 
 
 async def mounth(message):
@@ -271,12 +305,7 @@ async def mounth(message):
     else:
 
 
-        buts = [
-          [
-               Button.inline("RebackBank.", data = "RebackBank"),
-               Button.inline("SpaceBank.", data = "SpaceBank")
-               ]
-          ]
+        
 
 
         msg1 = message.text
@@ -695,7 +724,7 @@ Done All Commands .
 
                  
 #jmthon.tgbot.on(CallbackQuery(data=lambda call: True)
-@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"lambda")))
+@jmthon.tgbot.on(CallbackQuery(data=lambda call: True))
 @check_owner
 
 async def qwere(call):
