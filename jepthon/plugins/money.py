@@ -123,7 +123,7 @@ async def a(message):
     me = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"c{me.id}.txt" not in aw:
-         noa = await edit_or_reply(message, f"<strong>انت لا تملك حساب في البنك", parse_modr="html")
+         noa = await edit_or_reply(message, f"<strong>انت لا تملك حساب في البنك", parse_mod="html")
     else:
          f = open(f"{me.id}.txt").read()
          fl = open(f"c{me.id}.txt").read()
