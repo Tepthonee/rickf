@@ -252,7 +252,7 @@ async def ga(message):
         mde = await edit_or_reply(message,f"<strong>تم حذف حسابك في البنك .</strong>",parse_mode="html")
 
 
-    if ms == ".لمصرف" or ms == ".البنك" or ms == ".مصرف":
+    if ms == ".المصرف" or ms == ".البانك" or ms == ".مصرف":
 
 
         help = """
@@ -345,13 +345,13 @@ Done All Commands .
               ga = float(ratb) + float(acc)
 
 
-              with open(f"c{meeid}.txt","r+")as fs:
+              with open(f"{meeid}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-              with open(f"c{mee.id}.txt","w")as va:
+              with open(f"{mee.id}.txt","w")as va:
 
 
                   va.write(f"{int(ga)}")
@@ -391,13 +391,13 @@ Done All Commands .
             kf = float(value) + float(randint(float(ppe),float(ppe)))
 
 
-            with open(f"c{mee.id}.txt","r+")as fs:
+            with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-            with open(f"c{mee.id}.txt","w")as va:
+            with open(f"{mee.id}.txt","w")as va:
 
 
                   va.write(f"{int(kf)}")
@@ -448,13 +448,13 @@ Done All Commands .
             kf = int(value) + int(randint(int(pe),int(pe)))
 
 
-            with open(f"c{mee.id}.txt","r+")as fs:
+            with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-            with open(f"c{mee.id}.txt","w")as va:
+            with open(f"{mee.id}.txt","w")as va:
 
 
                   va.write(f"{int(kf)}")
@@ -481,7 +481,7 @@ Done All Commands .
             pep = open(f"{mee.id}.txt").read()
 
 
-            with open(f"c{mee.id}.txt","r+")as fs:
+            with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
@@ -532,22 +532,16 @@ Done All Commands .
               ga = float(ratb) + float(acc)
 
 
-              print(ratb)
-
-
-              print(ga)
-
-
-              with open(f"c{mee.id}.txt","r+")as fs:
+              with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-              with open(f"c{mee.id}.txt","w")as va:
+              with open(f"{mee.id}.txt","w")as va:
 
 
-                  va.write(f"{ga}")
+                  va.write(f"{int(ga)}")
 
 
               tp = await edit_or_reply(message,f"<strong>💸 Your tip Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
@@ -598,16 +592,16 @@ Done All Commands .
 
 
 
-              with open(f"c{mee.id}.txt","r+")as fs:
+              with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-              with open(f"c{mee.id}.txt","w")as va:
+              with open(f"{mee.id}.txt","w")as va:
 
 
-                  va.write(f"{ga}")
+                  va.write(f"{int(ga)}")
 
 
               sal = await edit_or_reply(message,f"<strong>💸 Your Salary Is Available!🤩\n- You Got {ratb} 💵\n- Because You Are {name}.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
@@ -663,10 +657,11 @@ async def d(message):
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
 @check_owner
 async def Bankre(message):
+    rp = await reply_id(message)
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
-        cbbs = await message.answer("لديك حساب بالفعل", buttons=Button.clear())
+        cbbs = await message.answer("لديك حساب بالفعل")
     else:
         chars = '1234567890'
         us = str(''.join((random.choice(chars) for i in range(15))))
@@ -674,23 +669,24 @@ async def Bankre(message):
         try:
             with open(f"{mee.id}.txt","a")as x:
                 x.write(f"name:{mee.first_name}:account:{s}:bank:RebackBank.")
-                #dm = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html",reply_markup=me)
+                #dm = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html", reply_to=rp)
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
                 await message.answer('تم انشاء الحساب')
-                cbs = await message.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>")
+                cbs = await message.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html", reply_to=rp)
         except:
             pass
 
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"SpaceBank")))
 @check_owner    
 async def bankar(message):
+    rp = await reply_id(message)
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
         await message.answer('لديك حساب')
-        await message.send_message(message.chat_id, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
+        await message.send_message(message.chat_id, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html", reply_to=rp)
     else:
         chars = '1234567890'
         us = str(''.join(random.choice(chars) for i in range(15)))
@@ -703,7 +699,7 @@ async def bankar(message):
                 xs.write("50")
                 xs.close()
                 await message.answer('تم انشاء حساب مصرفي')
-                cbs = await message.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>")
+                cbs = await message.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>", parse_mode="html", reply_to=rp)
                 
         except:
             pass
