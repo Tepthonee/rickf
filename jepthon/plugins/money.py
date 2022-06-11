@@ -675,7 +675,6 @@ async def _(message):
 @check_owner
 async def _(message):
     mee = await message.client.get_me()
-    msg = message.text
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
         sm = await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
@@ -697,7 +696,6 @@ async def _(message):
 @check_owner    
 async def _(message):
     mee = await message.client.get_me()
-    msg = message.text
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
         sm = await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
