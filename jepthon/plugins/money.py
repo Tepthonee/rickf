@@ -231,13 +231,10 @@ async def repo(event):
 async def ga(message):
     aw = glob.glob('./*.txt')
     if f"./block.txt" not in aw:
-        with open(f"cblock.txt","a")as xs:
-                xs.close()
-                pass
+         open(f"block.txt","a")    
     if f"./blockTip.txt" not in aw:
-        with open(f"cblockTip.txt","a")as ps:
-                ps.close()
-                pass
+         open(f"blockTip.txt","a")
+              
     mee = await message.client.get_me()
     global acc
 
@@ -657,7 +654,6 @@ async def d(message):
     mee = await message.client.get_me()
     os.system(f"rm -rf {mee.id}.txt")
     cb = await message.respond("تم حذف حسابك المصرفي", buttons=Button.clear())
-
 
 
 #@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
