@@ -116,16 +116,19 @@ Send : /MakeAccount To Make Account! """, parse_mode="html")
         
 
 
-@jmthon.ar_cmd(command="فلوسي")
+@jmthon.ar_cmd(
+    pattern="فلوسي(?:\s|$)([\s\S]*)",
+    command=("فلوسي", plugin_category),
+)
 
 
 async def a(message):
+    me = await message.client.get_me()
+
+    f = open(f"{me.id}.txt").read()
 
 
-    f = open(f"{message.chat.id}.txt").read()
-
-
-    fl = open(f"c{message.chat.id}.txt").read()
+    fl = open(f"c{me.id}.txt").read()
 
 
     nn = f.split(":")[1]
@@ -140,18 +143,17 @@ async def a(message):
     ba = await edit_or_reply(message,f"<strong>Your Balance : {apcc} 💵</strong>",parse_mode="html")
 
 
-@jmthon.ar_cmd(command="my")
+@jmthon.ar_cmd(
+    pattern="بنكي(?:\s|$)([\s\S]*)",
+    command=("بنكي", plugin_category),
+)
 
 
 async def a(message):
 
-
+    me = await message.client.get_me()
     global acc
-
-
-    idp = message.from_user.id
-
-
+    idp = me.from_user.id
     print(idp)
 
 
@@ -161,7 +163,7 @@ async def a(message):
     print(aw)
 
 
-    if f"./{message.chat.id}.txt" in aw:
+    if f"./{me.id}.txt" in aw:
 
 
       me = types.InlineKeyboardMarkup()
@@ -173,13 +175,13 @@ async def a(message):
       me.add(ch3)
 
 
-      with open(f"{message.chat.id}.txt","r+")as df:
+      with open(f"{me.id}.txt","r+")as df:
 
 
           
 
 
-          f = open(f"{message.chat.id}.txt").read()
+          f = open(f"{me.id}.txt").read()
 
 
           fpp = open(f"blockTip.txt","r+")
@@ -194,7 +196,7 @@ async def a(message):
           fppp.truncate(0)
 
 
-          fl = open(f"c{message.chat.id}.txt").read()
+          fl = open(f"c{me.id}.txt").read()
 
 
           nn = f.split(":")[1]
@@ -242,12 +244,15 @@ async def a(message):
           mounth(message)
 
 
-@jmthon.ar_cmd(command="MakeAccount")
+@jmthon.ar_cmd(
+    pattern="انشاء حساب(?:\s|$)([\s\S]*)",
+    command=("انشاء حساب", plugin_category),
+)
 
 
 async def mounth(message):
 
-
+    mee = await message.client.get_me()
     global msg1
 
 
@@ -257,10 +262,10 @@ async def mounth(message):
     print(aw)
 
 
-    print(message.first_name)
+    print(mee.first_name)
 
 
-    if f"./{message.id}.txt" in aw:
+    if f"./{mee.id}.txt" in aw:
 
 
         edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
@@ -295,7 +300,7 @@ async def mounth(message):
 
 async def ga(message):
 
-
+    mee = await message.client.get_me()
     global acc
 
 
@@ -308,7 +313,7 @@ async def ga(message):
     if ms == "delete" or ms == "حذف":
 
 
-        os.system(f"rm -rf {message.from_user.id}.txt")
+        os.system(f"rm -rf {mee.from_user.id}.txt")
 
 
         mde = await edit_or_reply(message,f"<strong>Done Delete your Account .</strong>",parse_mode="html")
@@ -362,13 +367,13 @@ Done All Commands .
         """
 
 
-        edit_or_reply(message,f"<strong>{help}</strong>",parse_mode="html")
+        hr = edit_or_reply(message,f"<strong>{help}</strong>",parse_mode="html")
 
 
     if ms == "فلوسي" or ms == "فلوس":
 
 
-        fl = open(f"c{message.from_user.id}.txt").read()
+        fl = open(f"c{mee.from_user.id}.txt").read()
 
 
         edit_or_reply(message,f"<strong>Your Balance : <code>{fl}</code> 💵</strong>",parse_mode="html")
@@ -383,7 +388,7 @@ Done All Commands .
           ca = open(f"blockTip.txt").read()
 
 
-          if f"{message.chat.username}" in ca:
+          if f"{mee.username}" in ca:
 
 
               edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
@@ -401,7 +406,7 @@ Done All Commands .
               ratb = rt
 
 
-              acc = open(f"c{message.chat.id}.txt").read()
+              acc = open(f"c{mee.id}.txt").read()
 
 
               ga = float(ratb) + float(acc)
@@ -413,25 +418,25 @@ Done All Commands .
               print(ga)
 
 
-              with open(f"c{message.chat.id}.txt","r+")as fs:
+              with open(f"c{meeid}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-              with open(f"c{message.chat.id}.txt","w")as va:
+              with open(f"c{mee.id}.txt","w")as va:
 
 
                   va.write(f"{ga}")
 
 
-              edit_or_reply(message,f"<strong>💸 Your treasure  Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
+              tx = edit_or_reply(message,f"<strong>💸 Your treasure  Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
 
 
               with open(f"blockTip.txt","w")as df:
 
 
-                 df.write(f"{message.chat.username}\n")
+                 df.write(f"{mee.username}\n")
 
 
                  
@@ -455,19 +460,19 @@ Done All Commands .
         if "Done" in ls:
 
 
-            ppe = open(f"c{message.from_user.id}.txt").read()
+            ppe = open(f"c{mee.from_user.id}.txt").read()
 
 
             kf = float(value) + float(randint(float(ppe),float(ppe)))
 
 
-            with open(f"c{message.from_user.id}.txt","r+")as fs:
+            with open(f"c{mee.from_user.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-            with open(f"c{message.from_user.id}.txt","w")as va:
+            with open(f"c{mee.from_user.id}.txt","w")as va:
 
 
                   va.write(f"{kf}")
@@ -479,7 +484,7 @@ Done All Commands .
             raa = random.choice(d)
 
 
-            edit_or_reply(message,f"""<strong>
+            mac = edit_or_reply(message,f"""<strong>
 
 
 - Successful Investment  💰
@@ -512,19 +517,19 @@ Done All Commands .
         if "Done" in sv:
 
 
-            pe = open(f"c{message.chat.id}.txt").read()
+            pe = open(f"c{mee.id}.txt").read()
 
 
             kf = int(value) + int(randint(int(pe),int(pe)))
 
 
-            with open(f"c{message.chat.id}.txt","r+")as fs:
+            with open(f"c{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-            with open(f"c{message.chat.id}.txt","w")as va:
+            with open(f"c{mee.id}.txt","w")as va:
 
 
                   va.write(f"{kf}")
@@ -548,10 +553,10 @@ Done All Commands .
         else:
 
 
-            pep = open(f"c{message.chat.id}.txt").read()
+            pep = open(f"c{mee.id}.txt").read()
 
 
-            with open(f"c{message.chat.id}.txt","r+")as fs:
+            with open(f"c{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
@@ -578,7 +583,7 @@ Done All Commands .
           ca = open(f"blockTip.txt").read()
 
 
-          if f"{message.chat.username}" in ca:
+          if f"{meeusername}" in ca:
 
 
               edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
@@ -596,7 +601,7 @@ Done All Commands .
               ratb = rt
 
 
-              acc = open(f"c{message.chat.id}.txt").read()
+              acc = open(f"c{mee.id}.txt").read()
 
 
               ga = float(ratb) + float(acc)
@@ -608,13 +613,13 @@ Done All Commands .
               print(ga)
 
 
-              with open(f"c{message.chat.id}.txt","r+")as fs:
+              with open(f"c{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-              with open(f"c{message.chat.id}.txt","w")as va:
+              with open(f"c{mee.id}.txt","w")as va:
 
 
                   va.write(f"{ga}")
@@ -626,7 +631,7 @@ Done All Commands .
               with open(f"blockTip.txt","w")as df:
 
 
-                 df.write(f"{message.chat.username}\n")
+                 df.write(f"{mee.username}\n")
 
 
                  
@@ -641,7 +646,7 @@ Done All Commands .
           ca = open(f"block.txt").read()
 
 
-          if f"{message.chat.username}" in ca:
+          if f"{mee.username}" in ca:
 
 
               edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
@@ -662,7 +667,7 @@ Done All Commands .
               ratb = rt.split("-")[1]
 
 
-              acc = open(f"c{message.chat.id}.txt").read()
+              acc = open(f"c{mee.id}.txt").read()
 
 
               ga = float(ratb) + float(acc)
@@ -674,13 +679,13 @@ Done All Commands .
               print(ga)
 
 
-              with open(f"c{message.chat.id}.txt","r+")as fs:
+              with open(f"c{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-              with open(f"c{message.chat.id}.txt","w")as va:
+              with open(f"c{mee.id}.txt","w")as va:
 
 
                   va.write(f"{ga}")
@@ -692,7 +697,7 @@ Done All Commands .
               with open(f"block.txt","w")as df:
 
 
-                 df.write(f"{message.chat.username}\n")
+                 df.write(f"{mee.username}\n")
 
 
                  df.close()
@@ -729,18 +734,15 @@ async def qwere(call):
 
 def dell(message):
 
+    mee = await event.client.get_me()
+    os.system(f"rm -rf {mee.id}.txt")
 
-    os.system(f"rm -rf {message.chat.id}.txt")
 
-
-    print("ok")
+ 
 
 
 async def RebackBank(message):
-
-
-    
-
+    me = await message.client.get_me()
 
     msg = message.text
 
@@ -748,7 +750,7 @@ async def RebackBank(message):
     aw = glob.glob('./*.txt')
 
 
-    if f"./{message.chat.id}.txt" in aw:
+    if f"./{mee.id}.txt" in aw:
 
 
         edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
@@ -778,16 +780,16 @@ async def RebackBank(message):
         try:
 
 
-            with open(f"{message.chat.id}.txt","a")as x:
+            with open(f"{mee.id}.txt","a")as x:
 
 
-                x.write(f"name:{message.chat.first_name}:account:{s}:bank:RebackBank.")
+                x.write(f"name:{mee.first_name}:account:{s}:bank:RebackBank.")
 
 
-                edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html")
+                cb = edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html")
 
 
-            with open(f"c{message.chat.id}.txt","a")as xs:
+            with open(f"c{mee.id}.txt","a")as xs:
 
 
                 xs.write("50")
