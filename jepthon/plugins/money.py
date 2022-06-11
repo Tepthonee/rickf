@@ -126,7 +126,7 @@ Send : /MakeAccount To Make Account! """, parse_mode="html")
 @jmthon.ar_cmd(commands=["فلوسي"])
 
 
-def a(message):
+async def a(message):
 
 
     f = open(f"{message.chat.id}.txt").read()
@@ -144,13 +144,13 @@ def a(message):
     apcc = fl
 
 
-    edit_or_reply(message,f"<strong>Your Balance : {apcc} 💵</strong>",parse_mode="html")
+    ba = await edit_or_reply(message,f"<strong>Your Balance : {apcc} 💵</strong>",parse_mode="html")
 
 
 @jmthon.ar_cmd(commands=["my"])
 
 
-def a(message):
+async def a(message):
 
 
     global acc
@@ -231,7 +231,7 @@ def a(message):
           """
 
 
-          edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
+          az = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
 
 
          
@@ -252,7 +252,7 @@ def a(message):
 @jmthon.ar_cmd(commands=["MakeAccount"])
 
 
-def mounth(message):
+async def mounth(message):
 
 
     global msg1
@@ -303,7 +303,7 @@ def mounth(message):
 @jmthon.ar_cmd(func=lambda m:"راتب")
 
 
-def ga(message):
+async def ga(message):
 
 
     global acc
@@ -321,7 +321,7 @@ def ga(message):
         os.system(f"rm -rf {message.from_user.id}.txt")
 
 
-        edit_or_reply(message,f"<strong>Done Delete your Account .</strong>",parse_mode="html")
+        del = await edit_or_reply(message,f"<strong>Done Delete your Account .</strong>",parse_mode="html")
 
 
     if ms == "help" or ms == "الاوامر" or ms == "امر":
