@@ -258,10 +258,10 @@ async def mounth(message):
     print(aw)
 
 
-    print(message.chat.first_name)
+    print(message.first_name)
 
 
-    if f"./{message.chat.id}.txt" in aw:
+    if f"./{message.id}.txt" in aw:
 
 
         edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
