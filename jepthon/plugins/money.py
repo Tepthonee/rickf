@@ -723,7 +723,7 @@ Done All Commands .
 
                  
 #jmthon.tgbot.on(CallbackQuery(data=lambda call: True)
-@jmthon.tgbot.on(CallbackQuery(func=lambda call: True))
+@jmthon.tgbot.on(CallbackQuery(func=money call: True))
 @check_owner
 
 async def qwere(call):
