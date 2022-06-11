@@ -210,28 +210,33 @@ async def repo(event):
 
 
 
-async def mounth(message):
+#async def mounth(message):
 
-    mee = await message.client.get_me()
-    global msg1
+#    mee = await message.client.get_me()
+  #  global msg1
 
 
-    aw = glob.glob('./*.txt')
+  #  aw = glob.glob('./*.txt')
 
-    if f"./{mee.id}.txt" in aw:
+   # if f"./{mee.id}.txt" in aw:
          
-         edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
+   #      edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
 
-    else:
-        msg1 = message.message
-        sent = await edit_or_reply(message, "Send Bank Name :\nSpaceBank .\nRebackBank.\n\nChoice From the List ?",parse_mode="html")
+  #  else:
+ #       msg1 = message.text
+ #       sent = await edit_or_reply(message, "Send Bank Name :\nSpaceBank .\nRebackBank.\n\nChoice From the List ?",parse_mode="html")
 
 
 @jmthon.ar_cmd(func=lambda m:"راتب")
 
-
 async def ga(message):
-
+    aw = glob.glob('./*.txt')
+    if f"./block.txt" not in aw:
+        with open(f"cblock.txt","a")as xs:
+                xs.close()
+    if f"./blockTip.txt" not in aw:
+        with open(f"cblockTip.txt","a")as ps:
+                ps.close()
     mee = await message.client.get_me()
     global acc
 
@@ -240,16 +245,16 @@ async def ga(message):
     print(ms + "reda")
 
 
-    if ms == "delete" or ms == "حذف":
+    if ms == ".حذف حسابي" or ms == ".حذف حساب":
 
 
         os.system(f"rm -rf {mee.id}.txt")
 
 
-        mde = await edit_or_reply(message,f"<strong>Done Delete your Account .</strong>",parse_mode="html")
+        mde = await edit_or_reply(message,f"<strong>تم حذف حسابك في البنك .</strong>",parse_mode="html")
 
 
-    if ms == "بنك" or ms == "البنك" or ms == "مصرف":
+    if ms == "بنك." or ms == "البنك." or ms == "مصرف.":
 
 
         help = """
@@ -300,7 +305,7 @@ Done All Commands .
         hr = await edit_or_reply(message,f"<strong>{help}</strong>",parse_mode="html")
 
 
-    if ms == "فلوسي" or ms == "فلوس":
+    if ms == "فلوسي." or ms == "فلوس.":
 
 
         fl = open(f"c{mee.id}.txt").read()
@@ -312,7 +317,7 @@ Done All Commands .
         
 
 
-    if ms == "كنز":
+    if ms == "كنز.":
 
 
           ca = open(f"blockTip.txt").read()
@@ -330,7 +335,7 @@ Done All Commands .
               
 
 
-              rt = randint(50,1000000)
+              rt = randint(50,3000)
 
 
               ratb = rt
@@ -342,12 +347,6 @@ Done All Commands .
               ga = float(ratb) + float(acc)
 
 
-              print(ratb)
-
-
-              print(ga)
-
-
               with open(f"c{meeid}.txt","r+")as fs:
 
 
@@ -357,7 +356,7 @@ Done All Commands .
               with open(f"c{mee.id}.txt","w")as va:
 
 
-                  va.write(f"{ga}")
+                  va.write(f"{int(ga)}")
 
 
               tx = await edit_or_reply(message,f"<strong>💸 Your treasure  Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
@@ -368,8 +367,6 @@ Done All Commands .
 
                  df.write(f"{mee.username}\n")
 
-
-                 
 
 
                  df.close()
@@ -405,7 +402,7 @@ Done All Commands .
             with open(f"c{mee.id}.txt","w")as va:
 
 
-                  va.write(f"{kf}")
+                  va.write(f"{int(kf)}")
 
 
             d = ["1%","2%","4%","8%","9%"]
@@ -432,7 +429,7 @@ Done All Commands .
 .</strong>""",parse_mode="html")
 
 
-    if f"حظ {ms}"in message.text:
+    if f"{ms} حظ"in message.text:
 
 
         value = message.text.replace("حظ","")
@@ -462,7 +459,7 @@ Done All Commands .
             with open(f"c{mee.id}.txt","w")as va:
 
 
-                  va.write(f"{kf}")
+                  va.write(f"{int(kf)}")
 
 
             cong = await edit_or_reply(message,f"""<strong>
@@ -507,13 +504,13 @@ Done All Commands .
 .</strong>""",parse_mode="html")
 
 
-    if ms == "بخشيش":
+    if ms == "بخشيش.":
 
 
           ca = open(f"blockTip.txt").read()
 
 
-          if f"{meeusername}" in ca:
+          if f"{mee.username}" in ca:
 
 
               qu = await edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
@@ -564,13 +561,11 @@ Done All Commands .
                  df.write(f"{mee.username}\n")
 
 
-                 
-
 
                  df.close()
 
 
-    if ms == "راتب":
+    if ms == "راتب.":
 
 
           ca = open(f"block.txt").read()
