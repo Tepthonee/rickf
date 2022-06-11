@@ -306,7 +306,7 @@ Done All Commands .
     if ms == ".فلوسي" or ms == ".فلوس":
 
 
-        fl = open(f"c{mee.id}.txt").read()
+        fl = open(f"{mee.id}.txt").read()
 
 
         yb = await edit_or_reply(message,f"<strong>Your Balance : <code>{fl}</code> 💵</strong>",parse_mode="html")
@@ -339,7 +339,7 @@ Done All Commands .
               ratb = rt
 
 
-              acc = open(f"c{mee.id}.txt").read()
+              acc = open(f"{mee.id}.txt").read()
 
 
               ga = float(ratb) + float(acc)
@@ -385,7 +385,7 @@ Done All Commands .
         if "Done" in ls:
 
 
-            ppe = open(f"c{mee.id}.txt").read()
+            ppe = open(f"{mee.id}.txt").read()
 
 
             kf = float(value) + float(randint(float(ppe),float(ppe)))
@@ -442,7 +442,7 @@ Done All Commands .
         if "Done" in sv:
 
 
-            pe = open(f"c{mee.id}.txt").read()
+            pe = open(f"{mee.id}.txt").read()
 
 
             kf = int(value) + int(randint(int(pe),int(pe)))
@@ -478,7 +478,7 @@ Done All Commands .
         else:
 
 
-            pep = open(f"c{mee.id}.txt").read()
+            pep = open(f"{mee.id}.txt").read()
 
 
             with open(f"c{mee.id}.txt","r+")as fs:
@@ -526,7 +526,7 @@ Done All Commands .
               ratb = rt
 
 
-              acc = open(f"c{mee.id}.txt").read()
+              acc = open(f"{mee.id}.txt").read()
 
 
               ga = float(ratb) + float(acc)
@@ -590,7 +590,7 @@ Done All Commands .
               ratb = rt.split("-")[1]
 
 
-              acc = open(f"c{mee.id}.txt").read()
+              acc = open(f"{mee.id}.txt").read()
 
 
               ga = float(ratb) + float(acc)
