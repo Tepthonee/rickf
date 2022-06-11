@@ -733,7 +733,7 @@ async def qwere(call):
 
 
 
-def dell(message):
+async def dell(message):
 
     mee = await event.client.get_me()
     os.system(f"rm -rf {mee.id}.txt")
