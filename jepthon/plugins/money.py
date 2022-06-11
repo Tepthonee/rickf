@@ -154,7 +154,7 @@ async def a(message):
 
     me = await message.client.get_me()
     global acc
-    idp = me.from_user.id
+    idp = me.id
     print(idp)
 
 
@@ -314,7 +314,7 @@ async def ga(message):
     if ms == "delete" or ms == "حذف":
 
 
-        os.system(f"rm -rf {mee.from_user.id}.txt")
+        os.system(f"rm -rf {mee.id}.txt")
 
 
         mde = await edit_or_reply(message,f"<strong>Done Delete your Account .</strong>",parse_mode="html")
@@ -374,7 +374,7 @@ Done All Commands .
     if ms == "فلوسي" or ms == "فلوس":
 
 
-        fl = open(f"c{mee.from_user.id}.txt").read()
+        fl = open(f"c{mee.id}.txt").read()
 
 
         edit_or_reply(message,f"<strong>Your Balance : <code>{fl}</code> 💵</strong>",parse_mode="html")
@@ -461,19 +461,19 @@ Done All Commands .
         if "Done" in ls:
 
 
-            ppe = open(f"c{mee.from_user.id}.txt").read()
+            ppe = open(f"c{mee.id}.txt").read()
 
 
             kf = float(value) + float(randint(float(ppe),float(ppe)))
 
 
-            with open(f"c{mee.from_user.id}.txt","r+")as fs:
+            with open(f"c{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-            with open(f"c{mee.from_user.id}.txt","w")as va:
+            with open(f"c{mee.id}.txt","w")as va:
 
 
                   va.write(f"{kf}")
