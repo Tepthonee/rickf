@@ -1,6 +1,6 @@
 import json
 import re
-
+from ..core.decorators import check_owner
 from telethon import Button
 
 from telethon.events import CallbackQuery, InlineQuery
