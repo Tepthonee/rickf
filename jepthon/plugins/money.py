@@ -647,7 +647,7 @@ async def d(message):
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
 @check_owner
 async def Bankre(message):
-    rp = await reply_id(message)
+    
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
@@ -659,24 +659,24 @@ async def Bankre(message):
         try:
             with open(f"{mee.id}.txt","a")as x:
                 x.write(f"name:{mee.first_name}:account:{s}:bank:RebackBank.")
-                #dm = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html", reply_to=rp)
+                #dm = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html")
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
                 await message.answer('تم انشاء الحساب')
-                cbs = await message.client.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html", reply_to=rp)
+                cbs = await message.client.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html")
         except:
             pass
 
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"SpaceBank")))
 @check_owner    
 async def bankar(message):
-    rp = await reply_id(message)
+    
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
         await message.answer('لديك حساب')
-        await message.client.send_message(message.chat_id, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html", reply_to=rp)
+        await message.client.send_message(message.chat_id, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
     else:
         chars = '1234567890'
         us = str(''.join(random.choice(chars) for i in range(15)))
@@ -689,7 +689,7 @@ async def bankar(message):
                 xs.write("50")
                 xs.close()
                 await message.answer('تم انشاء حساب مصرفي')
-                cbs = await message.client.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>", parse_mode="html", reply_to=rp)
+                cbs = await message.client.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>", parse_mode="html")
                 
         except:
             pass
