@@ -197,7 +197,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                      )
               wae = await event.answer([result] if result else None)
 
-@bot.on(admin_cmd(outgoing=True, pattern="انشاء حساب"))
+@jmthon.on(admin_cmd(outgoing=True, pattern="انشاء حساب"))
 async def repo(event):
     if event.fwd_from:
         return
