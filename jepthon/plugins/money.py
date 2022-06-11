@@ -175,8 +175,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
               mee = await event.client.get_me()
               aw = glob.glob('./*.txt')
               if f"./{mee.id}.txt" in aw:
-                   await event.delete()
-                   await event.send_message(event, "لديك حساب بالفعل")
+                   ala = await edit_or_reply(event,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
               else:
                    builder = event.builder
                    result = None
@@ -667,7 +666,7 @@ async def Bankre(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
-        cbbs = await message.respond("لديك حساب بالفعل", buttons=Button.clear())
+        cbbs = await message.answer("لديك حساب بالفعل", buttons=Button.clear())
     else:
         chars = '1234567890'
         us = str(''.join((random.choice(chars) for i in range(15))))
@@ -679,7 +678,8 @@ async def Bankre(message):
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
-                cbs = await message.respond("<strong>تم انشاء حساب مصرفي لك! معلومات الحساب:\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", buttons=Button.clear())
+                await message.answer('تم انشاء الحساب')
+                cbs = await message.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>")
         except:
             pass
 
@@ -689,8 +689,8 @@ async def bankar(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
-        sm = await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
-        cbs = await message.respond("لديك حساب بالفعل", buttons=Button.clear())
+        await message.answer('لديك حساب')
+        await message.send_message(message.chat_id, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
     else:
         chars = '1234567890'
         us = str(''.join(random.choice(chars) for i in range(15)))
@@ -698,10 +698,12 @@ async def bankar(message):
         try:
             with open(f"{mee.id}.txt","a")as x:
                 x.write(f"name:{mee.first_name}:account:{s}:bank:SpaceBank.")
-                ft = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : SpaceBank.</strong>",parse_mode="html",reply_markup=me)
+                #ft = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : SpaceBank.</strong>",parse_mode="html",reply_markup=me)
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
-                cbss = await message.respond("تم انشاء حساب", buttons=Button.clear())
+                await message.answer('تم انشاء حساب مصرفي')
+                cbs = await message.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>")
+                
         except:
             pass
