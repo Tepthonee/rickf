@@ -674,7 +674,7 @@ async def _(message):
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
 @check_owner
 async def _(message):
-    mee = await event.client.get_me()
+    mee = await message.client.get_me()
     msg = message.text
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
@@ -696,7 +696,7 @@ async def _(message):
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"SpaceBank")))
 @check_owner    
 async def _(message):
-    mee = await event.client.get_me()
+    mee = await message.client.get_me()
     msg = message.text
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
