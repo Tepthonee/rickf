@@ -273,7 +273,7 @@ async def mounth(message):
 
         buts = [
           [
-               Button.inline("RebackBank.", data = "RebackBank")
+               Button.inline("RebackBank.", data = "RebackBank"),
                Button.inline("SpaceBank.", data = "SpaceBank")
                ]
           ]
