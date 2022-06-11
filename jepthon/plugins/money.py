@@ -138,70 +138,34 @@ async def a(message):
     pattern="بنكي(?:\s|$)([\s\S]*)",
     command=("بنكي", plugin_category),
 )
-async def a(event):
+async def a(message):
 
-    me = await event.client.get_me()
+    me = await message.client.get_me()
     global acc
-    idp = me.id
-  
     aw = glob.glob('./*.txt')
-
-
     if f"./{me.id}.txt" in aw:
-
-
       with open(f"{me.id}.txt","r+")as df:
-
-
           f = open(f"{me.id}.txt").read()
-
-
           fpp = open(f"blockTip.txt","r+")
-
-
           fpp.truncate(0)
-
-
           fppp = open(f"block.txt","r+")
-
-
           fppp.truncate(0)
-
-
           fl = open(f"c{me.id}.txt").read()
-
-
           nn = f.split(":")[1]
-
-
           balance = f.split(":")[3]
-
-
           acc = fl
-
-
           ifn = f"""
-
-
 - Name : {nn} .
-
-
 - Account Id : {balance} .
-
-
 - Balance : {acc} 💵.
-
-
 - ================= -
-
-
           """
-          az = await edit_or_reply(event,f"<strong>{ifn}</strong>",parse_mode="html")
-   
+          acinfo = edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
+         
           df.close()
     else:
-          emr = edit_or_reply(event,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
-          mounth(event)
+          cfb = edit_or_reply(message,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
+          inline_handler(message)
 
 teX = "اختر بنك لانشاء حساب به"
 
