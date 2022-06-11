@@ -627,7 +627,7 @@ Done All Commands .
 
 
                  
-@jmthon.tgbot.on(CallbackQuery(func=lambda call: True)
+@jmthon.tgbot.on(CallbackQuery(func=lambda call: True))
 
 async def qwere(call):
 
