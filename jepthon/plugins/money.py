@@ -133,14 +133,14 @@ async def a(message):
          ba = await edit_or_reply(message,f"<strong>Your Balance : {apcc} 💵</strong>",parse_mode="html")
 
 
+
 @jmthon.ar_cmd(
     pattern="بنكي(?:\s|$)([\s\S]*)",
     command=("بنكي", plugin_category),
 )
+async def a(event):
 
-async def a(message):
-
-    me = await message.client.get_me()
+    me = await event.client.get_me()
     global acc
     idp = me.id
   
@@ -150,12 +150,7 @@ async def a(message):
     if f"./{me.id}.txt" in aw:
 
 
-
-
       with open(f"{me.id}.txt","r+")as df:
-
-
-          
 
 
           f = open(f"{me.id}.txt").read()
@@ -201,22 +196,12 @@ async def a(message):
 
 
           """
-
-
-          az = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
+          az = await edit_or_reply(event,f"<strong>{ifn}</strong>",parse_mode="html")
    
-         
-
-
           df.close()
-
-
     else:
-
-
-          emr = edit_or_reply(message,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
-          mounth(message)
-
+          emr = edit_or_reply(event,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
+          mounth(event)
 
 teX = "اختر بنك لانشاء حساب به"
 
