@@ -623,7 +623,7 @@ Done All Commands .
 
 
                  
-@jmthon.tgbot.on(CallbackQuery(func=lambda call: True))
+#@jmthon.tgbot.on(CallbackQuery(func=lambda call: True))
 
 async def qwere(call):
 
@@ -648,16 +648,20 @@ async def qwere(call):
 
 
 
-#@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"d")))
-#@check_owner
+@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"d")))
+@check_owner
 async def d(message):
     mee = await message.client.get_me()
-    os.system(f"rm -rf {mee.id}.txt")
-    cb = await message.respond("تم حذف حسابك المصرفي", buttons=Button.clear())
+    aw = glob.glob('./*.txt')
+    if f"./{mee.id}.txt" not in aw:
+         cbs = edit_or_reply(message, "ليس لديك حساب مصرفي لحذفه")
+    else:
+         os.system(f"rm -rf {mee.id}.txt")
+         cb = await message.respond("تم حذف حسابك المصرفي", buttons=None)
 
 
-#@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
-#@check_owner
+@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
+@check_owner
 async def Bankre(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
@@ -678,14 +682,14 @@ async def Bankre(message):
         except:
             pass
 
-#@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"SpaceBank")))
-#@check_owner    
+@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"SpaceBank")))
+@check_owner    
 async def bankar(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
         sm = await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
-        cbs = await message.respond("لديك حساب بالفعل", buttons=Button.clear())
+        cbs = await message.respond("لديك حساب بالفعل", buttons=None)
     else:
         chars = '1234567890'
         us = str(''.join((random.choice(chars) for i in range(15))))
@@ -697,6 +701,6 @@ async def bankar(message):
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
-                cbss = await message.respond("تم انشاء حساب", buttons=Button.clear())
+                cbss = await message.respond("تم انشاء حساب", buttons=None)
         except:
             pass
