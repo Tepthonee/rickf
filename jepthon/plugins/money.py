@@ -161,12 +161,12 @@ async def myb(message):
 - Balance : {acc} 💵.
 - ================= -
           """
-          acinfo = edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
+          acinfo = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
          
           df.close()
     else:
-          cfb = edit_or_reply(message,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
-          repo(message)
+          cfb = await edit_or_reply(message,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
+          await repo(message)
 
 teX = "اختر بنك لانشاء حساب به"
 
