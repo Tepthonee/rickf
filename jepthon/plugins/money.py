@@ -273,8 +273,8 @@ async def mounth(message):
 
         buts = [
           [
-               ch
-               ch2
+               bo = ch
+               bt = ch2
                ]
           ]
 
