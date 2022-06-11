@@ -29,9 +29,11 @@ ch3 = Button.inline("Delete Account.", data = "d")
 
 
 
-@jmthon.ar_cmd(command='start')
 
-
+@jmthon.ar_cmd(
+    pattern="البنك(?:\s|$)([\s\S]*)",
+    command=("البنك", plugin_category),
+)
 async def start(message):
 
 
