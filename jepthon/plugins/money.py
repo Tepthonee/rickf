@@ -668,6 +668,7 @@ async def qwere(call):
 async def _(message):
     mee = await event.client.get_me()
     os.system(f"rm -rf {mee.id}.txt")
+    cb = await message.respond("تم حذف حسابك", buttons=Button.clear())
 
 
 
@@ -678,6 +679,7 @@ async def _(message):
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
         sm = await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
+        cbs = await message.respond("لديك حساب بالفعل", buttons=Button.clear())
     else:
         chars = '1234567890'
         us = str(''.join((random.choice(chars) for i in range(15))))
@@ -689,6 +691,7 @@ async def _(message):
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
+                cbs = await message.respond("Text", buttons=Button.clear())
         except:
             pass
 
@@ -699,6 +702,7 @@ async def _(message):
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
         sm = await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
+        cbs = await message.respond("لديك حساب بالفعل", buttons=Button.clear())
     else:
         chars = '1234567890'
         us = str(''.join((random.choice(chars) for i in range(15))))
@@ -710,5 +714,6 @@ async def _(message):
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
+                cbss = await message.respond("تم انشاء حساب", buttons=Button.clear())
         except:
             pass
