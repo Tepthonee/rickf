@@ -27,7 +27,7 @@ ch2 = Button.inline("SpaceBank.", data = "SpaceBank")
 
 ch3 = Button.inline("Delete Account.", data = "d")
 
-
+plugin_category = "utils"
 
 
 @jmthon.ar_cmd(
