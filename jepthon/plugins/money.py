@@ -702,7 +702,7 @@ Done All Commands .
 
                  
 #jmthon.tgbot.on(CallbackQuery(data=lambda call: True)
-@jmthon.tgbot.on(CallbackQuery(data=lambda)
+@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"lambda")))
 @check_owner
 
 async def qwere(call):
