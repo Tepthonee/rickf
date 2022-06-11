@@ -867,6 +867,7 @@ async def SpaceBank(message):
                 don = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : SpaceBank.</strong>",parse_mode="html")
 
 
-            with open(f"c{message.chat.id}.txt","a")as xs:
-                xs.write("50")
-                xs.close()
+                finally:
+                     with open(f"c{message.chat.id}.txt","a")as xs:
+                          xs.write("50")
+                          xs.close()
