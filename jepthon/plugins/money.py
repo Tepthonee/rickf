@@ -864,7 +864,7 @@ async def SpaceBank(message):
                 x.write(f"name:{message.chat.first_name}:account:{s}:bank:SpaceBank.")
 
 
-                await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : SpaceBank.</strong>",parse_mode="html")
+                don = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : SpaceBank.</strong>",parse_mode="html")
 
 
             with open(f"c{message.chat.id}.txt","a")as xs:
