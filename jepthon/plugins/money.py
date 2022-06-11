@@ -749,38 +749,41 @@ async def qwere(call):
 
 
 
+@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"d")))
+@check_owner
 
 async def dell(message):
-
     mee = await event.client.get_me()
     os.system(f"rm -rf {mee.id}.txt")
 
 
 
+@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
+@check_owner
 
 async def RebackBank(message):
     mee = await event.client.get_me()
     msg = message.text
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
-        bot.reply_to(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
+        sm = await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
     else:
-        me = types.InlineKeyboardMarkup()
-        me.row_width = 1
-        me.add(ch3)
         chars = '1234567890'
         us = str(''.join((random.choice(chars) for i in range(15))))
         s = "5"+us
         try:
-            with open(f"{message.chat.id}.txt","a")as x:
-                x.write(f"name:{message.chat.first_name}:account:{s}:bank:RebackBank.")
-                bot.reply_to(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html",reply_markup=me)
-            with open(f"c{message.chat.id}.txt","a")as xs:
+            with open(f"{mee.id}.txt","a")as x:
+                x.write(f"name:{mee.first_name}:account:{s}:bank:RebackBank.")
+                dm = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html",reply_markup=me)
+            with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
         except:
             pass
-    
+
+@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"SpaceBank")))
+@check_owner    
+
 async def SpaceBank(message):
     mee = await event.client.get_me()
     msg = message.text
