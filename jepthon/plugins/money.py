@@ -1,10 +1,9 @@
-import json
+
 import re
 from ..Config import Config
 from JepIQ.razan.resources.assistant import *
 from ..core.decorators import check_owner
 from telethon import Button, events
-from ..helpers import get_user_from_event
 from telethon.events import CallbackQuery, InlineQuery
 import glob, os
 
@@ -197,7 +196,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                      )
               wae = await event.answer([result] if result else None)
 
-@jmthon.on(admin_cmd(outgoing=True, pattern="انشاء حساب"))
+@bot.on(admin_cmd(outgoing=True, pattern="انشاء حساب"))
 async def repo(event):
     if event.fwd_from:
         return
