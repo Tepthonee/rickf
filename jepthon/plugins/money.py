@@ -252,9 +252,6 @@ async def mounth(message):
     global msg1
 
 
-    iddd = message.from_user.id
-
-
     aw = glob.glob('./*.txt')
 
 
