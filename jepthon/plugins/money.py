@@ -19,13 +19,13 @@ from ..core.managers import edit_delete, edit_or_reply
 import asyncio
 
 
-ch = Button.inline("RebackBank.",callback_data = "RebackBank")
+ch = Button.inline("RebackBank.", data = "RebackBank")
 
 
-ch2 = Button.inline("SpaceBank.",callback_data = "SpaceBank")
+ch2 = Button.inline("SpaceBank.", data = "SpaceBank")
 
 
-ch3 = Button.inline("Delete Account.",callback_data = "d")
+ch3 = Button.inline("Delete Account.", data = "d")
 
 
 
