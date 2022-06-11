@@ -138,7 +138,8 @@ async def a(message):
     pattern="بنكي(?:\s|$)([\s\S]*)",
     command=("بنكي", plugin_category),
 )
-async def a(message):
+
+async def myb(message):
 
     me = await message.client.get_me()
     global acc
@@ -165,7 +166,7 @@ async def a(message):
           df.close()
     else:
           cfb = edit_or_reply(message,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
-          inline_handler(message)
+          repo(message)
 
 teX = "اختر بنك لانشاء حساب به"
 
