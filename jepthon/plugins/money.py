@@ -668,7 +668,7 @@ async def _(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
-        cbs = await message.respond("لديك حساب بالفعل", buttons=Button.clear())
+        cbs = await message.respond("لديك حساب بالفعل", buttons=[])
     else:
         chars = '1234567890'
         us = str(''.join((random.choice(chars) for i in range(15))))
@@ -680,7 +680,7 @@ async def _(message):
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
-                cbs = await message.respond("Text", buttons=Button.clear())
+                cbs = await message.respond("<strong>تم انشاء حساب مصرفي لك! معلومات الحساب:\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", buttons=Button.clear())
         except:
             pass
 
