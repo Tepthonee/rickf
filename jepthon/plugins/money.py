@@ -175,7 +175,8 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
               mee = await event.client.get_me()
               aw = glob.glob('./*.txt')
               if f"./{mee.id}.txt" in aw:
-                   ala = await edit_or_reply(event,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
+                   await event.delete()
+                   await event.send_message(event, "لديك حساب بالفعل")
               else:
                    builder = event.builder
                    result = None
