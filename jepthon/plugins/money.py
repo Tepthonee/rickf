@@ -708,4 +708,4 @@ async def _(message):
                 xs.close()
                 cbss = await message.respond("تم انشاء حساب", buttons=Button.clear())
         except:
-            pass
+            return
