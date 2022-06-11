@@ -34,7 +34,7 @@ plugin_category = "utils"
     pattern="البنك(?:\s|$)([\s\S]*)",
     command=("البنك", plugin_category),
 )
-async def start(message):
+async def start(event):
     cate = await edit_or_reply(event, "تحميل...")
     user, reason = await get_user_from_event(event, cate)
     aw = glob.glob('./*.txt')
