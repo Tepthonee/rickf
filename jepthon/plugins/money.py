@@ -714,7 +714,7 @@ Done All Commands .
 @jmthon.callback_query_handler(func=lambda call: True)
 
 
-def qwere(call):
+async def qwere(call):
 
 
     if call.data == "RebackBank":
@@ -747,7 +747,7 @@ def dell(message):
     print("ok")
 
 
-def RebackBank(message):
+async def RebackBank(message):
 
 
     
@@ -816,7 +816,7 @@ def RebackBank(message):
     
 
 
-def SpaceBank(message):
+async def SpaceBank(message):
 
 
     
