@@ -379,9 +379,6 @@ Done All Commands .
         ls = ["Done","Fail"]
 
 
-        
-
-
         if "Done" in ls:
 
 
@@ -502,7 +499,7 @@ Done All Commands .
 .</strong>""",parse_mode="html")
 
 
-    if ms == "بخشيش.":
+    if ms == ".بخشيش":
 
 
           ca = open(f"blockTip.txt").read()
@@ -515,16 +512,9 @@ Done All Commands .
 
 
           else:
-
-
-              
-
-
               rt = randint(50,1000)
 
-
               ratb = rt
-
 
               acc = open(f"{mee.id}.txt").read()
 
@@ -557,7 +547,7 @@ Done All Commands .
                  df.close()
 
 
-    if ms == "راتب.":
+    if ms == ".راتب":
 
 
           ca = open(f"block.txt").read()
@@ -674,7 +664,7 @@ async def Bankre(message):
                 xs.write("50")
                 xs.close()
                 await message.answer('تم انشاء الحساب')
-                cbs = await message.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html", reply_to=rp)
+                cbs = await message.client.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html", reply_to=rp)
         except:
             pass
 
@@ -686,7 +676,7 @@ async def bankar(message):
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
         await message.answer('لديك حساب')
-        await message.send_message(message.chat_id, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html", reply_to=rp)
+        await message.client.send_message(message.chat_id, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html", reply_to=rp)
     else:
         chars = '1234567890'
         us = str(''.join(random.choice(chars) for i in range(15)))
@@ -699,7 +689,7 @@ async def bankar(message):
                 xs.write("50")
                 xs.close()
                 await message.answer('تم انشاء حساب مصرفي')
-                cbs = await message.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>", parse_mode="html", reply_to=rp)
+                cbs = await message.client.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>", parse_mode="html", reply_to=rp)
                 
         except:
             pass
