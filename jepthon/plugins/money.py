@@ -678,7 +678,8 @@ async def Bankre(message):
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
-                cbs = await message.respond("<strong>تم انشاء حساب مصرفي لك! معلومات الحساب:\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", buttons=Button.clear())
+                await message.delete()
+                cbs = await message.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>")
         except:
             pass
 
@@ -688,11 +689,11 @@ async def bankar(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
-        sm = await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
-        cbs = await message.respond("لديك حساب بالفعل", buttons=Button.clear())
+        cbs = await message.delete()
+        await message.send_message(message.chat_id, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
     else:
         chars = '1234567890'
-        us = str(''.join((random.choice(chars) for i in range(15))))
+        us = str(''.join(random.choice(chars) for i in range(15)))
         s = "5"+us
         try:
             with open(f"{mee.id}.txt","a")as x:
@@ -701,6 +702,8 @@ async def bankar(message):
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
-                cbss = await message.respond("تم انشاء حساب", buttons=Button.clear())
+                await message.delete()
+                cbs = await message.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>")
+                
         except:
             pass
