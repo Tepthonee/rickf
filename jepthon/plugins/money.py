@@ -321,7 +321,7 @@ async def ga(message):
         os.system(f"rm -rf {message.from_user.id}.txt")
 
 
-        del = await edit_or_reply(message,f"<strong>Done Delete your Account .</strong>",parse_mode="html")
+        mde = await edit_or_reply(message,f"<strong>Done Delete your Account .</strong>",parse_mode="html")
 
 
     if ms == "help" or ms == "الاوامر" or ms == "امر":
