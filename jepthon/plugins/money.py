@@ -256,7 +256,7 @@ async def ga(message):
         mde = await edit_or_reply(message,f"<strong>تم حذف حسابك في البنك .</strong>",parse_mode="html")
 
 
-    if ms == "بنك." or ms == "البنك." or ms == "مصرف.":
+    if ms == ".لمصرف" or ms == ".البنك" or ms == ".مصرف":
 
 
         help = """
@@ -307,7 +307,7 @@ Done All Commands .
         hr = await edit_or_reply(message,f"<strong>{help}</strong>",parse_mode="html")
 
 
-    if ms == "فلوسي." or ms == "فلوس.":
+    if ms == ".فلوسي" or ms == ".فلوس":
 
 
         fl = open(f"c{mee.id}.txt").read()
@@ -319,7 +319,7 @@ Done All Commands .
         
 
 
-    if ms == "كنز.":
+    if ms == ".كنز":
 
 
           ca = open(f"blockTip.txt").read()
@@ -374,10 +374,10 @@ Done All Commands .
                  df.close()
 
 
-    if "استثمار" in ms:
+    if ".استثمار" in ms:
 
 
-        value = message.text.replace("استثمار","")
+        value = message.text.replace(".استثمار","")
 
 
         ls = ["Done","Fail"]
@@ -431,7 +431,7 @@ Done All Commands .
 .</strong>""",parse_mode="html")
 
 
-    if f"{ms} حظ"in message.text:
+    if f"{ms} حظ."in message.text:
 
 
         value = message.text.replace("حظ","")
