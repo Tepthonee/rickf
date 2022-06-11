@@ -1,7 +1,7 @@
 import json
 import re
 from ..core.decorators import check_owner
-from telethon import Button
+from telethon import Button, events
 from ..helpers import get_user_from_event
 from telethon.events import CallbackQuery, InlineQuery
 import glob, os
@@ -167,13 +167,6 @@ async def a(message):
     if f"./{me.id}.txt" in aw:
 
 
-      me = types.InlineKeyboardMarkup()
-
-
-      me.row_width = 1
-
-
-      me.add(ch3)
 
 
       with open(f"{me.id}.txt","r+")as df:
@@ -228,7 +221,7 @@ async def a(message):
 
 
           az = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
-
+          deB = ch3
 
          
 
@@ -239,7 +232,7 @@ async def a(message):
     else:
 
 
-          edit_or_reply(message,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
+          emr = edit_or_reply(message,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
 
 
           mounth(message)
@@ -278,22 +271,18 @@ async def mounth(message):
     else:
 
 
-        me = types.InlineKeyboardMarkup()
-
-
-        me.row_width = 1
-
-
-        me.add(ch,ch2)
+        buts = [
+          [
+               ch
+               ch2
+               ]
+          ]
 
 
         msg1 = message.text
 
 
-        sent = await edit_or_reply(message, "Send Bank Name :\nSpaceBank .\nRebackBank.\n\nChoice From List ?",parse_mode="html")
-
-
-
+        sent = await edit_or_reply(message, "Send Bank Name :\nSpaceBank .\nRebackBank.\n\nChoice From the List ?",parse_mode="html")
 
 
 @jmthon.ar_cmd(func=lambda m:"راتب")
@@ -739,7 +728,6 @@ async def dell(message):
     os.system(f"rm -rf {mee.id}.txt")
 
 
- 
 
 
 async def RebackBank(message):
