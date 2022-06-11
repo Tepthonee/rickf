@@ -46,7 +46,7 @@ async def start(event):
         with open(f"c{user.id}.txt","a")as xs:
 
 
-            sta = await edit_or_reply(message, f"""<strong>
+            sta = await edit_or_reply(event, f"""<strong>
 
 
 👋 Hi {user.first_name},
@@ -88,7 +88,7 @@ Send : /MakeAccount To Make Account! .
     else:
 
 
-        af = await edit_or_reply(message, f"""
+        af = await edit_or_reply(event, f"""
 
 
 👋 Hi {user.first_name},
