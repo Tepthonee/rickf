@@ -234,9 +234,11 @@ async def ga(message):
     if f"./block.txt" not in aw:
         with open(f"cblock.txt","a")as xs:
                 xs.close()
+                pass
     if f"./blockTip.txt" not in aw:
         with open(f"cblockTip.txt","a")as ps:
                 ps.close()
+                pass
     mee = await message.client.get_me()
     global acc
 
@@ -703,4 +705,4 @@ async def _(message):
                 xs.close()
                 cbss = await message.respond("تم انشاء حساب", buttons=Button.clear())
         except:
-            return
+            pass
