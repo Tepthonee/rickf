@@ -702,8 +702,8 @@ Done All Commands .
 
                  
 
-
-@jmthon.callback_query_handler(func=lambda call: True)
+@jmthon.tgbot.on(CallbackQuery(data=lambda)
+#@jmthon.tgbot.on(CallbackQuery(data=lambda call: True)
 
 
 async def qwere(call):
