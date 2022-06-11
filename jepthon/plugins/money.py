@@ -165,7 +165,7 @@ async def myb(message):
           df.close()
     else:
 
-          ca = await repo(message)
+          ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
 
 teX = "اختر بنك لانشاء حساب به"
 
@@ -235,9 +235,9 @@ async def ga(message):
     mee = await message.client.get_me()
     global acc
 
-    ms = message.message
+    ms = message.text
 
-    print(message)
+    print(ms + "reda")
 
 
     if ms == "delete" or ms == "حذف":
@@ -297,7 +297,7 @@ Done All Commands .
         """
 
 
-        hr = edit_or_reply(message,f"<strong>{help}</strong>",parse_mode="html")
+        hr = await edit_or_reply(message,f"<strong>{help}</strong>",parse_mode="html")
 
 
     if ms == "فلوسي" or ms == "فلوس":
@@ -306,7 +306,7 @@ Done All Commands .
         fl = open(f"c{mee.id}.txt").read()
 
 
-        edit_or_reply(message,f"<strong>Your Balance : <code>{fl}</code> 💵</strong>",parse_mode="html")
+        yb = await edit_or_reply(message,f"<strong>Your Balance : <code>{fl}</code> 💵</strong>",parse_mode="html")
 
 
         
@@ -321,7 +321,7 @@ Done All Commands .
           if f"{mee.username}" in ca:
 
 
-              edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
+              gfu = await edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
 
 
           else:
@@ -360,7 +360,7 @@ Done All Commands .
                   va.write(f"{ga}")
 
 
-              tx = edit_or_reply(message,f"<strong>💸 Your treasure  Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
+              tx = await edit_or_reply(message,f"<strong>💸 Your treasure  Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
 
 
               with open(f"blockTip.txt","w")as df:
@@ -414,7 +414,7 @@ Done All Commands .
             raa = random.choice(d)
 
 
-            mac = edit_or_reply(message,f"""<strong>
+            mac = await edit_or_reply(message,f"""<strong>
 
 
 - Successful Investment  💰
@@ -432,10 +432,10 @@ Done All Commands .
 .</strong>""",parse_mode="html")
 
 
-    if f"حظ {ms}"in message.message:
+    if f"حظ {ms}"in message.text:
 
 
-        value = message.message.replace("حظ","")
+        value = message.text.replace("حظ","")
 
 
         ls = ["Done","Fail"]
@@ -465,7 +465,7 @@ Done All Commands .
                   va.write(f"{kf}")
 
 
-            edit_or_reply(message,f"""<strong>
+            cong = await edit_or_reply(message,f"""<strong>
 
 
 - Congratulations you won in luck  🎉
@@ -492,7 +492,7 @@ Done All Commands .
                   fs.truncate(0)
 
 
-            edit_or_reply(message,f"""<strong>
+            heh = await edit_or_reply(message,f"""<strong>
 
 
 - Unfortunately, I lost by luck  😬
@@ -516,7 +516,7 @@ Done All Commands .
           if f"{meeusername}" in ca:
 
 
-              edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
+              qu = await edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
 
 
           else:
@@ -555,7 +555,7 @@ Done All Commands .
                   va.write(f"{ga}")
 
 
-              edit_or_reply(message,f"<strong>💸 Your tip Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
+              tp = await edit_or_reply(message,f"<strong>💸 Your tip Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
 
 
               with open(f"blockTip.txt","w")as df:
@@ -603,10 +603,6 @@ Done All Commands .
               ga = float(ratb) + float(acc)
 
 
-              print(ratb)
-
-
-              print(ga)
 
 
               with open(f"c{mee.id}.txt","r+")as fs:
@@ -621,7 +617,7 @@ Done All Commands .
                   va.write(f"{ga}")
 
 
-              edit_or_reply(message,f"<strong>💸 Your Salary Is Available!🤩\n- You Got {ratb} 💵\n- Because You Are {name}.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
+              sal = await edit_or_reply(message,f"<strong>💸 Your Salary Is Available!🤩\n- You Got {ratb} 💵\n- Because You Are {name}.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
 
 
               with open(f"block.txt","w")as df:
@@ -675,7 +671,6 @@ async def _(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
-        sm = await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
         cbs = await message.respond("لديك حساب بالفعل", buttons=Button.clear())
     else:
         chars = '1234567890'
@@ -684,7 +679,7 @@ async def _(message):
         try:
             with open(f"{mee.id}.txt","a")as x:
                 x.write(f"name:{mee.first_name}:account:{s}:bank:RebackBank.")
-                dm = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html",reply_markup=me)
+                #dm = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html",reply_markup=me)
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
