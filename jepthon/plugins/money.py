@@ -2,7 +2,6 @@ import json
 import re
 from ..Config import Config
 from JepIQ.razan.resources.assistant import *
-from JepIQ.razan.resources.mybot import *
 from ..core.decorators import check_owner
 from telethon import Button, events
 from ..helpers import get_user_from_event
@@ -165,8 +164,8 @@ async def myb(message):
          
           df.close()
     else:
-          cfb = await edit_or_reply(message,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
-          await repo(message)
+
+          ca = await repo(message)
 
 teX = "اختر بنك لانشاء حساب به"
 
@@ -224,7 +223,7 @@ async def mounth(message):
          edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
 
     else:
-        msg1 = message.text
+        msg1 = message.message
         sent = await edit_or_reply(message, "Send Bank Name :\nSpaceBank .\nRebackBank.\n\nChoice From the List ?",parse_mode="html")
 
 
@@ -236,9 +235,7 @@ async def ga(message):
     mee = await message.client.get_me()
     global acc
 
-
-    ms = message.text
-
+    ms = message.message
 
     print(message)
 
@@ -252,7 +249,7 @@ async def ga(message):
         mde = await edit_or_reply(message,f"<strong>Done Delete your Account .</strong>",parse_mode="html")
 
 
-    if ms == "help" or ms == "الاوامر" or ms == "امر":
+    if ms == "بنك" or ms == "البنك" or ms == "مصرف":
 
 
         help = """
@@ -435,10 +432,10 @@ Done All Commands .
 .</strong>""",parse_mode="html")
 
 
-    if f"حظ {ms}"in message.text:
+    if f"حظ {ms}"in message.message:
 
 
-        value = message.text.replace("حظ","")
+        value = message.message.replace("حظ","")
 
 
         ls = ["Done","Fail"]
