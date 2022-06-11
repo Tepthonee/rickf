@@ -1,9 +1,5 @@
 import json
 
-
-import telebot,os
-
-
 import glob, os
 
 from telethon import types
