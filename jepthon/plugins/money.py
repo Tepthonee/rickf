@@ -657,7 +657,7 @@ async def d(message):
          cbs = edit_or_reply(message, "ليس لديك حساب مصرفي لحذفه")
     else:
          os.system(f"rm -rf {mee.id}.txt")
-         cb = await message.respond("تم حذف حسابك المصرفي", buttons=None)
+         cb = await message.respond("تم حذف حسابك المصرفي", buttons=Button.clear())
 
 
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
@@ -666,7 +666,7 @@ async def Bankre(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
-        cbbs = await message.respond("لديك حساب بالفعل", buttons=None)
+        cbbs = await message.respond("لديك حساب بالفعل", buttons=Button.clear())
     else:
         chars = '1234567890'
         us = str(''.join((random.choice(chars) for i in range(15))))
@@ -678,7 +678,7 @@ async def Bankre(message):
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
-                cbs = await message.respond("<strong>تم انشاء حساب مصرفي لك! معلومات الحساب:\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", buttons=None)
+                cbs = await message.respond("<strong>تم انشاء حساب مصرفي لك! معلومات الحساب:\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", buttons=Button.clear())
         except:
             pass
 
