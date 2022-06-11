@@ -723,8 +723,7 @@ Done All Commands .
 
                  
 #jmthon.tgbot.on(CallbackQuery(data=lambda call: True)
-@jmthon.tgbot.on(CallbackQuery(func=lambda call: True))
-@check_owner
+
 
 async def qwere(call):
 
@@ -751,8 +750,7 @@ async def qwere(call):
 
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"d")))
 @check_owner
-
-async def dell(message):
+async def _(message):
     mee = await event.client.get_me()
     os.system(f"rm -rf {mee.id}.txt")
 
@@ -760,8 +758,7 @@ async def dell(message):
 
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
 @check_owner
-
-async def RebackBank(message):
+async def _(message):
     mee = await event.client.get_me()
     msg = message.text
     aw = glob.glob('./*.txt')
@@ -783,8 +780,7 @@ async def RebackBank(message):
 
 @jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"SpaceBank")))
 @check_owner    
-
-async def SpaceBank(message):
+async def _(message):
     mee = await event.client.get_me()
     msg = message.text
     aw = glob.glob('./*.txt')
