@@ -667,7 +667,7 @@ Done All Commands .
           if f"{mee.username}" in ca:
 
 
-              edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
+              gof = await edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
 
 
           else:
@@ -723,7 +723,7 @@ Done All Commands .
 
                  
 #jmthon.tgbot.on(CallbackQuery(data=lambda call: True)
-@jmthon.tgbot.on(CallbackQuery(func=money call: True))
+@jmthon.tgbot.on(CallbackQuery(func=lambda call: True))
 @check_owner
 
 async def qwere(call):
@@ -759,63 +759,44 @@ async def dell(message):
 
 
 async def RebackBank(message):
-    me = await message.client.get_me()
-
+    mee = await event.client.get_me()
     msg = message.text
-
-
     aw = glob.glob('./*.txt')
-
-
     if f"./{mee.id}.txt" in aw:
-
-
-        edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
-
-
+        bot.reply_to(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
     else:
-
-
         me = types.InlineKeyboardMarkup()
-
-
         me.row_width = 1
-
-
         me.add(ch3)
-
-
         chars = '1234567890'
-
-
         us = str(''.join((random.choice(chars) for i in range(15))))
-
-
         s = "5"+us
-
-
         try:
-
-
-            with open(f"{mee.id}.txt","a")as x:
-
-
-                x.write(f"name:{mee.first_name}:account:{s}:bank:RebackBank.")
-
-
-                cb = edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html")
-
-
-            with open(f"c{mee.id}.txt","a")as xs:
-
-
+            with open(f"{message.chat.id}.txt","a")as x:
+                x.write(f"name:{message.chat.first_name}:account:{s}:bank:RebackBank.")
+                bot.reply_to(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html",reply_markup=me)
+            with open(f"c{message.chat.id}.txt","a")as xs:
                 xs.write("50")
-
-
                 xs.close()
-
-
         except:
-
-
+            pass
+    
+async def SpaceBank(message):
+    mee = await event.client.get_me()
+    msg = message.text
+    aw = glob.glob('./*.txt')
+    if f"./{mee.id}.txt" in aw:
+        sm = await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
+    else:
+        chars = '1234567890'
+        us = str(''.join((random.choice(chars) for i in range(15))))
+        s = "5"+us
+        try:
+            with open(f"{mee.id}.txt","a")as x:
+                x.write(f"name:{mee.first_name}:account:{s}:bank:SpaceBank.")
+                ft = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : SpaceBank.</strong>",parse_mode="html",reply_markup=me)
+            with open(f"c{mee.id}.txt","a")as xs:
+                xs.write("50")
+                xs.close()
+        except:
             pass
