@@ -177,10 +177,10 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
               result = None
               query = event.text
               await bot.get_me()
-              mee = await message.client.get_me()
+              mee = await event.client.get_me()
               aw = glob.glob('./*.txt')
               if f"./{mee.id}.txt" in aw:
-                   return await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
+                   return await edit_or_reply(event,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
               else:
                    if query.startswith("انشاء حساب") and event.query.user_id == bot.uid:
                         buttons = [
