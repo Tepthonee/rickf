@@ -221,15 +221,6 @@ async def a(message):
 teX = "اختر بنك لانشاء حساب به"
 
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
-    mee = await message.client.get_me()
-    global msg1
-
-
-    aw = glob.glob('./*.txt')
-
-    if f"./{mee.id}.txt" in aw:
-         return await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
-    else:
 
          @tgbot.on(events.InlineQuery)
          async def inline_handler(event):
@@ -237,20 +228,25 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
               result = None
               query = event.text
               await bot.get_me()
-              if query.startswith("انشاء حساب") and event.query.user_id == bot.uid:
-                   buttons = [
+              mee = await message.client.get_me()
+              aw = glob.glob('./*.txt')
+              if f"./{mee.id}.txt" in aw:
+                   return await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
+              else:
+                   if query.startswith("انشاء حساب") and event.query.user_id == bot.uid:
+                        buttons = [
                    [
                     Button.inline("RebackBank.", data = "RebackBank"),
                     Button.inline("SpaceBank.", data = "SpaceBank")
                    ]
                ]
-                 result = builder.article(
+              result = builder.article(
                          title="JEPTHON",
                          text=teX,
                          buttons=buttons,
                          link_preview=False,
                      )
-                await event.answer([result] if result else None)
+              wae = await event.answer([result] if result else None)
 
 @bot.on(admin_cmd(outgoing=True, pattern="انشاء حساب"))
 async def repo(event):
@@ -262,10 +258,7 @@ async def repo(event):
     response = await bot.inline_query(RR7PP, "انشاء حساب")
     await response[0].click(event.chat_id)
     await event.delete()
-#@jmthon.ar_cmd(
-#    pattern="انشاء حساب(?:\s|$)([\s\S]*)",
-#    command=("انشاء حساب", plugin_category),
-#)
+
 
 
 async def mounth(message):
@@ -281,14 +274,7 @@ async def mounth(message):
          edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
 
     else:
-
-
-        
-
-
         msg1 = message.text
-
-
         sent = await edit_or_reply(message, "Send Bank Name :\nSpaceBank .\nRebackBank.\n\nChoice From the List ?",parse_mode="html")
 
 
