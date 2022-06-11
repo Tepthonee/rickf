@@ -40,16 +40,16 @@ async def start(message):
     aw = glob.glob('./*.txt')
 
 
-    if f"c{message.chat.id}.txt" not in aw:
+    if f"c{message.id}.txt" not in aw:
 
 
-        with open(f"c{message.chat.id}.txt","a")as xs:
+        with open(f"c{message.id}.txt","a")as xs:
 
 
             sta = await edit_or_reply(message, f"""<strong>
 
 
-👋 Hi {message.chat.first_name},
+👋 Hi {message.first_name},
 
 
 - Wellcome To ReBackBank Bot! .
