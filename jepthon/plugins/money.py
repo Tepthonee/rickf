@@ -91,7 +91,7 @@ Send : /MakeAccount To Make Account! .
         af = edit_or_reply(message, f"""
 
 
-👋 Hi {message.chat.first_name},
+👋 Hi {message.first_name},
 
 
 - Wellcome To ReBackBank Bot! .
