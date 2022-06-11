@@ -70,13 +70,8 @@ async def start(event):
 
 
  ━━━━━━━━━━━━━━━━━
-
-
-Send : /MakeAccount To Make Account! .
-
-
-
-
+ارسل .انشاء حساب 
+لانشاء حساب في البنك
 
 </strong>""",parse_mode="html")
 
@@ -124,26 +119,18 @@ Send : /MakeAccount To Make Account! """, parse_mode="html")
     command=("فلوسي", plugin_category),
 )
 
-
 async def a(message):
     me = await message.client.get_me()
-
-    f = open(f"{me.id}.txt").read()
-
-
-    fl = open(f"c{me.id}.txt").read()
-
-
-    nn = f.split(":")[1]
-
-
-    balance = f.split(":")[3]
-
-
-    apcc = fl
-
-
-    ba = await edit_or_reply(message,f"<strong>Your Balance : {apcc} 💵</strong>",parse_mode="html")
+    aw = glob.glob('./*.txt')
+    if f"c{me.id}.txt" not in aw:
+         noa = await edit_or_reply(message, f"<strong>انت لا تملك حساب في البنك", parse_modr="html")
+    else:
+         f = open(f"{me.id}.txt").read()
+         fl = open(f"c{me.id}.txt").read()
+         nn = f.split(":")[1]
+         balance = f.split(":")[3]
+         apcc = fl
+         ba = await edit_or_reply(message,f"<strong>Your Balance : {apcc} 💵</strong>",parse_mode="html")
 
 
 @jmthon.ar_cmd(
@@ -151,19 +138,13 @@ async def a(message):
     command=("بنكي", plugin_category),
 )
 
-
 async def a(message):
 
     me = await message.client.get_me()
     global acc
     idp = me.id
-    print(idp)
-
-
+  
     aw = glob.glob('./*.txt')
-
-
-    print(aw)
 
 
     if f"./{me.id}.txt" in aw:
@@ -234,32 +215,42 @@ async def a(message):
 
 
           emr = edit_or_reply(message,f"<strong>Error,Cant Find You At DataBase! Now Make account .</strong>",parse_mode="html")
-
-
           mounth(message)
-teX = "اختر بنك لانشاء حساب به"
-if Config.TG_BOT_USERNAME is not None and tgbot is not None:
 
-    @tgbot.on(events.InlineQuery)
-    async def inline_handler(event):
-        builder = event.builder
-        result = None
-        query = event.text
-        await bot.get_me()
-        if query.startswith("انشاء حساب") and event.query.user_id == bot.uid:
-            buttons = [
-          [
-               Button.inline("RebackBank.", data = "RebackBank"),
-               Button.inline("SpaceBank.", data = "SpaceBank")
+
+teX = "اختر بنك لانشاء حساب به"
+
+if Config.TG_BOT_USERNAME is not None and tgbot is not None:
+    mee = await message.client.get_me()
+    global msg1
+
+
+    aw = glob.glob('./*.txt')
+
+    if f"./{mee.id}.txt" in aw:
+         return await edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
+    else:
+
+         @tgbot.on(events.InlineQuery)
+         async def inline_handler(event):
+              builder = event.builder
+              result = None
+              query = event.text
+              await bot.get_me()
+              if query.startswith("انشاء حساب") and event.query.user_id == bot.uid:
+                   buttons = [
+                   [
+                    Button.inline("RebackBank.", data = "RebackBank"),
+                    Button.inline("SpaceBank.", data = "SpaceBank")
+                   ]
                ]
-          ]
-            result = builder.article(
-                    title="JEPTHON",
-                    text=teX,
-                    buttons=buttons,
-                    link_preview=False,
-                )
-        await event.answer([result] if result else None)
+                 result = builder.article(
+                         title="JEPTHON",
+                         text=teX,
+                         buttons=buttons,
+                         link_preview=False,
+                     )
+                await event.answer([result] if result else None)
 
 @bot.on(admin_cmd(outgoing=True, pattern="انشاء حساب"))
 async def repo(event):
@@ -285,21 +276,9 @@ async def mounth(message):
 
     aw = glob.glob('./*.txt')
 
-
-    print(aw)
-
-
-    print(mee.first_name)
-
-
     if f"./{mee.id}.txt" in aw:
-
-
-        edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
-
-
-        
-
+         
+         edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
 
     else:
 
