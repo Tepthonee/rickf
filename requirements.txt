@@ -1,4 +1,6 @@
 telethon
+glob
+json
 aiofiles
 aiohttp
 apscheduler
