@@ -2,7 +2,7 @@ import json
 import re
 from ..core.decorators import check_owner
 from telethon import Button
-
+from ..helpers import get_user_from_event
 from telethon.events import CallbackQuery, InlineQuery
 import glob, os
 
@@ -35,21 +35,21 @@ plugin_category = "utils"
     command=("البنك", plugin_category),
 )
 async def start(message):
-
-
+    cate = await edit_or_reply(event, "تحميل...")
+    user, reason = await get_user_from_event(event, cate)
     aw = glob.glob('./*.txt')
 
 
-    if f"c{message.user_id}.txt" not in aw:
+    if f"c{user.id}.txt" not in aw:
 
 
-        with open(f"c{message.user_id}.txt","a")as xs:
+        with open(f"c{user.id}.txt","a")as xs:
 
 
             sta = await edit_or_reply(message, f"""<strong>
 
 
-👋 Hi {message.first_name},
+👋 Hi {user.first_name},
 
 
 - Wellcome To ReBackBank Bot! .
@@ -88,10 +88,10 @@ Send : /MakeAccount To Make Account! .
     else:
 
 
-        af = edit_or_reply(message, f"""
+        af = await edit_or_reply(message, f"""
 
 
-👋 Hi {message.first_name},
+👋 Hi {user.first_name},
 
 
 - Wellcome To ReBackBank Bot! .
