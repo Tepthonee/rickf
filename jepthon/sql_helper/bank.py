@@ -1,8 +1,8 @@
 from sqlalchemy import Column, String, UnicodeText
-from . import BASEB, SESSIONB
+from . import BASE, SESSIONB
 
 
-class bank(BASEB):
+class bank(BASE):
     __tablename__ = "bank"
     user_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
