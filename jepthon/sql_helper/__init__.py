@@ -31,8 +31,8 @@ badb = base64.b64decode("cG9zdGdyZXM6Ly9taHZlYWZkcTpKSHdwaVJ5cUJ5bG9JcmRsdGRERXR
 reda = badb.decode("UTF-8")
 def startb() -> scoped_session:
     engine = create_engine(reda)
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
+    BASEB.metadata.bind = engine
+    BASEB.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 BASEB = declarative_base()
