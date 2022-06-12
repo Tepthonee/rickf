@@ -231,9 +231,9 @@ async def repo(event):
 async def ga(message):
     aw = glob.glob('./*.txt')
     if f"./block.txt" not in aw:
-         open(f"block.txt","a")    
+         open(f"./block.txt","a")    
     if f"./blockTip.txt" not in aw:
-         open(f"./blockTip.txt","a")
+         open(f"blockTip.txt","a")
               
     mee = await message.client.get_me()
     global acc
@@ -252,7 +252,7 @@ async def ga(message):
         mde = await edit_or_reply(message,f"<strong>تم حذف حسابك في البنك .</strong>",parse_mode="html")
 
 
-    if ms == ".المصرف" or ms == ".البانك" or ms == ".مصرف":
+    if ms == "المصرف." or ms == "البانك." or ms == "مصرف.":
 
 
         help = """
@@ -306,7 +306,7 @@ Done All Commands .
     if ms == ".فلوسي" or ms == ".فلوس":
 
 
-        fl = open(f"./{mee.id}.txt").read()
+        fl = open(f"{mee.id}.txt").read()
 
 
         yb = await edit_or_reply(message,f"<strong>Your Balance : <code>{fl}</code> 💵</strong>",parse_mode="html")
@@ -318,7 +318,7 @@ Done All Commands .
     if ms == ".كنز":
 
 
-          ca = open(f"./blockTip.txt").read()
+          ca = open(f"blockTip.txt").read()
 
 
           if f"{mee.username}" in ca:
@@ -339,31 +339,31 @@ Done All Commands .
               ratb = rt
 
 
-              acc = open(f"{./mee.id}.txt").read()
+              acc = open(f"{mee.id}.txt").read()
 
 
               ga = float(ratb) + float(acc)
 
 
-              with open(f"{./meeid}.txt","r+")as fs:
+              with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-              with open(f"{./mee.id}.txt","w")as va:
+              with open(f"{mee.id}.txt","w")as va:
 
 
-                  va.write(f"./{int(ga)}")
+                  va.write(f"{int(ga)}")
 
 
               tx = await edit_or_reply(message,f"<strong>💸 Your treasure  Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
 
 
-              with open(f"./blockTip.txt","w")as df:
+              with open(f"blockTip.txt","w")as df:
 
 
-                 df.write(f"{./mee.username}\n")
+                 df.write(f"{mee.username}\n")
 
 
 
@@ -382,19 +382,19 @@ Done All Commands .
         if "Done" in ls:
 
 
-            ppe = open(f"{./mee.id}.txt").read()
+            ppe = open(f"{mee.id}.txt").read()
 
 
             kf = float(value) + float(randint(float(ppe),float(ppe)))
 
 
-            with open(f"{./mee.id}.txt","r+")as fs:
+            with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-            with open(f"{./mee.id}.txt","w")as va:
+            with open(f"{mee.id}.txt","w")as va:
 
 
                   va.write(f"{int(kf)}")
@@ -439,19 +439,19 @@ Done All Commands .
         if "Done" in sv:
 
 
-            pe = open(f"{./mee.id}.txt").read()
+            pe = open(f"{mee.id}.txt").read()
 
 
             kf = int(value) + int(randint(int(pe),int(pe)))
 
 
-            with open(f"{./mee.id}.txt","r+")as fs:
+            with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-            with open(f"{./mee.id}.txt","w")as va:
+            with open(f"{mee.id}.txt","w")as va:
 
 
                   va.write(f"{int(kf)}")
@@ -475,10 +475,10 @@ Done All Commands .
         else:
 
 
-            pep = open(f"./{mee.id}.txt").read()
+            pep = open(f"{mee.id}.txt").read()
 
 
-            with open(f"./{mee.id}.txt","r+")as fs:
+            with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
@@ -502,10 +502,10 @@ Done All Commands .
     if ms == ".بخشيش":
 
 
-          ca = open(f"./blockTip.txt").read()
+          ca = open(f"blockTip.txt").read()
 
 
-          if f"{./mee.username}" in ca:
+          if f"{mee.username}" in ca:
 
 
               qu = await edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
@@ -516,19 +516,19 @@ Done All Commands .
 
               ratb = rt
 
-              acc = open(f"{./mee.id}.txt").read()
+              acc = open(f"{mee.id}.txt").read()
 
 
               ga = float(ratb) + float(acc)
 
 
-              with open(f"{./mee.id}.txt","r+")as fs:
+              with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
 
 
-              with open(f"{./mee.id}.txt","w")as va:
+              with open(f"{mee.id}.txt","w")as va:
 
 
                   va.write(f"{int(ga)}")
@@ -537,10 +537,10 @@ Done All Commands .
               tp = await edit_or_reply(message,f"<strong>💸 Your tip Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
 
 
-              with open(f"./blockTip.txt","w")as df:
+              with open(f"blockTip.txt","w")as df:
 
 
-                 df.write(f"{./mee.username}\n")
+                 df.write(f"{mee.username}\n")
 
 
 
@@ -550,10 +550,10 @@ Done All Commands .
     if ms == ".راتب":
 
 
-          ca = open(f"./block.txt").read()
+          ca = open(f"block.txt").read()
 
 
-          if f"{./mee.username}" in ca:
+          if f"{mee.username}" in ca:
 
 
               gof = await edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
@@ -582,7 +582,7 @@ Done All Commands .
 
 
 
-              with open(f"./{mee.id}.txt","r+")as fs:
+              with open(f"{mee.id}.txt","r+")as fs:
 
 
                   fs.truncate(0)
@@ -637,7 +637,7 @@ async def qwere(call):
 async def d(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"{mee.id}.txt" not in aw:
+    if f"{./mee.id}.txt" not in aw:
          cbs = edit_or_reply(message, "ليس لديك حساب مصرفي لحذفه")
     else:
          os.system(f"rm -rf {mee.id}.txt")
@@ -651,7 +651,7 @@ async def Bankre(message):
         await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"{mee.id}.txt" in aw:
+    if f"{./mee.id}.txt" in aw:
         cbbs = await edit_or_reply(message, "لديك حساب مصرفي بالفعل")
     else:
         chars = '1234567890'
@@ -661,7 +661,7 @@ async def Bankre(message):
             with open(f"{mee.id}.txt","a")as x:
                 x.write(f"name:{mee.first_name}:account:{s}:bank:RebackBank.")
                 #dm = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html")
-            with open(f"c{mee.id}.txt","a")as xs:
+            with open(f"{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()                
                 cbs = await edit_or_reply(message, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html")
@@ -673,7 +673,7 @@ async def bankar(message):
         await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"{mee.id}.txt" in aw:
+    if f"{./mee.id}.txt" in aw:
         await edit_or_reply(message, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
     if input == "جيبثون الاسلامي":
         
