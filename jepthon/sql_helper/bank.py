@@ -1,9 +1,9 @@
 from sqlalchemy import Column, String, UnicodeText
 
-from . import BASE, SESSION
+from . import BASEB, SESSIONB
 
 
-class bank(BASE):
+class bank(BASEB):
     __tablename__ = "bank"
     user_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
@@ -29,15 +29,15 @@ def add_bank(
     to_check = get_starter_details(user_id)
     if not to_check:
         user = bank(str(user_id), first_name, int(balance), bank)
-        SESSION.add(user)
-        SESSION.commit()
+        SESSIONB.add(user)
+        SESSIONB.commit()
         return True
-    rem = SESSION.query(bank).get(str(user_id))
-    SESSION.delete(rem)
-    SESSION.commit()
+    rem = SESSIONB.query(bank).get(str(user_id))
+    SESSIONB.delete(rem)
+    SESSIONB.commit()
     user = bank(str(user_id), first_name, int(balance), bank)
-    SESSION.add(user)
-    SESSION.commit()
+    SESSIONB.add(user)
+    SESSIONB.commit()
     return True
 
 
@@ -45,25 +45,25 @@ def del_bank(user_id):
     to_check = get_starter_details(user_id)
     if not to_check:
         return False
-    rem = SESSION.query(bank).get(str(user_id))
-    SESSION.delete(rem)
-    SESSION.commit()
+    rem = SESSIONB.query(bank).get(str(user_id))
+    SESSIONB.delete(rem)
+    SESSIONB.commit()
     return True
 
 
 def get_bank(user_id):
     try:
-        if _result := SESSION.query(bank).get(str(user_id)):
+        if _result := SESSIONB.query(bank).get(str(user_id)):
             return _result
         return None
     finally:
-        SESSION.close()
+        SESSIONB.close()
 
 
 def get_all_bank():
     try:
-        return SESSION.query(bank).all()
+        return SESSIONB.query(bank).all()
     except BaseException:
         return None
     finally:
-        SESSION.close()
+        SESSIONB.close()
