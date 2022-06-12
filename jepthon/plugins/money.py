@@ -33,7 +33,7 @@ async def start(event):
     aw = glob.glob('./*.txt')
 
 
-    if f"{me.id}.txt" not in aw:
+    if f"./{me.id}.txt" not in aw:
 
 
         with open(f"{me.id}.txt","a")as xs:
@@ -113,7 +113,7 @@ Send : /MakeAccount To Make Account! """, parse_mode="html")
 async def a(message):
     me = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"{me.id}.txt" not in aw:
+    if f"./{me.id}.txt" not in aw:
          noa = await edit_or_reply(message, f"<strong>انت لا تملك حساب في البنك", parse_mode="html")
     else:
          f = open(f"{me.id}.txt").read()
