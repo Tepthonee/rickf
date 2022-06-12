@@ -644,7 +644,7 @@ async def d(message):
          cbbs = await edit_or_reply(message, "تم حذف حسابك المصرفي")
 
 
-@jmthon.ar_cmd(pattern="انشاء حساب (.*)")
+#@jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def Bankre(message):
     input = event.pattern_match.group(1)
     if input is None:
