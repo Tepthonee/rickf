@@ -7,14 +7,15 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 badb = base64.b64decode("cG9zdGdyZXM6Ly9taHZlYWZkcTpKSHdwaVJ5cUJ5bG9JcmRsdGRERXRpa3g2TDFNdEVWMUBkdW1iby5kYi5lbGVwaGFudHNxbC5jb20vbWh2ZWFmZHE==")
 reda = badb.decode("UTF-8")
 
+BASE = declarative_base()
+
 def start() -> scoped_session:
     engine = create_engine(reda)
     BASE.metadata.bind = engine
     BASE.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
-    BASE = declarative_base()
-    SESSIONB = start()
+SESSIONB = start()
 
 class bank(BASE):
     __tablename__ = "bank"
