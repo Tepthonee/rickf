@@ -13,8 +13,9 @@ LOGS = logging.getLogger(__name__)
 
 def start() -> scoped_session:
     engine = create_engine(Config.DB_URI)
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
+    #BASE.metadata.bind = engine
+    BASE.metadata.create_all(bind=engine)
+    print(BASE.metadata.create_all(bind=engine))
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 
@@ -32,7 +33,6 @@ badb = base64.b64decode("cG9zdGdyZXM6Ly9taHZlYWZkcTpKSHdwaVJ5cUJ5bG9JcmRsdGRERXR
 reda = badb.decode("UTF-8")
 def startb() -> scoped_session:
     eengine = create_engine(reda)
-    print(eengine)
     #BASE.metadata.bind = eengine
     BASE.metadata.create_all(bind=eengine)
     print(BASE.metadata.create_all(bind=eengine))
