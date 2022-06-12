@@ -632,26 +632,27 @@ async def qwere(call):
 
 
 
-@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"d")))
-@check_owner
+@jmthon.ar_cmd(pattern="غلق حساب (.*)")
+   
 async def d(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"./{mee.id}.txt" not in aw:
+    if f"{mee.id}.txt" not in aw:
          cbs = edit_or_reply(message, "ليس لديك حساب مصرفي لحذفه")
     else:
          os.system(f"rm -rf {mee.id}.txt")
-         cb = await message.respond("تم حذف حسابك المصرفي", buttons=Button.clear())
+         cbbs = await edit_or_reply(message, "تم حذف حسابك المصرفي")
 
 
-@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"RebackBank")))
-@check_owner
+@jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def Bankre(message):
-    
+    input = event.pattern_match.group(1)
+    if input is None:
+        await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"./{mee.id}.txt" in aw:
-        cbbs = await message.answer("لديك حساب بالفعل")
+    if f"{mee.id}.txt" in aw:
+        cbbs = await edit_or_reply(message, "لديك حساب مصرفي بالفعل")
     else:
         chars = '1234567890'
         us = str(''.join((random.choice(chars) for i in range(15))))
@@ -662,34 +663,34 @@ async def Bankre(message):
                 #dm = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html")
             with open(f"c{mee.id}.txt","a")as xs:
                 xs.write("50")
-                xs.close()
-                await message.answer('تم انشاء الحساب')
-                #cbs = await message.client.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html")
-        except:
-            pass
-
-@jmthon.tgbot.on(CallbackQuery(data=re.compile(rb"SpaceBank")))
-@check_owner    
+                xs.close()                
+                cbs = await edit_or_reply(message, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html")
+        
+@jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def bankar(message):
-    
+    input = event.pattern_match.group(1)
+    if input is None:
+        await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"./{mee.id}.txt" in aw:
-        await message.answer('لديك حساب')
-        #await message.client.send_message(message.chat_id, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
-    else:
+    if f"{mee.id}.txt" in aw:
+        await edit_or_reply(message, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
+    if input == "جيبثون الاسلامي":
+        
         chars = '1234567890'
         us = str(''.join(random.choice(chars) for i in range(15)))
         s = "5"+us
         try:
             with open(f"{mee.id}.txt","a")as x:
-                x.write(f"name:{mee.first_name}:account:{s}:bank:SpaceBank.")
+                x.write(f"name:{mee.first_name}:account:{s}:bank:BankSpace")
                 #ft = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : SpaceBank.</strong>",parse_mode="html",reply_markup=me)
-            with open(f"c{mee.id}.txt","a")as xs:
+            with open(f"{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()
-                await message.answer('تم انشاء حساب مصرفي')
-                #cbs = await message.client.send_message(message.chat_id, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>", parse_mode="html")
+              
+                cbs = await edit_or_reply(message, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>", parse_mode="html")
                 
-        except:
-            pass
+        finally:
+             await message.send_message(f"رقم حسابك: {s}")
+    else:
+           await edit_or_reply(message, "لا يوجد هكذا مصرف")
