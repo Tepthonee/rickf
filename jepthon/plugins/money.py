@@ -626,15 +626,7 @@ async def Bankre(message):
                 
         finally:
             cbs = await edit_or_reply(message, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html")
-dacc = """
-<strong>
-  تم انشاء حساب مصرفي بالمعلومات التالية:
-اسم صاحب الحساب:{mee.first_name}|
-ايدي الحساب:{s}|
-اسم المصرف:{bank}|
-الاموال المودعة:50$|
-</strong>
-"""       
+      
 @jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def bankar(message):
     input = message.pattern_match.group(1)
@@ -658,6 +650,6 @@ async def bankar(message):
          with open(f"{mee.id}.txt","a")as xs:
               xs.write("50")
               xs.close()
-              cbs = await edit_or_reply(message,dacc, parse_mode="html")      
+              cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bank}|\nالاموال المودعة:50$</strong>", parse_mode="html")      
     finally:
-         await message.send_message(f"شكراً لك لاختيارك {bank}")
+         await message.client.send_message(f"شكراً لك لاختيارك {bank}")
