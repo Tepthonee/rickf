@@ -40,10 +40,10 @@ async def start(event):
     aw = glob.glob('./*.txt')
 
 
-    if f"c{me.id}.txt" not in aw:
+    if f"{me.id}.txt" not in aw:
 
 
-        with open(f"c{me.id}.txt","a")as xs:
+        with open(f"{me.id}.txt","a")as xs:
 
 
             sta = await edit_or_reply(event, f"""<strong>
@@ -120,11 +120,11 @@ Send : /MakeAccount To Make Account! """, parse_mode="html")
 async def a(message):
     me = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"c{me.id}.txt" not in aw:
+    if f"{me.id}.txt" not in aw:
          noa = await edit_or_reply(message, f"<strong>انت لا تملك حساب في البنك", parse_mode="html")
     else:
          f = open(f"{me.id}.txt").read()
-         fl = open(f"c{me.id}.txt").read()
+         fl = open(f"{me.id}.txt").read()
          nn = f.split(":")[1]
          balance = f.split(":")[3]
          apcc = fl
@@ -149,7 +149,7 @@ async def myb(message):
           fpp.truncate(0)
           fppp = open(f"block.txt","r+")
           fppp.truncate(0)
-          fl = open(f"c{me.id}.txt").read()
+          fl = open(f"{me.id}.txt").read()
           nn = f.split(":")[1]
           balance = f.split(":")[3]
           acc = fl
