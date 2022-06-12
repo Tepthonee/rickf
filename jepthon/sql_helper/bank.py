@@ -3,7 +3,7 @@ from sqlalchemy import Column, String, UnicodeText
 from . import BASE, SESSION
 
 
-class Bot_Starters(BASE):
+class bank(BASE):
     __tablename__ = "bank"
     user_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
