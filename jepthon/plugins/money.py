@@ -605,7 +605,7 @@ async def d(message):
 
 #@jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def Bankre(message):
-    input = event.pattern_match.group(1)
+    input = message.pattern_match.group(1)
     if input is None:
         await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
@@ -637,7 +637,7 @@ dacc = """
 """       
 @jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def bankar(message):
-    input = event.pattern_match.group(1)
+    input = message.pattern_match.group(1)
     if input is None:
         await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
