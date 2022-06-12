@@ -664,8 +664,9 @@ async def Bankre(message):
             with open(f"{mee.id}.txt","a")as xs:
                 xs.write("50")
                 xs.close()                
-                cbs = await edit_or_reply(message, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html")
-        
+                
+       finally:
+            cbs = await edit_or_reply(message, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html")
 dacc = """
 <strong>
   تم انشاء حساب مصرفي بالمعلومات التالية:
