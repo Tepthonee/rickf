@@ -35,7 +35,8 @@ def startb() -> scoped_session:
     print(eengine)
     #BASE.metadata.bind = eengine
     BASE.metadata.create_all(bind=eengine)
-    print(BASE.metadata.create_all(eengine))
+    print(BASE.metadata.create_all(bind=eengine))
     return scoped_session(sessionmaker(bind=eengine, autoflush=False))
 
 SESSIONB = startb()
+BASEB = declarative_base()
