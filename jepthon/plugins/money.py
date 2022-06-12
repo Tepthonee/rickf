@@ -574,7 +574,7 @@ Done All Commands .
               ratb = rt.split("-")[1]
 
 
-              acc = open(f"./{mee.id}.txt").read()
+              acc = open(f"{mee.id}.txt").read()
 
 
               ga = float(ratb) + float(acc)
@@ -666,6 +666,15 @@ async def Bankre(message):
                 xs.close()                
                 cbs = await edit_or_reply(message, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html")
         
+dacc = """
+<strong>
+  تم انشاء حساب مصرفي بالمعلومات التالية:
+اسم صاحب الحساب:{mee.first_name}|
+ايدي الحساب:{s}|
+اسم المصرف:{bank}|
+الاموال المودعة:50$|
+</strong>
+"""       
 @jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def bankar(message):
     input = event.pattern_match.group(1)
@@ -676,21 +685,19 @@ async def bankar(message):
     if f"./{mee.id}.txt" in aw:
         await edit_or_reply(message, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
     if input == "جيبثون الاسلامي":
-        
-        chars = '1234567890'
-        us = str(''.join(random.choice(chars) for i in range(15)))
-        s = "5"+us
-        try:
-            with open(f"{mee.id}.txt","a")as x:
-                x.write(f"name:{mee.first_name}:account:{s}:bank:BankSpace")
-                #ft = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : SpaceBank.</strong>",parse_mode="html",reply_markup=me)
-            with open(f"{mee.id}.txt","a")as xs:
-                xs.write("50")
-                xs.close()
-              
-                cbs = await edit_or_reply(message, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف:ي.</strong>", parse_mode="html")
-                
-        finally:
-             await message.send_message(f"رقم حسابك: {s}")
-    else:
-           await edit_or_reply(message, "لا يوجد هكذا مصرف")
+        bank = "مصرف جيبثون الاسلامي"
+    if input == "الرافدين":
+    	bank = "مصرف الرافدين"
+    chars = '1234567890'
+    us = str(''.join(random.choice(chars) for i in range(15)))
+    s = "5"+us
+    try:
+         with open(f"{mee.id}.txt","a")as x:
+          x.write(f"name:{mee.first_name}:account:{s}:bank:{bank}")
+                #ft = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 ?.\nBank Name : SpaceBank.</strong>",parse_mode="html",reply_markup=me)
+         with open(f"{mee.id}.txt","a")as xs:
+              xs.write("50")
+              xs.close()
+              cbs = await edit_or_reply(message,dacc, parse_mode="html")      
+    finally:
+         await message.send_message(f"شكراً لك لاختيارك {bank}")
