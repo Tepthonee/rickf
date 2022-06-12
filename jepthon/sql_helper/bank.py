@@ -1,8 +1,13 @@
 from sqlalchemy import Column, String, UnicodeText
-from . import BASEB, SESSIONB
+import base64
+import os
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import scoped_session, sessionmaker
 
 
-class bank(BASEB):
+
+class bank(BASE):
     __tablename__ = "bank"
     user_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
