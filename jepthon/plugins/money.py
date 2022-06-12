@@ -599,7 +599,7 @@ async def d(message):
 
 @jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def bankar(message):
-    input = message.pattern_match.group(2)
+    input = message.pattern_match.group(1)
     if input is None:
         await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
