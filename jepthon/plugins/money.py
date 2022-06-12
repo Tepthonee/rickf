@@ -615,7 +615,7 @@ async def bankar(message):
     s = "5"+us
     try:
          with open(f"{mee.id}.txt","a")as x:
-          x.write(f"name:{mee.first_name}:account:{s}:bank:{bankn}")
+          x.write(f"name:{mee.first_name}:account:{s}:banq:{bankn}")
                 #ft = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 ?.\nBank Name : SpaceBank.</strong>",parse_mode="html",reply_markup=me)
          with open(f"{mee.id}.txt","a")as xs:
               xs.write("50")
