@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, UnicodeText
-
+import base64
 from . import BASEB, SESSIONB
 
 
