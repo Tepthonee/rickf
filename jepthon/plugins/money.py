@@ -596,33 +596,10 @@ async def d(message):
          cbbs = await edit_or_reply(message, "تم حذف حسابك المصرفي")
 
 
-#@jmthon.ar_cmd(pattern="انشاء حساب (.*)")
-async def Bankre(message):
-    input = message.pattern_match.group(1)
-    if input is None:
-        await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
-    mee = await message.client.get_me()
-    aw = glob.glob('./*.txt')
-    if f"./{mee.id}.txt" in aw:
-        cbbs = await edit_or_reply(message, "لديك حساب مصرفي بالفعل")
-    else:
-        chars = '1234567890'
-        us = str(''.join((random.choice(chars) for i in range(15))))
-        s = "5"+us
-        try:
-            with open(f"{mee.id}.txt","a")as x:
-                x.write(f"name:{mee.first_name}:account:{s}:bank:RebackBank.")
-                #dm = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 💵.\nBank Name : RebackBank.</strong>",parse_mode="html")
-            with open(f"{mee.id}.txt","a")as xs:
-                xs.write("50")
-                xs.close()                
-                
-        finally:
-            cbs = await edit_or_reply(message, f"<strong>:تم انشاء حساب مصرفي لك!\nمعلومات الحساب\nايدي الحساب: {s}\nالاموال: 50$\nاسم المصرف: مصرف جيبثون الاسلامي.</strong>", parse_mode="html")
-      
+
 @jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def bankar(message):
-    input = message.pattern_match.group(1)
+    input = message.pattern_match.group(2)
     if input is None:
         await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
@@ -633,6 +610,8 @@ async def bankar(message):
         bank = "مصرف جيبثون الاسلامي"
     if input == "الرافدين":
     	bank = "مصرف الرافدين"
+    if input != "الرافدين" or "جيبثون الاسلامي":
+         await edit_or_reply(message, "لا يوجد هكذا مصرِف !")
     chars = '1234567890'
     us = str(''.join(random.choice(chars) for i in range(15)))
     s = "5"+us
@@ -645,4 +624,5 @@ async def bankar(message):
               xs.close()
               cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bank}|\nالاموال المودعة:50$</strong>", parse_mode="html")      
     finally:
-         await message.client.send_message(f"شكراً لك لاختيارك {bank}")
+         #add_bank(mee.id, mee.first_name, 50, bank)
+         print(get_bank(mee.id))
