@@ -637,7 +637,7 @@ async def qwere(call):
 async def d(message):
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"{./mee.id}.txt" not in aw:
+    if f"./{mee.id}.txt" not in aw:
          cbs = edit_or_reply(message, "ليس لديك حساب مصرفي لحذفه")
     else:
          os.system(f"rm -rf {mee.id}.txt")
@@ -651,7 +651,7 @@ async def Bankre(message):
         await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"{./mee.id}.txt" in aw:
+    if f"./{mee.id}.txt" in aw:
         cbbs = await edit_or_reply(message, "لديك حساب مصرفي بالفعل")
     else:
         chars = '1234567890'
@@ -673,7 +673,7 @@ async def bankar(message):
         await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
-    if f"{./mee.id}.txt" in aw:
+    if f"./{mee.id}.txt" in aw:
         await edit_or_reply(message, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
     if input == "جيبثون الاسلامي":
         
