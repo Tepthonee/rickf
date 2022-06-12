@@ -4,65 +4,65 @@ from . import BASE, SESSION
 
 
 class Bot_Starters(BASE):
-    __tablename__ = "bot_starters"
+    __tablename__ = "bank"
     user_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
-    date = Column(UnicodeText)
-    username = Column(UnicodeText)
+    balance = Column(String(14), primary_key=True)
+    bank = Column(UnicodeText)
 
-    def __init__(self, user_id, first_name, date, username):
+    def __init__(self, user_id, first_name, balance, bank):
         self.user_id = str(user_id)
         self.first_name = first_name
-        self.date = date
-        self.username = username
+        self.balance = int(balance)
+        self.bank = bank
 
 
-Bot_Starters.__table__.create(checkfirst=True)
+bank.__table__.create(checkfirst=True)
 
 
-def add_starter_to_db(
+def add_bank(
     user_id,
     first_name,
-    date,
-    username,
+    balance,
+    bank,
 ):
     to_check = get_starter_details(user_id)
     if not to_check:
-        user = Bot_Starters(str(user_id), first_name, date, username)
+        user = bank(str(user_id), first_name, int(balance), bank)
         SESSION.add(user)
         SESSION.commit()
         return True
-    rem = SESSION.query(Bot_Starters).get(str(user_id))
+    rem = SESSION.query(bank).get(str(user_id))
     SESSION.delete(rem)
     SESSION.commit()
-    user = Bot_Starters(str(user_id), first_name, date, username)
+    user = bank(str(user_id), first_name, int(balance), bank)
     SESSION.add(user)
     SESSION.commit()
     return True
 
 
-def del_starter_from_db(user_id):
+def del_bank(user_id):
     to_check = get_starter_details(user_id)
     if not to_check:
         return False
-    rem = SESSION.query(Bot_Starters).get(str(user_id))
+    rem = SESSION.query(bank).get(str(user_id))
     SESSION.delete(rem)
     SESSION.commit()
     return True
 
 
-def get_starter_details(user_id):
+def get_bank(user_id):
     try:
-        if _result := SESSION.query(Bot_Starters).get(str(user_id)):
+        if _result := SESSION.query(bank).get(str(user_id)):
             return _result
         return None
     finally:
         SESSION.close()
 
 
-def get_all_starters():
+def get_all_bank():
     try:
-        return SESSION.query(Bot_Starters).all()
+        return SESSION.query(bank).all()
     except BaseException:
         return None
     finally:
