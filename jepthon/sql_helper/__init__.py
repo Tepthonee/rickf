@@ -15,7 +15,7 @@ def start() -> scoped_session:
     engine = create_engine(Config.DB_URI)
     #BASE.metadata.bind = engine
     BASE.metadata.create_all(bind=engine)
-    print(BASE.metadata.create_all(bind=engine))
+    #print(BASE.metadata.create_all(bind=engine))
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 
@@ -35,7 +35,7 @@ def startb() -> scoped_session:
     eengine = create_engine(reda)
     #BASE.metadata.bind = eengine
     BASE.metadata.create_all(bind=eengine)
-    print(BASE.metadata.create_all(bind=eengine))
+    #print(BASE.metadata.create_all(bind=eengine))
     return scoped_session(sessionmaker(bind=eengine, autoflush=False))
 
 SESSIONB = startb()
