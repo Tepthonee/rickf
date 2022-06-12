@@ -1,4 +1,5 @@
 telethon
+base64
 glob
 json
 aiofiles
