@@ -39,4 +39,3 @@ def startb() -> scoped_session:
     return scoped_session(sessionmaker(bind=eengine, autoflush=False))
 
 SESSIONB = startb()
-BASEB = declarative_base()
