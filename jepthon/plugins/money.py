@@ -3,7 +3,7 @@ import re
 from ..Config import Config
 from JepIQ.razan.resources.assistant import *
 from ..core.decorators import check_owner
-#from ..sql_helper.bank import add_bank, del_bank, get_bank
+from ..sql_helper.bank import add_bank, del_bank, get_bank
 from telethon import Button, events
 from telethon.events import CallbackQuery, InlineQuery
 import glob, os
@@ -600,8 +600,6 @@ async def d(message):
 @jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def bankar(message):
     input = message.pattern_match.group(1)
-    if input is None:
-        await edit_or_reply(message, "<strong>ضع اسم المصرف</strong>", parse_mode="html")
     mee = await message.client.get_me()
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
@@ -617,7 +615,7 @@ async def bankar(message):
     s = "5"+us
     try:
          with open(f"{mee.id}.txt","a")as x:
-          x.write(f"name:{mee.first_name}:account:{s}:bank:{bank}")
+          x.write(f"name:{mee.first_name}:account:{s}:bank:{bankn}")
                 #ft = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 ?.\nBank Name : SpaceBank.</strong>",parse_mode="html",reply_markup=me)
          with open(f"{mee.id}.txt","a")as xs:
               xs.write("50")
@@ -625,4 +623,4 @@ async def bankar(message):
               cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")      
     finally:
          #add_bank(mee.id, mee.first_name, 50, bankn)
-         print(get_bank(mee.id))
+         print(str(get_bank(mee.id)))
