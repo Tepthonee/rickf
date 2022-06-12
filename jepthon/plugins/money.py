@@ -602,6 +602,7 @@ async def bankar(message):
     aw = glob.glob('./*.txt')
     if f"./{mee.id}.txt" in aw:
         await edit_or_reply(message, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
+        return
     if input == "جيبثون الاسلامي":
         bankn = "مصرف جيبثون الاسلامي"
     if input == "الرافدين":
@@ -621,4 +622,5 @@ async def bankar(message):
               cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")      
     finally:
          #add_bank(mee.id, mee.first_name, 50, bankn)
-         print(str(get_bank(mee.id)))
+         cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")      
+
