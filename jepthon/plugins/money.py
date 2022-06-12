@@ -3,7 +3,7 @@ import re
 from ..Config import Config
 from JepIQ.razan.resources.assistant import *
 from ..core.decorators import check_owner
-from ..sql_helper.bank import add_bank, del_bank, get_bank
+#from ..sql_helper.bank import add_bank, del_bank, get_bank
 from telethon import Button, events
 from telethon.events import CallbackQuery, InlineQuery
 import glob, os
@@ -607,9 +607,9 @@ async def bankar(message):
     if f"./{mee.id}.txt" in aw:
         await edit_or_reply(message, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
     if input == "جيبثون الاسلامي":
-        bank = "مصرف جيبثون الاسلامي"
+        bankn = "مصرف جيبثون الاسلامي"
     if input == "الرافدين":
-    	bank = "مصرف الرافدين"
+    	bankn = "مصرف الرافدين"
     if input != "الرافدين" or "جيبثون الاسلامي":
          await edit_or_reply(message, "لا يوجد هكذا مصرِف !")
     chars = '1234567890'
@@ -622,7 +622,7 @@ async def bankar(message):
          with open(f"{mee.id}.txt","a")as xs:
               xs.write("50")
               xs.close()
-              cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bank}|\nالاموال المودعة:50$</strong>", parse_mode="html")      
+              cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")      
     finally:
-         #add_bank(mee.id, mee.first_name, 50, bank)
+         #add_bank(mee.id, mee.first_name, 50, bankn)
          print(get_bank(mee.id))
