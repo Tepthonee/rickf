@@ -166,47 +166,6 @@ async def myb(message):
 
           ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
 
-teX = "اختر بنك لانشاء حساب به"
-
-if Config.TG_BOT_USERNAME is not None and tgbot is not None:
-
-         @tgbot.on(events.InlineQuery)
-         async def inline_handler(event):
-              mee = await event.client.get_me()
-              aw = glob.glob('./*.txt')
-              if f"./{mee.id}.txt" in aw:
-                   ala = await edit_or_reply(event,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
-              else:
-                   builder = event.builder
-                   result = None
-                   query = event.text
-                   await bot.get_me()
-                   if query.startswith("انشاء حساب") and event.query.user_id == bot.uid:
-                        buttons = [
-                   [
-                    Button.inline("RebackBank.", data = "RebackBank"),
-                    Button.inline("SpaceBank.", data = "SpaceBank")
-                   ]
-               ]
-              result = builder.article(
-                         title="JEPTHON",
-                         text=teX,
-                         buttons=buttons,
-                         link_preview=False,
-                     )
-              wae = await event.answer([result] if result else None)
-
-@bot.on(admin_cmd(outgoing=True, pattern="انشاء حساب"))
-async def repo(event):
-    if event.fwd_from:
-        return
-    RR7PP = Config.TG_BOT_USERNAME
-    if event.reply_to_msg_id:
-        await event.get_reply_message()
-    response = await bot.inline_query(RR7PP, "انشاء حساب")
-    await response[0].click(event.chat_id)
-    await event.delete()
-
 
 
 #async def mounth(message):
