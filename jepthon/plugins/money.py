@@ -21,14 +21,6 @@ from ..core.managers import edit_delete, edit_or_reply
 import asyncio
 
 
-ch = Button.inline("RebackBank.", data = "RebackBank")
-
-
-ch2 = Button.inline("SpaceBank.", data = "SpaceBank")
-
-
-ch3 = Button.inline("Delete Account.", data = "d")
-
 plugin_category = "utils"
 
 
