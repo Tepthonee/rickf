@@ -14,8 +14,8 @@ plugin_category = "utils"
 
 
 @jmthon.ar_cmd(
-    pattern="حول نص$",
-    command=("حول نص", plugin_category),
+    pattern="احجي$",
+    command=("احجي", plugin_category),
     info={
         "header": "speech to text module.",
         "usage": "{tr}stt",
