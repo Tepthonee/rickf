@@ -1,4 +1,5 @@
 telethon
+pydub
 SpeechRecognition
 base64
 glob
