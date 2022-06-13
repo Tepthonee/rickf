@@ -1,4 +1,7 @@
-
+"""
+By Jepthon Team © 
+Reda
+"""
 import os
 from datetime import datetime
 import speech_recognition as sr
@@ -24,7 +27,7 @@ async def _(event):
     if not lan:
          return await edit_delete(event, "يجب ان تضع اختصار اللغة المطلوبة")
     
-    #ted = await edit_or_reply(event, str(lan))
+
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
     mediatype = media_type(reply)
@@ -37,7 +40,7 @@ async def _(event):
     oggfi = await event.client.download_media(reply, Config.TEMP_DIR)
     await jepevent.edit("`يجري تحويل الكلام الى نص....`")
     r = sr.Recognizer()
-    #audio_data = open(required_file_name, "rb").read()
+ 
     ogg = oggfi.removesuffix('.ogg')
    
     AudioSegment.from_file(oggfi).export(f"{ogg}.wav", format="wav")
@@ -52,9 +55,7 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).seconds
     
-    string_to_show = "**اللغة : **`{}`\n**النص : **`{}`\n**الوقت المستغرق : **`{} ثانيه`".format(
-            lan, text, ms
-        )
+    string_to_show = text
     await jepevent.edit(string_to_show)
     
     os.remove(oggfi)
