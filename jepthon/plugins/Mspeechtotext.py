@@ -23,7 +23,7 @@ async def _(event):
     "تحويل الكلام الى نص."
     
     start = datetime.now()
-    lan = event.pattern_match.group(1)
+    lan = event.pattern_match.group(0)
     ted = await edit_or_reply(event, str(lan))
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
