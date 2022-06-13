@@ -49,9 +49,12 @@ async def _(event):
          audio = r.record(source)
 
     
-    
-    text = r.recognize_google(audio, language=str(lan))
-    
+    try:
+         text = r.recognize_google(audio, language=str(lan))
+    except ValueError:
+         return await edit_delete(event, "**لا يوجد كلام في المقطع الصوتي**")
+    except BaseException as err:
+         return await edit_delete(event, f"حدث خطأ\n{err}")
     end = datetime.now()
     ms = (end - start).seconds
     
