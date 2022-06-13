@@ -35,7 +35,7 @@ async def _(event):
         )
     jepevent = await edit_or_reply(event, "`يجري تنزيل الملف...`")
     required_file_name = await event.client.download_media(reply, Config.TEMP_DIR)
-    await jepevent.edit(str(required_file_name)
+    await jepevent.edit("`{required_file_name}`")
     
     data = open(required_file_name, "rb").read()
     r = sr.Recognizer()
