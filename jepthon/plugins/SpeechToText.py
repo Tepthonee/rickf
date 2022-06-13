@@ -40,7 +40,6 @@ async def _(event):
     #audio_data = open(required_file_name, "rb").read()
     ogg = oggfi.removesuffix('.ogg')
    
-    await jepevent.edit(f"`{ogg}.wav`")
     AudioSegment.from_file(oggfi).export(f"{ogg}.wav", format="wav")
     user_audio_file = sr.AudioFile(f"{ogg}.wav")
     with user_audio_file as source:
@@ -52,10 +51,11 @@ async def _(event):
     
     end = datetime.now()
     ms = (end - start).seconds
-    red = "شنهي"
-    string_to_show = "**اللغة : **`{}`\n**النص : **`{}`\n**الوقت المستغرق : **`{} ثانيه`\n**الثقة : **`{}`".format(
-            lan, red, ms, text
+    
+    string_to_show = "**اللغة : **`{}`\n**النص : **`{}`\n**الوقت المستغرق : **`{} ثانيه`**".format(
+            lan, text, ms
         )
     await jepevent.edit(string_to_show)
     # now, remove the temporary file
-    os.remove(required_file_name)
+    os.remove(oggfi)
+    os.remove(f"{ogg}.wav")
