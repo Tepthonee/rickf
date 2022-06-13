@@ -38,9 +38,11 @@ async def _(event):
     await jepevent.edit("`يجري تحويل الكلام الى نص....`")
     r = sr.Recognizer()
     #audio_data = open(required_file_name, "rb").read()
-    ogg = username.translate({ ord(c): None for c in "._!" })
-    AudioSegment.from_file(oggfi).export("./temp/{ogg}", format="wav")
-    user_audio_file = sr.AudioFile(required_file_name)
+    ogg = oggfi.translate({ ord(c): None for c in ".oga" })
+   
+    await jepevent.edit(f"`{ogg}.wav`")
+    AudioSegment.from_file(oggfi).export(f"{ogg}.wav", format="wav")
+    user_audio_file = sr.AudioFile(f"{ogg}.wav")
     with user_audio_file as source:
          audio = r.record(source)
 
