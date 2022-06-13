@@ -45,19 +45,14 @@ async def _(event):
     data = open(required_file_name, "rb").read()
     r = sr.Recognizer()
     with sr.AudioFile(required_file_name) as source:
-    #audio_data = r.record(source)
-    text = r.recognize_google(data, language=str(lan))
+         text = r.recognize_google(data, language=str(lan))
     
     end = datetime.now()
     ms = (end - start).seconds
     
-        string_to_show = "**Language : **`{}`\n**Time Taken : **`{} seconds`\n**No Results Found**".format(
-            lan, ms
-        )
-    else:
-        string_to_show = "**Language : **`{}`\n**Transcript : **`{}`\n**Time Taken : **`{} seconds`\n**Confidence : **`{}`".format(
-            lan, transcript_response, ms, transcript_confidence
-        )
+    string_to_show = """**Language : **`{}`\n**Transcript : **`{}`\n**Time Taken : **`{} seconds`\n**Confidence : **`{}`".format(
+            str(lan), transcript_response, ms, text
+        """
     await jepevent.edit(string_to_show)
     # now, remove the temporary file
     os.remove(required_file_name)
