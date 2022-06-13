@@ -12,4 +12,4 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     if input_str is None:
         await edit_delete(event, "قم بكتابة اسم البلوكن")
-    return edit_or_reply(event, f"isEx({input_str})")
+    return await edit_or_reply(event, f"isEx({input_str})")
