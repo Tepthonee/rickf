@@ -36,9 +36,10 @@ async def _(event):
             event,
             "`قم بالرد على رسالة او مقطع صوتي لتحويله الى نص.`",
         )
-    if mediatype and mediatype not in ["Voice", "Audio"]:
-         await edit_delete(event, "`قم بالرد على رسالة صوتية لتحويلها الى نص`")
     
+    
+    return await edit_or_reply(event, str(mediatype))
+
     jepevent = await edit_or_reply(event, "`يجري تنزيل الملف...`")
     oggfi = await event.client.download_media(reply, Config.TEMP_DIR)
     await jepevent.edit("`يجري تحويل الكلام الى نص....`")
