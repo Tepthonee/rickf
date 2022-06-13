@@ -19,11 +19,10 @@ async def _(event):
     
     start = datetime.now()
     input_str = event.pattern_match.group(1)
-    if event.reply_to_msg_id:
-        previous_message = await event.get_reply_message()
-        reply = previous_message.message
-        lan = input_str
-
+    reply = await event.get_reply_message()
+    lan = input_str
+    te = await edit_or_reply(event, lan)
+    return
     #ted = await edit_or_reply(event, str(lan))
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
