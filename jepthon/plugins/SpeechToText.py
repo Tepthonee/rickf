@@ -20,7 +20,7 @@ async def _(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         reply = previous_message.message
-        lan = input_str
+    lan = "ar-IQ"
 
     ted = await edit_or_reply(event, str(lan))
     if not os.path.isdir(Config.TEMP_DIR):
