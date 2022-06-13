@@ -1,4 +1,5 @@
 telethon
+ffmpeg
 pydub
 SpeechRecognition
 base64
