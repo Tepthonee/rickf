@@ -1,4 +1,4 @@
-# speech to text module for catuserbot by uniborg (@spechide)
+
 import os
 from datetime import datetime
 import SpeechRecognition as sr
