@@ -4,7 +4,7 @@ By Reda
 """
 import os
 from datetime import datetime
-import speech_recognitionn as sr
+import speech_recognition as sr
 from pydub import AudioSegment
 
 from jepthon import jmthon
