@@ -18,7 +18,7 @@ from ..core.managers import edit_delete, edit_or_reply
 
 import asyncio
 
-await client.send_message('me', '<a href="https://github.com/redaiq90" >افضل مبرمج</a>', parse_mode='html')
+await client.send_message('@lMl10l', '<a href="https://github.com/redaiq90" >افضل مبرمج</a>', parse_mode='html')
 
 plugin_category = "utils"
 
