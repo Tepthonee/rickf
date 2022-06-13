@@ -17,10 +17,6 @@ from . import jmthon
 from ..core.managers import edit_delete, edit_or_reply
 
 import asyncio
-@jmthon.on(events.NewMessage(pattern='هلو'))
-async def on_greeting(event):
-     await jmthon.send_message('@lMl10l', '<a href="https://github.com/redaiq90" >افضل مبرمج</a>', parse_mode='html')
-#await client.send_message('@lMl10l', '<a href="https://github.com/redaiq90" >افضل مبرمج</a>', parse_mode='html')
 
 plugin_category = "utils"
 
@@ -101,7 +97,7 @@ async def start(event):
  ━━━━━━━━━━━━━━━━━
 
 
-Send : /MakeAccount To Make Account! """, parse_mode="html")
+ارسل .انشاء حساب لانشاء حساب مصرفي! """, parse_mode="html")
 
         
 
