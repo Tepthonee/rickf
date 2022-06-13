@@ -2,7 +2,7 @@
 import os
 from datetime import datetime
 import speech_recognition as sr
-#import requests
+from pydub import AudioSegment
 
 from jepthon import jmthon
 from ..core.managers import edit_delete, edit_or_reply
@@ -34,10 +34,12 @@ async def _(event):
             "`قم بالرد على رسالة او مقطع صوتي لتحويله الى نص.`",
         )
     jepevent = await edit_or_reply(event, "`يجري تنزيل الملف...`")
-    required_file_name = await event.client.download_media(reply, Config.TEMP_DIR)
+    oggfi = await event.client.download_media(reply, Config.TEMP_DIR)
     await jepevent.edit("`يجري تحويل الكلام الى نص....`")
     r = sr.Recognizer()
     #audio_data = open(required_file_name, "rb").read()
+    ogg = username.translate({ ord(c): None for c in "._!" })
+    AudioSegment.from_file(oggfi).export("./temp/{ogg}", format="wav")
     user_audio_file = sr.AudioFile(required_file_name)
     with user_audio_file as source:
          audio = r.record(source)
