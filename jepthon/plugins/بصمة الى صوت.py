@@ -31,14 +31,15 @@ async def _(event):
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
     mediatype = media_type(reply)
-    if not reply or (mediatype and mediatype not in ["Voice", "Audio"]):
+    if not reply:
         return await edit_delete(
             event,
             "`قم بالرد على رسالة او مقطع صوتي لتحويله الى نص.`",
         )
     
     
-    return await edit_or_reply(event, str(mediatype))
+    if mediatype is None:
+         await edit_delete(event, "`**الملف الذي قمت بالرد عليه ليس بصمة صوتية**`")
 
     jepevent = await edit_or_reply(event, "`يجري تنزيل الملف...`")
     oggfi = await event.client.download_media(reply, Config.TEMP_DIR)
