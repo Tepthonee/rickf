@@ -42,10 +42,10 @@ async def _(event):
     
     end = datetime.now()
     ms = (end - start).seconds
-    
-    string_to_show = """**Language : **`{}`\n**Transcript : **`{}`\n**Time Taken : **`{} seconds`\n**Confidence : **`{}`".format(
-            str(lan), transcript_response, ms, text
-        """
+    red = "شنهي"
+    string_to_show = "**اللغة : **`{}`\n**النص : **`{}`\n**الوقت المستغرق : **`{} ثانيه`\n**الثقة : **`{}`".format(
+            str(lan), red, ms, text
+        )
     await jepevent.edit(string_to_show)
     # now, remove the temporary file
     os.remove(required_file_name)
