@@ -34,9 +34,7 @@ async def _(event):
     jepevent = await edit_or_reply(event, "`يجري تنزيل الملف...`")
     required_file_name = await event.client.download_media(reply, Config.TEMP_DIR)
     await jepevent.edit("`يتم التحويل الى نص....`")
-    headers = {
-        "Content-Type": reply.media.document.mime_type,
-    }
+    
     data = open(required_file_name, "rb").read()
     r = sr.Recognizer()
     with sr.AudioFile(required_file_name) as source:
