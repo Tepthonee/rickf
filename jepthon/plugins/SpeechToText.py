@@ -21,7 +21,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     lan = input_str
-    if lan == Empty:
+    if lan is None:
          return await edit_delete(event, "يجب ان تضع اختصار اللغة المطلوبة")
     
     #ted = await edit_or_reply(event, str(lan))
