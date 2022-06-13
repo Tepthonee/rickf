@@ -1,7 +1,7 @@
 telethon
 ffmpeg
 pydub
-SpeechRecognition
+git+https://github.com/redaiq90/speech_recognitionn
 base64
 glob
 json
