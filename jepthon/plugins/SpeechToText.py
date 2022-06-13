@@ -11,7 +11,9 @@ from ..helpers import media_type
 plugin_category = "utils"
 
 
-@jmthon.ar_cmd(pattern="احجي(?:\s|$)([\s\S]*)")
+@jmthon.ar_cmd(pattern="احجي(?:\s|$)([\s\S]*)",
+               command=("احجي", plugin_category),
+              )
 async def _(event):
     "تحويل الكلام الى نص."
     
