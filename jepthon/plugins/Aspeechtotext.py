@@ -54,7 +54,7 @@ async def _(event):
     except ValueError:
          return await edit_delete(event, "**لا يوجد كلام في المقطع الصوتي**")
     except BaseException as err:
-         return await edit_delete(event, f"حدث خطأ\n{err}")
+         return await edit_delete(event, f"**!لا يوجد كلام في هذا المقطع الصوتي\n{err}**")
     end = datetime.now()
     ms = (end - start).seconds
     
