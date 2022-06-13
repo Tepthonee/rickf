@@ -11,23 +11,20 @@ from ..helpers import media_type
 plugin_category = "utils"
 
 
-@jmthon.ar_cmd(
-    pattern="احجي$",
-    command=("احجي", plugin_category),
-    info={
-        "header": "speech to text module.",
-        "usage": "{tr}stt",
-    },
-)
+@jmthon.ar_cmd(pattern="احجي(?:\s|$)([\s\S]*)")
 async def _(event):
     "تحويل الكلام الى نص."
     
     start = datetime.now()
-    lan = event.pattern_match.group(0)
+    input_str = event.pattern_match.group(1)
+    if event.reply_to_msg_id:
+        previous_message = await event.get_reply_message()
+        reply = previous_message.message
+        lan = input_str
+
     ted = await edit_or_reply(event, str(lan))
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
-    reply = await event.get_reply_message()
     mediatype = media_type(reply)
     if not reply or (mediatype and mediatype not in ["Voice", "Audio"]):
         return await edit_delete(
