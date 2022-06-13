@@ -1,4 +1,5 @@
 telethon
+SpeechRecognition
 base64
 glob
 json
