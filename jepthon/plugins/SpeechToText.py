@@ -21,8 +21,9 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     lan = input_str
-    te = await edit_or_reply(event, lan)
-    return
+    if lan == Empty:
+         return await edit_delete(event, "يجب ان تضع اختصار اللغة المطلوبة")
+    
     #ted = await edit_or_reply(event, str(lan))
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
