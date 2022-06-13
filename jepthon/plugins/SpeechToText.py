@@ -36,11 +36,15 @@ async def _(event):
     jepevent = await edit_or_reply(event, "`يجري تنزيل الملف...`")
     required_file_name = await event.client.download_media(reply, Config.TEMP_DIR)
     await jepevent.edit("`يجري تحويل الكلام الى نص....`")
-    
-    audio_data = open(required_file_name, "rb").read()
     r = sr.Recognizer()
+    #audio_data = open(required_file_name, "rb").read()
+    user_audio_file = sr.AudioFile(required_file_name)
+    with user_audio_file as source:
+         audio = r.record(source)
+
     
-    text = r.recognize_google(audio_data, language=str(lan))
+    
+    text = r.recognize_google(audio, language=str(lan))
     
     end = datetime.now()
     ms = (end - start).seconds
