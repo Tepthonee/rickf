@@ -1,7 +1,7 @@
 
 import os
 from datetime import datetime
-import SpeechRecognition as sr
+import speech_recognition as sr
 #import requests
 
 from jepthon import jmthon
