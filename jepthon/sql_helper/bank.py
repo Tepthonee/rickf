@@ -42,11 +42,11 @@ def add_bank(
 ):
     to_check = get_bank(user_id)
     if not to_check:
-        user = bank(user_id, first_name, balance, bank)
+        user = bank(str(user_id), first_name, balance, bank)
         SESSIONB.add(user)
         SESSIONB.commit()
         return True
-    rem = SESSIONB.query(bank).get(user_id)
+    rem = SESSIONB.query(bank).get(str(user_id))
     SESSIONB.delete(rem)
     SESSIONB.commit()
     user = bank(str(user_id), first_name, int(balance), bank)
@@ -56,7 +56,7 @@ def add_bank(
 
 
 def del_bank(user_id):
-    to_check = get_starter_details(user_id)
+    to_check = get_bank(str(user_id))
     if not to_check:
         return False
     rem = SESSIONB.query(bank).get(user_id)
@@ -67,7 +67,7 @@ def del_bank(user_id):
 
 def get_bank(user_id):
     try:
-        if _result := SESSIONB.query(bank).get(user_id):
+        if _result := SESSIONB.query(bank).get(str(user_id)):
             return _result
         return None
     finally:
