@@ -121,8 +121,9 @@ def convert(seconds):
 async def ga(message):
     mee = await message.client.get_me()
     ms = message.text
+    acc = get_bank(mee.id)
     if ms == ".حذف حسابي" or ms == ".حذف حساب":
-         if get_bank(mee.id) is None:
+         if acc is None:
               await edit_delete(message, "لا تملك حساب مصرفي لحذفه")
          else:
               del_bank(mee.id)
@@ -186,14 +187,14 @@ Done All Commands .
     if ms == ".كنز":
         if mee.id in t1:
               tii = t1[mee.id] - time.time()
-              gfu = await edit_or_reply(message,"<strong> لا تستطيع اخذ راتب انتضر {}</strong>".format(convert(tii)),parse_mode="html")
+              return await edit_or_reply(message,"<strong> ليس هنالك كنز لقد اخذته بالفعل انتضر {}</strong>".format(convert(tii)),parse_mode="html")
      
         else:
               rt = randint(50,3000)
-              acc = get_bank(mee.id).balance
-              ga = int(rt) + int(acc)
+              acca = get_bank(mee.id).balance
+              ga = int(rt) + int(acca)
               update_bank(mee.id, ga)
-              tx = await edit_or_reply(message,f"<strong>💸 Your treasure  Is Available!🤩\n- You Got {rt} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
+              tx = await edit_or_reply(message,f"<strong>💸 لقد حصلت على الكنز!🤩\n- حصلت على {rt} 💵.\n- اموالك الان : {ga} 💵 .</strong>",parse_mode="html")
               t1[mee.id] = time.time() + 600 # store end time 
               await asyncio.sleep(600)
               del t1[mee.id]
@@ -201,48 +202,27 @@ Done All Commands .
             #tempo[message.author.id] - time.time()))
               #await asyncio.sleep(600)
     if ".استثمار" in ms:
-
-
         value = message.text.replace(".استثمار","")
-
-
-        ls = ["Done","Fail"]
-
-
+        if mee.id in t2:
+            ti2 = t2[mee.id] - time.time()
+            return await edit_or_reply(message,"<strong> للاستثمار مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
+        lss = ["Done","Fail"]
+        ls = random.choice(lss)
+        ppe = acc.balance
+        if int(value) > ppe:
+            return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للاستثمار</strong>")
         if "Done" in ls:
-
-
-            ppe = open(f"{mee.id}.txt").read()
-
-
-            kf = float(value) + float(randint(float(ppe),float(ppe)))
-
-
-            with open(f"{mee.id}.txt","r+")as fs:
-
-
-                  fs.truncate(0)
-
-
-            with open(f"{mee.id}.txt","w")as va:
-
-
-                  va.write(f"{int(kf)}")
-
-
+            kf = int(value) + int(randint(int(ppe),int(ppe)))
+            update_bank(mee.id, kf)
             d = ["1%","2%","4%","8%","9%"]
-
-
-            raa = random.choice(d)
-
-
-            mac = await edit_or_reply(message,f"""<strong>
+            ra = random.choice(d)
+            ma = await edit_or_reply(message,f"""<strong>
 
 
 - Successful Investment  💰
 
 
-- Profit Ratio  ↢ {raa}
+- Profit Ratio  ↢ {ra}
 
 
 - Profit Amount  ↢ ( {ppe} 💵 )
@@ -252,7 +232,11 @@ Done All Commands .
 
 
 .</strong>""",parse_mode="html")
-
+            t2[mee.id] = time.time()
+            await asyncio.sleep(600)
+            del t2[mee.id]
+        if "Fail" in ls:
+             return edit_or_reply(message, "استثمار فاشل لم تحصل على اي ارباح")
 
     if f"{ms} حظ."in message.text:
 
