@@ -95,12 +95,10 @@ async def myb(message):
 - Bank name : {ba}
 - ================= -
           """
-          acinfo = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
+         acinfo = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
          
-          df.close()
     else:
-
-          ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
+         ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
 
 
 
