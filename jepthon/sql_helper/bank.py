@@ -19,13 +19,13 @@ SESSIONB = start()
 
 class bank(BASE):
     __tablename__ = "bank"
-    user_id = Column(String(14), primary_key=True)
+    user_id = Column(Integer, primary_key=True)
     first_name = Column(UnicodeText)
     balance = Column(Integer)
     bank = Column(UnicodeText)
 
     def __init__(self, user_id, first_name, balance, bank):
-        self.user_id = str(user_id)
+        self.user_id = user_id
         self.first_name = first_name
         self.balance = int(balance)
         self.bank = bank
@@ -42,7 +42,7 @@ def add_bank(
 ):
     to_check = get_bank(user_id)
     if not to_check:
-        user = bank(str(user_id), first_name, int(balance), bank)
+        user = bank(user_id, first_name, int(balance), bank)
         SESSIONB.add(user)
         SESSIONB.commit()
         return True
