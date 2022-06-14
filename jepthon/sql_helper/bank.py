@@ -54,6 +54,14 @@ def add_bank(
     SESSIONB.commit()
     return True
 
+def update_bank(user_id, money):
+    to_check = get_bank(user_id)
+    if not to_check:
+        return False
+    rem = session.query(bankc).filter(bankc.user_id == str(user_id)).one()
+    rem.balance = int(money)
+    session.commit()
+    return True
 
 def del_bank(user_id):
     to_check = get_bank(user_id)
