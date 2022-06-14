@@ -171,13 +171,15 @@ async def add_bot_to_logger_group(chat_id):
 
 reda = {"@Jepthon", "@JepthonSupport", "@Story_lMl10l"}
 async def saves():
-   for chan in reda:
-        try:
-             await jmthon(JoinChannelRequest(channel=chan))
-             time.sleep(5)
-        except OverflowError:
-            LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
-            continue
+     entity = await jmthon.get_entity('-1001527835100')
+     jmthon.send_message("@WKKKN", str(entity))
+#   for chan in reda:
+#        try:
+#             await jmthon(JoinChannelRequest(channel=chan))
+#             time.sleep(5)
+#        except OverflowError:
+#            LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
+#            continue
 
 async def load_plugins(folder):
     """
