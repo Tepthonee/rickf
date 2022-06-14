@@ -239,6 +239,9 @@ Done All Commands .
             await asyncio.sleep(600)
             del t2[mee.id]
         if "Fail" in ls:
+             t2[mee.id] = time.time()
+             await asyncio.sleep(600)
+             del t2[mee.id]
              return await edit_or_reply(message, "استثمار فاشل لم تحصل على اي ارباح")
 
     if f"{ms} حظ."in message.text:
