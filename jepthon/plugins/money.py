@@ -210,7 +210,10 @@ Done All Commands .
         ls = random.choice(lss)
         ppe = acc.balance
         if int(value) > int(ppe):
-            return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للاستثمار</strong>")
+            return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للاستثمار</strong>", parse_mode="html")
+        isv = value.isnumeric()
+        if not isv:
+             return await edit_delete(message, "<strong>!ادخل رقم صالِح للاستثمار</strong>", parse_mode="html")
         if "Done" in ls:
             kf = int(value) + int(randint(int(ppe),int(ppe)))
             update_bank(mee.id, kf)
