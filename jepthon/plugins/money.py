@@ -186,7 +186,7 @@ Done All Commands .
     if ms == ".كنز":
         if mee.id in t1:
               tii = t1[mee.id] - time.time()
-              gfu = await edit_or_reply(message,"<strong>{} لا تستطيع اخذ راتب انتضر </strong>".format(convert(tii)),parse_mode="html")
+              gfu = await edit_or_reply(message,"<strong> لا تستطيع اخذ راتب انتضر {}</strong>".format(convert(tii)),parse_mode="html")
      
         else:
               rt = randint(50,3000)
