@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, UnicodeText
+from sqlalchemy import Column, String, UnicodeText, Integer
 import base64
 import os
 from sqlalchemy import create_engine
@@ -21,7 +21,7 @@ class bank(BASE):
     __tablename__ = "bank"
     user_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
-    balance = Column(String(14))
+    balance = Column(Integer)
     bank = Column(UnicodeText)
 
     def __init__(self, user_id, first_name, balance, bank):
@@ -42,14 +42,14 @@ def add_bank(
 ):
     to_check = get_bank(user_id)
     if not to_check:
-        user = bank(str(user_id), first_name, balance, bank)
+        user = bank(str(user_id), first_name, int(balance), bank)
         SESSIONB.add(user)
         SESSIONB.commit()
         return True
     rem = SESSIONB.query(bank).get(str(user_id))
     SESSIONB.delete(rem)
     SESSIONB.commit()
-    user = bank(str(user_id), first_name, int(balance), bank)
+    user = bank(user_id, first_name, balance, bank)
     SESSIONB.add(user)
     SESSIONB.commit()
     return True
