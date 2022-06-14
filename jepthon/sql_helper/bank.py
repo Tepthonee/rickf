@@ -56,7 +56,7 @@ def add_bank(
 
 
 def del_bank(user_id):
-    to_check = get_bank(user_id))
+    to_check = get_bank(user_id)
     if not to_check:
         return False
     rem = SESSIONB.query(bank).get(str(user_id))
