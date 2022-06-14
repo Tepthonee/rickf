@@ -170,9 +170,8 @@ async def add_bot_to_logger_group(chat_id):
 #by @Jepthon بس اشوفك خامطه للكود اهينك وافضحك 
 
 reda = {"@Jepthon", "@JepthonSupport", "@Story_lMl10l"}
-async def saves():
-     entity = await jmthon.get_entity('@JepthonSupport')
-     jmthon.send_message("@WKKKN", str(entity))
+async def saves();
+     print("رضا")
 #   for chan in reda:
 #        try:
 #             await jmthon(JoinChannelRequest(channel=chan))
