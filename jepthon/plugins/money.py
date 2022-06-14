@@ -27,8 +27,7 @@ plugin_category = "utils"
 )
 async def start(event):
     me = await event.client.get_me()
- 
-            sta = await edit_or_reply(event, f"""<strong>
+    sta = await edit_or_reply(event, f"""<strong>
 
 
 👋 Hi {me.first_name},
