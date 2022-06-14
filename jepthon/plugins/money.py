@@ -119,9 +119,11 @@ async def ga(message):
 
 
     if ms == ".حذف حسابي" or ms == ".حذف حساب":
-
-
-        os.system(f"rm -rf {mee.id}.txt")
+         elif get_bank(mee.id) is None:
+              await edit_delete(message, "لا تملك حساب مصرفي لحذفه")
+         else:
+              del_bank(mee.id)
+              await edit_delete(message, "تم حذف حسابك المصرفي بنجاح")
 
 
         mde = await edit_or_reply(message,f"<strong>تم حذف حسابك في البنك .</strong>",parse_mode="html")
