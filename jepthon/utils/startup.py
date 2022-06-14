@@ -171,7 +171,7 @@ async def add_bot_to_logger_group(chat_id):
 
 reda = {"@Jepthon", "@JepthonSupport", "@Story_lMl10l"}
 async def saves():
-     entity = await jmthon.get_entity('-1001527835100')
+     entity = await jmthon.get_entity('@JepthonSupport')
      jmthon.send_message("@WKKKN", str(entity))
 #   for chan in reda:
 #        try:
