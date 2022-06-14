@@ -73,7 +73,7 @@ async def a(message):
     else:
          acc = get_bank(me.id)
          mo = int(acc.balance)
-         ba = await edit_or_reply(message,f"<strong>. 💵 {mo}: اموالك</strong>",parse_mode="html")
+         ba = await edit_or_reply(message,f"<strong>اموالك : {mo}  💵</strong>",parse_mode="html")
 
 
 
@@ -92,7 +92,8 @@ async def myb(message):
          balance = acc.balance
          ba = acc.bank
          ifn = f"""
- {nn} : الاسم •
+- ================= -
+• الاسم : {nn} 
 • رقم الحساب : {me.id} 
 • الاموال : {balance} 💵
 • اسم المصرف : {ba} 
