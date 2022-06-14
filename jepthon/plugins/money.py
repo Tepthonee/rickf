@@ -70,7 +70,7 @@ async def a(message):
     else:
          acc = get_bank(me.id)
          mo = int(acc.balance)
-         ba = await edit_or_reply(message,f"<strong>Your Balance : {mo} 💵</strong>",parse_mode="html")
+         ba = await edit_or_reply(message,f"<strong>. 💵 {mo}: اموالك</strong>",parse_mode="html")
 
 
 
@@ -89,34 +89,16 @@ async def myb(message):
          balance = acc.balance
          ba = acc.bank
          ifn = f"""
-- Name : {nn} .
-- Account Id : {me.id} .
-- Balance : {balance} 💵.
-- Bank name : {ba}
+. {nn} : الاسم •
+. {me.id} : رقم الحساب •
+. 💵 {balance} : الاموال •
+. {ba} : اسم المصرف •
 - ================= -
           """
          acinfo = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
          
     else:
          ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
-
-
-
-#async def mounth(message):
-
-#    mee = await message.client.get_me()
-  #  global msg1
-
-
-  #  aw = glob.glob('./*.txt')
-
-   # if f"./{mee.id}.txt" in aw:
-         
-   #      edit_or_reply(message,f"<strong>Sorry You Already Have an Bank Account!</strong>",parse_mode="html")
-
-  #  else:
- #       msg1 = message.text
- #       sent = await edit_or_reply(message, "Send Bank Name :\nSpaceBank .\nRebackBank.\n\nChoice From the List ?",parse_mode="html")
 
 
 @jmthon.ar_cmd(func=lambda m:"راتب")
@@ -157,31 +139,31 @@ Wellcome In Help List Or Commands List!
 1- استثمار (مبلغ) 
 
 
-مثال : استثمار 10000
+مثال : .استثمار 10000
 
 
-2- حظ (مبلغ)
+2- حظ (مبلغ).
 
 
 مثال : حظ 1000
 
 
-3- مضاربه (مبلغ)
+3- مضاربه (مبلغ).
 
 
 مثال : مضاربه 1000
 
 
-4- راتب
+4- راتب.
 
 
-5- كنز
+5- كنز.
 
 
-6-بخشيش
+6-بخشيش.
 
 
-7- فلوسي | لرؤية فلوسك
+7- فلوسي | لرؤية فلوسك.
 
 
 
@@ -499,41 +481,15 @@ Done All Commands .
                  df.close()
 
 
-                 
-#@jmthon.tgbot.on(CallbackQuery(func=lambda call: True))
-
-async def qwere(call):
-
-
-    if call.data == "RebackBank":
-
-
-        Bankre(call.message)
-
-
-    if call.data == "SpaceBank":
-
-
-        Bankar(call.message)
-
-
-    if call.data == "d":
-
-
-        dell(call.message)
-
-
-
 
 @jmthon.ar_cmd(pattern="غلق حساب (.*)")
    
 async def d(message):
     mee = await message.client.get_me()
-    aw = glob.glob('./*.txt')
-    if f"./{mee.id}.txt" not in aw:
+    if not get_bank(mee.id):
          cbs = edit_or_reply(message, "ليس لديك حساب مصرفي لحذفه")
     else:
-         os.system(f"rm -rf {mee.id}.txt")
+         del_babk(mee.id)
          cbbs = await edit_or_reply(message, "تم حذف حسابك المصرفي")
 
 
@@ -542,19 +498,14 @@ async def d(message):
 async def bankar(message):
     input = message.pattern_match.group(1)
     mee = await message.client.get_me()
-    aw = glob.glob('./*.txt')
-    if f"./{mee.id}.txt" in aw:
-        await edit_or_reply(message, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
-        return
+    if get_bank(mee.id) is not None:
+        return await edit_or_reply(message, f"<strong>لديك حساب مصرفي بالفعل</strong>",parse_mode="html")
     if input == "جيبثون الاسلامي":
         bankn = "مصرف جيبثون الاسلامي"
     elif input == "الرافدين":
     	bankn = "مصرف الرافدين"
     elif input != "الرافدين" or "جيبثون الاسلامي":
          return await edit_or_reply(message, "لا يوجد هكذا مصرِف !")
-    chars = '1234567890'
-    us = str(''.join(random.choice(chars) for i in range(15)))
-    s = "5"+us
     add_bank(mee.id, mee.first_name, 50, bankn)
     cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")
 
