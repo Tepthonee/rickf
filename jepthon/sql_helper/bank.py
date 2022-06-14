@@ -31,7 +31,7 @@ class bankc(BASE):
         self.bank = bank
 
 
-bank.__table__.create(checkfirst=True)
+bankc.__table__.create(checkfirst=True)
 
 
 def add_bank(
