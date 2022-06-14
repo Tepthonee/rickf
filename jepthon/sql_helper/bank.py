@@ -42,24 +42,24 @@ def add_bank(
 ):
     to_check = get_bank(user_id)
     if not to_check:
-        user = bank(user_id, first_name, balance, bank)
+        user = bank(str(user_id), first_name, int(balance), bank)
         SESSIONB.add(user)
         SESSIONB.commit()
         return True
     rem = SESSIONB.query(bank).get(str(user_id))
     SESSIONB.delete(rem)
     SESSIONB.commit()
-    user = bank(user_id, first_name, balance, bank)
+    user = bank(str(user_id), first_name, int(balance), bank)
     SESSIONB.add(user)
     SESSIONB.commit()
     return True
 
 
 def del_bank(user_id):
-    to_check = get_bank(str(user_id))
+    to_check = get_bank(user_id))
     if not to_check:
         return False
-    rem = SESSIONB.query(bank).get(user_id)
+    rem = SESSIONB.query(bank).get(str(user_id))
     SESSIONB.delete(rem)
     SESSIONB.commit()
     return True
