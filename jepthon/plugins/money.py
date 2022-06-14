@@ -560,10 +560,10 @@ async def bankar(message):
         return
     if input == "جيبثون الاسلامي":
         bankn = "مصرف جيبثون الاسلامي"
-    if input == "الرافدين":
+    elif input == "الرافدين":
     	bankn = "مصرف الرافدين"
-    if input != "الرافدين" or "جيبثون الاسلامي":
-         await edit_or_reply(message, "لا يوجد هكذا مصرِف !")
+    elif input != "الرافدين" or "جيبثون الاسلامي":
+         return await edit_or_reply(message, "لا يوجد هكذا مصرِف !")
     chars = '1234567890'
     us = str(''.join(random.choice(chars) for i in range(15)))
     s = "5"+us
