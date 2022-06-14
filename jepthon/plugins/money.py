@@ -115,7 +115,7 @@ def convert(seconds):
 
     seconds %= 60
 
-    return "%d:%02d:%02d" % (minutes, seconds)
+    return "%02d:%02d" % (minutes, seconds)
 @jmthon.ar_cmd(func=lambda m:"راتب")
 
 async def ga(message):
