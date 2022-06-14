@@ -119,14 +119,14 @@ async def ga(message):
 
 
     if ms == ".حذف حسابي" or ms == ".حذف حساب":
-         elif get_bank(mee.id) is None:
+         if get_bank(mee.id) is None:
               await edit_delete(message, "لا تملك حساب مصرفي لحذفه")
          else:
               del_bank(mee.id)
               await edit_delete(message, "تم حذف حسابك المصرفي بنجاح")
 
 
-        mde = await edit_or_reply(message,f"<strong>تم حذف حسابك في البنك .</strong>",parse_mode="html")
+              mde = await edit_or_reply(message,f"<strong>تم حذف حسابك في البنك .</strong>",parse_mode="html")
 
 
     if ms == "المصرف." or ms == "البانك." or ms == "مصرف.":
@@ -178,18 +178,6 @@ Done All Commands .
 
 
         hr = await edit_or_reply(message,f"<strong>{help}</strong>",parse_mode="html")
-
-
-    if ms == ".فلوسي" or ms == ".فلوس":
-
-
-        fl = open(f"{mee.id}.txt").read()
-
-
-        yb = await edit_or_reply(message,f"<strong>Your Balance : <code>{fl}</code> 💵</strong>",parse_mode="html")
-
-
-        
 
 
     if ms == ".كنز":
