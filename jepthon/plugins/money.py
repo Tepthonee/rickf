@@ -90,9 +90,9 @@ async def myb(message):
          ba = acc.bank
          ifn = f"""
 . {nn} : الاسم •
-. {me.id} : رقم الحساب •
-. 💵 {balance} : الاموال •
-. {ba} : اسم المصرف •
+. رقم الحساب : {me.id} •
+. الاموال : {balance} 💵•
+. اسم المصرف : {ba} •
 - ================= -
           """
          acinfo = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
