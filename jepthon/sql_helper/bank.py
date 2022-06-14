@@ -21,7 +21,7 @@ class bank(BASE):
     __tablename__ = "bank"
     user_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
-    balance = Column(String(14), primary_key=True)
+    balance = Column(String(14))
     bank = Column(UnicodeText)
 
     def __init__(self, user_id, first_name, balance, bank):
