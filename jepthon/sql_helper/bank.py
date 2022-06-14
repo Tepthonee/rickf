@@ -49,7 +49,7 @@ def add_bank(
     rem = SESSIONB.query(bank).get(user_id)
     SESSIONB.delete(rem)
     SESSIONB.commit()
-    user = bank(user_id), first_name, int(balance), bank)
+    user = bank(user_id, first_name, int(balance), bank)
     SESSIONB.add(user)
     SESSIONB.commit()
     return True
