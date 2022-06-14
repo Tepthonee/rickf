@@ -1,7 +1,7 @@
-
+import time
 import re
 from ..Config import Config
-from ..sql_helper.bank import add_bank, del_bank, get_bank
+from ..sql_helper.bank import add_bank, del_bank, get_bank, update_bank
 from telethon import Button, events
 from telethon.events import CallbackQuery, InlineQuery
 import glob, os
@@ -20,6 +20,9 @@ import asyncio
 
 plugin_category = "utils"
 
+#----Timers----#
+t1, t2, t3, t4, t5, t6 = {}, {}, {}, {}, {}, {}
+#--------------#
 
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
@@ -89,10 +92,10 @@ async def myb(message):
          balance = acc.balance
          ba = acc.bank
          ifn = f"""
-. {nn} : الاسم •
-. رقم الحساب : {me.id} •
-. الاموال : {balance} 💵•
-. اسم المصرف : {ba} •
+ {nn} : الاسم •
+• رقم الحساب : {me.id} 
+• الاموال : {balance} 💵
+• اسم المصرف : {ba} 
 - ================= -
           """
          acinfo = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
@@ -104,20 +107,8 @@ async def myb(message):
 @jmthon.ar_cmd(func=lambda m:"راتب")
 
 async def ga(message):
-    aw = glob.glob('./*.txt')
-    if f"./block.txt" not in aw:
-         open(f"./block.txt","a")    
-    if f"./blockTip.txt" not in aw:
-         open(f"blockTip.txt","a")
-              
     mee = await message.client.get_me()
-    global acc
-
     ms = message.text
-
-    print(ms + "reda")
-
-
     if ms == ".حذف حسابي" or ms == ".حذف حساب":
          if get_bank(mee.id) is None:
               await edit_delete(message, "لا تملك حساب مصرفي لحذفه")
@@ -181,60 +172,21 @@ Done All Commands .
 
 
     if ms == ".كنز":
-
-
-          ca = open(f"blockTip.txt").read()
-
-
-          if f"{mee.username}" in ca:
-
-
-              gfu = await edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
-
-
-          else:
-
-
-              
-
-
+        if mee.id in t1:
+              gfu = await edit_or_reply(message,"<strong>لا تستطيع اخذ راتب انتضر {} دقائق</strong>".format(t1[mee.id] - time.time()),parse_mode="html")
+     
+        else:
               rt = randint(50,3000)
-
-
-              ratb = rt
-
-
-              acc = open(f"{mee.id}.txt").read()
-
-
-              ga = float(ratb) + float(acc)
-
-
-              with open(f"{mee.id}.txt","r+")as fs:
-
-
-                  fs.truncate(0)
-
-
-              with open(f"{mee.id}.txt","w")as va:
-
-
-                  va.write(f"{int(ga)}")
-
-
-              tx = await edit_or_reply(message,f"<strong>💸 Your treasure  Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
-
-
-              with open(f"blockTip.txt","w")as df:
-
-
-                 df.write(f"{mee.username}\n")
-
-
-
-                 df.close()
-
-
+              acc = get_bank(mee.id).balance
+              ga = int(rt) + int(acc)
+              update_bank(mee.id, ga)
+              tx = await edit_or_reply(message,f"<strong>💸 Your treasure  Is Available!🤩\n- You Got {rt} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
+              t1[mee.id] = time.time() + 600 # store end time 
+              await asyncio.sleep(600)
+              del t1[mee.id]
+        #await Bot.send_message(message.channel, "wait {} seconds.".format(
+            #tempo[message.author.id] - time.time()))
+              #await asyncio.sleep(600)
     if ".استثمار" in ms:
 
 
