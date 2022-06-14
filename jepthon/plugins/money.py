@@ -91,7 +91,7 @@ async def myb(message):
          ifn = f"""
 - Name : {nn} .
 - Account Id : {me.id} .
-- Balance : {acc} 💵.
+- Balance : {balance} 💵.
 - Bank name : {ba}
 - ================= -
           """
