@@ -42,7 +42,7 @@ def add_bank(
 ):
     to_check = get_bank(user_id)
     if not to_check:
-        user = bank(str(user_id), first_name, int(balance), bank)
+        user = bank(user_id, first_name, int(balance), bank)
         SESSIONB.add(user)
         SESSIONB.commit()
         return True
