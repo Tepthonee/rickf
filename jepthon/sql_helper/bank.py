@@ -40,7 +40,7 @@ def add_bank(
     balance,
     bank,
 ):
-    to_check = get_starter_details(user_id)
+    to_check = get_bank(user_id)
     if not to_check:
         user = bank(str(user_id), first_name, int(balance), bank)
         SESSIONB.add(user)
