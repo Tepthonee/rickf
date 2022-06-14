@@ -27,15 +27,7 @@ plugin_category = "utils"
 )
 async def start(event):
     me = await event.client.get_me()
-    aw = glob.glob('./*.txt')
-
-
-    if f"./{me.id}.txt" not in aw:
-
-
-        with open(f"{me.id}.txt","a")as xs:
-
-
+ 
             sta = await edit_or_reply(event, f"""<strong>
 
 
@@ -63,41 +55,6 @@ async def start(event):
 
 </strong>""",parse_mode="html")
 
-
-            xs.write("50")
-
-
-            xs.close()
-
-
-    else:
-
-
-        af = await edit_or_reply(event, f"""
-
-
-👋 Hi {me.first_name},
-
-
-- Wellcome To ReBackBank Bot! .
-
-
--  You Can Make Your Own Bank Account And Play To Be Beast in TopList! .
-
-
-- You Can Take Awards In The Bot And More!
-
-
-- Add Bot To Your Group Or You Can Use It Here ! .
-
-
-
-
-
- ━━━━━━━━━━━━━━━━━
-
-
-ارسل .انشاء حساب لانشاء حساب مصرفي! """, parse_mode="html")
 
         
 
@@ -618,7 +575,7 @@ async def bankar(message):
          with open(f"{mee.id}.txt","a")as xs:
               xs.write("50")
               xs.close()
-              cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")      
+              cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بt_nam|\nالاموال المودعة:50$</strong>", parse_mode="html")      
     finally:
          #add_bank(mee.id, mee.first_name, 50, bankn)
          cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")      
