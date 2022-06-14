@@ -17,15 +17,15 @@ def start() -> scoped_session:
 
 SESSIONB = start()
 
-class bank(BASE):
+class bankc(BASE):
     __tablename__ = "bank"
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
     balance = Column(Integer)
     bank = Column(UnicodeText)
 
     def __init__(self, user_id, first_name, balance, bank):
-        self.user_id = user_id
+        self.user_id = str(user_id)
         self.first_name = first_name
         self.balance = int(balance)
         self.bank = bank
@@ -42,14 +42,14 @@ def add_bank(
 ):
     to_check = get_bank(user_id)
     if not to_check:
-        user = bank(int(user_id), first_name, int(balance), bank)
+        user = bankc(str(user_id), first_name, int(balance), bank)
         SESSIONB.add(user)
         SESSIONB.commit()
         return True
-    rem = SESSIONB.query(bank).get(user_id)
+    rem = SESSIONB.query(bankc).get(str(user_id))
     SESSIONB.delete(rem)
     SESSIONB.commit()
-    user = bank(int(user_id), first_name, int(balance), bank)
+    user = bankc(str(user_id), first_name, int(balance), bank)
     SESSIONB.add(user)
     SESSIONB.commit()
     return True
@@ -59,7 +59,7 @@ def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    rem = SESSIONB.query(bank).get(str(user_id))
+    rem = SESSIONB.query(bankc).get(str(user_id))
     SESSIONB.delete(rem)
     SESSIONB.commit()
     return True
@@ -67,7 +67,7 @@ def del_bank(user_id):
 
 def get_bank(user_id):
     try:
-        if _result := SESSIONB.query(bank).get(str(user_id)):
+        if _result := SESSIONB.query(bankc).get(str(user_id)):
             return _result
         return None
     finally:
@@ -76,7 +76,7 @@ def get_bank(user_id):
 
 def get_all_bank():
     try:
-        return SESSIONB.query(bank).all()
+        return SESSIONB.query(bankc).all()
     except BaseException:
         return None
     finally:
