@@ -105,6 +105,17 @@ async def myb(message):
          ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
 
 
+def convert(seconds): 
+
+    seconds = seconds % (24 * 3600) 
+
+    seconds %= 3600
+
+    minutes = seconds // 60
+
+    seconds %= 60
+
+    return "%d:%02d:%02d" % (minutes, seconds)
 @jmthon.ar_cmd(func=lambda m:"راتب")
 
 async def ga(message):
@@ -174,7 +185,8 @@ Done All Commands .
 
     if ms == ".كنز":
         if mee.id in t1:
-              gfu = await edit_or_reply(message,"<strong>لا تستطيع اخذ راتب انتضر {} دقائق</strong>".format(t1[mee.id] - time.time()),parse_mode="html")
+              tii = t1[mee.id] - time.time()
+              gfu = await edit_or_reply(message,"<strong>{} لا تستطيع اخذ راتب انتضر </strong>".format(convert(tii)),parse_mode="html")
      
         else:
               rt = randint(50,3000)
