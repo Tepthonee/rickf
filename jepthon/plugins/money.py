@@ -556,7 +556,7 @@ async def bankar(message):
     us = str(''.join(random.choice(chars) for i in range(15)))
     s = "5"+us
     try:
-         await edit_or_reply(event, type(mee.id))
+         await edit_or_reply(message, type(mee.id))
          #add_bank(mee.id, mee.first_name, 50, bankn)
    
     finally:
