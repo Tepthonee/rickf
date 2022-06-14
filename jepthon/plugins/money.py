@@ -83,7 +83,7 @@ async def myb(message):
 
     me = await message.client.get_me()
     
-    if get_bank(me.id) not None:
+    if get_bank(me.id) is not None:
          acc = get_bank(me.id)
          nn = acc.first_name
          balance = acc.balance
