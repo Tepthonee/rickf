@@ -65,16 +65,12 @@ async def start(event):
 
 async def a(message):
     me = await message.client.get_me()
-    aw = glob.glob('./*.txt')
-    if f"./{me.id}.txt" not in aw:
-         noa = await edit_or_reply(message, f"<strong>انت لا تملك حساب في البنك", parse_mode="html")
+    if get_bank(me.id) is None:
+         noa = await edit_or_reply(message, f"<strong>انت لا تملك حساب في البنك</strong>", parse_mode="html")
     else:
-         f = open(f"{me.id}.txt").read()
-         fl = open(f"{me.id}.txt").read()
-         nn = f.split(":")[1]
-         balance = f.split(":")[3]
-         apcc = fl
-         ba = await edit_or_reply(message,f"<strong>Your Balance : {apcc} 💵</strong>",parse_mode="html")
+         acc = get_bank(me.id)
+         mo = int(acc.balance)
+         ba = await edit_or_reply(message,f"<strong>Your Balance : {mo} 💵</strong>",parse_mode="html")
 
 
 
@@ -86,23 +82,17 @@ async def a(message):
 async def myb(message):
 
     me = await message.client.get_me()
-    global acc
-    aw = glob.glob('./*.txt')
-    if f"./{me.id}.txt" in aw:
-      with open(f"{me.id}.txt","r+")as df:
-          f = open(f"{me.id}.txt").read()
-          fpp = open(f"blockTip.txt","r+")
-          fpp.truncate(0)
-          fppp = open(f"block.txt","r+")
-          fppp.truncate(0)
-          fl = open(f"{me.id}.txt").read()
-          nn = f.split(":")[1]
-          balance = f.split(":")[3]
-          acc = fl
-          ifn = f"""
+    
+    if get_bank(me.id) not None:
+         acc = get_bank(me.id)
+         nn = acc.first_name
+         balance = acc.balance
+         ba = acc.bank
+         ifn = f"""
 - Name : {nn} .
-- Account Id : {balance} .
+- Account Id : {me.id} .
 - Balance : {acc} 💵.
+- Bank name : {ba}
 - ================= -
           """
           acinfo = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
@@ -572,5 +562,4 @@ async def bankar(message):
    
     finally:
          cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")
-         gg = await jmthon.send_message("@WKKKN", str(get_bank(mee.id)))
 
