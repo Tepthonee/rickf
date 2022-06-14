@@ -190,6 +190,8 @@ async def custom_jepthon(event):
                 event, "**⎙ :: عزيزي المستخدم انت لم تقوم باضافه هذا الفار اصلا**"
             )
         delgvar("ALIVE_TEXT")
+    if input_str == "حسابي" or input_str == "حساب":
+        return None
     if input_str == "عدد التحذيرات":
         if gvarstatus("MAX_FLOOD_IN_PMS") is None:
             return await edit_delete(
