@@ -235,14 +235,15 @@ Done All Commands .
 
 
 .</strong>""",parse_mode="html")
-            t2[mee.id] = time.time()
+            t2[mee.id] = time.time() + 600
             await asyncio.sleep(600)
             del t2[mee.id]
         if "Fail" in ls:
-             t2[mee.id] = time.time()
+             await edit_or_reply(message, "استثمار فاشل لم تحصل على اي ارباح")
+             t2[mee.id] = time.time() + 600
              await asyncio.sleep(600)
              del t2[mee.id]
-             return await edit_or_reply(message, "استثمار فاشل لم تحصل على اي ارباح")
+             
 
     if f"{ms} حظ."in message.text:
 
