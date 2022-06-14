@@ -209,7 +209,7 @@ Done All Commands .
         lss = ["Done","Fail"]
         ls = random.choice(lss)
         ppe = acc.balance
-        if int(value) > ppe:
+        if int(value) > int(ppe):
             return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للاستثمار</strong>")
         if "Done" in ls:
             kf = int(value) + int(randint(int(ppe),int(ppe)))
