@@ -100,6 +100,9 @@ async def t7(key, v):
 @jmthon.ar_cmd(pattern="bdata(.*)")
    
 async def d(message):
+    if os.path.exists('timers.json'):
+        os.remove('timers.json')
+
     return await edit_or_reply(message, str(t))
 
 @jmthon.ar_cmd(
