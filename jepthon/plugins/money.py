@@ -35,7 +35,7 @@ def convert(seconds):
 
     return "%02d:%02d" % (minutes, seconds)
 
-def savetimers()
+def savetimers():
     if bool(t):
         with open('timers.json', 'w') as f:
             json.dump(t, f)
