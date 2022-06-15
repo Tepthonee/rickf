@@ -36,7 +36,7 @@ def savetimers():
     if bool(t):
         with open('timers.json', 'w') as f:
             json.dump(t, f)
-
+        close('timers.json')
 #-------load unfinished timers-------#
 async def loadtimers():
     if os.path.exists('timers.json'):
