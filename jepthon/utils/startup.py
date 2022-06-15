@@ -11,7 +11,7 @@ from telethon.sync import TelegramClient
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.errors.rpcerrorlist import FloodWaitError
 from jepthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-from jepthon.plugins.money import loadtimers
+from ..plugins.money import loadtimers
 from ..Config import Config
 from ..core.logger import logging
 from ..core.session import jmthon
