@@ -47,7 +47,7 @@ async def loadtimers():
       
       for key in tda:
           t[key] = time.time() + tda[str(key)]
-          await asyncio.sleep(tda[str(key)]
+          await asyncio.sleep(tda[str(key)])
           del t[str(key)]
     os.remove('timers.json')
 
