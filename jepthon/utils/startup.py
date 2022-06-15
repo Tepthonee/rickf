@@ -3,7 +3,7 @@ import asyncio
 import glob
 import os
 import sys
-from jepthon.plugins.money import loadtimers
+from ..plugins.money import loadtimers
 from datetime import timedelta
 from pathlib import Path
 import requests
