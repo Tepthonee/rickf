@@ -44,10 +44,11 @@ async def loadtimers():
     if os.path.exists('timers.json'):
       f = open('timers.json')
       tda = json.load(f)
-      if 'كنز' in tda:
-          t["كنز"] = time.time() + tda['كنز']
-          await asyncio.sleep(tda['كنز'])
-          del t["كنز"]
+      
+      for key in tda:
+          t[key] = time.time() + tda[str(key)]
+          await asyncio.sleep(tda[str(key)]
+          del t[str(key)]
     os.remove('timers.json')
 
 #------------end of load------------#
@@ -260,33 +261,22 @@ Done All Commands .
              
 
     if f"{ms} حظ."in message.text:
-
-
         value = message.text.replace("حظ.","")
+        ppe = acc.balance
+        if "حظ" in t:
+            ti2 = t["حظ"] - time.time()
+            return await edit_or_reply(message,"<strong> للعب الحظ مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
 
-
+        if int(value) > int(ppe):
+            return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للحظ</strong>", parse_mode="html")
         ls = ["Done","Fail"]
-
-
         sv = random.choice(ls)
-
-
         if "Done" in sv:
-
-
-            pe = open(f"{mee.id}.txt").read()
-
-
-            kf = int(value) + int(randint(int(pe),int(pe)))
-
-            with open(f"{mee.id}.txt","w")as va:
-
-
-                  va.write(f"{int(kf)}")
-
-
+        
+            kf = int(value) + int(randint(int(ppe),int(ppe)))
+            update_bank(mee.id, kf)
             cong = await edit_or_reply(message,f"""<strong>
-
+          
 
 - Congratulations you won in luck  🎉
 
@@ -298,20 +288,11 @@ Done All Commands .
 
 
 .</strong>""",parse_mode="html")
-
-
+            t["حظ"] = time.time() + 600
+            await asyncio.sleep(600)
+            del t["حظ"]
         else:
-
-
-            pep = open(f"{mee.id}.txt").read()
-
-
-            with open(f"{mee.id}.txt","r+")as fs:
-
-
-                  fs.truncate(0)
-
-
+            pep = acc.balance
             heh = await edit_or_reply(message,f"""<strong>
 
 
@@ -326,7 +307,9 @@ Done All Commands .
 
 .</strong>""",parse_mode="html")
 
-
+            t["حظ"] = time.time() + 600
+            await asyncio.sleep(600)
+            del t["حظ"]
     if ms == ".بخشيش":
 
 
