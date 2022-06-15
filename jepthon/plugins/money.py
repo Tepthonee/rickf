@@ -50,7 +50,7 @@ async def loadtimers():
           await asyncio.sleep(tda['كنز'])
           del t["كنز"]
     os.remove('timers.json')
-loadtimers()
+await loadtimers()
 #-------end of load------#
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
