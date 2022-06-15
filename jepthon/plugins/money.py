@@ -65,7 +65,9 @@ async def loadtimers():
          if key == "زرف":
             await t7(key, v)
             pass
-    os.remove('timers.json')
+      f.close()
+      os.remove('timers.json')
+   
 
 #------------end of load------------#
 async def t1(key, v):
@@ -341,7 +343,7 @@ async def ga(message):
 - Unfortunately, I lost by luck  😬
 
 
-- Your Money before  ↢ ( {ppe} 💵 ) .
+- Your Money before  ↢ ( {pa} 💵 ) .
 
 
 - Your Money now  ↢ ( {pep} 💵 ) .
@@ -353,113 +355,38 @@ async def ga(message):
             await asyncio.sleep(600)
             del t["حظ"]
     if ms == ".بخشيش":
-
-
-          ca = open(f"blockTip.txt").read()
-
-
-          if f"{mee.username}" in ca:
-
-
-              qu = await edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
-
-
+        ppe = acc.balance
+        if "بخشيش" in t:
+            ti2 = t["بخشيش"] - time.time()
+            return await edit_or_reply(message,"<strong> لقد اخذت بخشيش انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
           else:
-              rt = randint(50,1000)
-
-              ratb = rt
-
-              acc = open(f"{mee.id}.txt").read()
-
-
-              ga = float(ratb) + float(acc)
-
-
-              with open(f"{mee.id}.txt","r+")as fs:
-
-
-                  fs.truncate(0)
-
-
-              with open(f"{mee.id}.txt","w")as va:
-
-
-                  va.write(f"{int(ga)}")
-
-
-              tp = await edit_or_reply(message,f"<strong>💸 Your tip Is Available!🤩\n- You Got {ratb} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
-
-
-              with open(f"blockTip.txt","w")as df:
-
-
-                 df.write(f"{mee.username}\n")
-
-
-
-                 df.close()
-
-
+              rt = randint(70,2000)
+              ga = int(rt) + int(ppe)
+              tp = await edit_or_reply(message,f"<strong>💸 Your tip Is Available!🤩\n- You Got {rt} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
+              update_bank(mee.id, ga)
+              t["بخشيش"] = time.time() + 600
+              await asyncio.sleep(600)
+              del t["بخشيش"]
     if ms == ".راتب":
-
-
-          ca = open(f"block.txt").read()
-
-
-          if f"{mee.username}" in ca:
-
-
-              gof = await edit_or_reply(message,f"<strong>So Quick!\nCome Here Again After 10m!</strong>",parse_mode="html")
-
+        ba = acc.balance
+        if "راتب" in t:
+            ti2 = t["راتب"] - time.time()
+            return await edit_or_reply(message,"<strong> لأخذ راتب مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
 
           else:
 
 
-              list = ["programmer 💻-10000","King 🤴-100000","President 👨‍⚖-200000","Worker 🧑‍🔧-1000","Robot 🤖-2300","Driver 🚓-4000","DrogsSeller 🚬-1000000","GunSeller 🔫-90000","Pilot ✈️-30000","Captain 🛳-10000"]
-
+              list = ["مبرمج 💻-1000","ملك 🤴-10000","قاضي 👨‍⚖-20000","عامل 🧑‍🔧-1000","روبوت 🤖-2300","سائق 🚓-4000","تاجر مخدرات 🚬-5000","GunSeller 🔫-90000","Pilot ✈️-30000","Captain 🛳-10000"]
 
               rt = random.choice(list)
-
-
               name = rt.split("-")[0]
-
-
               ratb = rt.split("-")[1]
-
-
-              acc = open(f"{mee.id}.txt").read()
-
-
-              ga = float(ratb) + float(acc)
-
-
-
-
-              with open(f"{mee.id}.txt","r+")as fs:
-
-
-                  fs.truncate(0)
-
-
-              with open(f"{mee.id}.txt","w")as va:
-
-
-                  va.write(f"{int(ga)}")
-
-
+              ga = int(ratb) + int(ba)
+              update_bank(mee.id, ga)
               sal = await edit_or_reply(message,f"<strong>💸 Your Salary Is Available!🤩\n- You Got {ratb} 💵\n- Because You Are {name}.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
-
-
-              with open(f"block.txt","w")as df:
-
-
-                 df.write(f"{mee.username}\n")
-
-
-                 df.close()
-
-
-
+              t["راتب"] = time.time() + 600
+              await asyncio.sleep(600)
+              del t["راتب"]
 @jmthon.ar_cmd(pattern="غلق حساب (.*)")
    
 async def d(message):
