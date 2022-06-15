@@ -279,13 +279,6 @@ Done All Commands .
 
             kf = int(value) + int(randint(int(pe),int(pe)))
 
-
-            with open(f"{mee.id}.txt","r+")as fs:
-
-
-                  fs.truncate(0)
-
-
             with open(f"{mee.id}.txt","w")as va:
 
 
