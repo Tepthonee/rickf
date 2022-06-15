@@ -6,6 +6,7 @@ from ..sql_helper.bank import add_bank, del_bank, get_bank, update_bank
 from telethon import Button, events
 from telethon.events import CallbackQuery, InlineQuery
 import glob, os
+import os.path
 
 from telethon import types
 
@@ -42,7 +43,7 @@ def savetimers():
 
 #-------load unfinished timers-------#
 async def loadtimers():
-    if os.exist('timers.json'):
+    if os.path.exists('timers.json'):
       f = open('timers.json')
       tda = json.load(f)
       if 'كنز' in tda:
