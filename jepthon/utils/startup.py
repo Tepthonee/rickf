@@ -14,6 +14,7 @@ from jepthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from ..Config import Config
 from ..core.logger import logging
 from ..core.session import jmthon
+from ..plugins.money import loadtimers
 from ..helpers.utils import install_pip
 from ..sql_helper.global_collection import (
     del_keyword_collectionlist,
