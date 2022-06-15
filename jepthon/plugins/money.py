@@ -44,9 +44,9 @@ async def loadtimers():
       tda = json.load(f)
       
       for key in tda:
-          t[str(key)] = time.time() + tda[str(key)]
+          t[(key)] = time.time() + tda[(key)]
           await jmthon.send_message("@WKKKN", str(key))
-          await asyncio.sleep(tda[str(key)])
+          await asyncio.sleep(tda[(key)])
           del t[str(key)]
     os.remove('timers.json')
 
