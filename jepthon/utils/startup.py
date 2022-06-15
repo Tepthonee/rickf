@@ -3,7 +3,6 @@ import asyncio
 import glob
 import os
 import sys
-from ..plugins.money import loadtimers
 from datetime import timedelta
 from pathlib import Path
 import requests
@@ -89,7 +88,6 @@ async def startupmessage():
                 message.text
                 + "\n\n**⌯︙اهلا وسهلا لقد قمت باعاده تشغيل بـوت جيبثون تمت بنجاح**"
             )
-            loadtimers()
             await jmthon.edit_message(msg_details[0], msg_details[1], text)
             if gvarstatus("restartupdate") is not None:
                 await jmthon.send_message(
