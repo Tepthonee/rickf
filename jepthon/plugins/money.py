@@ -53,7 +53,7 @@ async def loadtimers():
 @jmthon.ar_cmd(pattern="bdata(.*)")
    
 async def d(message):
-    return edit_or_reply(message, str(t))
+    return await edit_or_reply(message, str(t))
 
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
@@ -270,7 +270,7 @@ Done All Commands .
             ti2 = t["حظ"] - time.time()
             return await edit_or_reply(message,"<strong> للعب الحظ مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
 
-        if int(value) > ppe:
+        if int(value) > int(ppe):
             return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للحظ</strong>", parse_mode="html")
         ls = ["Done","Fail"]
         sv = random.choice(ls)
