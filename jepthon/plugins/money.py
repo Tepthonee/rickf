@@ -335,9 +335,9 @@ async def ga(message):
             del t["حظ"]
         else:
             pa = acc.balance
-            heh = await edit_or_reply(message,f"""<strong>
-            pop = pa - value
+            pop = int(pa) - int(value)
             update_bank(mee.id, pop)
+            heh = await edit_or_reply(message,f"""<strong>
 - Unfortunately, I lost by luck  😬
 
 
