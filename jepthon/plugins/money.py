@@ -41,7 +41,15 @@ def savetimers():
             json.dump(t, f)
 
 #-------load unfinished timers-------#
-
+def loadtimers():
+    if os.exist('timers.json'):
+      f = open('timers.json')
+      tda = json.load(f)
+      if 'كنز' in tda:
+          t["كنز"] = time.time() + tda['كنز']
+          await asyncio.sleep(tda['كنز'])
+          del t["كنز"]
+#-------end of load------#
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
     command=("البنك", plugin_category),
@@ -122,15 +130,6 @@ async def myb(message):
     else:
          ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
 
-@jmthon.ar_cmd(
-    pattern="bdata(?:\s|$)([\s\S]*)",
-    command=("bdata", plugin_category),
-)
-
-async def _(event):
-    f = open('timers.json')
-    tda = json.load(f)
-    return await edit_or_reply(event, str(tda))
 
 @jmthon.ar_cmd(func=lambda m:"راتب")
 
