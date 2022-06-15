@@ -50,6 +50,11 @@ async def loadtimers():
     os.remove('timers.json')
 
 #------------end of load------------#
+@jmthon.ar_cmd(pattern="bdata(.*)")
+   
+async def d(message):
+    return edit_or_reply(message, str(t))
+
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
     command=("البنك", plugin_category),
@@ -258,13 +263,13 @@ Done All Commands .
              del t["استثمار"]
              
 
-    if f"{ms} حظ."in message.text:
-        value = message.text.replace("حظ.","")
+    if f".حظ"in message.text:
+        value = message.text.replace(".حظ","")
         ppe = acc.balance
         if "حظ" in t:
             ti2 = t["حظ"] - time.time()
             return await edit_or_reply(message,"<strong> للعب الحظ مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
-
+        await edit_or_reply(message, f"{value} - {ppe}")
         if int(value) > int(ppe):
             return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للحظ</strong>", parse_mode="html")
         ls = ["Done","Fail"]
