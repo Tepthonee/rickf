@@ -42,7 +42,7 @@ async def loadtimers():
       tda = json.load(f)
       
       for key, v in tda.items():
-         jmthon.send_message('@WKKKN', f"{key}:{v}")
+         await jmthon.send_message('@WKKKN', f"{key}:{v}")
          if key == "كنز":
             await t1(key, v)
             pass
