@@ -44,7 +44,7 @@ async def loadtimers():
       tda = json.load(f)
       
       for key, v in tda.items():
-          restoretimer(key, v)
+         await restoretimer(key, v)
     os.remove('timers.json')
 
 #------------end of load------------#
