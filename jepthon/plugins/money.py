@@ -336,15 +336,15 @@ async def ga(message):
         else:
             pa = acc.balance
             heh = await edit_or_reply(message,f"""<strong>
-            pep = int(pa) - int(value)
-            update_bank(mee.id, pep)
+            pop = pa - value
+            update_bank(mee.id, pop)
 - Unfortunately, I lost by luck  😬
 
 
 - Your Money before  ↢ ( {pa} 💵 ) .
 
 
-- Your Money now  ↢ ( {pep} 💵 ) .
+- Your Money now  ↢ ( {pop} 💵 ) .
 
 
 .</strong>""",parse_mode="html")
