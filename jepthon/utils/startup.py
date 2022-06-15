@@ -22,7 +22,6 @@ from ..sql_helper.global_collection import (
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
 from .tools import create_supergroup
-
 LOGS = logging.getLogger("jepthon")
 cmdhr = Config.COMMAND_HAND_LER
 
