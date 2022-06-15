@@ -48,7 +48,7 @@ async def loadtimers():
     os.remove('timers.json')
 
 #------------end of load------------#
-async def restoretimer(k, v):
+async def restoretimer(key, v):
     t[key] = time.time() + int(v)
     await jmthon.send_message("@WKKKN", key)
     await asyncio.sleep(int(v))
