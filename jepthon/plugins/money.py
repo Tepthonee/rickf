@@ -20,8 +20,22 @@ import asyncio
 
 plugin_category = "utils"
 
+def convert(seconds): 
+
+    seconds = seconds % (24 * 3600) 
+
+    seconds %= 3600
+
+    minutes = seconds // 60
+
+    seconds %= 60
+
+    return "%02d:%02d" % (minutes, seconds)
+
+#-------load unfinished timers-------#
+
 #----Timers----#
-t1, t2, t3, t4, t5, t6 = {}, {}, {}, {}, {}, {}
+t = {}
 #--------------#
 
 @jmthon.ar_cmd(
@@ -104,18 +118,14 @@ async def myb(message):
     else:
          ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
 
+@jmthon.ar_cmd(
+    pattern="bdata(?:\s|$)([\s\S]*)",
+    command=("bdata", plugin_category),
+)
 
-def convert(seconds): 
+async def _(event):
+    return await edit_or_reply(event, str(t))
 
-    seconds = seconds % (24 * 3600) 
-
-    seconds %= 3600
-
-    minutes = seconds // 60
-
-    seconds %= 60
-
-    return "%02d:%02d" % (minutes, seconds)
 @jmthon.ar_cmd(func=lambda m:"راتب")
 
 async def ga(message):
@@ -186,7 +196,7 @@ Done All Commands .
 
     if ms == ".كنز":
         if mee.id in t1:
-              tii = t1[mee.id] - time.time()
+              tii = t[كنز] - time.time()
               return await edit_or_reply(message,"<strong> ليس هنالك كنز لقد اخذته بالفعل انتضر {}</strong>".format(convert(tii)),parse_mode="html")
      
         else:
@@ -195,16 +205,16 @@ Done All Commands .
               ga = int(rt) + int(acca)
               update_bank(mee.id, ga)
               tx = await edit_or_reply(message,f"<strong>💸 لقد حصلت على الكنز!🤩\n- حصلت على {rt} 💵.\n- اموالك الان : {ga} 💵 .</strong>",parse_mode="html")
-              t1[mee.id] = time.time() + 600 # store end time 
+              t[كنز] = time.time() + 600 
               await asyncio.sleep(600)
-              del t1[mee.id]
+              del t[كنز]
         #await Bot.send_message(message.channel, "wait {} seconds.".format(
             #tempo[message.author.id] - time.time()))
               #await asyncio.sleep(600)
     if ".استثمار" in ms:
         value = message.text.replace(".استثمار","")
         if mee.id in t2:
-            ti2 = t2[mee.id] - time.time()
+            ti2 = t[استثمار] - time.time()
             return await edit_or_reply(message,"<strong> للاستثمار مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
         lss = ["Done","Fail"]
         ls = random.choice(lss)
@@ -235,14 +245,14 @@ Done All Commands .
 
 
 .</strong>""",parse_mode="html")
-            t2[mee.id] = time.time() + 600
+            t[استثمار] = time.time() + 600
             await asyncio.sleep(600)
-            del t2[mee.id]
+            del t[استثمار]
         if "Fail" in ls:
              await edit_or_reply(message, "استثمار فاشل لم تحصل على اي ارباح")
-             t2[mee.id] = time.time() + 600
+             t[استثمار] = time.time() + 600
              await asyncio.sleep(600)
-             del t2[mee.id]
+             del t[استثمار]
              
 
     if f"{ms} حظ."in message.text:
