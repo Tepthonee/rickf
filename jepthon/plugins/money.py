@@ -1,4 +1,5 @@
 import time
+import json
 import re
 from ..Config import Config
 from ..sql_helper.bank import add_bank, del_bank, get_bank, update_bank
@@ -19,7 +20,9 @@ from ..core.managers import edit_delete, edit_or_reply
 import asyncio
 
 plugin_category = "utils"
-
+#----Timers----#
+t = {}
+#--------------#
 def convert(seconds): 
 
     seconds = seconds % (24 * 3600) 
@@ -32,11 +35,12 @@ def convert(seconds):
 
     return "%02d:%02d" % (minutes, seconds)
 
-#-------load unfinished timers-------#
+def savetimers()
+    if bool(t):
+        with open('timers.json', 'w') as f:
+            json.dump(t, f)
 
-#----Timers----#
-t = {}
-#--------------#
+#-------load unfinished timers-------#
 
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
@@ -124,7 +128,9 @@ async def myb(message):
 )
 
 async def _(event):
-    return await edit_or_reply(event, str(t))
+    f = open('timers.json')
+    tda = json.load(f)
+    return await edit_or_reply(event, str(tda))
 
 @jmthon.ar_cmd(func=lambda m:"راتب")
 
