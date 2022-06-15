@@ -41,7 +41,7 @@ def savetimers():
             json.dump(t, f)
 
 #-------load unfinished timers-------#
-def loadtimers():
+async def loadtimers():
     if os.exist('timers.json'):
       f = open('timers.json')
       tda = json.load(f)
@@ -49,6 +49,7 @@ def loadtimers():
           t["كنز"] = time.time() + tda['كنز']
           await asyncio.sleep(tda['كنز'])
           del t["كنز"]
+    os.remove('timers.json')
 #-------end of load------#
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
