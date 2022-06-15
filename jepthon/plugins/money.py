@@ -51,7 +51,7 @@ async def loadtimers():
           del t["كنز"]
     os.remove('timers.json')
 await loadtimers()
-#-------end of load------#
+#------------end of load------------#
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
     command=("البنك", plugin_category),
