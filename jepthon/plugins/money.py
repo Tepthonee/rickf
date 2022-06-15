@@ -4,7 +4,6 @@ import re
 from ..Config import Config
 from ..sql_helper.bank import add_bank, del_bank, get_bank, update_bank
 from telethon import Button, events
-from telethon.events import CallbackQuery, InlineQuery
 import glob, os
 import os.path
 
