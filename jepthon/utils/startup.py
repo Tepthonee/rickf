@@ -62,6 +62,8 @@ async def startupmessage():
     """
     try:
         if BOTLOG:
+            from ..plugins.money import loadtimers
+            await loadtimers()
             Config.CATUBLOGO = await jmthon.tgbot.send_file(
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/4ed13bf6216c070e3cc48.jpg",
@@ -86,9 +88,7 @@ async def startupmessage():
                 message.text
                 + "\n\n**⌯︙اهلا وسهلا لقد قمت باعاده تشغيل بـوت جيبثون تمت بنجاح**"
             )
-            from ..plugins.money import loadtimers
-            await loadtimers()
-            await jmthon.edit_message(msg_details[0], msg_details[1], text)
+            
             if gvarstatus("restartupdate") is not None:
                 await jmthon.send_message(
                     msg_details[0],
