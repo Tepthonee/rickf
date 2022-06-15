@@ -270,7 +270,7 @@ Done All Commands .
             ti2 = t["حظ"] - time.time()
             return await edit_or_reply(message,"<strong> للعب الحظ مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
         await edit_or_reply(message, f"{value} - {ppe}")
-        if int(value) > int(ppe):
+        if int(value) > ppe:
             return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للحظ</strong>", parse_mode="html")
         ls = ["Done","Fail"]
         sv = random.choice(ls)
