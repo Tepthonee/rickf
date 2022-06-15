@@ -46,18 +46,25 @@ async def loadtimers():
       for key, v in tda.items():
          if key == "كنز":
             await t1(key, v)
+            pass
          if key == "حظ":
             await t2(key, v)
+            pass
          if key == "استثمار":
             await t3(key, v)
+            pass
          if key == "مضاربه":
             await t4(key, v)
+            pass
          if key == "راتب":
             await t5(key, v)
+            pass
          if key == "بخشيش":
             await t6(key, v)
+            pass
          if key == "زرف":
             await t7(key, v)
+            pass
     os.remove('timers.json')
 
 #------------end of load------------#
