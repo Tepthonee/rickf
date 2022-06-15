@@ -64,7 +64,7 @@ async def loadtimers():
          if key == "زرف":
             await t7(key, v)
             pass
-      os.remove('timers.json')
+      #os.remove('timers.json')
    
 
 #------------end of load------------#
@@ -100,10 +100,9 @@ async def t7(key, v):
 @jmthon.ar_cmd(pattern="bdata(.*)")
    
 async def d(message):
-    if os.path.exists('timers.json'):
-        os.remove('timers.json')
-
-    return await edit_or_reply(message, str(t))
+    f = open('timers.json')
+    tda = json.load(f)
+    return await edit_or_reply(message, str(tda))
 
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
