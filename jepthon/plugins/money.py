@@ -357,7 +357,7 @@ async def ga(message):
         if "بخشيش" in t:
             ti2 = t["بخشيش"] - time.time()
             return await edit_or_reply(message,"<strong> لقد اخذت بخشيش انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
-          else:
+        else:
               rt = randint(70,2000)
               ga = int(rt) + int(ppe)
               tp = await edit_or_reply(message,f"<strong>💸 Your tip Is Available!🤩\n- You Got {rt} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
@@ -371,7 +371,7 @@ async def ga(message):
             ti2 = t["راتب"] - time.time()
             return await edit_or_reply(message,"<strong> لأخذ راتب مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
 
-          else:
+        else:
 
 
               list = ["مبرمج 💻-1000","ملك 🤴-10000","قاضي 👨‍⚖-20000","عامل 🧑‍🔧-1000","روبوت 🤖-2300","سائق 🚓-4000","تاجر مخدرات 🚬-5000","GunSeller 🔫-90000","Pilot ✈️-30000","Captain 🛳-10000"]
@@ -392,7 +392,7 @@ async def d(message):
     if not get_bank(mee.id):
          cbs = edit_or_reply(message, "ليس لديك حساب مصرفي لحذفه")
     else:
-         del_babk(mee.id)
+         del_bank(mee.id)
          cbbs = await edit_or_reply(message, "تم حذف حسابك المصرفي")
 
 
