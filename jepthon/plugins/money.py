@@ -44,9 +44,9 @@ async def loadtimers():
       tda = json.load(f)
       
       for key in tda:
-          t[key] = time.time() + tda[str(key)]
+          t[tda[str(key)]] = time.time() + tda[str(key)]
           await asyncio.sleep(tda[str(key)])
-          del t[str(key)]
+          del t[tda[str(key)]]
     os.remove('timers.json')
 
 #------------end of load------------#
@@ -284,7 +284,7 @@ Done All Commands .
 - Congratulations you won in luck  🎉
 
 
-- Your Money before  ↢ ( {pe}  💵 ) .
+- Your Money before  ↢ ( {ppe}  💵 ) .
 
 
 - Your Money now  ↢ ( {kf}  💵 ) .
@@ -302,7 +302,7 @@ Done All Commands .
 - Unfortunately, I lost by luck  😬
 
 
-- Your Money before  ↢ ( {pe} 💵 ) .
+- Your Money before  ↢ ( {ppe} 💵 ) .
 
 
 - Your Money now  ↢ ( {pep} 💵 ) .
