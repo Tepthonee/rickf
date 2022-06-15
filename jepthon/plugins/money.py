@@ -43,7 +43,7 @@ async def loadtimers():
       
       for key, v in tda.items():
          await jmthon.send_message('@WKKKN', f"{key}:{v}")
-         if key == "كنز":
+         if "كنز" in tda:
             await t1(key, v)
             pass
          if key == "حظ":
