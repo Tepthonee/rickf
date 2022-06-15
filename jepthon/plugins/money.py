@@ -13,7 +13,6 @@ from telethon import types
 from random import randint
 
 import random
-
 from . import jmthon
 
 from ..core.managers import edit_delete, edit_or_reply
