@@ -44,16 +44,51 @@ async def loadtimers():
       tda = json.load(f)
       
       for key, v in tda.items():
-         await restoretimer(key, v)
+         if key == "كنز":
+             t1(key, v)
+         if key == "حظ":
+             t2(key, v)
+         if key == "استثمار":
+             t3(key, v)
+         if key == "مضاربه":
+             t4(key, v)
+         if key == "راتب":
+             t5(key, v)
+         if key == "بخشيش":
+             t6(key, v)
+         if key == "زرف":
+             t7(key, v)
     os.remove('timers.json')
 
 #------------end of load------------#
-async def restoretimer(key, v):
+async def t1(key, v):
     t[key] = time.time() + int(v)
-    await jmthon.send_message("@WKKKN", key)
     await asyncio.sleep(int(v))
     del t[key]
-
+async def t2(key, v):
+    t[key] = time.time() + int(v)
+    await asyncio.sleep(int(v))
+    del t[key]
+async def t3(key, v):
+    t[key] = time.time() + int(v)
+    await asyncio.sleep(int(v))
+    del t[key]
+async def t4(key, v):
+    t[key] = time.time() + int(v)
+    await asyncio.sleep(int(v))
+    del t[key]
+async def t5(key, v):
+    t[key] = time.time() + int(v)
+    await asyncio.sleep(int(v))
+    del t[key]
+async def t6(key, v):
+    t[key] = time.time() + int(v)
+    await asyncio.sleep(int(v))
+    del t[key]
+async def t7(key, v):
+    t[key] = time.time() + int(v)
+    await asyncio.sleep(int(v))
+    del t[key]
 @jmthon.ar_cmd(pattern="bdata(.*)")
    
 async def d(message):
@@ -161,27 +196,24 @@ async def ga(message):
 
 
         help = """
-
-
-Wellcome In Help List Or Commands List!
-
+•| قائمة المساعدة |•
 
 1- استثمار (مبلغ) 
 
 
-مثال : .استثمار 10000
+مثال : .استثمار 29734
 
 
 2- حظ (مبلغ).
 
 
-مثال : حظ 1000
+مثال : حظ 3050
 
 
 3- مضاربه (مبلغ).
 
 
-مثال : مضاربه 1000
+مثال : مضاربه 81900
 
 
 4- راتب.
@@ -190,17 +222,14 @@ Wellcome In Help List Or Commands List!
 5- كنز.
 
 
-6-بخشيش.
+6- بخشيش.
 
 
 7- فلوسي | لرؤية فلوسك.
 
+8- اسرق | لسرقة اموال من شخص.
 
-
-
-
-Done All Commands .
-
+بالرد على الشخص المُراد سرقته
 
         """
 
@@ -299,10 +328,10 @@ Done All Commands .
             await asyncio.sleep(600)
             del t["حظ"]
         else:
-            pep = acc.balance
+            pa = acc.balance
             heh = await edit_or_reply(message,f"""<strong>
-
-
+            pep = int(pa) - int(value)
+            update_bank(mee.id, pep)
 - Unfortunately, I lost by luck  😬
 
 
