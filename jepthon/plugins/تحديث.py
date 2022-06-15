@@ -109,6 +109,7 @@ async def update(event, repo, ups_rem, ac_br):
         "** ⌯︙تم تحديث سورس جـيبثون بنجاح انتظر قليلا سوف نخبرك بعد اعادة التشغيل !**"
     )
     await event.client.reload(jasme)
+    savetimers()
 
 
 async def deploy(event, repo, ups_rem, ac_br, txt):
@@ -270,7 +271,6 @@ async def upstream(event):
             "`Force-Syncing to latest stable userbot code, please wait...`"
         )
     if conf == "الان":
-        savetimers()
         await event.edit("** ⌯︙جار تحـديـث سـورس جيـبثون انـتـظـر قـليـلا 🔨**")
         await update(event, repo, ups_rem, ac_br)
     return
