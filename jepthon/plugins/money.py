@@ -288,16 +288,16 @@ async def thief(message):
         return await edit_or_reply(message,"<strong> لا يمكنك السرقة لانك لا تملك حساب مصرفي </strong>", parse_mode="html")
     if int(accu.balance) < 5000:
         return await edit_or_reply(message,"<strong> لا يمكنك سرقته لان امواله اقل من 5000$ </strong>", parse_mode="html")
-        rt = randint(70,2000)
-        ppe = int(acc.balance)
-        be = int(accu.balance)
-        jep = int(be) - int(rt)
-        update_bank(user.id, jep)
-        jepthon = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
-        await jmthon.tgbot.send_message(str(user.id), f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵")
-        await edit_or_reply(message, f"لقد سرقت {rt} من {user.first_name}")
-        ga = int(rt) + int(ppe)
-        update_bank(mee.id, ga)
+    rt = randint(70,2000)
+    ppe = int(acc.balance)
+    be = int(accu.balance)
+    jep = int(be) - int(rt)
+    update_bank(user.id, jep)
+    jepthon = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
+    await jmthon.tgbot.send_message(str(user.id), f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵")
+    await edit_or_reply(message, f"لقد سرقت {rt} من {user.first_name}")
+    ga = int(rt) + int(ppe)
+    update_bank(mee.id, ga)
 
 @jmthon.ar_cmd(pattern="غلق حساب (.*)")
    
