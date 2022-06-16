@@ -47,9 +47,6 @@ def add_bank(
         SESSIONB.add(user)
         SESSIONB.commit()
         return True
-    rem = SESSIONB.query(bankc).get(str(user_id))
-    SESSIONB.delete(rem)
-    SESSIONB.commit()
     user = bankc(str(user_id), first_name, int(balance), bank)
     SESSIONB.add(user)
     SESSIONB.commit()
@@ -71,6 +68,10 @@ def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
+    SESSIONB.query(bankc).filter(bankc.user_id == user_id).delete(synchronize_session=False)
+    SESSIONB.commit()
+    return True
+self.session.commit()
     rem = SESSIONB.query(bankc).filter(bankc.user_id == str(user_id)).one()
     SESSIONB.delete(rem)
     SESSIONB.commit()
