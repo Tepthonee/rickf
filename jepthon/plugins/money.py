@@ -294,11 +294,10 @@ async def thief(message):
     jep = int(be) - int(rt)
     update_bank(user.id, jep)
     jepthon = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
-    await jmthon.tgbot.send_message(int(user.id), f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵")
     await edit_or_reply(message, f"لقد سرقت {rt} من {user.first_name}")
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
-
+    await jmthon.tgbot.send_message(int(user.id), f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵")
 @jmthon.ar_cmd(pattern="غلق حساب (.*)")
    
 async def d(message):
