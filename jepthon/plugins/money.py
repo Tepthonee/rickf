@@ -248,7 +248,7 @@ async def ga(message):
               await asyncio.sleep(600)
               del t["بخشيش"]
     if ms == ".اسرق":
-        user, custom = await get_user_from_event(mention)
+        user, custom = await get_user_from_event(message)
         accu = get_bank(user.id)
         if not user:
             return await edit_or_reply(message,"<strong> يجب عليك الرد على شخص لسرقته </strong>", parse_mode="html")
