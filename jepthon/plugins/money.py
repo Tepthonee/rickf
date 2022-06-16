@@ -39,7 +39,9 @@ def convert(seconds):
 @jmthon.ar_cmd(pattern="bdata(.*)")
    
 async def d(message):
-    return await edit_or_reply(message, str(des_bank()))
+    for result in des_bank():
+        await message.client.send_message(message.chat_id, str(result))
+    #return await edit_or_reply(message, str(des_bank()))
 
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
@@ -211,7 +213,7 @@ async def ga(message):
             update_bank(mee.id, kf)
             cong = await edit_or_reply(message,f"""<strong>          
 ======================
-• مبارك لقد فزت بالحظ 
+• مبارك لقد ربحت بالحظ
 • اموالك السابقة  ↢ ( {ppe}  💵 ) .
 • اموالك الان  ↢ ( {kf}  💵 ) .
 ======================
