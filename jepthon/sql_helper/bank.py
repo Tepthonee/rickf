@@ -68,7 +68,7 @@ def des_bank():
     #return re
     #desc = " " + asc_desc
     #order_by = re.sub('[^0-9a-zA-Z]+', '', order_by) + desc
-    return SESSIONB.query(bankc).order_by(desc(bankc.balance))
+    return SESSIONB.query(bankc).get.order_by(desc(bankc.balance))
  
 def del_bank(user_id):
     to_check = get_bank(user_id)
