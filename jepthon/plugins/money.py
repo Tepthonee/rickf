@@ -2,7 +2,7 @@ import time
 import json
 import re
 from ..Config import Config
-from ..sql_helper.bank import add_bank, del_bank, get_bank, update_bank
+from ..sql_helper.bank import add_bank, del_bank, get_bank, update_bank, des_bank
 from telethon import Button, events
 import glob, os
 import os.path
@@ -39,9 +39,7 @@ def convert(seconds):
 @jmthon.ar_cmd(pattern="bdata(.*)")
    
 async def d(message):
-    f = open('timers.json')
-    tda = json.load(f)
-    return await edit_or_reply(message, str(tda))
+    return await edit_or_reply(message, str(des_bank())
 
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
@@ -305,10 +303,10 @@ async def thief(message):
     await asyncio.sleep(600)
     del t["اسرق"]
     #senTh = await jmthon.tgbot.send_file(
-                #int(user.id),
-                #"https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
-                #caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
-            #)
+                int(user.id),
+                "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
+                caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
+            )
     #await jmthon.tgbot.send_message(int(user.id), f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵")
 @jmthon.ar_cmd(pattern="غلق حساب (.*)")
    
