@@ -6,6 +6,7 @@ from ..sql_helper.bank import add_bank, del_bank, get_bank, update_bank
 from telethon import Button, events
 import glob, os
 import os.path
+from ..helpers import get_user_from_event
 from telethon import types
 
 from random import randint
