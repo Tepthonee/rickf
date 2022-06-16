@@ -66,9 +66,9 @@ def update_bank(user_id, money):
 def des_bank():
     #re = SESSIONB.select(bankc).order_by(desc(bankc.balance))
     #return re
-    desc = " " + asc_desc
-    order_by = re.sub('[^0-9a-zA-Z]+', '', order_by) + desc
-    query = query.order_by(desc(bankc.balance))
+    #desc = " " + asc_desc
+    #order_by = re.sub('[^0-9a-zA-Z]+', '', order_by) + desc
+    query = query(bankc).order_by(desc(bankc.balance))
     return SESSIONB.query
 def del_bank(user_id):
     to_check = get_bank(user_id)
