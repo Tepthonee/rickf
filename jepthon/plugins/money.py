@@ -129,7 +129,7 @@ async def ga(message):
               mde = await edit_or_reply(message,f"<strong>تم حذف حسابك في البنك .</strong>",parse_mode="html")
 
 
-    if ms == "المصرف." or ms == "البانك." or ms == "مصرف.":
+    if ms == ".المصرف" or ms == ".البانك" or ms == ".مصرف":
 
 
         help = """
@@ -170,7 +170,7 @@ async def ga(message):
 
 بالرد على الشخص المُراد سرقته
 
-        """
+      """
 
 
         hr = await edit_or_reply(message,f"<strong>{help}</strong>",parse_mode="html")
@@ -222,9 +222,7 @@ async def ga(message):
 
 
 - Your Money Now  ↢ ( {kf}  💵 )
-
-
-.</strong>""",parse_mode="html")
+</strong>""",parse_mode="html")
             t["استثمار"] = time.time() + 600
             await asyncio.sleep(600)
             del t["استثمار"]
@@ -252,7 +250,7 @@ async def ga(message):
             update_bank(mee.id, kf)
             cong = await edit_or_reply(message,f"""<strong>
           
-==============================
+======================
 • مبارك لقد فزت بالحظ 
 
 
@@ -260,9 +258,8 @@ async def ga(message):
 
 
 • اموالك الان  ↢ ( {kf}  💵 ) .
-==============================
-
-.</strong>""",parse_mode="html")
+======================
+</strong>""",parse_mode="html")
             t["حظ"] = time.time() + 600
             await asyncio.sleep(600)
             del t["حظ"]
@@ -271,7 +268,7 @@ async def ga(message):
             pop = int(pa) - int(value)
             update_bank(mee.id, pop)
             heh = await edit_or_reply(message,f"""<strong>
-==============================
+=======================
 • لسوء الحظ , خسرت في الحظ 
 
 
@@ -279,9 +276,8 @@ async def ga(message):
 
 
 • اموالك الان  ↢ ( {pop} 💵 ) .
-===============================
-
-.</strong>""",parse_mode="html")
+========================
+</strong>""",parse_mode="html")
 
             t["حظ"] = time.time() + 600
             await asyncio.sleep(600)
