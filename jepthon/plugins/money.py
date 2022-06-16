@@ -85,7 +85,7 @@ async def a(message):
 
 
 @jmthon.ar_cmd(
-    pattern="بنكي(?:\s|$)([\s\S]*)",
+    pattern="بنكي|مصرفي(?:\s|$)([\s\S]*)",
     command=("بنكي", plugin_category),
 )
 
