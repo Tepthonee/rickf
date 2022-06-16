@@ -324,27 +324,3 @@ async def bankar(message):
     add_bank(mee.id, mee.first_name, 50, bankn)
     cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{mee.id}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")
     
-@jmthon.ar_cmd(
-pattern="انشاء حساب(?:\s|$)([\s\S]*)",
-command=("انشاء حساب", plugin_category),
-)
-async def start(event):
-    me = await event.client.get_me()
-    sta = await edit_or_reply(event, f"""<strong>
-
-👋  {me.first_name} مرحبًا
- ━━━━━━━━━━━━━━━━━
-- اختر احد المصارف الآتيه
-
-- جيبثون الاسلامي
-
-- الرافدين
- ━━━━━━━━━━━━━━━━━
-ارسل .انشاء حساب + المصرف 
-لانشاء حساب في المصرف
-
-</strong>""",parse_mode="html")
-
-    user, custom = await get_user_from_event(mention)
-    if not user:
-        return
