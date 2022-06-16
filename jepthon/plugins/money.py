@@ -84,11 +84,7 @@ async def a(message):
 
 
 
-@jmthon.ar_cmd(
-    pattern="بنكي|مصرفي(?:\s|$)([\s\S]*)",
-    command=("بنكي", plugin_category),
-)
-
+@jmthon.on(admin_cmd(pattern="بنكي|مصرفي ?(.*)"))
 async def myb(message):
 
     me = await message.client.get_me()
