@@ -68,8 +68,11 @@ def des_bank():
     #return re
     #desc = " " + asc_desc
     #order_by = re.sub('[^0-9a-zA-Z]+', '', order_by) + desc
-    return SESSIONB.query(bankc).get(desc(bankc.balance))
- 
+    #return SESSIONB.query(bankc).get(desc(bankc.balance))
+    query_obj = SESSIONB.query(bankc)
+    desc_expression = sqlalchemy.sql.expression.desc(bankc.balance)
+    order_by_query = query_obj.order_by(desc_expression)
+    return order_by_query
 def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
