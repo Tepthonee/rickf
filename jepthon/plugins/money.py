@@ -252,15 +252,15 @@ async def ga(message):
             update_bank(mee.id, kf)
             cong = await edit_or_reply(message,f"""<strong>
           
-
-- Congratulations you won in luck  🎉
-
-
-- Your Money before  ↢ ( {ppe}  💵 ) .
+==============================
+• مبارك لقد فزت بالحظ 
 
 
-- Your Money now  ↢ ( {kf}  💵 ) .
+• اموالك السابقة  ↢ ( {ppe}  💵 ) .
 
+
+• اموالك الان  ↢ ( {kf}  💵 ) .
+==============================
 
 .</strong>""",parse_mode="html")
             t["حظ"] = time.time() + 600
@@ -271,14 +271,15 @@ async def ga(message):
             pop = int(pa) - int(value)
             update_bank(mee.id, pop)
             heh = await edit_or_reply(message,f"""<strong>
-- Unfortunately, I lost by luck  😬
+==============================
+• لسوء الحظ , خسرت في الحظ 
 
 
-- Your Money before  ↢ ( {pa} 💵 ) .
+• اموالك السابقة  ↢ ( {pa} 💵 ) .
 
 
-- Your Money now  ↢ ( {pop} 💵 ) .
-
+• اموالك الان  ↢ ( {pop} 💵 ) .
+===============================
 
 .</strong>""",parse_mode="html")
 
