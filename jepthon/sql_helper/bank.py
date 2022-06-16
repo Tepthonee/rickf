@@ -72,11 +72,8 @@ def des_bank():
     #return SESSIONB.query(bankc).get(desc(bankc.balance))
     query_obj = SESSIONB.query(bankc)
     desc_expression = desc(bankc.balance)
-    order_by_query = query_obj.order_by(desc_expression)
-    ba = {}
-    for result in order_by_query:
-        list.insert(result, ba)
-    return ba
+    order_by_query = query_obj.order_by(desc_expression)      
+    return order_by_query
 def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
