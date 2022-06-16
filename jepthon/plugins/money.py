@@ -269,9 +269,11 @@ async def ga(message):
               await asyncio.sleep(600)
               del t["راتب"]
 
-@jmthon.ar_cmd(pattern="اسرق (.*)")
-
-async def _(message):
+@jmthon.ar_cmd(
+    pattern="اسرق(?:\s|$)([\s\S]*)",
+    command=("اسرق", plugin_category),
+)
+async def thief(message):
     user, custom = await get_user_from_event(message)
     accu = get_bank(user.id)
     if not user:
@@ -292,6 +294,7 @@ async def _(message):
         await edit_or_reply(message, f"لقد سرقت {rt} من {user.first_name}")
         ga = int(rt) + int(ppe)
         update_bank(mee.id, ga)
+
 @jmthon.ar_cmd(pattern="غلق حساب (.*)")
    
 async def d(message):
