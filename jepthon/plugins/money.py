@@ -281,7 +281,7 @@ async def ga(message):
         else:
               rt = randint(70,2000)
               ga = int(rt) + int(ppe)
-              tp = await edit_or_reply(message,f"<strong>💸 Your tip Is Available!🤩\n- You Got {rt} 💵.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
+              tp = await edit_or_reply(message,f"<strong>=================\n- •تم ايداع البخشيش 💸\n- • حصلت على  {rt} 💵.\n- • أموالك الان : {ga} 💵\n=================</strong>",parse_mode="html")
               update_bank(mee.id, ga)
               t["بخشيش"] = time.time() + 600
               await asyncio.sleep(600)
@@ -302,7 +302,7 @@ async def ga(message):
               ratb = rt.split("-")[1]
               ga = int(ratb) + int(ba)
               update_bank(mee.id, ga)
-              sal = await edit_or_reply(message,f"<strong>==================\n• تم ايداع راتبك! 💸🤩\n- • حصلت على {ratb} 💵\n- • لأنك {name}.\n- • اموالك الان : {ga} 💵 \n==================</strong>",parse_mode="html")
+              sal = await edit_or_reply(message,f"<strong>==================\n- • تم ايداع راتبك! 💸🤩\n- • حصلت على {ratb} 💵\n- • لأنك {name}.\n- • اموالك الان : {ga} 💵 \n==================</strong>",parse_mode="html")
               t["راتب"] = time.time() + 600
               await asyncio.sleep(600)
               del t["راتب"]
