@@ -247,27 +247,7 @@ async def ga(message):
               t["بخشيش"] = time.time() + 600
               await asyncio.sleep(600)
               del t["بخشيش"]
-    if ms == ".اسرق":
-        user, custom = await get_user_from_event(message)
-        accu = get_bank(user.id)
-        if not user:
-            return await edit_or_reply(message,"<strong> يجب عليك الرد على شخص لسرقته </strong>", parse_mode="html")
-        if get_bank(user.id) is None:
-            return await edit_or_reply(message,"<strong> لا يمكنك سرقة شخص لا يمتلك حساب مصرفي </strong>", parse_mode="html")
-        if get_bank(mee.id) is None:
-            return await edit_or_reply(message,"<strong> لا يمكنك السرقة لانك لا تملك حساب مصرفي </strong>", parse_mode="html")
-        if accu.balance < 5000:
-            return await edit_or_reply(message,"<strong> لا يمكنك سرقته لان امواله اقل من 5000$ </strong>", parse_mode="html")
-        rt = randint(70,2000)
-        ppe = acc.balance
-        be = accu.balance
-        jep = int(be) - int(rt)
-        update_bank(user.id, jep)
-        jepthon = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
-        await jmthon.tgbot.send_message(str(user.id), f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵")
-        await edit_or_reply(message, f"لقد سرقت {rt} من {user.first_name}")
-        ga = int(rt) + int(ppe)
-        update_bank(mee.id, ga)
+    
     if ms == ".راتب":
         ba = acc.balance
         if "راتب" in t:
@@ -288,6 +268,30 @@ async def ga(message):
               t["راتب"] = time.time() + 600
               await asyncio.sleep(600)
               del t["راتب"]
+
+@jmthon.ar_cmd(pattern="اسرق (.*)")
+
+async def _(message)
+    user, custom = await get_user_from_event(message)
+    accu = get_bank(user.id)
+    if not user:
+        return await edit_or_reply(message,"<strong> يجب عليك الرد على شخص لسرقته </strong>", parse_mode="html")
+    if get_bank(user.id) is None:
+        return await edit_or_reply(message,"<strong> لا يمكنك سرقة شخص لا يمتلك حساب مصرفي </strong>", parse_mode="html")
+    if get_bank(mee.id) is None:
+        return await edit_or_reply(message,"<strong> لا يمكنك السرقة لانك لا تملك حساب مصرفي </strong>", parse_mode="html")
+    if accu.balance < 5000:
+        return await edit_or_reply(message,"<strong> لا يمكنك سرقته لان امواله اقل من 5000$ </strong>", parse_mode="html")
+        rt = randint(70,2000)
+        ppe = acc.balance
+        be = accu.balance
+        jep = int(be) - int(rt)
+        update_bank(user.id, jep)
+        jepthon = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
+        await jmthon.tgbot.send_message(str(user.id), f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵")
+        await edit_or_reply(message, f"لقد سرقت {rt} من {user.first_name}")
+        ga = int(rt) + int(ppe)
+        update_bank(mee.id, ga)
 @jmthon.ar_cmd(pattern="غلق حساب (.*)")
    
 async def d(message):
@@ -334,3 +338,7 @@ async def start(event):
 لانشاء حساب في المصرف
 
 </strong>""",parse_mode="html")
+
+    user, custom = await get_user_from_event(mention)
+    if not user:
+        return
