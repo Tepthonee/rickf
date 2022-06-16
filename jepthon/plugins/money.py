@@ -274,6 +274,7 @@ async def ga(message):
     command=("اسرق", plugin_category),
 )
 async def thief(message):
+    mee = await message.client.get_me()
     user, custom = await get_user_from_event(message)
     accu = get_bank(user.id)
     if not user:
