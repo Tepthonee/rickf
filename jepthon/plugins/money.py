@@ -84,7 +84,7 @@ async def a(message):
 
 
 
-@jmthon.on(admin_cmd(pattern="بنكي|مصرفي ?(.*)"))
+@jmthon.on(admin_cmd(pattern="(بنكي|مصرفي) ?(.*)"))
 async def myb(message):
 
     me = await message.client.get_me()
