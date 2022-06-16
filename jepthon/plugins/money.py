@@ -31,71 +31,9 @@ def convert(seconds):
 
     return "%02d:%02d" % (minutes, seconds)
 
-def savetimers():
-    if bool(t):
-        with open('timers.json', 'w') as f:
-            json.dump(t, f)
-#-------load unfinished timers-------#
-async def loadtimers():
-    if os.path.exists('timers.json'):
-      f = open('timers.json')
-      tda = json.load(f)
-      
-      for key, v in tda.items():
-         await jmthon.send_message('@WKKKN', f"{key}:{v}")
-         if "كنز" in tda:
-            await t1(key, v)
-            pass
-         if key == "حظ":
-            await t2(key, v)
-            pass
-         if key == "استثمار":
-            await t3(key, v)
-            pass
-         if key == "مضاربه":
-            await t4(key, v)
-            pass
-         if key == "راتب":
-            await t5(key, v)
-            pass
-         if key == "بخشيش":
-            await t6(key, v)
-            pass
-         if key == "زرف":
-            await t7(key, v)
-            pass
-      #os.remove('timers.json')
-   
 
-#------------end of load------------#
-async def t1(key, v):
-    t[key] = time.time() + int(v)
-    await asyncio.sleep(int(v))
-    del t[key]
-async def t2(key, v):
-    t[key] = time.time() + int(v)
-    await asyncio.sleep(int(v))
-    del t[key]
-async def t3(key, v):
-    t[key] = time.time() + int(v)
-    await asyncio.sleep(int(v))
-    del t[key]
-async def t4(key, v):
-    t[key] = time.time() + int(v)
-    await asyncio.sleep(int(v))
-    del t[key]
-async def t5(key, v):
-    t[key] = time.time() + int(v)
-    await asyncio.sleep(int(v))
-    del t[key]
-async def t6(key, v):
-    t[key] = time.time() + int(v)
-    await asyncio.sleep(int(v))
-    del t[key]
-async def t7(key, v):
-    t[key] = time.time() + int(v)
-    await asyncio.sleep(int(v))
-    del t[key]
+#-------load unfinished timers-------#
+
 
 @jmthon.ar_cmd(pattern="bdata(.*)")
    
@@ -114,31 +52,20 @@ async def start(event):
 
 
 
-👋 Hi {me.first_name},
+👋  {me.first_name} مرحبًا
 
+ ━━━━━━━━━━━━━━━━━━━━━
+- يمكنك استعمال الاوامر في اي مكان
 
-- Wellcome To ReBackBank Bot! .
+- المصرف. 
 
-
--  You Can Make Your Own Bank Account And Play To Be Beast in TopList! .
-
-
-- You Can Take Awards In The Bot And More!
-
-
-- Add Bot To Your Group Or You Can Use It Here ! .
-
-
-
-
- ━━━━━━━━━━━━━━━━━
+- لاضهار المساعدة فيما يخص المصرف
+ ━━━━━━━━━━━━━━━━━━━━━
 ارسل .انشاء حساب 
-لانشاء حساب في البنك
+لانشاء حساب في المصرف
 
 </strong>""",parse_mode="html")
 
-
-        
 
 
 @jmthon.ar_cmd(
@@ -238,6 +165,8 @@ async def ga(message):
 7- فلوسي | لرؤية فلوسك.
 
 8- اسرق | لسرقة اموال من شخص.
+
+9- بنكي او .مصرفي | لاضهار معلومات حسابك في المصرف.
 
 بالرد على الشخص المُراد سرقته
 
@@ -378,7 +307,7 @@ async def ga(message):
         else:
 
 
-              list = ["مبرمج 💻-1000","ملك 🤴-10000","قاضي 👨‍⚖-20000","عامل 🧑‍🔧-1000","روبوت 🤖-2300","سائق 🚓-4000","تاجر مخدرات 🚬-5000","GunSeller 🔫-90000","Pilot ✈️-30000","Captain 🛳-10000"]
+              list = ["مبرمج 💻-1000","ملك 🤴-10000","قاضي 👨‍⚖-20000","عامل 🧑‍🔧-1000","روبوت 🤖-2300","سائق 🚓-4000","تاجر مخدرات 🚬-5000","تاجر اسلحة 🔫-9000","طيار ✈️-7000","قبطان 🛳-8000"]
 
               rt = random.choice(list)
               name = rt.split("-")[0]
