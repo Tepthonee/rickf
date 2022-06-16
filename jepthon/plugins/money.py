@@ -271,7 +271,7 @@ async def ga(message):
 
 @jmthon.ar_cmd(pattern="اسرق (.*)")
 
-async def _(message)
+async def _(message):
     user, custom = await get_user_from_event(message)
     accu = get_bank(user.id)
     if not user:
