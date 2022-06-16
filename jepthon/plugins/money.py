@@ -305,10 +305,10 @@ async def thief(message):
     await asyncio.sleep(600)
     del t["اسرق"]
     #senTh = await jmthon.tgbot.send_file(
-                int(user.id),
-                "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
-                caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
-            )
+                #int(user.id),
+                #"https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
+                #caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
+            #)
     #await jmthon.tgbot.send_message(int(user.id), f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵")
 @jmthon.ar_cmd(pattern="غلق حساب (.*)")
    
