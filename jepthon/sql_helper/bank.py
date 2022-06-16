@@ -60,6 +60,7 @@ def update_bank(user_id, money):
     if not to_check:
         return False
     rem = SESSIONB.query(bankc).filter(bankc.user_id == str(user_id)).one()
+    print(rem.user_id)
     rem.balance = int(money)
     SESSIONB.commit()
     return True
