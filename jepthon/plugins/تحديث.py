@@ -7,7 +7,6 @@ import urllib3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 from jepthon import HEROKU_APP, UPSTREAM_REPO_URL, jmthon, CMD_HELP
-from jepthon.plugins.money import savetimers
 from ..Config import Config
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
