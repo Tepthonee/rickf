@@ -68,11 +68,7 @@ async def start(event):
 
 
 
-@jmthon.ar_cmd(
-    pattern="فلوسي(?:\s|$)([\s\S]*)",
-    command=("فلوسي", plugin_category),
-)
-
+@jmthon.on(admin_cmd(pattern="(فلوسي|اموالي) ?(.*)"))
 async def a(message):
     me = await message.client.get_me()
     if get_bank(me.id) is None:
@@ -103,7 +99,7 @@ async def myb(message):
 - ================= -
           """
          acinfo = await edit_or_reply(message,f"<strong>{ifn}</strong>",parse_mode="html")
-         
+
     else:
          ca = await edit_or_reply(message,f"<strong>ليس لديك حساب في البنك!</strong>",parse_mode="html")
 
@@ -206,18 +202,18 @@ async def ga(message):
             d = ["1%","2%","4%","8%","9%"]
             ra = random.choice(d)
             ma = await edit_or_reply(message,f"""<strong>
+===================
+• استثمار ناجح  💰
 
 
-- Successful Investment  💰
+• نسبة الربح  ↢ {ra}
 
 
-- Profit Ratio  ↢ {ra}
+• مبلغ الربح  ↢ ( {ppe} 💵 )
 
 
-- Profit Amount  ↢ ( {ppe} 💵 )
-
-
-- Your Money Now  ↢ ( {kf}  💵 )
+• اموالك الان  ↢ ( {kf}  💵 )
+===================
 </strong>""",parse_mode="html")
             t["استثمار"] = time.time() + 600
             await asyncio.sleep(600)
@@ -244,8 +240,7 @@ async def ga(message):
         
             kf = int(value) + int(randint(int(ppe),int(ppe)))
             update_bank(mee.id, kf)
-            cong = await edit_or_reply(message,f"""<strong>
-          
+            cong = await edit_or_reply(message,f"""<strong>          
 ======================
 • مبارك لقد فزت بالحظ 
 
@@ -307,7 +302,7 @@ async def ga(message):
               ratb = rt.split("-")[1]
               ga = int(ratb) + int(ba)
               update_bank(mee.id, ga)
-              sal = await edit_or_reply(message,f"<strong>💸 Your Salary Is Available!🤩\n- You Got {ratb} 💵\n- Because You Are {name}.\n- Your Balance Now its : {ga} 💵 .</strong>",parse_mode="html")
+              sal = await edit_or_reply(message,f"<strong>💸 • تم ايداع الراتب!🤩\n- • حصلت على {ratb} 💵\n- • لأنك {name}.\n- • اموالك الان : {ga} 💵 .</strong>",parse_mode="html")
               t["راتب"] = time.time() + 600
               await asyncio.sleep(600)
               del t["راتب"]
