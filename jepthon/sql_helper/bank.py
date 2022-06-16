@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, UnicodeText, Integer
+from sqlalchemy import Column, String, UnicodeText, Integer, desc
 import base64
 import os
 from sqlalchemy import create_engine
@@ -62,6 +62,9 @@ def update_bank(user_id, money):
     rem.balance = int(money)
     SESSIONB.commit()
     return True
+
+def des_bank():
+    return SESSIONB.order_by(desc(bankc.balance))
 
 def del_bank(user_id):
     to_check = get_bank(user_id)
