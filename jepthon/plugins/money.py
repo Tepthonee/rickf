@@ -279,6 +279,7 @@ async def thief(message):
     mee = await message.client.get_me()
     user, custom = await get_user_from_event(message)
     accu = get_bank(user.id)
+    acc = get_bank(mee.id)
     if not user:
         return await edit_or_reply(message,"<strong> يجب عليك الرد على شخص لسرقته </strong>", parse_mode="html")
     if get_bank(user.id) is None:
