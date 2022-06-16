@@ -64,7 +64,7 @@ def update_bank(user_id, money):
     return True
 
 def des_bank():
-    re = select(bankc).order_by(desc(bankc.balance))
+    re = SESSIONB.select(bankc).order_by(desc(bankc.balance))
     return re
 def del_bank(user_id):
     to_check = get_bank(user_id)
