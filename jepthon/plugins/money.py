@@ -280,14 +280,18 @@ async def thief(message):
     user, custom = await get_user_from_event(message)
     accu = get_bank(user.id)
     acc = get_bank(mee.id)
-    if not user:
-        return await edit_or_reply(message,"<strong> يجب عليك الرد على شخص لسرقته </strong>", parse_mode="html")
-    if get_bank(user.id) is None:
-        return await edit_or_reply(message,"<strong> لا يمكنك سرقة شخص لا يمتلك حساب مصرفي </strong>", parse_mode="html")
-    if get_bank(mee.id) is None:
-        return await edit_or_reply(message,"<strong> لا يمكنك السرقة لانك لا تملك حساب مصرفي </strong>", parse_mode="html")
-    if int(accu.balance) < 5000:
-        return await edit_or_reply(message,"<strong> لا يمكنك سرقته لان امواله اقل من 5000$ </strong>", parse_mode="html")
+    if "اسرق" in t:
+        ti2 = t["اسرق"] - time.time()
+        return await edit_or_reply(message,"<strong> لقد سرقت قبل قليل انتظر {}</strong>".format(convert(ti2)),parse_mode="html")
+    else:
+        if not user:
+            return await edit_or_reply(message,"<strong> يجب عليك الرد على شخص لسرقته </strong>", parse_mode="html")
+        if get_bank(user.id) is None:
+            return await edit_or_reply(message,"<strong> لا يمكنك سرقة شخص لا يمتلك حساب مصرفي </strong>", parse_mode="html")
+        if get_bank(mee.id) is None:
+            return await edit_or_reply(message,"<strong> لا يمكنك السرقة لانك لا تملك حساب مصرفي </strong>", parse_mode="html")
+        if int(accu.balance) < 5000:
+            return await edit_or_reply(message,"<strong> لا يمكنك سرقته لان امواله اقل من 5000$ </strong>", parse_mode="html")
     rt = randint(70,2000)
     ppe = int(acc.balance)
     be = int(accu.balance)
@@ -297,7 +301,10 @@ async def thief(message):
     await edit_or_reply(message, f"لقد سرقت {rt} من {user.first_name}")
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
-    senTh = await jmthon.tgbot.send_file(
+    t["اسرق"] = time.time() + 600
+    await asyncio.sleep(600)
+    del t["اسرق"]
+    #senTh = await jmthon.tgbot.send_file(
                 int(user.id),
                 "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
                 caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
