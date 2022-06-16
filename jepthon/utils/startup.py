@@ -60,8 +60,6 @@ async def startupmessage():
     """
     try:
         if BOTLOG:
-            from ..plugins.money import loadtimers
-            await loadtimers()
             Config.CATUBLOGO = await jmthon.tgbot.send_file(
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/4ed13bf6216c070e3cc48.jpg",
