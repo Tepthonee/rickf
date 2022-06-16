@@ -39,8 +39,8 @@ def convert(seconds):
 @jmthon.ar_cmd(pattern="bdata(.*)")
    
 async def d(message):
-    #for result in des_bank():
-    await message.client.send_message(message.chat_id, str(des_bank()))
+    for row in des_bank():
+        await message.client.send_message(message.chat_id, f"name:\n{row.first_name}\nmoney:\n{row.balance}")
     #return await edit_or_reply(message, str(des_bank()))
 
 @jmthon.ar_cmd(
