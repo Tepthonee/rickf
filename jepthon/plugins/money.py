@@ -334,7 +334,3 @@ async def start(event):
 لانشاء حساب في المصرف
 
 </strong>""",parse_mode="html")
-
-    user, custom = await get_user_from_event(mention)
-    if not user:
-        return
