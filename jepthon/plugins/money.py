@@ -283,11 +283,11 @@ async def thief(message):
         return await edit_or_reply(message,"<strong> لا يمكنك سرقة شخص لا يمتلك حساب مصرفي </strong>", parse_mode="html")
     if get_bank(mee.id) is None:
         return await edit_or_reply(message,"<strong> لا يمكنك السرقة لانك لا تملك حساب مصرفي </strong>", parse_mode="html")
-    if accu.balance < 5000:
+    if int(accu.balance) < 5000:
         return await edit_or_reply(message,"<strong> لا يمكنك سرقته لان امواله اقل من 5000$ </strong>", parse_mode="html")
         rt = randint(70,2000)
-        ppe = acc.balance
-        be = accu.balance
+        ppe = int(acc.balance)
+        be = int(accu.balance)
         jep = int(be) - int(rt)
         update_bank(user.id, jep)
         jepthon = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
