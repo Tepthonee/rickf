@@ -14,16 +14,6 @@ engine = create_engine(reda, poolclass=NullPool)
 BASE.metadata.bind = engine
 BASE.metadata.create_all(engine)
 
-def session.close():
-    """
-    ----------
-    session : sqlalchemy.orm.sessionmaker.sessionmaker
-    engine : sqlalchemy.engine.Engine
-    """
-    session.expunge_all()
-    engine.dispose()
-
-
 
 class bankc(BASE):
     __tablename__ = "bank"
