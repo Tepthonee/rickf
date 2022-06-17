@@ -72,10 +72,8 @@ def del_bank(user_id):
     try:
         element = SESSIONB.query(bankc).filter(bankc.user_id==str(user_id)).first()
         if element:
-            de = SESSIONB.delete(element)
-            return de
-        else:
-            return "nothing"
+            SESSIONB.delete(element)
+            return True   
     except BaseException:
         return BaseException
     finally:
