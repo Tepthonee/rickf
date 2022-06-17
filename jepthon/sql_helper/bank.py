@@ -75,7 +75,7 @@ def del_bank(user_id):
             return element
         else:
             return "nothing"
-    exepct BaseException:
+    except BaseException:
         return BaseException
     finally:
         SESSIONB.close()
