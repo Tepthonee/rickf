@@ -60,7 +60,7 @@ def update_bank(user_id, money):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    rem = session.query(bankc).filter(bankc.user_id == str(user_id)).one()
+    rem = session.query(bankc).filter(bankc.user_id == str(user_id)).first()
     rem.balance = int(money)
     session.commit()
     session.close()
@@ -81,7 +81,7 @@ def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    reda = session.query(bankc).filter(bankc.user_id==str(user_id)).one()
+    reda = session.query(bankc).filter(bankc.user_id==str(user_id)).first()
     session.delete(reda)
     session.commit()
     session.close()
