@@ -26,13 +26,13 @@ def close(session, engine):
 
 class bankc(BASE):
     __tablename__ = "bank"
-    user_id = Column(String(14), primary_key=True)
+    user_id = Column(Integer, primary_key=True)
     first_name = Column(UnicodeText)
     balance = Column(Integer)
     bank = Column(UnicodeText)
 
     def __init__(self, user_id, first_name, balance, bank):
-        self.user_id = str(user_id)
+        self.user_id = int(user_id)
         self.first_name = first_name
         self.balance = int(balance)
         self.bank = bank
@@ -52,11 +52,11 @@ def add_bank(
     session = Session()
     to_check = get_bank(user_id)
     if not to_check:
-        user = bankc(str(user_id), first_name, int(balance), bank)
+        user = bankc(int(user_id), first_name, int(balance), bank)
         session.add(user)
         session.commit()
         return True
-    user = bankc(str(user_id), first_name, int(balance), bank)
+    user = bankc(int(user_id), first_name, int(balance), bank)
     session.add(user)
     session.commit()
     close(session, engine)
@@ -69,7 +69,7 @@ def update_bank(user_id, money):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    rem = session.query(bankc).filter(bankc.user_id == str(user_id)).one()
+    rem = session.query(bankc).filter(bankc.user_id == int(user_id)).one()
     rem.balance = int(money)
     session.commit()
     close(session, engine)
@@ -90,7 +90,7 @@ def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    reda = session.query(bankc).filter(bankc.user_id==str(user_id)).one()
+    reda = session.query(bankc).filter(bankc.user_id==int(user_id)).one()
     session.delete(reda)
     session.commit()
     close(session, engine)
@@ -100,7 +100,7 @@ def get_bank(user_id):
     Session = sessionmaker(bind=engine, autoflush=False)
     session = Session()
     try:
-        if _result := session.query(bankc).get(str(user_id)):
+        if _result := session.query(bankc).get(int(user_id)):
             return _result
         return None
     finally:
