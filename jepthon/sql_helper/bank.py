@@ -81,10 +81,11 @@ def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    reda = session.query(bankc).filter(bankc.user_id==str(user_id)).delete()
+    reda = session.query(bankc).filter(bankc.user_id==str(user_id)).first()
+    session.execute(delete(reda))
     session.commit()
     session.close()
-    return reda
+    return True
 
 def get_bank(user_id):
     
