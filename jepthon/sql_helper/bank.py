@@ -69,15 +69,16 @@ def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    #reda = delete(User).where(User.id.in_([1, 2, 3]))
-    element = SESSIONB.query(bankc).filter(bankc.user_id==str(user_id)).first()
+    try:
+        element = SESSIONB.query(bankc).filter(bankc.user_id==str(user_id)).first()
     if element:
-        print(element)
-        SESSIONB.delete(element)
+        return element
     else:
-        print("not exist bro")
-    SESSIONB.commit()
-    return True
+        return "nothing"
+    exepct BaseException:
+        return BaseException
+    finally:
+        SESSIONB.close()
 
 def get_bank(user_id):
     try:
