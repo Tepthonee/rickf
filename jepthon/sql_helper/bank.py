@@ -9,7 +9,7 @@ badb = base64.b64decode("cG9zdGdyZXM6Ly9taHZlYWZkcTpKSHdwaVJ5cUJ5bG9JcmRsdGRERXR
 reda = badb.decode("UTF-8")
 
 BASE = declarative_base()
-engine = create_engine(reda, pool_size=5, max_overflow=-1)
+engine = create_engine(reda, pool_size=5, max_overflow=-1, echo=True)
 BASE.metadata.bind = engine
 BASE.metadata.create_all(engine)
 
@@ -85,7 +85,7 @@ def des_bank():
 
 def del_bank(user_id):
     
-    Session = sessionmaker(bind=engine, autoflush=False, echo=True)
+    Session = sessionmaker(bind=engine, autoflush=False)
     session = Session()
     to_check = get_bank(user_id)
     if not to_check:
