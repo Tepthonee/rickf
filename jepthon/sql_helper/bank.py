@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String, UnicodeText, Integer, desc, delete
 from sqlalchemy import asc, desc
+from sqlalchemy.pool import NullPool
 import base64
 import os
 from sqlalchemy import create_engine
@@ -9,11 +10,11 @@ badb = base64.b64decode("cG9zdGdyZXM6Ly9taHZlYWZkcTpKSHdwaVJ5cUJ5bG9JcmRsdGRERXR
 reda = badb.decode("UTF-8")
 
 BASE = declarative_base()
-engine = create_engine(reda, pool_size=5, max_overflow=-1, echo=True)
+engine = create_engine(reda, poolclass=NullPool)
 BASE.metadata.bind = engine
 BASE.metadata.create_all(engine)
 
-def close(session, engine):
+def session.close():
     """
     ----------
     session : sqlalchemy.orm.sessionmaker.sessionmaker
@@ -59,7 +60,7 @@ def add_bank(
     user = bankc(str(user_id), first_name, int(balance), bank)
     session.add(user)
     session.commit()
-    close(session, engine)
+    session.close()
     return True
 
 def update_bank(user_id, money):
@@ -72,7 +73,7 @@ def update_bank(user_id, money):
     rem = session.query(bankc).filter(bankc.user_id == str(user_id)).one()
     rem.balance = int(money)
     session.commit()
-    close(session, engine)
+    session.close()
     return True
 
 def des_bank():
@@ -80,7 +81,7 @@ def des_bank():
     Session = sessionmaker(bind=engine, autoflush=False)
     session = Session()
     ba = session.query(bankc).order_by(desc(bankc.balance)).all()
-    close(session, engine)
+    session.close()
     return ba
 
 def del_bank(user_id):
@@ -94,7 +95,7 @@ def del_bank(user_id):
     return reda
     session.delete(reda)
     session.commit()
-    close(session, engine)
+    session.close()
 
 def get_bank(user_id):
     
@@ -106,7 +107,6 @@ def get_bank(user_id):
         return None
     finally:
         session.close()
-        close(session, engine)
 
 def get_all_bank():
     
@@ -115,8 +115,7 @@ def get_all_bank():
     try:
         return session.query(bankc).all()
     except BaseException:
-        close(session, engine)
+        session.close()
         return None
     finally:
         session.close()
-        close(session, engine)
