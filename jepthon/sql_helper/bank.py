@@ -22,12 +22,6 @@ class bankc(BASE):
     balance = Column(Integer)
     bank = Column(UnicodeText)
 
-    def __init__(self, user_id, first_name, balance, bank):
-        self.user_id = str(user_id)
-        self.first_name = first_name
-        self.balance = int(balance)
-        self.bank = bank
-
 
 bankc.__table__.create(checkfirst=True)
 
