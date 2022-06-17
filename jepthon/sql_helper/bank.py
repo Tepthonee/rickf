@@ -73,7 +73,7 @@ def del_bank(user_id):
     element = SESSIONB.query(bankc).filter(bankc.user_id==str(user_id)).first()
     if element:
         print(element)
-        SESSION.delete(element)
+        SESSIONB.delete(element)
     else:
         print("not exist bro")
     SESSIONB.commit()
