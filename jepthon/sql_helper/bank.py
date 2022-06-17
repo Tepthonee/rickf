@@ -64,13 +64,18 @@ def update_bank(user_id, money):
 def des_bank():
     ba = SESSIONB.query(bankc).order_by(desc(bankc.balance)).all()
     return ba
+
 def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
     #reda = delete(User).where(User.id.in_([1, 2, 3]))
-    reda = delete(bankc).where(bankc.user_id == str(user_id))
-    SESSIONB.execute(reda)
+    element = SESSIONB.query(bankc).filter(bankc.user_id==user_id).first()
+    if element:
+        print(element)
+        SESSION.delete(element)
+    else:
+        print("not exist bro")
     SESSIONB.commit()
     return True
 
