@@ -82,10 +82,10 @@ def del_bank(user_id):
     if not to_check:
         return False
     reda = session.query(bankc).filter(bankc.user_id==str(user_id)).one()
-    return reda
     session.delete(reda)
     session.commit()
     session.close()
+    return reda
 
 def get_bank(user_id):
     
