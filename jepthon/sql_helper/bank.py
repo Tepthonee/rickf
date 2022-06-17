@@ -10,7 +10,7 @@ badb = base64.b64decode("cG9zdGdyZXM6Ly9taHZlYWZkcTpKSHdwaVJ5cUJ5bG9JcmRsdGRERXR
 reda = badb.decode("UTF-8")
 
 BASE = declarative_base()
-engine = create_engine(reda, poolclass=NullPool)
+engine = create_engine(reda, poolclass=NullPool, echo=True)
 BASE.metadata.bind = engine
 BASE.metadata.create_all(engine)
 
