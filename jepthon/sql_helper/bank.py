@@ -69,7 +69,7 @@ def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    SESSIONB.query(bankc).filter_by(bankc.user_id==str(user_id)).delete()
+    SESSIONB.query(bankc).filter(bankc.user_id==str(user_id)).delete()
     SESSIONB.commit()
 
 def get_bank(user_id):
