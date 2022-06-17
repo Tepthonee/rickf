@@ -32,7 +32,7 @@ class bankc(BASE):
     bank = Column(UnicodeText)
 
     def __init__(self, user_id, first_name, balance, bank):
-        self.user_id = int(user_id)
+        self.user_id = str(user_id)
         self.first_name = first_name
         self.balance = int(balance)
         self.bank = bank
@@ -52,11 +52,11 @@ def add_bank(
     session = Session()
     to_check = get_bank(user_id)
     if not to_check:
-        user = bankc(int(user_id), first_name, int(balance), bank)
+        user = bankc(str(user_id), first_name, int(balance), bank)
         session.add(user)
         session.commit()
         return True
-    user = bankc(int(user_id), first_name, int(balance), bank)
+    user = bankc(str(user_id), first_name, int(balance), bank)
     session.add(user)
     session.commit()
     close(session, engine)
@@ -101,7 +101,7 @@ def get_bank(user_id):
     Session = sessionmaker(bind=engine, autoflush=False)
     session = Session()
     try:
-        if _result := session.query(bankc).get(int(user_id)):
+        if _result := session.query(bankc).get(str(user_id)):
             return _result
         return None
     finally:
