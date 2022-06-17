@@ -11,7 +11,7 @@ reda = badb.decode("UTF-8")
 BASE = declarative_base()
 
 def start() -> scoped_session:
-    engine = create_engine(reda)
+    engine = create_engine(reda, pool_size=5, max_overflow=-1)
     BASE.metadata.bind = engine
     BASE.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
