@@ -3,6 +3,9 @@ from sqlalchemy import asc, desc
 from sqlalchemy.pool import NullPool
 import base64
 import os
+
+from sqlalchemy import delete
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -81,8 +84,10 @@ def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    reda = session.query(bankc).filter(bankc.user_id==str(user_id)).first()
-    session.execute(delete())
+    #reda = session.query(bankc).filter(bankc.user_id==str(user_id)).first()
+    #session.execute(delete())
+    stmt = delete(bankc).where(bankc.user_id == str(user_id)).execution_options(synchronize_session="fetch")
+    session.execute(stmt)
     session.commit()
     session.close()
     return True
