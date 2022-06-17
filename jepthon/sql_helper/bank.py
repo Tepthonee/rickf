@@ -70,7 +70,7 @@ def del_bank(user_id):
     if not to_check:
         return False
     #reda = delete(User).where(User.id.in_([1, 2, 3]))
-    element = SESSIONB.query(bankc).filter(bankc.user_id==user_id).first()
+    element = SESSIONB.query(bankc).filter(bankc.user_id==str(user_id)).first()
     if element:
         print(element)
         SESSION.delete(element)
