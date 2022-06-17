@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, UnicodeText, Integer, desc
+from sqlalchemy import Column, String, UnicodeText, Integer, desc, delete
 from sqlalchemy import asc, desc
 import base64
 import os
@@ -68,7 +68,9 @@ def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    rem = SESSIONB.query(bankc).filter(bankc.user_id == str(user_id)).delete()
+    #reda = delete(User).where(User.id.in_([1, 2, 3]))
+    reda = delete(bankc).where(bankc.user_id == str(user_id))
+    SESSIONB.execute(reda)
     SESSIONB.commit()
     return True
 
