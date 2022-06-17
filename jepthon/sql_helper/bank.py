@@ -86,7 +86,7 @@ def del_bank(user_id):
         return False
     #reda = session.query(bankc).filter(bankc.user_id==str(user_id)).first()
     #session.execute(delete())
-    stmt = delete(bankc).where(bankc.user_id == str(user_id)).execution_options(synchronize_session="fetch")
+    stmt = delete(bankc).where(bankc.user_id == str(user_id)).execution_options(synchronize_session=False)
     session.execute(stmt)
     session.commit()
     session.close()
