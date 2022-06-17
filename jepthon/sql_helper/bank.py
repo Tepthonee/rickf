@@ -69,15 +69,8 @@ def del_bank(user_id):
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    try:
-        element = SESSIONB.query(bankc).filter(bankc.user_id==str(user_id)).first()
-        if element:
-            SESSIONB.delete(element)
-            return True   
-    except BaseException:
-        return BaseException
-    finally:
-        SESSIONB.close()
+    SESSIONB.query(bankc).filter_by(bankc.user_id=str(user_id)).delete()
+    SESSIONB.commit()
 
 def get_bank(user_id):
     try:
