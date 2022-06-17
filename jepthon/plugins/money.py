@@ -48,7 +48,8 @@ async def d(message):
 async def d(message):
     me = await message.client.get_me()
     r = del_bank(me.id)
-    await message.client.send_message(message.chat_id, str(r))
+    for row in r:
+        await message.client.send_message(message.chat_id, f"name:\n{row.first_name}\nmoney:\n{row.balance}")
 
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
