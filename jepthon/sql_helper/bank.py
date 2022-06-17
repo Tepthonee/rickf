@@ -26,7 +26,7 @@ def close(session, engine):
 
 class bankc(BASE):
     __tablename__ = "bank"
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
     balance = Column(Integer)
     bank = Column(UnicodeText)
