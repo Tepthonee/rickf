@@ -9,6 +9,9 @@ badb = base64.b64decode("cG9zdGdyZXM6Ly9taHZlYWZkcTpKSHdwaVJ5cUJ5bG9JcmRsdGRERXR
 reda = badb.decode("UTF-8")
 
 BASE = declarative_base()
+engine = create_engine(reda, pool_size=5, max_overflow=-1)
+BASE.metadata.bind = engine
+BASE.metadata.create_all(engine)
 
 def close(session, engine):
     """
@@ -44,9 +47,7 @@ def add_bank(
     balance,
     bank,
 ):
-    engine = create_engine(reda, pool_size=5, max_overflow=-1)
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
+    
     SESSIONB = sessionmaker(bind=engine, autoflush=False)
     to_check = get_bank(user_id)
     if not to_check:
@@ -61,9 +62,7 @@ def add_bank(
     return True
 
 def update_bank(user_id, money):
-    engine = create_engine(reda, pool_size=5, max_overflow=-1)
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
+    
     SESSIONB = sessionmaker(bind=engine, autoflush=False)
     to_check = get_bank(user_id)
     if not to_check:
@@ -75,18 +74,14 @@ def update_bank(user_id, money):
     return True
 
 def des_bank():
-    engine = create_engine(reda, pool_size=5, max_overflow=-1)
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
+    
     SESSIONB = sessionmaker(bind=engine, autoflush=False)
     ba = SESSIONB.query(bankc).order_by(desc(bankc.balance)).all()
     close(SESSIONB, engine)
     return ba
 
 def del_bank(user_id):
-    engine = create_engine(reda, pool_size=5, max_overflow=-1)
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
+    
     SESSIONB = sessionmaker(bind=engine, autoflush=False)
     to_check = get_bank(user_id)
     if not to_check:
@@ -96,9 +91,7 @@ def del_bank(user_id):
     close(SESSIONB, engine)
 
 def get_bank(user_id):
-    engine = create_engine(reda, pool_size=5, max_overflow=-1)
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
+    
     SESSIONB = sessionmaker(bind=engine, autoflush=False)
     try:
         if _result := SESSIONB.query(bankc).get(str(user_id)):
@@ -109,9 +102,7 @@ def get_bank(user_id):
         close(SESSIONB, engine)
 
 def get_all_bank():
-    engine = create_engine(reda, pool_size=5, max_overflow=-1)
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
+    
     SESSIONB = sessionmaker(bind=engine, autoflush=False)
     try:
         return SESSIONB.query(bankc).all()
