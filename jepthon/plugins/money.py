@@ -46,7 +46,7 @@ async def d(message):
 @jmthon.ar_cmd(pattern="delbank(.*)")
    
 async def d(message):
-    me = await message.client.get_me
+    me = await message.client.get_me()
     r = del_bank(me.id)
     await message.client.send_message(message.chat_id, str(r))
 
