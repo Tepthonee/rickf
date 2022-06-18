@@ -33,8 +33,6 @@ def convert(seconds):
     return "%02d:%02d" % (minutes, seconds)
 
 
-#-------load unfinished timers-------#
-
 
 @jmthon.ar_cmd(pattern="توب الفلوس(.*)")
    
@@ -48,7 +46,7 @@ async def d(message):
         count += 1
         list += f'**{count} -** [{i.first_name}](tg://user?id={i.user_id}) {i.balance} 💵\n'
         
-    await edit_delete(message, list)
+    await edit_or_reply(message, list)
     #return await edit_or_reply(message, str(des_bank()))
 
 @jmthon.ar_cmd(pattern="مسح حسابي(.*)")
@@ -62,6 +60,7 @@ async def d(message):
         row = del_bank(me.id)
         message.delete()
         await message.client.send_message(message.chat_id, "تم حذف حسابك المصرفي")
+        t = {}
 
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
@@ -313,8 +312,8 @@ async def thief(message):
     await edit_or_reply(message, f"لقد سرقت {rt} من [{user.first_name}](tg://user?id={user.id})")
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
-    await jmthon.tgbot.send_file(
-                client.get_entity(user.username),
+    await jmthon.send_file(
+                message.chat_id,
                 "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
                 caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
                 )
