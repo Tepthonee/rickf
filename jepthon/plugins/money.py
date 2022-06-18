@@ -309,13 +309,13 @@ async def thief(message):
     jep = int(be) - int(rt)
     update_bank(user.id, jep)
     jepthon = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
-    await edit_or_reply(message, f"لقد سرقت {rt} من [{user.first_name}](tg://user?id={user.id})")
+    await edit_or_reply(message, f"لقد سرقت {rt}$ من [{user.first_name}](tg://user?id={user.id})")
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
     await jmthon.send_file(
                 message.chat_id,
                 "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
-                caption=f"**لقد سرقك** [{jepthon}](tg://user?id={mee.id})\n**المبلغ الذي سرقه** : {rt} 💵",
+                caption=f"**لقد سرقك** [{jepthon}](tg://user?id={mee.id})\n**المبلغ الذي سرقه** : {rt}$ 💵",
                 )
     t["اسرق"] = time.time() + 600
     await asyncio.sleep(600)
