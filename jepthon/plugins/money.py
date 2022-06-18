@@ -35,7 +35,7 @@ def convert(seconds):
 @jmthon.ar_cmd(pattern="tdata")
 
 async def td(event):
-    return edit_or_reply(event, str(t))
+    return await edit_or_reply(event, str(t))
 
 @jmthon.ar_cmd(pattern="توب الفلوس(.*)")
    
