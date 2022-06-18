@@ -39,8 +39,16 @@ def convert(seconds):
 @jmthon.ar_cmd(pattern="bdata(.*)")
    
 async def d(message):
-    for row in des_bank():
-        await message.client.send_message(message.chat_id, f"name:\n{row.first_name}\nmoney:\n{row.balance}")
+    users = des_bank()
+    if not users:
+        return edit_or_reply(message, "لا يوجد حسابات في المصرف")
+    list = '**الحسابات**\n'
+    count = 0
+    for i in users:
+        count += 1
+        list += f'**{count} -** `{i.first_name}` {i.balance} 💵\n'
+    #for row in des_bank():
+    await message.client.send_message(message.chat_id, f"**قائمة اغنى عشرة**\n{list}")
     #return await edit_or_reply(message, str(des_bank()))
 
 @jmthon.ar_cmd(pattern="delbank(.*)")
