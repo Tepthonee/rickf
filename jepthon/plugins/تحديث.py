@@ -183,7 +183,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 
 
 @jmthon.ar_cmd(
-    pattern="تحديث(| الان)?$",
+    pattern="تحديث(| الحيدري)?$",
     command=("تحديث", plugin_category),
     info={
         "header": "To update userbot.",
@@ -225,7 +225,7 @@ async def upstream(event):
                 f"`Unfortunately, the directory {error} "
                 "does not seem to be a git repository.\n"
                 "But we can fix that by force updating the userbot using "
-                ".تحديث الان.`"
+                ".تحديث الحيدري.`"
             )
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
@@ -269,7 +269,7 @@ async def upstream(event):
         await event.edit(
             "`Force-Syncing to latest stable userbot code, please wait...`"
         )
-    if conf == "الان":
+    if conf == "الحيدري":
         await event.edit("** ⌯︙جار تحـديـث سـورس جيـبثون انـتـظـر قـليـلا 🔨**")
         await update(event, repo, ups_rem, ac_br)
     return
