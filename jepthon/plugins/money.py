@@ -44,7 +44,7 @@ async def d(message):
         return edit_or_reply(message, "لا يوجد حسابات في المصرف")
     list = '**قائمة اغنى عشرة**\n'
     count = 0
-    for i in users:
+    for i in sorted(users):
         count += 1
         list += f'**{count} -** [{i.first_name}](tg://user?id={i.user_id}) {i.balance} 💵\n'
         
