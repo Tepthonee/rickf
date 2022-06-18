@@ -42,13 +42,13 @@ async def d(message):
     users = des_bank()
     if not users:
         return edit_or_reply(message, "لا يوجد حسابات في المصرف")
-    list = '**الحسابات**\n'
+    list = '**قائمة اغنى عشرة**\n'
     count = 0
     for i in users:
         count += 1
-        list += f'**{count} -** `{i.first_name}` {i.balance} 💵\n'
-    #for row in des_bank():
-    await message.client.send_message(message.chat_id, f"**قائمة اغنى عشرة**\n{list}")
+        list += f'**{count} -** [{i.first_name}](tg://user?id={i.user_id}) {i.balance} 💵\n'
+        
+    await message.client.send_message(message.chat_id, list)
     #return await edit_or_reply(message, str(des_bank()))
 
 @jmthon.ar_cmd(pattern="delbank(.*)")
