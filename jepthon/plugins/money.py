@@ -125,17 +125,7 @@ async def ga(message):
     mee = await message.client.get_me()
     ms = message.text
     acc = get_bank(mee.id)
-    if ms == ".حذف حسابي" or ms == ".حذف حساب":
-         if acc is None:
-              await edit_delete(message, "لا تملك حساب مصرفي لحذفه")
-         else:
-              del_bank(mee.id)
-              await edit_delete(message, "تم حذف حسابك المصرفي بنجاح")
-
-
-              mde = await edit_or_reply(message,f"<strong>تم حذف حسابك في البنك .</strong>",parse_mode="html")
-
-
+ 
     if ms == ".المصرف" or ms == ".البانك" or ms == ".مصرف":
 
 
