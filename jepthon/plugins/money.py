@@ -350,8 +350,8 @@ async def transmoney(event):
         return await edit_delete(event, "ليس لديك حساب مصرفي للتحويل")
     if accu is None:
         return await edit_delete(event, "الشخص الذي تحاول التحويل له لا يملك حساب مصرفي")
-    tra = acc.balance - int(inp)
-    rec = accu.balance + int(inp)
+    tra = int(acc.balance) - int(inp)
+    rec = int(accu.balance) + int(inp)
     update_bank(me.id, tra)
     update_bank(user.id, rec)
     don = await edit_or_reply(event, f"تم تحويل {inp} لحساب [{user.first_name}](tg://user?id={user.id})")
