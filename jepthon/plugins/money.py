@@ -33,6 +33,7 @@ def convert(seconds):
     return "%02d:%02d" % (minutes, seconds)
 
 @jmthon.ar_cmd(pattern="tdata(.*)")
+
 async def td(event):
     return edit_or_reply(event, str(t))
 
