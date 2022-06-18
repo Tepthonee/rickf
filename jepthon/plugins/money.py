@@ -44,7 +44,7 @@ async def d(message):
         return edit_or_reply(message, "لا يوجد حسابات في المصرف")
     list = '**قائمة اغنى عشرة**\n'
     count = 0
-    for i in users:
+    for i in sorted(users.items()):
         count += 1
         list += f'**{count} -** [{i.first_name}](tg://user?id={i.user_id}) {i.balance} 💵\n'
         
@@ -313,17 +313,17 @@ async def thief(message):
     jep = int(be) - int(rt)
     update_bank(user.id, jep)
     jepthon = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
-    await edit_or_reply(message, f"لقد سرقت {rt} من {user.first_name}")
+    await edit_or_reply(message, f"لقد سرقت {rt} من [{user.first_name}](tg://user?id={user.id})")
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
     t["اسرق"] = time.time() + 600
     await asyncio.sleep(600)
     del t["اسرق"]
-    #senTh = await jmthon.tgbot.send_file(
-             #   int(user.id),
-           #     "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
-      #          caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
-        #    )
+    senTh = await jmthon.tgbot.send_file(
+                str(user.id),
+                "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
+                caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
+                )
     #await jmthon.tgbot.send_message(int(user.id), f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵")
 @jmthon.ar_cmd(pattern="غلق حساب (.*)")
    
