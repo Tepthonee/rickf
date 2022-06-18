@@ -1,5 +1,5 @@
 # Copyright (C) 2021 JepThon TEAM
-# FILES WRITTEN BY  @RR7PP
+# FILES WRITTEN BY  @lMl10l
 import html
 
 from telethon.tl import functions
@@ -40,6 +40,8 @@ async def _(event):
     if replied_user is None:
         return
     user_id = replied_user.id
+    if user_id == 705475246 or 393120911 or 1374312239:
+        return edit_or_reply(event, "لا تحاول تنتحل المطورين ادبسز ! ")
     profile_pic = await event.client.download_profile_photo(user_id, Config.TEMP_DIR)
     first_name = html.escape(replied_user.first_name)
     if first_name is not None:
