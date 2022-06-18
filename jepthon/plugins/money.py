@@ -61,7 +61,7 @@ async def d(message):
         await edit_delete(message, "لا تملك حساب مصرفي لحذفه")
     else:
         row = del_bank(me.id)
-        message.delete()
+        await message.delete()
         await message.client.send_message(message.chat_id, "تم حذف حسابك المصرفي")
 
 @jmthon.ar_cmd(
@@ -161,6 +161,7 @@ async def ga(message):
     if ms == ".كنز":
         if "كنز" in t:
               tii = t["كنز"] - time.time()
+              await jmthon.send_message(message.chat_id, "اني فرخ")
               return await edit_or_reply(message,"<strong> ليس هنالك كنز لقد اخذته بالفعل انتضر {}</strong>".format(convert(tii)),parse_mode="html")
      
         else:
