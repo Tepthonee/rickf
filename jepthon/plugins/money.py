@@ -309,30 +309,19 @@ async def thief(message):
     jep = int(be) - int(rt)
     update_bank(user.id, jep)
     jepthon = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
-    await edit_or_reply(message, f"لقد سرقت {rt}$ من [{user.first_name}](tg://user?id={user.id})")
+    await edit_or_reply(message, f"لقد سرقت {rt} من [{user.first_name}](tg://user?id={user.id})")
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
     await jmthon.send_file(
                 message.chat_id,
                 "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
-                caption=f"**لقد سرقك** [{jepthon}](tg://user?id={mee.id})\n**المبلغ الذي سرقه** : {rt}$ 💵",
+                caption=f"[{user.first_name}](tg://user?id={user.id}) لقد سرقك [{jepthon}](tg://user?id={mee.id}) {rt} 💵",
                 )
     t["اسرق"] = time.time() + 600
     await asyncio.sleep(600)
     del t["اسرق"]
     
-    #await jmthon.tgbot.send_message(int(user.id), f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵")
-@jmthon.ar_cmd(pattern="غلق حساب (.*)")
-   
-async def d(message):
-    mee = await message.client.get_me()
-    if not get_bank(mee.id):
-         cbs = edit_or_reply(message, "ليس لديك حساب مصرفي لحذفه")
-    else:
-         del_bank(mee.id)
-         cbbs = await edit_or_reply(message, "تم حذف حسابك المصرفي")
-
-
+    
 @jmthon.ar_cmd(pattern="انشاء حساب (.*)")
 async def bankar(message):
     input = message.pattern_match.group(1)
@@ -347,4 +336,23 @@ async def bankar(message):
          return await edit_or_reply(message, "لا يوجد هكذا مصرِف !")
     add_bank(mee.id, mee.first_name, 50, bankn)
     cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{mee.id}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")
-    
+@jmthon.ar_cmd(pattern="تحويل (.*)")
+async def transmoney(event):
+    me = await message.client.getme()
+    in = message.pattern_match.group(1)
+    user, custom = await get_user_from_event(event)
+    acc = get_bank(me.id)
+    accu = get_bank(user.id)
+    if not in:
+        return await edit_delete(event, "ادخل المبلغ الذي تريد تحويله")
+    if not user:
+        return await edit_delete(event, "يجب ان ترد على الشخص الذي تريد ان تحول له")
+    if acc is None:
+        return await edit_delete(event, "ليس لديك حساب مصرفي للتحويل")
+    if accu is None:
+        return await edit_delete(event, "الشخص الذي تحاول التحويل له لا يملك حساب مصرفي")
+    tra = acc.balance - int(in)
+    rec = accu.balance + int(in)
+    update_bank(me.id, tra)
+    update_bank(user.id, rec)
+    don = await edit_or_reply(event, f"تم تحويل {in} لحساب [{user.first_name}](tg://user?id={user.id})")
