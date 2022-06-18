@@ -315,7 +315,7 @@ async def thief(message):
     await jmthon.send_file(
                 message.chat_id,
                 "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
-                caption=f"[{user.first_name}](tg://user?id={user.id}) لقد سرقك [{jepthon}](tg://user?id={mee.id}) {rt} 💵",
+                caption=f"[{user.first_name}](tg://user?id={user.id}) من [{jepthon}](tg://user?id={mee.id}) سرق\n المبلغ: {rt} 💵",
                 )
     t["اسرق"] = time.time() + 600
     await asyncio.sleep(600)
@@ -343,7 +343,7 @@ async def transmoney(event):
     user, custom = await get_user_from_event(event)
     acc = get_bank(me.id)
     accu = get_bank(user.id)
-    if not inp:
+    if inp is None:
         return await edit_delete(event, "ادخل المبلغ الذي تريد تحويله")
     if not user:
         return await edit_delete(event, "يجب ان ترد على الشخص الذي تريد ان تحول له")
