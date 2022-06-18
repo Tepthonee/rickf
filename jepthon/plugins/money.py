@@ -350,12 +350,16 @@ async def transmoney(event):
         return await edit_delete(event, "ليس لديك حساب مصرفي للتحويل")
     if accu is None:
         return await edit_delete(event, "الشخص الذي تحاول التحويل له لا يملك حساب مصرفي")
-    if int(inp) > int(acc.balance):
-        return await edit_delete(event, "انت لا تملك هذا القدر من الاموال لتحويله")
     if "-" in inp:
         inp = inp.replace("-", "")
+    if int(inp) > int(acc.balance):
+        return await edit_delete(event, "انت لا تملك هذا القدر من الاموال لتحويله")
     if int(inp) < 2000:
         return await edit_delete(event, "لا يمكنك تحويل مبلغ اقل من 2000$")
+    if int(inp) > int(acc.balance):
+        return await edit_delete(event, "انت لا تملك هذا القدر من الاموال لتحويله")
+    if int(inp) < 0:
+        return await edit_delete(event, "ادخل قيمة صحيحة للتحويل!")
     tra = int(acc.balance) - int(inp)
     rec = int(accu.balance) + int(inp)
     update_bank(me.id, tra)
