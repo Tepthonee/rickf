@@ -8,7 +8,7 @@ import glob, os
 import os.path
 from ..helpers import get_user_from_event
 from telethon import types
-
+from ..core import check_owner
 from random import randint
 import random
 from . import jmthon
@@ -126,7 +126,7 @@ async def myb(message):
 
 
 @jmthon.ar_cmd(func=lambda m:"راتب")
-
+@check_owner
 async def ga(message):
     mee = await message.client.get_me()
     ms = message.text
