@@ -337,7 +337,7 @@ async def bankar(message):
     cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{mee.id}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")
 @jmthon.ar_cmd(pattern="تحويل (.*)")
 async def transmoney(event):
-    me = await event.client.getme()
+    me = await event.client.get_me()
     inp = message.pattern_match.group(1)
     user, custom = await get_user_from_event(event)
     acc = get_bank(me.id)
