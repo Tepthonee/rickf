@@ -339,11 +339,11 @@ async def bankar(message):
 @jmthon.ar_cmd(pattern="تحويل (.*)")
 async def transmoney(event):
     me = await message.client.getme()
-    in = message.pattern_match.group(1)
+    inp = message.pattern_match.group(1)
     user, custom = await get_user_from_event(event)
     acc = get_bank(me.id)
     accu = get_bank(user.id)
-    if not in:
+    if not inp:
         return await edit_delete(event, "ادخل المبلغ الذي تريد تحويله")
     if not user:
         return await edit_delete(event, "يجب ان ترد على الشخص الذي تريد ان تحول له")
@@ -351,8 +351,8 @@ async def transmoney(event):
         return await edit_delete(event, "ليس لديك حساب مصرفي للتحويل")
     if accu is None:
         return await edit_delete(event, "الشخص الذي تحاول التحويل له لا يملك حساب مصرفي")
-    tra = acc.balance - int(in)
-    rec = accu.balance + int(in)
+    tra = acc.balance - int(inp)
+    rec = accu.balance + int(inp)
     update_bank(me.id, tra)
     update_bank(user.id, rec)
-    don = await edit_or_reply(event, f"تم تحويل {in} لحساب [{user.first_name}](tg://user?id={user.id})")
+    don = await edit_or_reply(event, f"تم تحويل {inp} لحساب [{user.first_name}](tg://user?id={user.id})")
