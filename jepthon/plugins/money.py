@@ -8,7 +8,6 @@ import glob, os
 import os.path
 from ..helpers import get_user_from_event
 from telethon import types
-from ..core import check_owner
 from random import randint
 import random
 from . import jmthon
@@ -126,7 +125,6 @@ async def myb(message):
 
 
 @jmthon.ar_cmd(func=lambda m:"راتب")
-@check_owner
 async def ga(message):
     mee = await message.client.get_me()
     ms = message.text
@@ -337,7 +335,10 @@ async def bankar(message):
          return await edit_or_reply(message, "لا يوجد هكذا مصرِف !")
     add_bank(mee.id, mee.first_name, 50, bankn)
     cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{mee.id}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")
+
+
 @jmthon.ar_cmd(pattern="تحويل (.*)")
+
 async def transmoney(event):
     me = await event.client.get_me()
     inp = event.pattern_match.group(1)
