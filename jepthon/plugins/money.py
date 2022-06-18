@@ -48,7 +48,7 @@ async def d(message):
         count += 1
         list += f'**{count} -** [{i.first_name}](tg://user?id={i.user_id}) {i.balance} 💵\n'
         
-    await message.client.send_message(message.chat_id, list)
+    await edit_delete(message, list)
     #return await edit_or_reply(message, str(des_bank()))
 
 @jmthon.ar_cmd(pattern="مسح حسابي(.*)")
