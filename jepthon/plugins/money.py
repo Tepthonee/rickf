@@ -309,7 +309,6 @@ async def thief(message):
     jep = int(be) - int(rt)
     update_bank(user.id, jep)
     jepthon = mee.first_name.replace("\u2060", "") if mee.first_name else mee.username
-    await edit_or_reply(message, f"لقد سرقت {rt} من [{user.first_name}](tg://user?id={user.id})")
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
     await jmthon.send_file(
@@ -338,7 +337,7 @@ async def bankar(message):
     cbs = await edit_or_reply(message,f"<strong>تم انشاء حساب مصرفي بالمعلومات التالية:\nاسم صاحب الحساب:{mee.first_name}|\nايدي الحساب:{mee.id}|\nاسم المصرف:{bankn}|\nالاموال المودعة:50$</strong>", parse_mode="html")
 @jmthon.ar_cmd(pattern="تحويل (.*)")
 async def transmoney(event):
-    me = await message.client.getme()
+    me = await event.client.getme()
     inp = message.pattern_match.group(1)
     user, custom = await get_user_from_event(event)
     acc = get_bank(me.id)
