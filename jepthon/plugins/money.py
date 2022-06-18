@@ -63,7 +63,6 @@ async def d(message):
         row = del_bank(me.id)
         message.delete()
         await message.client.send_message(message.chat_id, "تم حذف حسابك المصرفي")
-        t = {}
 
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
