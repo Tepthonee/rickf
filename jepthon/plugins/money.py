@@ -317,7 +317,7 @@ async def thief(message):
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
     await jmthon.tgbot.send_file(
-                int(user.id),
+                client.get_entity(user.username),
                 "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
                 caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
                 )
