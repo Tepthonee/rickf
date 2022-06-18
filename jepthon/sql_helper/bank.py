@@ -73,7 +73,7 @@ def des_bank():
     
     Session = sessionmaker(bind=engine, autoflush=False)
     session = Session()
-    ba = session.query(bankc).order_by(desc(bankc.balance)).all()
+    ba = session.query(bankc).order_by(desc(bankc.balance)).limit(10).all()
     session.close()
     return ba
 
