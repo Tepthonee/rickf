@@ -315,7 +315,7 @@ async def thief(message):
     await jmthon.send_file(
                 message.chat_id,
                 "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
-                caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
+                caption=f"**لقد سرقك** [{jepthon}](tg://user?id={mee.id})\n**المبلغ الذي سرقه** : {rt} 💵",
                 )
     t["اسرق"] = time.time() + 600
     await asyncio.sleep(600)
