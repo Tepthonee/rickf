@@ -161,7 +161,7 @@ async def ga(message):
     if ms == ".كنز":
         if "كنز" in t:
               tii = t["كنز"] - time.time()
-              await jmthon.send_message(message.chat_id, "اني فرخ")
+              await jmthon.send_message(message.chat_id, "اني نياج رضا")
               return await edit_or_reply(message,"<strong> ليس هنالك كنز لقد اخذته بالفعل انتضر {}</strong>".format(convert(tii)),parse_mode="html")
      
         else:
