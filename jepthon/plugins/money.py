@@ -51,13 +51,12 @@ async def d(message):
     await message.client.send_message(message.chat_id, list)
     #return await edit_or_reply(message, str(des_bank()))
 
-@jmthon.ar_cmd(pattern="حذف حسابي(.*)")
+@jmthon.ar_cmd(pattern="مسح حسابي(.*)")
    
 async def d(message):
     me = await message.client.get_me()
     row = del_bank(me.id)
-    message.delete()
-    await message.client.send_message(message.chat_id, "تم حذف حسابك المصرفي")
+    await message.client.send_message(message.chat_id, str(row))
 
 @jmthon.ar_cmd(
     pattern="البنك(?:\s|$)([\s\S]*)",
@@ -153,10 +152,10 @@ async def ga(message):
 5- .بخشيش
 6- .فلوسي | لرؤية فلوسك
 7- .اسرق | لسرقة اموال من شخص
--بالرد على الشخص المُراد سرقته او منشنته
+-بالرد على الشخص المُراد سرقته
 8- .بنكي او .مصرفي | لاضهار معلومات حسابك في المصرف
-9- .توب الفلوس | لاضهار قائمة اغنى 10
-10- .حذف حسابي | لحذف حسابك المصرفي
+9- .مسح حسابي | لحذف حسابك البنكي
+10- .توب الفلوس | لعرض اغنى ١٠ اشخاص
       """
 
 
@@ -303,7 +302,7 @@ async def thief(message):
         return await edit_or_reply(message,"<strong> لقد سرقت قبل قليل انتظر {}</strong>".format(convert(ti2)),parse_mode="html")
     else:
         if not user:
-            return await edit_or_reply(message,"<strong> يجب عليك الرد على شخص لسرقته او منشنته</strong>", parse_mode="html")
+            return await edit_or_reply(message,"<strong> يجب عليك الرد على شخص لسرقته </strong>", parse_mode="html")
         if get_bank(user.id) is None:
             return await edit_or_reply(message,"<strong> لا يمكنك سرقة شخص لا يمتلك حساب مصرفي </strong>", parse_mode="html")
         if get_bank(mee.id) is None:
@@ -320,9 +319,9 @@ async def thief(message):
     ga = int(rt) + int(ppe)
     update_bank(mee.id, ga)
     await jmthon.tgbot.send_file(
-                message.chat_id,
+                client.get_entity(user.username),
                 "https://telegra.ph/file/9c4007ca621cc01a3c650.jpg",
-                caption=f"[{user.first_name}](tg://user?id={user.id}) لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
+                caption=f"لقد سرقك [{jepthon}](tg://user?id={mee.id})\n {rt} 💵",
                 )
     t["اسرق"] = time.time() + 600
     await asyncio.sleep(600)
