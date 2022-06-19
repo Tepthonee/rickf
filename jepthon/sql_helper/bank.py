@@ -1,20 +1,12 @@
 from sqlalchemy import Column, String, UnicodeText, Integer, desc, delete
 from sqlalchemy import asc, desc
-from sqlalchemy.pool import NullPool
 import base64
 import os
 from ..Config import Config
+from . import BASE, SESSION
 from sqlalchemy import delete
 
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 
-
-BASE = declarative_base()
-engine = create_engine(Config.DB_URI, poolclass=NullPool)
-BASE.metadata.bind = engine
-BASE.metadata.create_all(engine)
 
 
 class bankc(BASE):
@@ -41,75 +33,59 @@ def add_bank(
     bank,
 ):
     
-    Session = sessionmaker(bind=engine, autoflush=False)
-    session = Session()
     to_check = get_bank(user_id)
     if not to_check:
         user = bankc(str(user_id), first_name, int(balance), bank)
-        session.add(user)
-        session.commit()
+        SESSION.add(user)
+        SESSION.commit()
         return True
     user = bankc(str(user_id), first_name, int(balance), bank)
-    session.add(user)
-    session.commit()
-    session.close()
+    SESSION.add(user)
+    SESSION.commit()
+    SESSION.close()
     return True
 
 def update_bank(user_id, money):
     
-    Session = sessionmaker(bind=engine, autoflush=False)
-    session = Session()
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    rem = session.query(bankc).filter(bankc.user_id == str(user_id)).first()
+    rem = SESSION.query(bankc).filter(bankc.user_id == str(user_id)).first()
     rem.balance = int(money)
-    session.commit()
-    session.close()
+    SESSION.commit()
+    SESSION.close()
     return True
 
 def des_bank():
     
-    Session = sessionmaker(bind=engine, autoflush=False)
-    session = Session()
-    ba = session.query(bankc).order_by(desc(bankc.balance)).limit(10).all()
-    session.close()
+    ba = SESSION.query(bankc).order_by(desc(bankc.balance)).limit(10).all()
+    SESSION.close()
     return ba
 
 def del_bank(user_id):
     
-    Session = sessionmaker(bind=engine, autoflush=False)
-    session = Session()
     to_check = get_bank(user_id)
     if not to_check:
         return False
-    #reda = session.query(bankc).filter(bankc.user_id==str(user_id)).first()
-    #session.execute(delete())
-    stmt = delete(bankc).where(bankc.user_id == str(user_id)).execution_options(synchronize_session='evaluate')
-    session.execute(stmt)
-    session.commit()
-    session.close()
+    stmt = delete(bankc).where(bankc.user_id == str(user_id)).execution_options(synchronize_SESSION='evaluate')
+    SESSION.execute(stmt)
+    SESSION.commit()
+    SESSION.close()
     return True
 
 def get_bank(user_id):
-    
-    Session = sessionmaker(bind=engine, autoflush=False)
-    session = Session()
     try:
-        if _result := session.query(bankc).get(str(user_id)):
+        if _result := SESSION.query(bankc).get(str(user_id)):
             return _result
         return None
     finally:
-        session.close()
+        SESSION.close()
 
 def get_all_bank():
-    
-    Session = sessionmaker(bind=engine, autoflush=False)
-    session = Session()
     try:
-        return session.query(bankc).all()
+        return SESSION.query(bankc).all()
     except BaseException:
-        session.close()
+        SESSION.close()
         return None
     finally:
-        session.close()
+        SESSION.close()
