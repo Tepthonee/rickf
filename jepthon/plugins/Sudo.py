@@ -3,7 +3,7 @@ from datetime import datetime
 from telethon.utils import get_display_name
 
 from jepthon import jmthon
-from userbot.core.logger import logging
+from jepthon.core.logger import logging
 
 from ..Config import Config
 from ..core import CMD_INFO, PLG_INFO
