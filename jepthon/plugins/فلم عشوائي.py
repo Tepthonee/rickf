@@ -18,5 +18,4 @@ async def rfilm(event):
         movie = ia.get_movie(movieID)
         votes = movie.get('votes', None)
         rating = movie.get('rating', None)
-        await edit_or_reply(event, str(movie\nvotes\nrating))
-        
+        await edit_or_reply(event, str(movie\nvotes\nrating))        
