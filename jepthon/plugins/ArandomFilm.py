@@ -26,7 +26,6 @@ async def rfilm(event):
         moviep = movie.get('cover url')
         if moviep is not None:
             moviep = upload_image(str(moviep)) 
-            await jmthon.send_message(event.chat_id, str(moviep))
         if moviep is None:
             moviep = f"https://telegra.ph/file/15480332b663adae49205.jpg"
         moviet = f"الاسم: {movien}\nالسنة: {year}\nالتقييم: {rating}"
