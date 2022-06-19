@@ -15,7 +15,7 @@ async def rfilm(event):
         if r.status_code != 200:
             continue
 
-        movie = ia.get_movie(movieID)
-        votes = movie.get('votes', None)
-        rating = movie.get('rating', None)
-        await edit_or_reply(event, str(movie\nvotes\nrating))        
+            movie = ia.get_movie(movieID)
+            votes = movie.get('votes', None)
+            rating = movie.get('rating', None)
+            await edit_or_reply(event, str(movie\nvotes\nrating))        
