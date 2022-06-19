@@ -29,6 +29,7 @@ async def rfilm(event):
         if moviep is None:
             moviep = f"https://telegra.ph/file/15480332b663adae49205.jpg"
         moviet = f"الاسم: {movien}\nالسنة: {year}\nالتقييم: {rating}"
+        await event.delete()
         await jmthon.send_file(
                 event.chat_id,
                 moviep,
