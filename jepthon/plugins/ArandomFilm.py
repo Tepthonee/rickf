@@ -6,7 +6,6 @@ from random import randint
 from jepthon import jmthon
 import asyncio
 from ..core.managers import edit_delete, edit_or_reply
-
 ia = Cinemagoer()
 
 @jmthon.ar_cmd(pattern="فلم")
