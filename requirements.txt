@@ -1,4 +1,5 @@
 telethon
+html-telegraph-poster
 pydub
 base64
 glob
