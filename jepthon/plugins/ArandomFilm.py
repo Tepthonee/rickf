@@ -23,7 +23,7 @@ async def rfilm(event):
         rating = movie.get('rating', "لا يوجد")
         movien = movie.get('title')
         moviep = movie.get('cover url')
-        moviept = upload_image(str(moviep))
+        moviept = upload_image(str(moviep)) or None
         await jmthon.send_message(event.chat_id, str(moviept))
         movieimg = f"{moviept}" or f"https://telegra.ph/file/15480332b663adae49205.jpg"
         moviet = f"الاسم: {movien}\nالسنة: {year}\nالتقييم: {rating}"
