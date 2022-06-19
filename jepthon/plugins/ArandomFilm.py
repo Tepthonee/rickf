@@ -25,7 +25,7 @@ async def rfilm(event):
         moviep = movie.get('cover url')
         moviet = f"الاسم: {movien}\nالسنة: {year}\nالتقييم: {rating}"
         await jmthon.send_file(
-                message.chat_id,
+                event.chat_id,
                 str(moviep),
                 caption=moviet,
                 )
