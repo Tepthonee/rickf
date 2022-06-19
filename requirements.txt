@@ -1,5 +1,4 @@
 telethon
-marshal
 pydub
 base64
 glob
