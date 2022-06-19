@@ -13,8 +13,7 @@ async def rfilm(event)
             continue
 
         movie = ia.get_movie(movieID)
-        print(movie)
         votes = movie.get('votes', None)
-        print(votes)
         rating = movie.get('rating', None)
-        print(rating)
+        await edit_or_reply(event, str(movie\nvotes\nrating))
+        
