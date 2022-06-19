@@ -20,8 +20,9 @@ async def rfilm(event):
         year = movie.get('year')
         rating = movie.get('rating', "لا يوجد")
         movien = movie.get('title')
-        await jmthon.send_message(event.chat_id, str(movie.get('cover url')))
-        moviep = movie.get('full-size cover url')
+        movies = ia.search_movie(str(movien))
+        movief = movies[0]
+        moviep = movief.get('full-size cover url')
         if moviep is not None:
             moviep = upload_image(str(moviep)) 
         if moviep is None:
