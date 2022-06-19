@@ -1,8 +1,5 @@
 from sqlalchemy import Column, String, UnicodeText, Integer, desc, delete
 from sqlalchemy import asc, desc
-import base64
-import os
-from ..Config import Config
 from . import BASE, SESSION
 from sqlalchemy import delete
 
