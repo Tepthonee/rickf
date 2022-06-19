@@ -4,7 +4,7 @@ from random import randint
 
 ia = Cinemagoer()
 @jmthon.ar_cmd(pattern="فلم")
-async def rfilm(event)
+async def rfilm(event):
     for _ in range(100):
         movieID = f'{randint(1,9999999):07}'
         url = f'https://www.imdb.com/title/tt{movieID}'
