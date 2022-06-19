@@ -7,8 +7,6 @@ from . import BASE, SESSION
 from sqlalchemy import delete
 
 
-
-
 class bankc(BASE):
     __tablename__ = "bank"
     user_id = Column(String(14), primary_key=True)
