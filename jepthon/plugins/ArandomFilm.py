@@ -2,6 +2,8 @@
 #By Reda 
 from imdb import Cinemagoer
 import requests
+from html_telegraph_poster.upload_images import upload_image
+
 from random import randint
 from jepthon import jmthon
 import asyncio
@@ -22,7 +24,9 @@ async def rfilm(event):
         rating = movie.get('rating', "لا يوجد")
         movien = movie.get('title')
         moviep = movie.get('cover url')
-        movieimg = f"{moviep}" or f"https://telegra.ph/file/15480332b663adae49205.jpg"
+        moviept = upload_image(str(moviep))
+        await jmthon.send_message(event.chat_id, str(moviept))
+        movieimg = f"{moviept}" or f"https://telegra.ph/file/15480332b663adae49205.jpg"
         moviet = f"الاسم: {movien}\nالسنة: {year}\nالتقييم: {rating}"
         await jmthon.send_file(
                 event.chat_id,
