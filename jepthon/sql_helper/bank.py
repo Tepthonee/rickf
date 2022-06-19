@@ -3,17 +3,16 @@ from sqlalchemy import asc, desc
 from sqlalchemy.pool import NullPool
 import base64
 import os
-
+from ..Config import Config
 from sqlalchemy import delete
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-badb = base64.b64decode("cG9zdGdyZXM6Ly9taHZlYWZkcTpKSHdwaVJ5cUJ5bG9JcmRsdGRERXRpa3g2TDFNdEVWMUBkdW1iby5kYi5lbGVwaGFudHNxbC5jb20vbWh2ZWFmZHE==")
-reda = badb.decode("UTF-8")
+
 
 BASE = declarative_base()
-engine = create_engine(reda, poolclass=NullPool)
+engine = create_engine(Config.DB_URI, poolclass=NullPool)
 BASE.metadata.bind = engine
 BASE.metadata.create_all(engine)
 
