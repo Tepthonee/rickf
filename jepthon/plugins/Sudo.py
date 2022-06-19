@@ -34,7 +34,7 @@ def get_key(val):
     return None
 
 
-@jmthon.cat_cmd(
+@jmthon.ar_cmd(
     pattern="sudo (on|off)$",
     command=("sudo", plugin_category),
     info={
@@ -86,7 +86,7 @@ async def chat_blacklist(event):
     await edit_delete(event, "It was turned off already")
 
 
-@jmthon.cat_cmd(
+@jmthon.ar_cmd(
     pattern="addsudo(?:\s|$)([\s\S]*)",
     command=("addsudo", plugin_category),
     info={
@@ -126,7 +126,7 @@ async def add_sudo_user(event):
     await event.client.reload(msg)
 
 
-@jmthon.cat_cmd(
+@jmthon.ar_cmd(
     pattern="delsudo(?:\s|$)([\s\S]*)",
     command=("delsudo", plugin_category),
     info={
@@ -157,7 +157,7 @@ async def _(event):
     await event.client.reload(msg)
 
 
-@jmthon.cat_cmd(
+@jmthon.ar_cmd(
     pattern="vsudo$",
     command=("vsudo", plugin_category),
     info={
@@ -186,7 +186,7 @@ async def _(event):
     await edit_or_reply(event, result)
 
 
-@jmthon.cat_cmd(
+@jmthon.ar_cmd(
     pattern="addscmd(s)?(?:\s|$)([\s\S]*)",
     command=("addscmd", plugin_category),
     info={
@@ -281,7 +281,7 @@ async def _(event):  # sourcery no-metrics
     await event.client.reload(msg)
 
 
-@jmthon.cat_cmd(
+@jmthon.ar_cmd(
     pattern="rmscmd(s)?(?:\s|$)([\s\S]*)?",
     command=("rmscmd", plugin_category),
     info={
@@ -375,7 +375,7 @@ async def _(event):  # sourcery no-metrics
     await event.client.reload(msg)
 
 
-@jmthon.cat_cmd(
+@jmthon.ar_cmd(
     pattern="vscmds( -d)?$",
     command=("vscmds", plugin_category),
     info={
