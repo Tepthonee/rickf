@@ -1,3 +1,5 @@
+#Jepthon ©
+#By Reda 
 from imdb import Cinemagoer
 import requests
 from random import randint
