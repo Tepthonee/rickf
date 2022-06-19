@@ -13,13 +13,10 @@ ia = Cinemagoer()
 async def rfilm(event):
     await event.edit("يرجى الانتضار جاري البحث على فلم...")
     for _ in range(100):
-        movieID = f"{randint(1,9999999):07}"
-        url = f'https://www.imdb.com/title/tt{movieID}'
-        r = requests.get(url)
-        if r.status_code != 200:
-            continue
+        movieID = randint(1,250)
+        movieT = ia.get_top250_movies()
 
-        movie = ia.get_movie(movieID)
+        movie = movieT[movieID]
         year = movie.get('year')
         rating = movie.get('rating', "لا يوجد")
         movien = movie.get('title')
