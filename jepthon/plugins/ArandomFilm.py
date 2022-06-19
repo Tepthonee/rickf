@@ -3,7 +3,6 @@
 from imdb import Cinemagoer
 import requests
 from html_telegraph_poster.upload_images import upload_image
-
 from random import randint
 from jepthon import jmthon
 import asyncio
