@@ -1,10 +1,8 @@
 import time
 import re
-from ..Config import Config
 from ..sql_helper.bank import add_bank, del_bank, get_bank, update_bank, des_bank
 from telethon import Button, events
-import glob, os
-import os.path
+import os
 from ..helpers import get_user_from_event
 from telethon import types
 from random import randint
