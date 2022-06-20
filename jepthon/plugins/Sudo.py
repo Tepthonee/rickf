@@ -223,7 +223,7 @@ async def _(event):  # sourcery no-metrics
         totalcmds = CMD_INFO.keys()
         flagcmds = (
             PLG_INFO["botcontrols"]
-            + PLG_INFO["autoprofile"]
+            + PLG_INFO["فحص"]
             + PLG_INFO["evaluators"]
             + PLG_INFO["execmod"]
             + PLG_INFO["heroku"]
