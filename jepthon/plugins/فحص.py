@@ -22,11 +22,11 @@ from ..sql_helper.globals import gvarstatus
 from . import mention
 
 plugin_category = "utils"
-
+catgo = "fun"
 #كتـابة وتعـديل:  @lMl10l
 ALIVE_ET = Config.ALIVE_ET or "فحص"
 @jmthon.on(admin_cmd(pattern=f"{ALIVE_ET}(?:\s|$)([\s\S]*)",
-command=(f"{ALIVE_ET}", "fun"),
+command=(f"{ALIVE_ET}", catgo),
 ))
 async def amireallyalive(event):
     "للتـأكد من ان البـوت يعـمـل"
