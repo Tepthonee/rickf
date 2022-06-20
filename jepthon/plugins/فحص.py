@@ -25,7 +25,8 @@ plugin_category = "utils"
 
 #كتـابة وتعـديل:  @lMl10l
 ALIVE_ET = Config.ALIVE_ET or "فحص"
-@jmthon.on(admin_cmd(pattern=f"{ALIVE_ET}(?:\s|$)([\s\S]*)"))
+@jmthon.on(admin_cmd(pattern=f"{ALIVE_ET}(?:\s|$)([\s\S]*)"
+command=(f"{ALIVE_ET}")))
     
 async def amireallyalive(event):
     "للتـأكد من ان البـوت يعـمـل"
