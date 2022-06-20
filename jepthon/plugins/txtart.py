@@ -20,7 +20,7 @@ except:
 import numpy as np
 from PIL import Image
 from scipy.ndimage import gaussian_gradient_magnitude
-from userbot import catub
+from jepthon import jmthon
 from wordcloud import ImageColorGenerator, WordCloud
 
 from ..core.logger import logging
@@ -32,7 +32,7 @@ LOGS = logging.getLogger(__name__)
 plugin_category = "extra"
 
 
-@catub.cat_cmd(
+@jmthon.ar_cmd(
     pattern="txtart$",
     command=("txtart", plugin_category),
     info={
@@ -54,7 +54,7 @@ async def txt_art(event):
     if output[2] in ["Round Video", "Gif", "Sticker", "Video"]:
         jisanidea = True
     try:
-        text = alicetxt
+        text = "ما هذا"
         image_color = np.array(Image.open(output[1]))
         image_color = image_color[::1, ::1]
         image_mask = image_color.copy()
