@@ -54,7 +54,7 @@ async def txt_art(event):
     if output[2] in ["Round Video", "Gif", "Sticker", "Video"]:
         jisanidea = True
     try:
-        text = "ما هذا"
+        text = alicetxt
         image_color = np.array(Image.open(output[1]))
         image_color = image_color[::1, ::1]
         image_mask = image_color.copy()
