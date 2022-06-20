@@ -22,7 +22,7 @@ async def rfilm(event):
         movien = movie.get('title')
         movies = ia.search_movie(str(movien))
         movief = movies[0]
-        mlang= movief.get('language')
+        mlang= movief.get('language', "غير معروفه")
         moviep = movief.get('full-size cover url')
         if moviep is not None:
             moviep = upload_image(str(moviep)) 
