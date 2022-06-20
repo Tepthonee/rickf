@@ -22,12 +22,13 @@ async def rfilm(event):
         movien = movie.get('title')
         movies = ia.search_movie(str(movien))
         movief = movies[0]
+        mlang= movief.get('language')
         moviep = movief.get('full-size cover url')
         if moviep is not None:
             moviep = upload_image(str(moviep)) 
         if moviep is None:
             moviep = f"https://telegra.ph/file/15480332b663adae49205.jpg"
-        moviet = f"الاسم: {movien}\nالسنة: {year}\nالتقييم: {rating}"
+        moviet = f"الاسم: {movien}\nالسنة: {year}\nاللغة: {mlang}\nالتقييم: {rating}"
         await event.delete()
         await jmthon.send_file(
                 event.chat_id,
