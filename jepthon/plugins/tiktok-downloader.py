@@ -21,7 +21,7 @@ from ..Config import Config
 async def tiktok_dl(message):
     ms = message.text
     if "https://vm.tiktok.com/" in ms:
-
+        await message.delete()
         a = await jmthon.send_message(message.chat.id, 'يجري تنزيل الملف للخادم..', parse_mode='md')
         link = re.findall(r'\bhttps?://.*[(tiktok|douyin)]\S+', message.text)[0]
         link = link.split("?")[0]
@@ -83,7 +83,7 @@ async def tiktok_dl(message):
                           progress_args=(a, start, title)
         )
         
-        a.delete()
+        await a.delete()
      
         shutil.rmtree(directory)
  
