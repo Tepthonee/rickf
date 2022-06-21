@@ -20,7 +20,7 @@ from ..Config import Config
 @jmthon.ar_cmd(func=lambda m:'reda')
 async def tiktok_dl(message):
     ms = message.text
-    if "https://vm.tiktok.com/" in ms:
+    if ".تك https://vm.tiktok.com/" in ms:
         await message.delete()
         a = await jmthon.send_message(message.chat.id, 'يجري البحث عن الملف..', parse_mode='md')
         link = re.findall(r'\bhttps?://.*[(tiktok|douyin)]\S+', message.text)[0]
