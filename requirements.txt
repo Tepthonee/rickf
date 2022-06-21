@@ -2,6 +2,9 @@ telethon
 html-telegraph-poster
 pydub
 base64
+bs4
+tgcrypto
+pymongo[srv]
 glob
 json
 aiofiles
