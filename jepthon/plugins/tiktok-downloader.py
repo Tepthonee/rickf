@@ -1,7 +1,7 @@
 # Copyright 2021 TerminalWarlord under the terms of the MIT
 # license found at https://github.com/TerminalWarlord/TikTok-Downloader-Bot/blob/master/LICENSE
 # Encoding = 'utf-8'
-# Fork and Deploy, do not modify this repo and claim it yours
+#Edited by Reda
 import asyncio 
 import shutil
 import requests
@@ -22,7 +22,7 @@ async def tiktok_dl(message):
     ms = message.text
     if "https://vm.tiktok.com/" in ms:
         await message.delete()
-        a = await jmthon.send_message(message.chat.id, 'يجري تنزيل الملف للخادم..', parse_mode='md')
+        a = await jmthon.send_message(message.chat.id, 'يجري البحث عن الملف..', parse_mode='md')
         link = re.findall(r'\bhttps?://.*[(tiktok|douyin)]\S+', message.text)[0]
         link = link.split("?")[0]
 
@@ -79,7 +79,7 @@ async def tiktok_dl(message):
         title = filename
         catid = await reply_id(message)
         await message.client.send_file(
-            message.chat_id, f"./{directory}/{filename}", reply_to=catid, force_document=True, parse_mode='md', caption=f"**File :** __{filename}__\n**Size :** __{total_size} MB__", progress=progress,
+            message.chat_id, f"./{directory}/{filename}", reply_to=catid, force_document=True, parse_mode='md', caption=f"**الملف : ** {filename}\n**الحجم :** {total_size} MB", progress=progress,
                           progress_args=(a, start, title)
         )
         
