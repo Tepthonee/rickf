@@ -46,7 +46,7 @@ async def tiktok_dl(message):
             r = requests.get(api, params=params, headers=headers).json()['videoLinks']['download']
             directory = str(round(time.time()))
             filename = str(int(time.time()))+'.mp4'
-            size = int(requests.head(r).headers['Content-length'])
+            size = int(requests.head(r).headers['Content-Length'])
             total_size = "{:.2f}".format(int(size) / 1048576)
             try:
                 os.mkdir(directory)
