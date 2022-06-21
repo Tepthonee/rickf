@@ -22,9 +22,7 @@ async def tiktok_dl(message):
     ms = message.text
     if "https://vm.tiktok.com/" in ms:
 
-        a = await jmthon.send_message(message.chat.id,
-                         text='يجري تنزيل الملف للخادم..',
-                         parse_mode='md')
+        a = await jmthon.send_message(message.chat.id, 'يجري تنزيل الملف للخادم..', parse_mode='md')
         link = re.findall(r'\bhttps?://.*[(tiktok|douyin)]\S+', message.text)[0]
         link = link.split("?")[0]
 
@@ -79,7 +77,7 @@ async def tiktok_dl(message):
                f' يجري الرفع للتلجرام⏳__')
         start = time.time()
         title = filename
-        await jmthon.send_document(chat_id=message.chat.id,
+        await jmthon.send_document(message.chat.id,
                           document=f"./{directory}/{filename}",
                           caption=f"**File :** __{filename}__\n"
                           f"**Size :** __{total_size} MB__\n\n",
