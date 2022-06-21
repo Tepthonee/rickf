@@ -2,7 +2,6 @@
 Syntax: .json"""
 from telethon import events
 import io
-from userbot.utils import admin_cmd
 from jepthon import jmthon
 
 @jmthon.on(admin_cmd(pattern="json"))
