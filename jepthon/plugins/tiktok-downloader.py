@@ -19,7 +19,7 @@ from ..Config import Config
 @jmthon.ar_cmd(func=lambda m:'reda')
 async def tiktok_dl(message):
     ms = message.text
-    if message.input_sender == InputPeerSelf():
+    if message.input_sender is InputPeerSelf():
 
         if ".تك https://vm.tiktok.com/" in ms:
             await message.delete()
