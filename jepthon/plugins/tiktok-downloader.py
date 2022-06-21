@@ -14,7 +14,7 @@ from datetime import timedelta
 import math
 import base64
 from jepthon import jmthon 
-from ..Config import Config
+#from ..Config import Config
 
 @jmthon.ar_cmd(func=lambda m:'reda')
 async def tiktok_dl(message):
