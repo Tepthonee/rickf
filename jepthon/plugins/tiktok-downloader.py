@@ -77,17 +77,14 @@ async def tiktok_dl(message):
                f' يجري الرفع للتلجرام⏳__')
         start = time.time()
         title = filename
-        await jmthon.send_document(message.chat.id,
-                          document=f"./{directory}/{filename}",
-                          caption=f"**File :** __{filename}__\n"
-                          f"**Size :** __{total_size} MB__\n\n",
-                          file_name=f"{directory}",
-                          parse_mode='md',
-                          progress=progress,
-                          progress_args=(a, start, title))
+        await event.client.send_file(
+            message.chat_id, f"./{directory}/{filename}", reply_to=catid, force_document=True, parse_mode='md', caption=f"**File :** __{filename}__\n**Size :** __{total_size} MB__", progress=progress,
+                          progress_args=(a, start, title)
+        )
+        
         a.delete()
-        try:
-            shutil.rmtree(directory)
+     
+        shutil.rmtree(directory)
         except:
             pass
 
