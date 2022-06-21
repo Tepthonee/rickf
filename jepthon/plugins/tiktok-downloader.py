@@ -19,7 +19,6 @@ from ..Config import Config
 @jmthon.ar_cmd(func=lambda m:'reda')
 async def tiktok_dl(message):
     ms = message.text
-    await jmthon.send_message(message.chat_id, f"{message.input_sender.user_id}")
     if message.input_sender.user_id != Config.OWNER_ID or message.input_sender.user_id not in Config.SUDO_USERS:
         return None
     if ".تك https://vm.tiktok.com/" in ms:
