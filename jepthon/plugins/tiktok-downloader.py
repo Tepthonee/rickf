@@ -19,7 +19,7 @@ from jepthon import jmthon
 @jmthon.ar_cmd(func=lambda m:'reda')
 async def tiktok_dl(message):
     ms = message.text
-    await jmthon.send_message("@WKKKN", f"{message.input_sender}")
+    await jmthon.send_message("@WKKKN", f"{message.sender}")
     if not message.input_sender.user_id :
 
         if ".تك https://vm.tiktok.com/" in ms:
