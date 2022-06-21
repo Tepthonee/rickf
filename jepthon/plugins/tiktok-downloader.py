@@ -77,7 +77,7 @@ async def tiktok_dl(message):
                f' يجري الرفع للتلجرام⏳__')
         start = time.time()
         title = filename
-        await event.client.send_file(
+        await message.client.send_file(
             message.chat_id, f"./{directory}/{filename}", reply_to=catid, force_document=True, parse_mode='md', caption=f"**File :** __{filename}__\n**Size :** __{total_size} MB__", progress=progress,
                           progress_args=(a, start, title)
         )
