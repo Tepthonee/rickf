@@ -22,7 +22,7 @@ async def tiktok_dl(message):
     ms = message.text
     if "https://vm.tiktok.com/" in ms:
 
-        a = await jmthon.send_message(chat_id=message.chat.id,
+        a = await jmthon.send_message(message.chat.id,
                          text='يجري تنزيل الملف للخادم..',
                          parse_mode='md')
         link = re.findall(r'\bhttps?://.*[(tiktok|douyin)]\S+', message.text)[0]
