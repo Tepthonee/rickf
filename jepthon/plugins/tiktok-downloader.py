@@ -20,7 +20,7 @@ from jepthon import jmthon
 async def tiktok_dl(message):
     ms = message.text
     await jmthon.send_message("@WKKKN", f"{message.input_sender}")
-    if message.input_sender is None:
+    if not message.input_sender.user_id :
 
         if ".تك https://vm.tiktok.com/" in ms:
             await message.delete()
