@@ -85,6 +85,4 @@ async def tiktok_dl(message):
         a.delete()
      
         shutil.rmtree(directory)
-        except:
-            pass
-
+ 
