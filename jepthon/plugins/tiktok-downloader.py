@@ -3,7 +3,7 @@
 # Encoding = 'utf-8'
 # Fork and Deploy, do not modify this repo and claim it yours
 # For collaboration mail me at dev.jaybee@gmail.com
-
+import asyncio 
 import shutil
 import requests
 import json
@@ -18,12 +18,12 @@ from ..helpers.progress_bar import progress, TimeFormatter, humanbytes
 from jepthon import jmthon 
 from ..Config import Config
 
-@jmthon.ar_cmd(func=lambda m:'reda')
-def tiktok_dl(message):
+@await jmthon.ar_cmd(func=lambda m:'reda')
+async def tiktok_dl(message):
     ms = message.text
     if "https://vm.tiktok.com/" in ms:
 
-        a = jmthon.send_message(chat_id=message.chat.id,
+        a = await jmthon.send_message(chat_id=message.chat.id,
                          text='يجري تنزيل الملف للخادم..',
                          parse_mode='md')
         link = re.findall(r'\bhttps?://.*[(tiktok|douyin)]\S+', message.text)[0]
@@ -80,7 +80,7 @@ def tiktok_dl(message):
                f' يجري الرفع للتلجرام⏳__')
         start = time.time()
         title = filename
-        jmthon.send_document(chat_id=message.chat.id,
+        await jmthon.send_document(chat_id=message.chat.id,
                           document=f"./{directory}/{filename}",
                           caption=f"**File :** __{filename}__\n"
                           f"**Size :** __{total_size} MB__\n\n",
