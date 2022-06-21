@@ -13,7 +13,6 @@ import time
 from datetime import timedelta
 import math
 import base64
-from ..helpers.progress_bar import progress, TimeFormatter, humanbytes
 from jepthon import jmthon 
 from ..Config import Config
 
@@ -79,8 +78,8 @@ async def tiktok_dl(message):
         title = filename
         catid = await reply_id(message)
         await message.client.send_file(
-            message.chat_id, f"./{directory}/{filename}", reply_to=catid, force_document=True, parse_mode='md', caption=f"**الملف : ** {filename}\n**الحجم :** {total_size} MB", progress=progress,
-                          progress_args=(a, start, title)
+            message.chat_id, f"./{directory}/{filename}", reply_to=catid, force_document=True, parse_mode='md', caption=f"**الملف : ** {filename}\n**الحجم :** {total_size} MB"
+
         )
         
         await a.delete()
