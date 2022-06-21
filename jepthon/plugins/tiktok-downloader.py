@@ -17,9 +17,9 @@ from jepthon import jmthon
 from ..Config import Config
 
 @jmthon.ar_cmd(func=lambda m:'reda')
-async def tiktok_dl(message, event):
+async def tiktok_dl(message):
     ms = message.text
-    if event.user_id != Config.OWNER_ID or event.user_id not in Config.SUDO_USERS:
+    if message.client.id != Config.OWNER_ID or message.client.id not in Config.SUDO_USERS:
         return None
     if ".تك https://vm.tiktok.com/" in ms:
         await message.delete()
