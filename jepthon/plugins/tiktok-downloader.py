@@ -4,7 +4,6 @@
 # Fork and Deploy, do not modify this repo and claim it yours
 # For collaboration mail me at dev.jaybee@gmail.com
 
-from telethon import filters
 import shutil
 import requests
 import json
@@ -15,7 +14,7 @@ import time
 from datetime import timedelta
 import math
 import base64
-from progress_bar import progress, TimeFormatter, humanbytes
+from ..helpers.progress_bar import progress, TimeFormatter, humanbytes
 from jepthon import jmthon 
 from ..Config import Config
 
