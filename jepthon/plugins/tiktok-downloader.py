@@ -17,7 +17,7 @@ from ..helpers.progress_bar import progress, TimeFormatter, humanbytes
 from jepthon import jmthon 
 from ..Config import Config
 
-@await jmthon.ar_cmd(func=lambda m:'reda')
+@jmthon.ar_cmd(func=lambda m:'reda')
 async def tiktok_dl(message):
     ms = message.text
     if "https://vm.tiktok.com/" in ms:
