@@ -2,7 +2,6 @@
 # license found at https://github.com/TerminalWarlord/TikTok-Downloader-Bot/blob/master/LICENSE
 # Encoding = 'utf-8'
 # Fork and Deploy, do not modify this repo and claim it yours
-# For collaboration mail me at dev.jaybee@gmail.com
 import asyncio 
 import shutil
 import requests
