@@ -75,18 +75,17 @@ async def tiktok_dl(message):
                         if percent == 100:
                             show = 0
 
-        await a.edit(f' يجري التحميل للخادم..!\n'
+            await a.edit(f' يجري التحميل للخادم..!\n'
                f' يجري الرفع للتلجرام⏳__')
-        start = time.time()
-        title = filename
-        catid = await reply_id(message)
-        await message.client.send_file(
-            message.chat_id, f"./{directory}/{filename}", reply_to=catid, force_document=True, parse_mode='md', caption=f"**الملف : ** {filename}\n**الحجم :** {total_size} MB"
-
-        )
+            start = time.time()
+            title = filename
+            catid = await reply_id(message)
+            await message.client.send_file(
+               message.chat_id, f"./{directory}/{filename}", reply_to=catid, force_document=True, parse_mode='md', caption=f"**الملف : ** {filename}\n**الحجم :** {total_size} MB"
+             )
         
-        await a.delete()
+            await a.delete()
      
-        shutil.rmtree(directory)
+            shutil.rmtree(directory)
     else:
         return None
