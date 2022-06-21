@@ -64,7 +64,7 @@ async def tiktok_dl(message):
                         percent = 100
                     if show == 1:
                         try:
-                            a.edit(f'__**URL :**__ __{message.text}__\n'
+                            await a.edit(f'__**URL :**__ __{message.text}__\n'
                                f'__**Total Size :**__ __{total_size} MB__\n'
                                f'__**Downloaded :**__ __{percent}%__\n',
                                disable_web_preview=False)
@@ -73,7 +73,7 @@ async def tiktok_dl(message):
                         if percent == 100:
                             show = 0
 
-        a.edit(f' يجري التحميل للخادم..!\n'
+        await a.edit(f' يجري التحميل للخادم..!\n'
                f' يجري الرفع للتلجرام⏳__')
         start = time.time()
         title = filename
