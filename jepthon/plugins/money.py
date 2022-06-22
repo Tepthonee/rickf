@@ -174,17 +174,17 @@ async def ga(message):
             if "استثمار" in t:
                 ti2 = t["استثمار"] - time.time()
                 return await edit_or_reply(message,"<strong> للاستثمار مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
-            lss = ["Done","Fail"]
-            ls = random.choice(lss)
-            ppe = acc.balance
-            if int(value) > int(ppe):
-                return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للاستثمار</strong>", parse_mode="html")
-            if "Done" in ls:
-                kf = int(value) + int(randint(int(ppe),int(ppe)))
-                update_bank(mee.id, kf)
-                d = ["1%","2%","4%","8%","9%"]
-                ra = random.choice(d)
-                ma = await edit_or_reply(message,f"""<strong>
+                lss = ["Done","Fail"]
+                ls = random.choice(lss)
+                ppe = acc.balance
+                if int(value) > int(ppe):
+                    return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للاستثمار</strong>", parse_mode="html")
+                if "Done" in ls:
+                    kf = int(value) + int(randint(int(ppe),int(ppe)))
+                    update_bank(mee.id, kf)
+                    d = ["1%","2%","4%","8%","9%"]
+                    ra = random.choice(d)
+                    ma = await edit_or_reply(message,f"""<strong>
 ===================
 • استثمار ناجح  💰
 • نسبة الربح  ↢ {ra}
@@ -192,46 +192,46 @@ async def ga(message):
 • اموالك الان  ↢ ( {kf}  💵 )
 ===================
 </strong>""",parse_mode="html")
-                t["استثمار"] = time.time() + 600
-                await asyncio.sleep(600)
-                del t["استثمار"]
-            if "Fail" in ls:
-                 await edit_or_reply(message, "استثمار فاشل لم تحصل على اي ارباح")
-                 t["استثمار"] = time.time() + 600
-                 await asyncio.sleep(600)
-                 del t["استثمار"]
+                    t["استثمار"] = time.time() + 600
+                    await asyncio.sleep(600)
+                    del t["استثمار"]
+                if "Fail" in ls:
+                     await edit_or_reply(message, "استثمار فاشل لم تحصل على اي ارباح")
+                     t["استثمار"] = time.time() + 600
+                     await asyncio.sleep(600)
+                     del t["استثمار"]
              
 
         if f".حظ"in message.text:
             value = message.text.replace(".حظ","")
             ppe = acc.balance
-        if "حظ" in t:
-            ti2 = t["حظ"] - time.time()
-            return await edit_or_reply(message,"<strong> للعب الحظ مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
+            if "حظ" in t:
+                ti2 = t["حظ"] - time.time()
+                return await edit_or_reply(message,"<strong> للعب الحظ مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
 
-        if int(value) > int(ppe):
-            return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للحظ</strong>", parse_mode="html")
-        ls = ["Done","Fail"]
-        sv = random.choice(ls)
-        if "Done" in sv:
+            if int(value) > int(ppe):
+                return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للحظ</strong>", parse_mode="html")
+            ls = ["Done","Fail"]
+            sv = random.choice(ls)
+            if "Done" in sv:
         
-            kf = int(value) + int(randint(int(ppe),int(ppe)))
-            update_bank(mee.id, kf)
-            cong = await edit_or_reply(message,f"""<strong>          
+                kf = int(value) + int(randint(int(ppe),int(ppe)))
+                update_bank(mee.id, kf)
+                cong = await edit_or_reply(message,f"""<strong>          
 ======================
 • مبارك لقد ربحت بالحظ
 • اموالك السابقة  ↢ ( {ppe}  💵 ) .
 • اموالك الان  ↢ ( {kf}  💵 ) .
 ======================
 </strong>""",parse_mode="html")
-            t["حظ"] = time.time() + 600
-            await asyncio.sleep(600)
-            del t["حظ"]
-        else:
-            pa = acc.balance
-            pop = int(pa) - int(value)
-            update_bank(mee.id, pop)
-            heh = await edit_or_reply(message,f"""<strong>
+                t["حظ"] = time.time() + 600
+                await asyncio.sleep(600)
+                del t["حظ"]
+            else:
+                pa = acc.balance
+                pop = int(pa) - int(value)
+                update_bank(mee.id, pop)
+                heh = await edit_or_reply(message,f"""<strong>
 =======================
 • لسوء الحظ , خسرت في الحظ 
 • اموالك السابقة  ↢ ( {pa} 💵 ) .
@@ -239,9 +239,9 @@ async def ga(message):
 ========================
 </strong>""",parse_mode="html")
 
-            t["حظ"] = time.time() + 600
-            await asyncio.sleep(600)
-            del t["حظ"]
+                t["حظ"] = time.time() + 600
+                await asyncio.sleep(600)
+                del t["حظ"]
     if ms == ".بخشيش":
         ppe = acc.balance
         if "بخشيش" in t:
@@ -264,9 +264,7 @@ async def ga(message):
 
         else:
 
-
               list = ["مبرمج 💻-1000","ملك 🤴-10000","قاضي 👨‍⚖-20000","عامل 🧑‍🔧-1000","روبوت 🤖-2300","سائق 🚓-4000","تاجر مخدرات 🚬-5000","تاجر اسلحة 🔫-9000","طيار ✈️-7000","قبطان 🛳-8000"]
-
               rt = random.choice(list)
               name = rt.split("-")[0]
               ratb = rt.split("-")[1]
