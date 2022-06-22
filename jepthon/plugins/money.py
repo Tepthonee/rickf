@@ -1,7 +1,6 @@
 import time
 import re
 from ..sql_helper.bank import add_bank, del_bank, get_bank, update_bank, des_bank
-from telethon import Button, events
 import os
 from ..helpers import get_user_from_event
 from telethon import types
@@ -174,17 +173,17 @@ async def ga(message):
             if "استثمار" in t:
                 ti2 = t["استثمار"] - time.time()
                 return await edit_or_reply(message,"<strong> للاستثمار مجدداً انتضر {}</strong>".format(convert(ti2)),parse_mode="html")
-                lss = ["Done","Fail"]
-                ls = random.choice(lss)
-                ppe = acc.balance
-                if int(value) > int(ppe):
-                    return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للاستثمار</strong>", parse_mode="html")
-                if "Done" in ls:
-                    kf = int(value) + int(randint(int(ppe),int(ppe)))
-                    update_bank(mee.id, kf)
-                    d = ["1%","2%","4%","8%","9%"]
-                    ra = random.choice(d)
-                    ma = await edit_or_reply(message,f"""<strong>
+            lss = ["Done","Fail"]
+            ls = random.choice(lss)
+            ppe = acc.balance
+            if int(value) > int(ppe):
+                return await edit_delete(message, "<strong>! انت لا تملك هذا القدر من الاموال للاستثمار</strong>", parse_mode="html")
+            if "Done" in ls:
+                kf = int(value) + int(randint(int(ppe),int(ppe)))
+                update_bank(mee.id, kf)
+                d = ["1%","2%","4%","8%","9%"]
+                ra = random.choice(d)
+                ma = await edit_or_reply(message,f"""<strong>
 ===================
 • استثمار ناجح  💰
 • نسبة الربح  ↢ {ra}
@@ -192,14 +191,14 @@ async def ga(message):
 • اموالك الان  ↢ ( {kf}  💵 )
 ===================
 </strong>""",parse_mode="html")
-                    t["استثمار"] = time.time() + 600
-                    await asyncio.sleep(600)
-                    del t["استثمار"]
-                if "Fail" in ls:
-                     await edit_or_reply(message, "استثمار فاشل لم تحصل على اي ارباح")
-                     t["استثمار"] = time.time() + 600
-                     await asyncio.sleep(600)
-                     del t["استثمار"]
+                t["استثمار"] = time.time() + 600
+                await asyncio.sleep(600)
+                del t["استثمار"]
+            if "Fail" in ls:
+                 await edit_or_reply(message, "استثمار فاشل لم تحصل على اي ارباح")
+                 t["استثمار"] = time.time() + 600
+                 await asyncio.sleep(600)
+                 del t["استثمار"]
              
 
         if f".حظ"in message.text:
