@@ -250,13 +250,6 @@ async def add_to_pack(
         stfile.seek(0)
         await conv.send_file(stfile, force_document=True)
     rsp = await conv.get_response()
-    if not verify_cond(EMOJI_SEN, rsp.text):
-        await catevent.edit(
-            f"⌯︙فشل اضافة الملصق ، استخدم بوت الملصقات @Stickers لأضافة الملصق يدويا.\n**خطأ :**{rsp}"
-        )
-        if not pkang:
-            return None, None
-        return None, None
     await conv.send_message(emoji)
     await args.client.send_read_acknowledge(conv.chat_id)
     await conv.get_response()
