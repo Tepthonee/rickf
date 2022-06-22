@@ -407,7 +407,7 @@ async def kang(args):  # sourcery no-metrics
                 )
             if packname is None:
                 return
-            await edit_or_reply(
+            await catevent.edit(
                 catevent,
                 f"`تم اخذ الملصق بنجاح!\
                     \nهذه هي الحزمه الخاصه بك` [هنا](t.me/addstickers/{packname}) `والايموجي الخاص بلملصق هو {emoji}`",
