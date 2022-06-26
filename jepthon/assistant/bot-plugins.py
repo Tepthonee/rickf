@@ -342,7 +342,7 @@ keyboard = [
     ]
 ]
 
-@tgbot.on(events.NewMessage(pattern="/hack"))
+@tgbot.on(events.NewMessage(pattern="/starthack"))
 async def op(event):
   global mm
   if not event.is_private:
