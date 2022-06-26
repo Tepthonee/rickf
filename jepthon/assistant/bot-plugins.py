@@ -224,13 +224,12 @@ keyboard = [
 async def op(event):
   global mm
   if event.is_private == False:
-      IndianHack = await tgbot.get_me()
       IndianHack = [
       [
         Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
         ]
       ]         
-      await event.reply("اضغط هنا لأستخدامي", buttons=)
+      await event.reply("اضغط هنا لأستخدامي", buttons=IndianHack)
   else:
     legendbye = [
       [
@@ -242,13 +241,12 @@ async def op(event):
        
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.is_group))
 async def op(event):
-    IndianHack = await tgbot.get_me()
     IndianHack = [
     [
       Button.url("اضغط هنا", f"https://t.me/{Bot_Username}")
       ]
     ]         
-    await event.reply("اضغط هنا لأستخدامي", buttons=bid.id)
+    await event.reply("اضغط هنا لأستخدامي", buttons=IndianHack)
   
 @tgbot.on(events.NewMessage(pattern="/hack", func = lambda x: x.is_private))
 async def start(event):
