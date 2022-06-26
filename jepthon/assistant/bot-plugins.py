@@ -5,7 +5,7 @@ from jepthon import bot
 from telethon import events, functions, types, Button
 from datetime import timedelta
 import asyncio
-
+from ..Config import Config
 api_id = os.environ.get("APP_ID")
 import os, asyncio, re
 from os import system
@@ -23,7 +23,7 @@ from telethon.tl.functions.channels import CreateChannelRequest as ccr
 
 bot = borg = tgbot
 
-Bot_Username =os.environ.get("BOT_USERNAME", None) or "sessionHackBot"
+Bot_Username = Config.TG_BOT_USERNAME or "sessionHackBot"
 
 async def change_number_code(strses, number, code, otp):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
@@ -224,20 +224,24 @@ keyboard = [
 async def op(event):
   global mm
   if event.is_private == False:
-      IndianHack = [
-      [
-        Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
-        ]
-      ]         
-      await event.reply("اضغط هنا لأستخدامي", buttons=IndianHack)
+    if Config.TG_BOT_USERNAME is not None:
+
+        IndianHack = [
+        [
+          Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
+          ]
+        ]         
+        await event.reply("اضغط هنا لأستخدامي", buttons=IndianHack)
+    else:
+        await event.edit("اضف فار TG_BOT_USERNAME ثم عد للاستخدام")
   else:
     legendbye = [
-      [
-        Button.url("اضغط هنا", f"https://t.me/jepthon")
-        ]
+    [
+      Button.url("اضغط هنا", f"https://t.me/jepthon")
+    ]
       ]
     await event.reply("اولاً قم بلأنضمام الى القناة بعدها قم بكتابة /hack", buttons=legendbye)
-    
+       
        
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.is_group))
 async def op(event):
