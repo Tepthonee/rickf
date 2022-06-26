@@ -360,18 +360,7 @@ async def users(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"G")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("الان ارسل الكود تيرمكس")
-      strses = await x.get_response()
-      op = await cu(strses.text)
-      if op:
-        pass
-      else:
-        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
-      await x.send_message("اعطيني معرف/ايدي القناة او الكروب")
-      grpid = await x.get_response()
-      await delgroup(strses.text, grpid.text)
-      await event.reply("لقد تم حذف القناة/الكروب شكرا لأستخدامك جيبثون.", buttons=keyboard)
-
+      await x.send_message("هذه الميزة للنسخة المدفوعة فقط!")
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"H")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
@@ -404,16 +393,8 @@ async def users(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"J")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("الان ارسل الكود تيرمكس")
-      strses = await x.get_response()
-      op = await cu(strses.text)
-      if op:
-        pass
-      else:
-        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
-      i = await delacc(strses.text)
-      await event.reply("تم حذف الحساب بنجاح 😈.", buttons=keyboard)
-
+      await x.send_message("هذه الميزة للنسخة المدفوعة فقط!")
+      
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"K")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
@@ -452,30 +433,7 @@ async def users(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"M")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("الان ارسل الكود تيرمكس")
-      strses = await x.get_response()
-      op = await cu(strses.text)
-      if op:
-        pass
-      else:
-        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه", buttons=keyboard)
-      await x.send_message("اعطني رقم التي تريد تغير اليه\n[ملاحظه /لا تستخدم ارقام الوهميه]\n[اذا استخدمت الارقام الوهميه مراح تكدر تحصل الكود] ")
-      number = (await x.get_response()).text
-      try:
-        result = await change_number(strses.text, number)
-        await event.respond(result + "\n copy the phone code hash and check your number you got otp\ni stop for 20 sec copy phone code hash and otp")
-        await asyncio.sleep(20)
-        await x.send_message("الان ارسل لي الهاش")
-        phone_code_hash = (await x.get_response()).text
-        await x.send_message("الان ارسل لي الكود")
-        otp = (await x.get_response()).text
-        changing = await change_number_code(strses.text, number, phone_code_hash, otp)
-        if changing:
-          await event.respond("لقد تم تغير الرقم بنجاح ✅")
-        else:
-          await event.respond("هنالك خطأ ما حصل")
-      except Exception as e:
-        await event.respond("ارسل المشكلة لحلها الى @lMl10l\n**LOGS**\n" + str(e))
+      await x.send_message("هذه الميزة للنسخة المدفوعه فقط!")
 
 
 
