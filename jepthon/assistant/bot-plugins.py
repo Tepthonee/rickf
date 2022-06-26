@@ -224,8 +224,7 @@ keyboard = [
 async def op(event):
   global mm
   if event.is_private == False:
-      bid = await tgbot.get_me()
-      print(bid)
+      IndianHack = await tgbot.get_me()
       IndianHack = [
       [
         Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
@@ -243,7 +242,7 @@ async def op(event):
        
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.is_group))
 async def op(event):
-    bid = await tgbot.get_me()
+    IndianHack = await tgbot.get_me()
     IndianHack = [
     [
       Button.url("اضغط هنا", f"https://t.me/{Bot_Username}")
