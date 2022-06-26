@@ -231,7 +231,7 @@ async def op(event):
         Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
         ]
       ]         
-      await event.reply("اضغط هنا لأستخدامي", buttons=bid.id)
+      await event.reply("اضغط هنا لأستخدامي", buttons=)
   else:
     legendbye = [
       [
