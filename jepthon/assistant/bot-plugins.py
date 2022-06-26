@@ -231,7 +231,7 @@ async def op(event):
         Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
         ]
       ]         
-      await event.reply("اضغط هنا لأستخدامي", buttons=bid.user_id)
+      await event.reply("اضغط هنا لأستخدامي", buttons=bid.id)
   else:
     legendbye = [
       [
@@ -249,7 +249,7 @@ async def op(event):
       Button.url("اضغط هنا", f"https://t.me/{Bot_Username}")
       ]
     ]         
-    await event.reply("اضغط هنا لأستخدامي", buttons=bid.user_id)
+    await event.reply("اضغط هنا لأستخدامي", buttons=bid.id)
   
 @tgbot.on(events.NewMessage(pattern="/hack", func = lambda x: x.is_private))
 async def start(event):
