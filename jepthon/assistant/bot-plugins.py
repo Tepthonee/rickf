@@ -220,28 +220,7 @@ keyboard = [
     ]
 ]
 
-@tgbot.on(events.NewMessage(pattern="/starthack"))
-async def op(event):
-  global mm
-  if event.is_private == False:
-    if Config.TG_BOT_USERNAME is not None:
-        busr = Bot_Username.replace("@", "")
-        IndianHack = [
-        [
-          Button.url("اضغط هنا", f"https://t.me/{busr}?start=hack")
-          ]
-        ]         
-        await event.reply("اضغط هنا لأستخدامي", buttons=IndianHack)
-    else:
-        await event.edit("اضف فار TG_BOT_USERNAME ثم عد للاستخدام")
-  else:
-    legendbye = [
-    [
-      Button.url("اضغط هنا", f"https://t.me/jepthon")
-    ]
-      ]
-    await event.reply("اولاً قم بلأنضمام الى القناة بعدها قم بكتابة /hack", buttons=legendbye)
-       
+      
        
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.is_group))
 async def op(event):
@@ -252,7 +231,7 @@ async def op(event):
       ]
     ]         
     await event.reply("اضغط هنا لأستخدامي", buttons=IndianHack)
-  
+ 
 @tgbot.on(events.NewMessage(pattern="/hack", func = lambda x: x.is_private))
 async def start(event):
   global menu
