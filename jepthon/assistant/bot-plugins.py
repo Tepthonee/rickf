@@ -225,11 +225,10 @@ async def op(event):
   global mm
   if event.is_private == False:
     if Config.TG_BOT_USERNAME is not None:
-        await event.reply(str(Config.TG_BOT_USERNAME))
-        asyncio.sleep(5)
+        busr = Bot_Username.replace("@", "")
         IndianHack = [
         [
-          Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
+          Button.url("اضغط هنا", f"https://t.me/{busr}?start=hack")
           ]
         ]         
         await event.reply("اضغط هنا لأستخدامي", buttons=IndianHack)
@@ -246,9 +245,10 @@ async def op(event):
        
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.is_group))
 async def op(event):
+    busr = Bot_Username.replace("@", "")
     IndianHack = [
     [
-      Button.url("اضغط هنا", f"https://t.me/{Bot_Username}")
+      Button.url("اضغط هنا", f"https://t.me/{busr}")
       ]
     ]         
     await event.reply("اضغط هنا لأستخدامي", buttons=IndianHack)
