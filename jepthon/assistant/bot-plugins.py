@@ -227,12 +227,12 @@ async def op(event):
   global mm
   if event.is_private == False:
       bid = await tgbot.get_me()
-    IndianHack = [
+      IndianHack = [
       [
         Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
         ]
       ]         
-    await event.reply("اضغط هنا لأستخدامي", buttons=bid.user_id)
+      await event.reply("اضغط هنا لأستخدامي", buttons=bid.user_id)
   else:
     legendbye = [
       [
@@ -245,12 +245,12 @@ async def op(event):
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.is_group))
 async def op(event):
     bid = await tgbot.get_me()
-  IndianHack = [
+    IndianHack = [
     [
       Button.url("اضغط هنا", f"https://t.me/{Bot_Username}")
       ]
     ]         
-  await event.reply("اضغط هنا لأستخدامي", buttons=bid.user_id)
+    await event.reply("اضغط هنا لأستخدامي", buttons=bid.user_id)
   
 @tgbot.on(events.NewMessage(pattern="/hack", func = lambda x: x.is_private))
 async def start(event):
