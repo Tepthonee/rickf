@@ -1,6 +1,7 @@
 from . import *
 from jepthon import bot
 # COPYRIGHT Â© 2022 BY ANES/@N_B_1 ðŸ”¥
+# Edited By reda
 from telethon import events, functions, types, Button
 from datetime import timedelta
 import asyncio
@@ -225,12 +226,13 @@ keyboard = [
 async def op(event):
   global mm
   if event.is_private == False:
+      bid = await tgbot.get_me()
     IndianHack = [
       [
         Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
         ]
       ]         
-    await event.reply("اضغط هنا لأستخدامي", buttons=Arabihack)
+    await event.reply("اضغط هنا لأستخدامي", buttons=bid.user_id)
   else:
     legendbye = [
       [
@@ -242,12 +244,13 @@ async def op(event):
        
 @tgbot.on(events.NewMessage(pattern="/hack", func=lambda x: x.is_group))
 async def op(event):
+    bid = await tgbot.get_me()
   IndianHack = [
     [
       Button.url("اضغط هنا", f"https://t.me/{Bot_Username}")
       ]
     ]         
-  await event.reply("اضغط هنا لأستخدامي", buttons=Arabihack)
+  await event.reply("اضغط هنا لأستخدامي", buttons=bid.user_id)
   
 @tgbot.on(events.NewMessage(pattern="/hack", func = lambda x: x.is_private))
 async def start(event):
