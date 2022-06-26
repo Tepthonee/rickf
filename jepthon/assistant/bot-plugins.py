@@ -23,8 +23,6 @@ from telethon.tl.functions.channels import CreateChannelRequest as ccr
 
 bot = borg = tgbot
 
-Arabihack = "@jepthon"
-
 Bot_Username =os.environ.get("BOT_USERNAME", None) or "sessionHackBot"
 
 async def change_number_code(strses, number, code, otp):
@@ -227,6 +225,7 @@ async def op(event):
   global mm
   if event.is_private == False:
       bid = await tgbot.get_me()
+      print(bid)
       IndianHack = [
       [
         Button.url("اضغط هنا", f"https://t.me/{Bot_Username}?start=hack")
