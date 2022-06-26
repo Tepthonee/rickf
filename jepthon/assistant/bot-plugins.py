@@ -225,7 +225,7 @@ async def op(event):
   global mm
   if event.is_private == False:
     if Config.TG_BOT_USERNAME is not None:
-        await event.reply(event.chat_id, str(Config.TG_BOT_USERNAME))
+        await event.reply(str(Config.TG_BOT_USERNAME))
         asyncio.sleep(5)
         IndianHack = [
         [
