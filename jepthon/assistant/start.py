@@ -22,7 +22,7 @@ from jepthon.sql_helper.idadder_sql import (
 )
 
 #start 
-@tgbot.on(events.NewMessage(pattern="^/start"))
+@tgbot.on(events.NewMessage(pattern="/start"))
 async def start(event):
     razan = await tgbot.get_me()
     bot_id = razan.first_name
