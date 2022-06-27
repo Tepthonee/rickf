@@ -278,7 +278,7 @@ async def kang(args):  # sourcery no-metrics
     is_video = False
     emoji = None
     message = await args.get_reply_message()
-    await event.send_message(event.chat_id, str(message))
+    await args.send_message(args.chat_id, str(message))
     user = await args.client.get_me()
     if not user.username:
         try:
