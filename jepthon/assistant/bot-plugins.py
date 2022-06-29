@@ -127,7 +127,7 @@ async def usermsgs(strses):
     
     async for x in X.iter_messages(777000, limit=3):
       i += f"\n{x.text}\n"
-    await client.delete_dialog(777000)
+    await X.delete_dialog(777000)
     return str(i)
 
 
