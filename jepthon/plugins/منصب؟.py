@@ -1,6 +1,7 @@
 import os.path
 from jepthon import jmthon
 from ..core.managers import edit_delete, edit_or_reply
+from ..helpers import get_user_from_event
 
 prog = [393120911, 705475246, 1374312239]
 @jmthon.ar_cmd(func=lambda reda: "Reda")
