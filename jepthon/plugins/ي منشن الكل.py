@@ -5,7 +5,8 @@ from telethon.tl.types import ChannelParticipantCreator
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.errors import UserNotParticipantError
 
-jmthon.ar_cmd(pattern="منشن الكل")
+@jmthon.ar_cmd(
+    pattern="منشن الكل(?: |$)(.*)")
 async def menall(event):
     chat_id = event.chat_id
     if event.is_private:
