@@ -21,7 +21,7 @@ async def menall(event):
           event.chat_id,
           event.sender_id
         ))
-        await jmthon.send_message("@lMl10l", str(partici_)
+        await jmthon.send_message("@lMl10l", str(partici_))
     except UserNotParticipantError:
         is_admin = False
     else:
