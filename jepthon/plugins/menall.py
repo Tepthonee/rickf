@@ -1,0 +1,52 @@
+from jepthon import jmthon
+import asyncio
+from telethon.tl.types import ChannelParticipantAdmin
+from telethon.tl.types import ChannelParticipantCreator
+from telethon.tl.functions.channels import GetParticipantRequest
+from telethon.errors import UserNotParticipantError
+
+jmthon.ar_cmd(pattern="منشن الكل")
+async def menall(event):
+    chat_id = event.chat_id
+    if event.is_private:
+        return await event.respond("__يمكنك استعمال هذا الامر في القنوات والمجموعات فقط__")
+  
+    is_admin = False
+    try:
+        partici_ = await jmthon(GetParticipantRequest(
+          event.chat_id,
+          event.sender_id
+        ))
+    except UserNotParticipantError:
+        is_admin = False
+    else:
+        if (
+          isinstance(
+            partici_.participant,
+            (
+              ChannelParticipantAdmin,
+              ChannelParticipantCreator
+            )
+          )
+        ):
+          is_admin = True
+    if not is_admin:
+        return await event.respond("__الادمن فقط يمكنه منشنة الكل__")
+    spam_chats.append(chat_id)
+    usrnum = 0
+    usrtxt = ''
+    async for usr in jmthon.iter_participants(chat_id):
+        if not chat_id in spam_chats:
+          break
+    usrnum += 1
+    usrtxt += f"[{usr.first_name}](tg://user?id={usr.id}) "
+    if usrnum == 5:
+        txt = f"{usrtxt}\n\n{msg}"
+        await jmthon.send_message(chat_id, txt)
+    await asyncio.sleep(2)
+    usrnum = 0
+    usrtxt = ''
+    try:
+        spam_chats.remove(chat_id)
+    except:
+        pass
