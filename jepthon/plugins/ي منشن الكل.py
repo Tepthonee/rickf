@@ -15,7 +15,7 @@ async def menall(event):
         return await event.reply("__يمكنك استعمال هذا الامر في القنوات والمجموعات فقط!__")
     msg = event.pattern_match.group(1)
     if not msg:
-        event.reply("ضع رسالة للمنشن اولاً !")
+        return await event.reply("ضع رسالة للمنشن اولاً !")
     is_admin = False
     try:
         partici_ = await jmthon(GetParticipantRequest(
