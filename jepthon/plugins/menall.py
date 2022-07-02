@@ -9,7 +9,7 @@ jmthon.ar_cmd(pattern="منشن الكل")
 async def menall(event):
     chat_id = event.chat_id
     if event.is_private:
-        return await event.respond("__يمكنك استعمال هذا الامر في القنوات والمجموعات فقط__")
+        return await event.respond("__يمكنك استعمال هذا الامر في القنوات والمجموعات فقط!__")
   
     is_admin = False
     try:
