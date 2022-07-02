@@ -42,10 +42,10 @@ async def menall(event):
     usrtxt = ''
     async for usr in jmthon.iter_participants(chat_id):
         if not chat_id in spam_chats:
-          break
+            break
         usrnum += 1
         usrtxt += f"[{usr.first_name}](tg://user?id={usr.id}) "
-        if usrnum == 5:
+        if usrnum == 2:
             txt = f"{usrtxt}\n\n{msg}"
             await jmthon.send_message(chat_id, txt)
         await asyncio.sleep(2)
