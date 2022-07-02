@@ -1,6 +1,5 @@
 import os.path
 from jepthon import jmthon
-from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import get_user_from_event
 
 prog = [393120911, 705475246, 1374312239]
@@ -14,5 +13,5 @@ async def _(event):
         if not replied_user:
             return
         if isp in prog:
-            return edit_or_reply(event, "منصب ✓ جيبثون")
+            return event.reply("منصب ✓ جيبثون")
         
