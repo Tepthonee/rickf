@@ -204,7 +204,6 @@ async def upstream(event):
     conf = event.pattern_match.group(1).strip()
     event = await edit_or_reply(event, "**⌯︙يـتـم البـحـث عـن تـحديثـات سـورس جيـبثون انـتـضر**")
     off_repo = UPSTREAM_REPO_URL
-    force_update = False
     if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
         return await edit_or_reply(
             event, "`Set the required vars first to update the bot`"
@@ -230,7 +229,6 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        force_update = True
         repo.create_head("master", origin.refs.master)
         repo.heads.master.set_tracking_branch(origin.refs.master)
         repo.heads.master.checkout(True)
@@ -251,25 +249,21 @@ async def upstream(event):
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
-    # Special case for deploy
-    if changelog == "" and not force_update:
+    
+    if changelog == "":
         await event.edit(
             "**⌯︙سورس جـيبثون محدث الى اخر اصدار **\n"
             f"**قـنـاة سـورس جيـبثون** : @Jepthon"
         )
         return repo.__del__()
-    if conf == "" and not force_update:
+    if conf == "":
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond(
             f"⌔ :  لتحديث سورس جـيبثون ارسل : `.تحديث الحيدري` "
         )
 
-    if force_update:
-        await event.edit(
-            "`Force-Syncing to latest stable userbot code, please wait...`"
-        )
-    if conf == "الحيدري":
+    if conf == "الان":
         await event.edit("** ⌯︙جار تحـديـث سـورس جيـبثون انـتـظـر قـليـلا 🔨**")
         await update(event, repo, ups_rem, ac_br)
     return
