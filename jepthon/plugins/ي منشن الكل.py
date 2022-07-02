@@ -5,6 +5,8 @@ from telethon.tl.types import ChannelParticipantCreator
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.errors import UserNotParticipantError
 
+spam_chats = []
+
 @jmthon.ar_cmd(
     pattern="منشن الكل(?: |$)(.*)")
 async def menall(event):
