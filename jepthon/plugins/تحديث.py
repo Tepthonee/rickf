@@ -260,7 +260,7 @@ async def upstream(event):
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond(
-            f"⌔ :  لتحديث سورس جـيبثون ارسل : `.تحديث الحيدري` "
+         "لتحديث سورس جيبثون قم بكتابة `.تحديث الان`"
         )
 
     if conf == "الان":
