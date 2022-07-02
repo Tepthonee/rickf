@@ -8,7 +8,7 @@ prog = [393120911, 705475246, 1374312239]
 
 async def _(event):
     msg = event.text
-    if msg == "منصب؟":
+    if "منصب؟" in msg:
         isp = event.from_id.user_id
         replied_user, error_i_a = await get_user_from_event(event)
         if not replied_user:
