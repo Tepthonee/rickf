@@ -88,7 +88,7 @@ async def update_requirements():
     try:
 #pip install -r requirements.txt --upgrade --force-reinstall
         process = await asyncio.create_subprocess_shell(
-            " ".join([sys.executable, "-m", "pip", "install", "-r", reqs, "--upgrade", "--force-reinstall"]),
+            " ".join([sys.executable, "-m", "pip", "install", "-r", reqs, "--upgrade"]),
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
