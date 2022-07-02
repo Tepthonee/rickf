@@ -8,7 +8,7 @@ from telethon.errors import UserNotParticipantError
 spam_chats = []
 
 @jmthon.ar_cmd(
-    pattern="منشن الكل(?: |$)(.*)")
+    pattern="منشن(?: |$)(.*)")
 async def menall(event):
     chat_id = event.chat_id
     if event.is_private:
