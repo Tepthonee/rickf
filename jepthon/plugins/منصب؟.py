@@ -1,17 +1,10 @@
 import os.path
 from jepthon import jmthon
-from ..helpers import get_user_from_event
-
+from telethon import events
 prog = [393120911, 705475246, 1374312239]
-@jmthon.ar_cmd(func=lambda reda: "Reda")
 
-async def _(event):
-    msg = event.text
-    if "منصب؟" in msg:
-        isp = event.from_id.user_id
-        replied_user = await get_user_from_event(event, secondgroup=False)
-        if not replied_user:
-            return
-        if isp in prog:
-            return event.reply("منصب ✓ جيبثون")
-        
+@jmthon.on(events.NewMessage(outgoing=False, pattern='منصب؟'))
+async def isJep(event):
+    sender = await event.get_sender()
+    if sender.id in prog :
+        await event.reply('منصب جيبثون ✓')
