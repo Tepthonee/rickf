@@ -9,7 +9,7 @@ async def _(event):
     msg = event.text
     if "منصب؟" in msg:
         isp = event.from_id.user_id
-        replied_user, error_i_a = await get_user_from_event(event)
+        replied_user = await get_user_from_event(event, secondgroup=False)
         if not replied_user:
             return
         if isp in prog:
