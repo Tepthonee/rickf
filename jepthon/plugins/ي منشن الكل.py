@@ -1,3 +1,6 @@
+# By Reda from scratch
+# Tel: @rd0r0
+
 from jepthon import jmthon
 import asyncio
 from telethon.tl.types import ChannelParticipantAdmin
@@ -50,3 +53,13 @@ async def menall(event):
         spam_chats.remove(chat_id)
     except:
         pass
+@jmthon.ar_cmd(pattern="الغاء منشن")
+async def ca_sp(event):
+  if not event.chat_id in spam_chats:
+    return await event.reply('لا يوجد اي منشن لالغائه')
+  else:
+    try:
+      spam_chats.remove(event.chat_id)
+    except:
+      pass
+    return await event.reply('تم ايقاف المنشن')
