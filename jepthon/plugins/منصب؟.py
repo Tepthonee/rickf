@@ -10,9 +10,9 @@ async def _(event):
     msg = event.text
     if msg == "منصب؟":
         isp = event.from_id.user_id
-        user, custom = await get_user_from_event(event)
+        replied_user, error_i_a = await get_user_from_event(event)
+        if not replied_user:
+            return
         if isp in prog:
-            if not user:
-                return edit_delete(event, "**ماكو احد حتى اشوفه منصب لو لا **")
             return edit_or_reply(event, "منصب ✓ جيبثون")
         
