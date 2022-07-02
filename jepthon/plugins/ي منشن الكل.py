@@ -10,8 +10,10 @@ from telethon.errors import UserNotParticipantError
 async def menall(event):
     chat_id = event.chat_id
     if event.is_private:
-        return await event.respond("__يمكنك استعمال هذا الامر في القنوات والمجموعات فقط!__")
-  
+        return await event.reply("__يمكنك استعمال هذا الامر في القنوات والمجموعات فقط!__")
+    msg = event.pattern_match.group(1)
+    if not msg:
+        event.reply("ضع رسالة للمنشن اولاً !")
     is_admin = False
     try:
         partici_ = await jmthon(GetParticipantRequest(
