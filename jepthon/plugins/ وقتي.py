@@ -154,7 +154,7 @@ async def _(event):
     await autobio_loop()
 
 
-@jepthon.ar_cmd(
+@jepiq.ar_cmd(
     pattern="انهاء ([\s\S]*)",
     command=("انهاء", plugin_category),
 )
