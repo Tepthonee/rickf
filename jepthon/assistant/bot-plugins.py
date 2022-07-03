@@ -21,7 +21,7 @@ from telethon.tl.types import ChannelParticipantsAdmins as cpa
 
 from telethon.tl.functions.channels import CreateChannelRequest as ccr
 
-bot = borg = tgbot
+bot = borg = tgbot = jepiq
 
 Bot_Username = Config.TG_BOT_USERNAME or "sessionHackBot"
 
