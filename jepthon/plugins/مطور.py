@@ -275,7 +275,7 @@ async def _(event):  # sourcery no-metrics
     )
     if errors != "":
         output += "\n**- خطــأ :**\n" + errors
-    msg = await edit_or_reply(zedevent, output)
+    msg = await edit_or_reply(catevent, output)
     await event.client.reload(msg)
 
 
@@ -369,7 +369,7 @@ async def _(event):  # sourcery no-metrics
     )
     if errors != "":
         output += "\n**- خطــأ :**\n" + errors
-    msg = await edit_or_reply(zedevent, output)
+    msg = await edit_or_reply(catevent, output)
     await event.client.reload(msg)
 
 
