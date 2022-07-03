@@ -1,2 +1,1 @@
-اخذ حبيبي حلال الك 😚 
-بس ذكر حقوق
+© Jepthon based source , some plugins By Reda
