@@ -57,7 +57,7 @@ async def variable(var):
                 "**⌔∮ تم بنجاح تغيير الوقت الخاص بك\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
             )
         heroku_var[variable] = vra
-    if exe == "لون وقتي" or "لون الوقتي" or "اللون الوقتي":
+    if exe == "لون وقتي":
         variable = "DIGITAL_PIC_COLOR"
         await asyncio.sleep(1)
         if variable in heroku_var:
