@@ -184,7 +184,7 @@ async def _(event):
     await edit_or_reply(event, result)
 
 
-@zedub.zed_cmd(
+@jepiq.ar_cmd(
     pattern="تحكم(s)?(?:\s|$)([\s\S]*)",
     command=("تحكم", plugin_category),
     info={
