@@ -1,59 +1,65 @@
-
-import os
-import asyncio
+import random
+import re
+import time
 from datetime import datetime
 
-from jepthon import CMD_HELP, jepiq
-from . import hmention, reply_id
-
-"""
-try:
-    from . import PING_PIC, PING_TEXT
-except:
-    pass
-"""
-plugin_category = "tools"
-
-PING_PIC = os.environ.get("PING_PIC") or ("https://telegra.ph/file/f18d1a1433d99a465b5ae.jpg")
-
-JM_TXT = os.environ.get("PING_TEXT") or "𝗜 𝗝𝘂𝘀𝘁 𝗔𝘀𝗸𝗲𝗱 𝗙𝗼𝗿 𝗦𝗼𝗺𝗲 𝗣𝗲𝗮𝗰𝗲 🎀 𝑆𝐻 : @JEPTHON"
-
-
-@jepiq.ar_cmd(
-    pattern="بنك$",
-    command=("بنك", plugin_category),
-    info={
-        "header": "امر تجربه البوت اذا يشتغل ارسل  .بنك فقط",
-        "option": "امر بنك المتطور كتابة  @RR7PP",
-        "usage": ["{tr}البنك", ],
-    },
+from telethon.errors.rpcerrorlist import (
+    MediaEmptyError,
+    WebpageCurlFailedError,
+    WebpageMediaEmptyError,
 )
-async def _(event):
-    if event.fwd_from:
-        return
+
+from jepthon import jepiq
+
+from ..core.managers import edit_or_reply
+from ..helpers.utils import reply_id
+from ..sql_helper.globals import gvarstatus
+from . import mention
+
+plugin_category = "utils"
+
+#كتـابة وتعـديل:  @lMl10l
+@jepiq.on(admin_cmd(pattern=f"بنك(?:\s|$)([\s\S]*)"))
+    
+async def amireallyalive(event):
+    "للتـأكد من ان البـوت يعـمـل"
     reply_to_id = await reply_id(event)
     start = datetime.now()
-    cat = await edit_or_reply(event, "<b><i>   البــــنك...  </b></i>", "html")
+    await edit_or_reply(event, "** ⌯︙يتـم التـأكـد من البنك انتـظر قليلا رجاءا**")
     end = datetime.now()
-    await cat.delete()
     ms = (end - start).microseconds / 1000
-    if PING_PIC:
-        caption = f"<b><i>{JM_TXT}<i><b>\n<code>┏━━━━━━━┓\n┃ ✦ {ms}\n┃ ✦ <b>{hmention}</b>\n┗━━━━━━━┛"
-        await event.client.send_file(
-            event.chat_id,
-            PING_PIC,
-            caption=caption,
-            parse_mode="html",
-            reply_to=reply_to_id,
-            link_preview=False,
-            allow_cache=True,
-        )
+    EMOJI = gvarstatus("ALIVE_EMOJI") or "✇ ◅"
+    PING_TEXT = gvarstatus("PING_TEXT") or "**[ 𝗜 𝗝𝘂𝘀𝘁 𝗔𝘀𝗸𝗲𝗱 𝗙𝗼𝗿 𝗦𝗼𝗺𝗲 𝗣𝗲𝗮𝗰𝗲 🎀 ](t.me/Jepthon)**"
+    PING_IMG = gvarstatus("PING_PIC") or Config.P_PIC or "https://telegra.ph/file/b7aebda65e3df4906f5dc.jpg"
+    jepthon_caption = gvarstatus("PING_TEMPLATE") or temp
+    caption = jepthon_caption.format(
+        PING_TEXT=PING_TEXT,
+        EMOJI=EMOJI,
+        mention=mention,
+        ping=ms,
+    )
+    if PING_IMG:
+        JEP = [x for x in PING_IMG.split()]
+        PIC = random.choice(JEP)
+        try:
+            await event.client.send_file(
+                event.chat_id, PIC, caption=caption, reply_to=reply_to_id
+            )
+            await event.delete()
+        except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
+            return await edit_or_reply(
+                event,
+                f"**الميـديا خـطأ **\nغـير الرابـط بأستـخدام الأمـر  \n `.اضف_فار ALIVE_PIC رابط صورتك`\n\n**لا يمـكن الحـصول عـلى صـورة من الـرابـط :-** `{PIC}`",
+            )
     else:
-        await event.edit_or_reply(event, "<code>يجـب اضـافة متـغير `PING_PIC`  اولا  f<code>", "html")
-
-#======================================================================================================================================
-CMD_HELP.update(
-    {
-        "البنك":".بنك\nجرب الامر بنفسك" 
-        }
+        await edit_or_reply(
+            event,
+            caption,
         )
+
+
+temp = """{PING_TEXT}
+┏━━━━━━━┓
+┃ ✦ {ping}
+┃ ✦ {mention}
+┗━━━━━━━┛"""
