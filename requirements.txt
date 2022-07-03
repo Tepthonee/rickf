@@ -18,6 +18,12 @@ emoji
 fonttools
 geopy
 gitpython
+pydub
+base64
+bs4
+tgcrypto
+pymongo[srv]
+ujson
 glitch_this
 google-api-python-client
 google-auth-httplib2
@@ -77,3 +83,6 @@ youtube_dl
 youtube-search
 youtube-search-python==1.4.9
 yt_dlp
+git+gttps://github.com/redaiq90/webcolors
+git+https://github.com/cinemagoer/cinemagoer
+git+https://github.com/sandy1709/py-googletrans
