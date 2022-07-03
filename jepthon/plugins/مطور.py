@@ -217,7 +217,7 @@ async def _(event):  # sourcery no-metrics
         )
     input_str = input_str.split()
     if input_str[0] == "عام":
-        zedevent = await edit_or_reply(event, "__Enabling all safe cmds for sudo....__")
+        catevent = await edit_or_reply(event, "__Enabling all safe cmds for sudo....__")
         totalcmds = CMD_INFO.keys()
         flagcmds = (
             PLG_INFO["botcontrols"]
