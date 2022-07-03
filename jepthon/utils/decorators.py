@@ -94,7 +94,7 @@ def sudo_cmd(pattern=None, command=None, **args):
             elif len(Config.SUDO_COMMAND_HAND_LER) == 1:
                 jepiqreg = "^\\" + Config.SUDO_COMMAND_HAND_LER
                 reg = Config.COMMAND_HAND_LER
-            args["pattern"] = re.compile(sbb_breg + pattern)
+            args["pattern"] = re.compile(jepiqreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:
