@@ -10,7 +10,7 @@ from ..Config import Config
 from ..core.data import _sudousers_list, blacklist_chats_list
 from ..core.events import MessageEdited, NewMessage
 from ..core.logger import logging
-from ..core.session import jmthon
+from ..core.session import jepiq
 from ..helpers.utils.format import paste_message
 from ..helpers.utils.utils import runcmd
 from ..sql_helper.globals import gvarstatus
@@ -221,8 +221,8 @@ def register(**args):
 
     def decorator(func):
         if not disable_edited:
-            jmthon.add_event_handler(func, MessageEdited(**args))
-        jmthon.add_event_handler(func, NewMessage(**args))
+            jepiq.add_event_handler(func, MessageEdited(**args))
+        jepiq.add_event_handler(func, NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(func)
         except Exception:
@@ -278,8 +278,8 @@ def command(**args):
 
     def decorator(func):
         if allow_edited_updates:
-            jmthon.add_event_handler(func, MessageEdited(**args))
-        jmthon.add_event_handler(func, NewMessage(**args))
+            jepiq.add_event_handler(func, MessageEdited(**args))
+        jepiq.add_event_handler(func, NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(func)
         except BaseException:
