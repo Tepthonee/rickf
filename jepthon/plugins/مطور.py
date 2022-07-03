@@ -2,8 +2,8 @@ from datetime import datetime
 
 from telethon.utils import get_display_name
 
-from zthon import zedub
-from zthon.core.logger import logging
+from jepthon import jepiq
+from jepthon.core.logger import logging
 
 from ..Config import Config
 from ..core import CMD_INFO, PLG_INFO
