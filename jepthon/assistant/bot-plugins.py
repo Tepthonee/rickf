@@ -1,5 +1,5 @@
 from . import *
-from jepthon import bot
+from jepthon import bot, jepiq
 #حقوق جيبثون ممنوع تاخذ الملف من دون علم الصاحب @jepiq
 # By Reda
 # Translated By @lMl10l
