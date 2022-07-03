@@ -20,7 +20,7 @@ from telethon.tl import functions
 from ..Config import Config
 from ..helpers.utils import _format
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-from . import AUTONAME, DEFAULT_BIO, edit_delete, jepthon, logging
+from . import AUTONAME, DEFAULT_BIO, edit_delete, jepiq, logging
 
 plugin_category = "tools"
 
@@ -64,16 +64,16 @@ async def digitalpicloop():
         fnt = ImageFont.truetype(jep, 65)
         drawn_text.text((200, 200), current_time, font=fnt, fill=colo)
         img.save(autophoto_path)
-        file = await jepthon.upload_file(autophoto_path)
+        file = await jepiq.upload_file(autophoto_path)
         try:
             if i > 0:
-                await jepthon(
+                await jepiq(
                     functions.photos.DeletePhotosRequest(
-                        await jepthon.get_profile_photos("me", limit=1)
+                        await jepiq.get_profile_photos("me", limit=1)
                     )
                 )
             i += 1
-            await jepthon(functions.photos.UploadProfilePhotoRequest(file))
+            await jepiq(functions.photos.UploadProfilePhotoRequest(file))
             os.remove(autophoto_path)
             await asyncio.sleep(60)
         except BaseException:
@@ -92,7 +92,7 @@ async def autoname_loop():
         name = f"{lMl10l} {HM}"
         LOGS.info(name)
         try:
-            await jepthon(functions.account.UpdateProfileRequest(first_name=name))
+            await jepiq(functions.account.UpdateProfileRequest(first_name=name))
         except FloodWaitError as ex:
             LOGS.warning(str(ex))
             await asyncio.sleep(ex.seconds)
@@ -112,7 +112,7 @@ async def autobio_loop():
         bio = f"{DEFAULTUSERBIO} {HI}"
         LOGS.info(bio)
         try:
-            await jepthon(functions.account.UpdateProfileRequest(about=bio))
+            await jepiq(functions.account.UpdateProfileRequest(about=bio))
         except FloodWaitError as ex:
             LOGS.warning(str(ex))
             await asyncio.sleep(ex.seconds)
@@ -120,7 +120,7 @@ async def autobio_loop():
         AUTOBIOSTART = gvarstatus("autobio") == "true"
 
 
-@jepthon.on(admin_cmd(pattern=f"{phow8t}(?:\s|$)([\s\S]*)"))
+@jepiq.on(admin_cmd(pattern=f"{phow8t}(?:\s|$)([\s\S]*)"))
 async def _(event):
     "To set random colour pic with time to profile pic"
     downloader = SmartDL(digitalpfp, digitalpic_path, progress_bar=False)
@@ -134,7 +134,7 @@ async def _(event):
     await digitalpicloop()
 
 
-@jepthon.on(admin_cmd(pattern=f"{namew8t}(?:\s|$)([\s\S]*)"))
+@jepiq.on(admin_cmd(pattern=f"{namew8t}(?:\s|$)([\s\S]*)"))
 async def _(event):
     "To set your display name along with time"
     if gvarstatus("autoname") is not None and gvarstatus("autoname") == "true":
@@ -144,7 +144,7 @@ async def _(event):
     await autoname_loop()
 
 
-@jepthon.on(admin_cmd(pattern=f"{biow8t}(?:\s|$)([\s\S]*)"))
+@jepiq.on(admin_cmd(pattern=f"{biow8t}(?:\s|$)([\s\S]*)"))
 async def _(event):
     "To update your bio along with time"
     if gvarstatus("autobio") is not None and gvarstatus("autobio") == "true":
@@ -200,6 +200,6 @@ async def _(event):  # sourcery no-metrics
         )
 
 
-jepthon.loop.create_task(digitalpicloop())
-jepthon.loop.create_task(autoname_loop())
-jepthon.loop.create_task(autobio_loop())
+jepiq.loop.create_task(digitalpicloop())
+jepiq.loop.create_task(autoname_loop())
+jepiq.loop.create_task(autobio_loop())
