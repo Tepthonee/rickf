@@ -1,3 +1,4 @@
+import asyncio
 import datetime
 import inspect
 import re
@@ -7,7 +8,17 @@ from pathlib import Path
 from typing import Dict, List, Union
 
 from telethon import TelegramClient, events
-from telethon.errors import MessageIdInvalidError, MessageNotModifiedError
+from telethon.errors import (
+    AlreadyInConversationError,
+    BotInlineDisabledError,
+    BotResponseTimeoutError,
+    ChatSendInlineForbiddenError,
+    ChatSendMediaForbiddenError,
+    ChatSendStickersForbiddenError,
+    FloodWaitError,
+    MessageIdInvalidError,
+    MessageNotModifiedError,
+)
 
 from ..Config import Config
 from ..helpers.utils.events import checking
@@ -37,7 +48,7 @@ REGEX_ = REGEX()
 sudo_enabledcmds = sudo_enabled_cmds()
 
 
-class CatUserBotClient(TelegramClient):
+class JepthonUserBotClient(TelegramClient):
     def ar_cmd(
         self: TelegramClient,
         pattern: str or tuple = None,
@@ -91,15 +102,15 @@ class CatUserBotClient(TelegramClient):
                 REGEX_.regex2 = re.compile(reg2 + pattern)
 
         def decorator(func):  # sourcery no-metrics
-            async def wrapper(check):
+            async def wrapper(check):  # sourcery no-metrics
                 if groups_only and not check.is_group:
-                    await edit_delete(check, "`لا أعتقد ان هذه مجموعة, جرب بلكروب عزيزي.`", 10)
-                    return
-                if private_only and not check.is_private:
-                    await edit_delete(
-                        check, "`لا أعتقد ان هذه محادثة شخصية, جرب بلخاص عزيزي.`", 10
+                    return await edit_delete(
+                        check, "**⪼ عذرا هذا الامر يستخدم في المجموعات فقط  𓆰،**", 10
                     )
-                    return
+                if private_only and not check.is_private:
+                    return await edit_delete(
+                        check, "**⪼ هذا الامر يستخدم فقط في الدردشات الخاصه  𓆰،**", 10
+                    )
                 try:
                     await func(check)
                 except events.StopPropagation:
@@ -107,45 +118,79 @@ class CatUserBotClient(TelegramClient):
                 except KeyboardInterrupt:
                     pass
                 except MessageNotModifiedError:
-                    LOGS.error("Message was same as previous message")
+                    LOGS.error("كانت الرسالة مماثلة للرسالة السابقة")
                 except MessageIdInvalidError:
-                    LOGS.error("Message was deleted or cant be found")
+                    LOGS.error("الرسالة تم حذفها او لم يتم العثور عليها")
+                except BotInlineDisabledError:
+                    await edit_delete(
+                        check, "⌔∮ يجب عليك تفعيل وضع الانلاين اولا ارسل", 10
+                    )
+                except ChatSendStickersForbiddenError:
+                    await edit_delete(
+                        check, "**⎙ :: - ههذه الدردشة لا تسمح بارسال الملصقات هنا**", 10
+                    )
+                except BotResponseTimeoutError:
+                    await edit_delete(
+                        check, "⪼ استخدم الميزه بعد وقت قليل لا يمكن الاستجابه الان", 10
+                    )
+                except ChatSendMediaForbiddenError:
+                    await edit_delete(
+                        check, "**⪼ هذه المجموعه تمنع ارسال الميديا هنا 𓆰،**", 10
+                    )
+                except AlreadyInConversationError:
+                    await edit_delete(
+                        check,
+                        "❃ المحادثه تجري بالفعل مع الدردشة المحددة. حاول مرة أخرى بعد قليل",
+                        10,
+                    )
+                except ChatSendInlineForbiddenError:
+                    await edit_delete(
+                        check,
+                        "**↻ لا يمكنك ارسال اي شي يستخدم الانلاين في هذه الدردشه**",
+                        10,
+                    )
+                except FloodWaitError as e:
+                    LOGS.error(
+                        f"ايقاف مؤقت بسبب التكرار {e.seconds} حدث. انتظر {e.seconds} ثانيه و حاول مجددا"
+                    )
+                    await check.delete()
+                    await asyncio.sleep(e.seconds + 5)
                 except BaseException as e:
                     LOGS.exception(e)
                     if not disable_errors:
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = f"\nDisclaimer:\nThis file is pasted only here ONLY here,\
-                                  \nwe logged only fact of error and date,\nwe respect your privacy,\
-                                  \nyou may not report this error if you've\
-                                  \nany confidential data here, no one will see your data\
-                                  \n\n--------BEGIN jepthon TRACEBACK LOG--------\
-                                  \nDate: {date}\nGroup ID: {str(check.chat_id)}\
-                                  \nSender ID: {str(check.sender_id)}\
-                                  \nMessage Link: {await check.client.get_msg_link(check)}\
-                                  \n\nEvent Trigger:\n{str(check.text)}\
-                                  \n\nTraceback info:\n{str(traceback.format_exc())}\
-                                  \n\nError text:\n{str(sys.exc_info()[1])}"
+                        ftext = f"\تحذير:\nهذا الملف تم لصقه فقط هنا فقط هنا,\
+                                  \nلقد قمنا بتسجيل الخطأ والتاريخ الخطأ فقط ,\nنحن نحترم خصوصيتك,\
+                                  \nلا يجوز لك الإبلاغ عن هذا الخطأ إذا كنت\
+                                  \nلديك معلومات خاصه هنا ، لن يرى أحد معلوماتك\
+                                  \n\n-------- معلومات عن الخطأ--------\
+                                  \nالتاريخ: {date}\nايدي المجموعه: {str(check.chat_id)}\
+                                  \nايدي المرسل: {str(check.sender_id)}\
+                                  \nرابط الرساله: {await check.client.get_msg_link(check)}\
+                                  \n\nمشغل الحدث:\n{str(check.text)}\
+                                  \n\nمعلومات المشكله:\n{str(traceback.format_exc())}\
+                                  \n\nنص الخطأ:\n{str(sys.exc_info()[1])}"
                         new = {
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------END jepthon TRACEBACK LOG--------"
+                        ftext += "\n\n--------تسجيل وحفظ الخطأ --------"
                         command = 'git log --pretty=format:"%an: %s" -5'
-                        ftext += "\n\n\nLast 5 commits:\n"
+                        ftext += "\n\n\nاخر 5 تعديلات:\n"
                         output = (await runcmd(command))[:2]
                         result = output[0] + output[1]
                         ftext += result
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        text = "**تقرير خطا جيبثون**\n\n"
-                        link = "[هنا](https://t.me/JepthonSupport)"
-                        text += "إذا كنت تريد يمكنك الإبلاغ عن ذلك"
-                        text += f"- فقط قم بإعادة توجيه هذه الرسالة {link}.\n"
-                        text += "لا يتم تسجيل اي خطا فقط التاريخ والوقت\n\n"
-                        text += f"**⌯︙تقرير الخطأ : ** [{new['error']}]({pastelink})"
+                        text = "**⪼ تقرير خطأ جيبثون 𓆰،**\n\n"
+                        link = "[هنا](https://t.me/jepthonsupport)"
+                        text += "يمكنك التبليغ عن هذه المشكله"
+                        text += f"- فقط قم بتوجيه الرساله هنا {link}.\n"
+                        text += "لم يتم حفظ اي شي عدا المشكله وتاريخ حدوثها\n\n"
+                        text += f"**تقرير الخطأ : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
@@ -231,36 +276,36 @@ class CatUserBotClient(TelegramClient):
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = f"\nDisclaimer:\nThis file is pasted only here ONLY here,\
-                                    \nwe logged only fact of error and date,\nwe respect your privacy,\
-                                    \nyou may not report this error if you've\
-                                    \nany confidential data here, no one will see your data\
-                                    \n\n--------BEGIN jepthon TRACEBACK LOG--------\
-                                    \nDate: {date}\nGroup ID: {str(check.chat_id)}\
-                                    \nSender ID: {str(check.sender_id)}\
-                                    \nMessage Link: {await check.client.get_msg_link(check)}\
-                                    \n\nEvent Trigger:\n{str(check.text)}\
-                                    \n\nTraceback info:\n{str(traceback.format_exc())}\
-                                    \n\nError text:\n{str(sys.exc_info()[1])}"
+                        ftext = f"\تحذير:\nهذا الملف تم لصقه فقط هنا فقط هنا,\
+                                  \nلقد قمنا بتسجيل الخطأ والتاريخ الخطأ فقط ,\nنحن نحترم خصوصيتك,\
+                                  \nلا يجوز لك الإبلاغ عن هذا الخطأ إذا كنت\
+                                  \nلديك معلومات خاصه هنا ، لن يرى أحد معلوماتك\
+                                  \n\n-------- معلومات عن الخطأ--------\
+                                  \nالتاريخ: {date}\nايدي المجموعه: {str(check.chat_id)}\
+                                  \nايدي المرسل: {str(check.sender_id)}\
+                                  \nرابط الرساله: {await check.client.get_msg_link(check)}\
+                                  \n\nمشغل الحدث:\n{str(check.text)}\
+                                  \n\nمعلومات المشكله:\n{str(traceback.format_exc())}\
+                                  \n\nنص الخطأ:\n{str(sys.exc_info()[1])}"
                         new = {
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------END jepthon TRACEBACK LOG--------"
+                        ftext += "\n\n--------تسجيل وحفظ الخطأ --------"
                         command = 'git log --pretty=format:"%an: %s" -5'
-                        ftext += "\n\n\nLast 5 commits:\n"
+                        ftext += "\n\n\nاخر 5 تعديلات:\n"
                         output = (await runcmd(command))[:2]
                         result = output[0] + output[1]
                         ftext += result
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        text = "**تقرير خطا جيبثون**\n\n"
-                        link = "[هنا](https://t.me/GroupJepthon)"
-                        text += "إذا كنت تريد يمكنك الإبلاغ عن ذلك"
-                        text += f"- فقط قم بإعادة توجيه هذه الرسالة {link}.\n"
-                        text += "لا يتم تسجيل اي خطا فقط التاريخ والوقت\n\n"
-                        text += f"**⌯︙تقرير الخطأ : ** [{new['error']}]({pastelink})"
+                        text = "**⪼ تقرير خطأ جيبثون 𓆰،**\n\n"
+                        link = "[هنا](https://t.me/jepthonsupport)"
+                        text += "يمكنك التبليغ عن هذه المشكله"
+                        text += f"- فقط قم بتوجيه الرساله هنا {link}.\n"
+                        text += "لم يتم حفظ اي شي عدا المشكله وتاريخ حدوثها\n\n"
+                        text += f"**تقرير الخطأ : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
@@ -292,14 +337,14 @@ class CatUserBotClient(TelegramClient):
         self.running_processes.clear()
 
 
-CatUserBotClient.fast_download_file = download_file
-CatUserBotClient.fast_upload_file = upload_file
-CatUserBotClient.reload = restart_script
-CatUserBotClient.get_msg_link = get_message_link
-CatUserBotClient.check_testcases = checking
+JepthonUserBotClient.fast_download_file = download_file
+JepthonUserBotClient.fast_upload_file = upload_file
+JepthonUserBotClient.reload = restart_script
+JepthonUserBotClient.get_msg_link = get_message_link
+JepthonUserBotClient.check_testcases = checking
 try:
     send_message_check = TelegramClient.send_message
 except AttributeError:
-    CatUserBotClient.send_message = send_message
-    CatUserBotClient.send_file = send_file
-    CatUserBotClient.edit_message = edit_message
+    JepthonUserBotClient.send_message = send_message
+    JepthonUserBotClient.send_file = send_file
+    JepthonUserBotClient.edit_message = edit_message
