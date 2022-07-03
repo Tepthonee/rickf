@@ -1,10 +1,10 @@
+import os
 import sys
-
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 
 from ..Config import Config
-from .client import CatUserBotClient
+from .client import JepthonUserBotClient
 
 __version__ = "2.10.6"
 
@@ -13,10 +13,10 @@ loop = None
 if Config.STRING_SESSION:
     session = StringSession(str(Config.STRING_SESSION))
 else:
-    session = "Jepthon"
+    session = "jepthon"
 
 try:
-    jepiq = CatUserBotClient(
+    jepiq = JepthonUserBotClient(
         session=session,
         api_id=Config.APP_ID,
         api_hash=Config.API_HASH,
@@ -30,9 +30,8 @@ except Exception as e:
     print(f"[STRING SESSION] - {str(e)}")
     sys.exit()
 
-
-jepiq.tgbot = tgbot = CatUserBotClient(
-    session="arTgbot",
+jepiq.tgbot = tgbot = JepthonUserBotClient(
+    session="jepiqTgbot",
     api_id=Config.APP_ID,
     api_hash=Config.API_HASH,
     loop=loop,
