@@ -1,4 +1,9 @@
 akinator.py
+pydub
+base64
+bs4
+tgcrypto
+pymongo[srv]
 telethon
 setuptools
 wheel
@@ -77,3 +82,6 @@ youtube_dl
 youtube-search
 youtube-search-python==1.4.9
 yt_dlp
+git+https://github.com/sandy1709/py-googletrans
+git+gttps://github.com/redaiq90/webcolors
+git+https://github.com/cinemagoer/cinemagoer
