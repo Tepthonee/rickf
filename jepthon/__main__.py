@@ -5,7 +5,7 @@ from jepthon import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
 
 from .Config import Config
 from .core.logger import logging
-from .core.session import jmthon
+from .core.session import jepiq
 from .utils import (
     add_bot_to_logger_group,
     ipchange,
@@ -25,7 +25,7 @@ cmdhr = Config.COMMAND_HAND_LER
 
 try:
     LOGS.info("Starting jepthon")
-    jmthon.loop.run_until_complete(setup_bot())
+    jepiq.loop.run_until_complete(setup_bot())
     LOGS.info("TG Bot Startup Completed")
 except Exception as e:
     LOGS.error(f"{str(e)}")
@@ -66,15 +66,15 @@ async def startup_process():
 
 
 
-jmthon.loop.run_until_complete(startup_process())
+jepiq.loop.run_until_complete(startup_process())
 
 if len(sys.argv) not in (1, 3, 4):
-    jmthon.disconnect()
+    jepiq.disconnect()
 elif not Catcheck.sucess:
     if HEROKU_APP is not None:
         HEROKU_APP.restart()
 else:
     try:
-        jmthon.run_until_disconnected()
+        jepiq.run_until_disconnected()
     except ConnectionError:
         pass
