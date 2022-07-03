@@ -12,8 +12,8 @@ __license__ = "كـتابة وتـعديل فريـق جيبثون"
 __author__ = "جيبثون <https://T.ME/Jepthon>"
 __copyright__ = "JEPTHON TEAM (C) 2020 - 2021  " + __author__
 
-jmthon.version = __version__
-jmthon.tgbot.version = __version__
+jepiq.version = __version__
+jepiq.tgbot.version = __version__
 LOGS = logging.getLogger("jepthon")
 bot = jepiq
 
