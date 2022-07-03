@@ -1,6 +1,3 @@
-#    جميع الحقوق لمطوري سورس جـيبثون حصريا لهم فقط
-#    اذا تخمط الملف اذك الحقوق وكاتبيه ومطوريه لا تحذف الحقوق وتصير فاشل 👍
-#    كتابة الشسد 
 import asyncio
 import io
 import re
@@ -367,7 +364,7 @@ async def settings(event):#    قـسم  السنـوات  :)
     if event.sender_id == bot.uid:
         await event.delete()
         await tgbot.send_message(event.chat_id, 
-                                 jepiqyear, 
+                                 Jmthonyear, 
                                  buttons=[[Button.inline("║ رجوع ║", data="rozmonth")]
                                  ])
     else:
@@ -389,5 +386,5 @@ async def settings(event):  # انتهـى  :)  اذا تخـمط تـذكر ت�
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"jm_hhack")))
 async def users(event):
     await event.delete()
-    rorza = "تستطيع اختراق اي شخص عبر كود تيرمكس في جمثون يمكنك اختراق المستخدمين الذي تملك كود تيرمكس الخاص بهم \n\n ارسل  /rz للعرض الاوأمر"
+    rorza = "تستطيع اختراق اي شخص عبر كود تيرمكس في جيبثون يمكنك اختراق المستخدمين الذي تملك كود تيرمكس الخاص بهم \n\n ارسل  /hack للعرض الاوأمر"
     await tgbot.send_message(event.chat_id, rorza)
