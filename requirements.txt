@@ -29,7 +29,6 @@ glitch_this
 google-api-python-client
 google-auth-httplib2
 google-auth-oauthlib
-googletrans==4.0.0-rc1
 gsearch
 git+https://github.com/buddhhu/img2html.git
 git+https://github.com/yt-dlp/yt-dlp
