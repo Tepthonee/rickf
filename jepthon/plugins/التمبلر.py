@@ -79,7 +79,7 @@ async def _(event):
 async def _(event):
     await event.edit("**يتم تجـهيز نبـذة اجنبـية لأجـلك انتـظر**")
     await asyncio.sleep(3)
-    arj = random.choice(313)
+    arj = random.choice(JEP)
     return await event.edit(f"{arj}")
     
     
