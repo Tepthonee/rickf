@@ -146,6 +146,21 @@ async def spammer(event):
     addgvar("spamwork", True)
     await spam_function(event, reply, jepiq, sleeptimem, sleeptimet, DelaySpam=True)
 
+@jepiq.ar_cmd(pattern=f"مكرر_ثواني (.*)")
+async def spammer(event):
+    reply = await event.get_reply_message()
+    input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
+    try:
+        sleeptimet = sleeptimem = int(input_str[0])
+    except Exception:
+        return await edit_delete(
+            event, "⌔∮ يجب استخدام كتابة صحيحة الرجاء التاكد من الامر اولا ⚠️"
+        )
+    jepiq = input_str[1:]
+    await event.delete()
+    addgvar("spamwork", True)
+    await spam_function(event, reply, jepiq, sleeptimem, sleeptimet, DelaySpam=True)
+
 
 @jepiq.ar_cmd(pattern="تكرار الملصق$")
 async def stickerpack_spam(event):
