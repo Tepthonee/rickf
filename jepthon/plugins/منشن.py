@@ -17,7 +17,7 @@ async def menall(event):
         return await event.reply("__يمكنك استعمال هذا الامر في القنوات والمجموعات فقط!__")
     msg = event.pattern_match.group(1)
     if not msg:
-        return await event.reply("ضع رسالة للمنشن اولاً !")
+        return await event.reply("**⌯︙ضع رسالة للمنشن اولاً**")
     is_admin = False
     try:
         partici_ = await jepiq(GetParticipantRequest(
@@ -38,7 +38,7 @@ async def menall(event):
         ):
           is_admin = True
     if not is_admin:
-        return await event.reply("__الادمن فقط يمكنه منشنة الكل__")
+        return await event.reply("**⌯︙يجب ان تكون مشرف في المجموعة **")
     spam_chats.append(chat_id)
     usrnum = 0
     usrtxt = ''
@@ -55,10 +55,10 @@ async def menall(event):
 @jepiq.ar_cmd(pattern="الغاء منشن")
 async def ca_sp(event):
   if not event.chat_id in spam_chats:
-    return await event.reply('لا يوجد اي منشن لالغائه')
+    return await event.reply('**⌯︙لايوجد منشن لألغائه **')
   else:
     try:
       spam_chats.remove(event.chat_id)
     except:
       pass
-    return await event.reply('تم ايقاف المنشن')
+    return await event.reply('**⌯︙تم الغاء المنشن بنجاح ✅**')
