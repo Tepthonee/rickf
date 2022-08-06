@@ -2,6 +2,7 @@ akinator.py
 telethon
 setuptools
 wheel
+akinator.py
 aiofiles
 aiohttp
 json
