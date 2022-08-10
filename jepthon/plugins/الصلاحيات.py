@@ -194,7 +194,7 @@ async def _(event):  # sourcery no-metrics
             change_info=changeinfo,
         )
         try:
-        await event.client(
+            await event.client(
                 EditChatDefaultBannedRightsRequest(
                     peer=peer_id, banned_rights=unlock_rights
                 )
