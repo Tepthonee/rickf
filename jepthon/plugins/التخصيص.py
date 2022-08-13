@@ -107,6 +107,12 @@ async def custom_jepthon(event):
         text = " ".join(urls)
         addgvar("ALIVE_PIC", text)
         var = "ALIVE_PIC"
+    if input_str == "التخزين" or input_str == "تخزين":
+        addgvar("PM_LOGGER_GROUP_ID", text)
+        var = "PM_LOGGER_GROUP_ID"
+    if input_str == "اشعارات" or input_str == "الاشعارات":
+        addgvar("PRIVATE_GROUP_BOT_API_ID", text)
+        var = "PRIVATE_GROUP_BOT_API_ID"
     if (
         input_str == "صورة البنك"
         or input_str == "صورة بنك"
@@ -198,6 +204,14 @@ async def custom_jepthon(event):
                 event, "**⎙ :: عزيزي المستخدم انت لم تقوم باضافه هذا الفار اصلا**"
             )
         delgvar("ALIVE_EMOJI")
+    if input_str == "التخزين" or input_str == "تخزين":
+    	if gvatstatus("PM_LOGGER_GROUP_ID") is None:
+    	    return await edit_delete(event, "**⎙ :: عزيزي المستخدم انت لم تقوم باضافه هذا الفار اصلا**")
+    	delgvar("PM_LOGGER_GROUP_ID")
+    if input_str == "اشعارات" or input_str == "الاشعارات":
+    	if gvatstatus("PRIVATE_GROUP_BOT_API_ID") is None:
+    	    return await edit_delete(event, "**⎙ :: عزيزي المستخدم انت لم تقوم باضافه هذا الفار اصلا**")
+    	delgvar("PRIVATE_GROUP_BOT_API_ID")
     if input_str == "نص الفحص":
         if gvarstatus("ALIVE_TEXT") is None:
             return await edit_delete(
