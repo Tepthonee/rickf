@@ -1,7 +1,6 @@
 from urlextract import URLExtract
 from jepthon import jepiq
 from jepthon.core.logger import logging
-
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
