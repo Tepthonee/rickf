@@ -90,9 +90,9 @@ async def _(event):
         return
     catevent = await edit_or_reply(event, "⌯︙جار إحضار معلومات المستخدم اننظر قليلا ⚒️")
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
-    user_id = replied_user.full_user.id
+    user_id = replied_user.users.id
     # some people have weird HTML in their names
-    first_name = html.escape(replied_user.full_user.first_name)
+    first_name = html.escape(replied_user.users.first_name)
     # https://stackoverflow.com/a/5072031/4723940
     # some Deleted Accounts do not have first_name
     if first_name is not None:
@@ -100,9 +100,9 @@ async def _(event):
         # names
         first_name = first_name.replace("\u2060", "")
     # inspired by https://telegram.dog/afsaI181
-    common_chats = replied_user.full_user.common_chats_count
+    common_chats = replied_user.users.common_chats_count
     try:
-        dc_id, location = get_input_location(replied_user.full_user.profile_photo)
+        dc_id, location = get_input_location(replied_user.profile_photo)
     except Exception:
         dc_id = "Couldn't fetch DC ID!"
     if spamwatch:
@@ -137,7 +137,7 @@ async def _(event):
         user_id,
         common_chats,
         dc_id,
-        replied_user.full_user.restricted,
+        replied_user.users.restricted,
         sw,
         cas,
     )
