@@ -90,7 +90,7 @@ async def _(event):
         return
     catevent = await edit_or_reply(event, "⌯︙جار إحضار معلومات المستخدم اننظر قليلا ⚒️")
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
-    user_id = replied_user.id
+    user_id = replied_user.full_user.id
     # some people have weird HTML in their names
     first_name = html.escape(replied_user.first_name)
     # https://stackoverflow.com/a/5072031/4723940
@@ -137,7 +137,7 @@ async def _(event):
         user_id,
         common_chats,
         dc_id,
-        replied_user.restricted,
+        replied_user.user_full.restricted,
         sw,
         cas,
     )
