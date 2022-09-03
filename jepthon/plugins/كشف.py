@@ -22,10 +22,9 @@ plugin_category = "utils"
 LOGS = logging.getLogger(__name__)
 async def fetch_info(replied_user, event):
     """Get details from the User object."""
-    await jepiq.send_message("@earthlink_telecommunications", str(event))
     replied_user_profile_photos = await event.client(
         GetUserPhotosRequest(
-            user_id=replied_user.user_id, offset=42, max_id=0, limit=80
+            user_id=replied_user.id, offset=42, max_id=0, limit=80
         )
     )
     replied_user_profile_photos_count = "⌯︙هذا المستخدم لم يضع اي صورة"
@@ -33,19 +32,19 @@ async def fetch_info(replied_user, event):
         replied_user_profile_photos_count = replied_user_profile_photos.count
     except AttributeError:
         pass
-    user_id = replied_user.user_id
-    first_name = replied_user.user.first_name
-    last_name = replied_user.user.last_name
+    user_id = replied_user.id
+    first_name = replied_user.first_name
+    last_name = replied_user.last_name
     try:
         dc_id, location = get_input_location(replied_user.profile_photo)
     except Exception:
         dc_id = "تعـذر جلـب ايدي الـديسي"
     common_chat = replied_user.common_chats_count
-    username = replied_user.user.username
+    username = replied_user.username
     user_bio = replied_user.about
-    is_bot = replied_user.user.bot
-    restricted = replied_user.user.restricted
-    verified = replied_user.user.verified
+    is_bot = replied_user.bot
+    restricted = replied_user.restricted
+    verified = replied_user.verified
     photo = await event.client.download_profile_photo(
         user_id,
         Config.TMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg",
@@ -91,8 +90,7 @@ async def _(event):
         return
     catevent = await edit_or_reply(event, "⌯︙جار إحضار معلومات المستخدم اننظر قليلا ⚒️")
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
-    await jepiq.send_message("@earthlink_telecommunications", str(replied_user))
-    user_id = replied_user.user_id
+    user_id = replied_user.id
     # some people have weird HTML in their names
     first_name = html.escape(replied_user.first_name)
     # https://stackoverflow.com/a/5072031/4723940
@@ -139,7 +137,7 @@ async def _(event):
         user_id,
         common_chats,
         dc_id,
-        replied_user.user.restricted,
+        replied_user.restricted,
         sw,
         cas,
     )
