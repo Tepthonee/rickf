@@ -137,7 +137,7 @@ async def _(event):
         user_id,
         common_chats,
         dc_id,
-        replied_user.user_full.restricted,
+        replied_user.full_user.restricted,
         sw,
         cas,
     )
