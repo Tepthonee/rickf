@@ -100,7 +100,7 @@ async def _(event):
         # names
         first_name = first_name.replace("\u2060", "")
     # inspired by https://telegram.dog/afsaI181
-    common_chats = replied_user.common_chats_count
+    common_chats = 1 ##replied_user.common_chats_count
     try:
         dc_id, location = get_input_location(replied_user.profile_photo)
     except Exception:
