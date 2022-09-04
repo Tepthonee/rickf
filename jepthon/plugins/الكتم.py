@@ -20,7 +20,7 @@ plugin_category = "admin"
 #=================== الكـــــــــــــــتم  ===================  #
 
 @jepiq.on(admin_cmd(pattern=f"كتم(?:\s|$)([\s\S]*)"))
-async def mute(event):
+async def mutejep(event):
     if event.is_private:
         replied_user = await event.client.get_entity(event.chat_id)
         if is_muted(event.chat_id, event.chat_id):
@@ -113,7 +113,7 @@ async def mute(event):
 #=================== الغـــــــــــــاء الكـــــــــــــــتم  ===================  #
 
 @jepiq.on(admin_cmd(pattern=f"الغاء كتم(?:\s|$)([\s\S]*)"))
-async def unmute(event):
+async def unmutejep(event):
     if event.is_private:
         replied_user = await event.client.get_entity(event.chat_id)
         if not is_muted(event.chat_id, event.chat_id):
