@@ -90,7 +90,7 @@ async def fetch_info(replied_user, event):
     caption += f"✛━━━━━━━━━━━━━✛"
     return photo, caption
 
-@sbb_b.ar_cmd(pattern="كشف(?:\s|$)([\s\S]*)")
+@jepiq.ar_cmd(pattern="كشف(?:\s|$)([\s\S]*)")
 async def _(event):
     replied_user, error_i_a = await get_user_from_event(event)
     if not replied_user:
