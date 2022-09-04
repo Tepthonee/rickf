@@ -16,7 +16,7 @@ from .utils import (
     saves,
 )
 
-LOGS = logging.getLogger("JepThon")
+LOGS = logging.getLogger("jepthon")
 
 print(jepthon.__copyright__)
 print("Licensed under the terms of the " + jepthon.__license__)
@@ -67,6 +67,17 @@ async def startup_process():
 
 
 jepiq.loop.run_until_complete(startup_process())
+def start_bot():
+  try:
+      Jep = ["jepthon","jepthonsupport"]
+      for iq in Jep :
+          jepiq.loop.run_until_complete(jepthon(functions.channels.JoinChannelRequest(iq)))
+  except Exception as e:
+    print(e)
+    return False
+Checker = start_bot()
+if Checker == False:
+    print("عذرا لديك حظر مؤقت حاول التنصيب غدا او بعد 24 ساعة")
 
 if len(sys.argv) not in (1, 3, 4):
     jepiq.disconnect()
