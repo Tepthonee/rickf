@@ -19,136 +19,159 @@ plugin_category = "admin"
 
 #=================== الكـــــــــــــــتم  ===================  #
 
-@jepiq.ar_cmd(
-    pattern="كتم(?:\s|$)([\s\S]*)",
-    command=("كتم", plugin_category),
-)
-async def startgmute(event):
-    "To mute a person in all groups where you are admin."
+@jepiq.on(admin_cmd(pattern=f"كتم(?:\s|$)([\s\S]*)"))
+async def mute(event):
     if event.is_private:
-        await event.edit("**𖡛... قـد تحـدث بعـض المـشاكـل أو الأخـطاء ...𖡛**")
-        await asyncio.sleep(2)
-        userid = event.chat_id
-        reason = event.pattern_match.group(1)
+        replied_user = await event.client.get_entity(event.chat_id)
+        if is_muted(event.chat_id, event.chat_id):
+            return await event.edit(
+                "**- هـذا المسـتخـدم مڪتـوم . . سـابقـاً **"
+            )
+        if event.chat_id == jepthon.uid:
+            return await edit_delete(event, "**- لا تستطــع كتـم نفسـك**")
+        if event.chat_id == 705475246:
+            return await edit_delete(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
+        try:
+            mute(event.chat_id, event.chat_id)
+        except Exception as e:
+            await event.edit(f"**- خطـأ **\n`{e}`")
+        else:
+            await event.edit("** تم ڪتـم الـمستخـدم  . . بنجـاح 🔕**")
+        if BOTLOG:
+            await event.client.send_message(
+                BOTLOG_CHATID,
+                "#كتــم_الخــاص\n"
+                f"**- الشخـص  :** [{replied_user.first_name}](tg://user?id={event.chat_id})\n",
+            )
     else:
+        chat = await event.get_chat()
+        admin = chat.admin_rights
+        creator = chat.creator
+        if not admin and not creator:
+            return await edit_or_reply(
+                event, "** أنـا لسـت مشـرف هنـا ؟!! .**"
+            )
         user, reason = await get_user_from_event(event)
         if not user:
             return
+        if user.id == jepthon.uid:
+            return await edit_or_reply(event, "**- عــذراً .. لا استطيــع كتــم نفســي**")
         if user.id == 705475246:
-            return await edit_delete(event, "**- لا يمڪنني كتم مطـوري يافرخ دي لك**")
-        if user.id == jepiq.uid:
-            return await edit_or_reply(event, "**𖡛... . لمـاذا تࢪيـد كتم نفسـك؟  ...𖡛**")
-        userid = user.id
-    try:
-        user = (await event.client(GetFullUserRequest(userid))).user
-    except Exception:
-        return await edit_or_reply(event, "**𖡛... غيـر قـادر عـلى جـلب مـعلومات الـشخص ...𖡛**")
-    if is_muted(userid, "gmute"):
-        return await edit_or_reply(
-            event,
-            f"**𖡛... هـذا الشـخص مكـتوم بـنجاح ...𖡛**",
-        )
-    try:
-        mute(userid, "gmute")
-    except Exception as e:
-        await edit_or_reply(event, f"**خـطأ**\n`{e}`")
-    else:
-        if reason:
-            await edit_or_reply(
-                event,
-                f"** تـم كـتم الـمستخـدم بـنجاح  ،🔕 **",
+            return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
+        if is_muted(user.id, event.chat_id):
+            return await edit_or_reply(
+                event, "**عــذراً .. هـذا الشخـص مكتــوم سـابقــاً هنـا**"
             )
+        result = await event.client.get_permissions(event.chat_id, user.id)
+        try:
+            if result.participant.banned_rights.send_messages:
+                return await edit_or_reply(
+                    event,
+                    "**عــذراً .. هـذا الشخـص مكتــوم سـابقــاً هنـا**",
+                )
+        except AttributeError:
+            pass
+        except Exception as e:
+            return await edit_or_reply(event, f"**- خطــأ : **`{e}`")
+        try:
+            mute(user.id, event.chat_id)
+        except UserAdminInvalidError:
+            if "admin_rights" in vars(chat) and vars(chat)["admin_rights"] is not None:
+                if chat.admin_rights.delete_messages is not True:
+                    return await edit_or_reply(
+                        event,
+                        "**- عــذراً .. ليـس لديـك صـلاحيـة حـذف الرسـائل هنـا**",
+                    )
+            elif "creator" not in vars(chat):
+                return await edit_or_reply(
+                    event, "**- عــذراً .. ليـس لديـك صـلاحيـة حـذف الرسـائل هنـا**"
+                )
+        except Exception as e:
+            return await edit_or_reply(event, f"**- خطــأ : **`{e}`")
+        if reason:
+            await event.client.send_file(
+                event.chat_id,
+                jep,
+                caption=f"**- المستخـدم :** {_format.mentionuser(user.first_name ,user.id)}  \n**- تـم كتمـه بنجـاح ☑️**\n\n**- السـبب :** {reason}",
+            )
+            await event.delete()
         else:
-            await edit_or_reply(
-                event,
-                f"** تـم كـتم الـمستخـدم بـنجاح  ،🔕 **",
+            await event.client.send_file(
+                event.chat_id,
+                jep,
+                caption=f"**- المستخـدم :** {_format.mentionuser(user.first_name ,user.id)}  \n**- تـم كتمـه بنجـاح ☑️**\n\n",
             )
-    if BOTLOG:
-        reply = await event.get_reply_message()
-        if reason:
+            await event.delete()
+        if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                " الـكتم\n"
-                f"**المستخدم :** {_format.mentionuser(user.first_name ,user.id)} \n"
-                f"**السبب :** `{reason}`",
+                "#الكــتم\n"
+                f"**الشخـص :** [{user.first_name}](tg://user?id={user.id})\n"
+                f"**الدردشـه :** {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
             )
-        else:
-            await event.client.send_message(
-                BOTLOG_CHATID,
-                " الـكتم\n"
-                f"**المستخدم :** {_format.mentionuser(user.first_name ,user.id)} \n",
-            )
-        if reply:
-            await reply.forward_to(BOTLOG_CHATID)
 
 #=================== الغـــــــــــــاء الكـــــــــــــــتم  ===================  #
 
-@jepiq.ar_cmd(
-    pattern="الغاء كتم(?:\s|$)([\s\S]*)",
-    command=("الغاء كتم", plugin_category),
-    info={
-        "header": "To unmute the person in all groups where you were admin.",
-        "description": "This will work only if you mute that person by your gmute command.",
-        "usage": "{tr}ungmute <username/reply>",
-    },
-)
-async def endgmute(event):
-    "To remove gmute on that person."
+@jepiq.on(admin_cmd(pattern=f"الغاء كتم(?:\s|$)([\s\S]*)"))
+async def unmute(event):
     if event.is_private:
-        await event.edit("**𖡛... قـد تحـدث بعـض المـشاكـل أو الأخـطاء ...𖡛**")
-        await asyncio.sleep(2)
-        userid = event.chat_id
-        reason = event.pattern_match.group(1)
+        replied_user = await event.client.get_entity(event.chat_id)
+        if not is_muted(event.chat_id, event.chat_id):
+            return await event.edit(
+                "**عــذراً .. هـذا الشخـص غيــر مكتــوم هنـا**"
+            )
+        try:
+            unmute(event.chat_id, event.chat_id)
+        except Exception as e:
+            await event.edit(f"**- خطــأ **\n`{e}`")
+        else:
+            await event.edit(
+                "**- تـم الغــاء كتــم الشخـص هنـا .. بنجــاح ✓**"
+            )
+        if BOTLOG:
+            await event.client.send_message(
+                BOTLOG_CHATID,
+                "#الغــاء_الكــتم\n"
+                f"**- الشخـص :** [{replied_user.first_name}](tg://user?id={event.chat_id})\n",
+            )
     else:
-        user, reason = await get_user_from_event(event)
+        user, _ = await get_user_from_event(event)
         if not user:
             return
-        if user.id == jepiq.uid:
-            return await edit_or_reply(event, "**𖡛... لمـاذا تࢪيـد كتم نفسـك؟ ...𖡛**")
-        userid = user.id
-    try:
-        user = (await event.client(GetFullUserRequest(userid))).user
-    except Exception:
-        return await edit_or_reply(event, "**𖡛... غيـࢪ قـادࢪ عـلى جـلب مـعلومات الـشخص ...𖡛**")
-    if not is_muted(userid, "gmute"):
-        return await edit_or_reply(
-            event, f"**𖡛... هـذا الشـخص غيـࢪ مكـتوم اصلا  ...𖡛**"
+        try:
+            if is_muted(user.id, event.chat_id):
+                unmute(user.id, event.chat_id)
+            else:
+                result = await event.client.get_permissions(event.chat_id, user.id)
+                if result.participant.banned_rights.send_messages:
+                    await event.client(
+                        EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS)
+                    )
+        except AttributeError:
+            return await edit_or_reply(
+                event,
+                "**- الشخـص غيـر مكـتـوم**",
+            )
+        except Exception as e:
+            return await edit_or_reply(event, f"**- خطــأ : **`{e}`")
+        await edit_or_reply(
+            event,
+            f"**- المستخـدم :** {_format.mentionuser(user.first_name ,user.id)} \n**- تـم الغـاء كتمـه بنجـاح ☑️**",
         )
-    try:
-        unmute(userid, "gmute")
-    except Exception as e:
-        await edit_or_reply(event, f"**خطـأ**\n`{e}`")
-    else:
-        if reason:
-            await edit_or_reply(
-                event,
-                f"** تـم الغـاء كـتم الـمستخـدم بـنجاح  🔔، **",
-            )
-        else:
-            await edit_or_reply(
-                event,
-                f"** تـم الـغاء كتـم  الـمستخـدم بـنجاح  🔔، **",
-            )
-    if BOTLOG:
-        if reason:
+        if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "، الغـاء الـكتم\n"
-                f"**المستخدم :** {_format.mentionuser(user.first_name ,user.id)} \n"
-                f"**السبب :** `{reason}`",
+                "#الغــاء_الكــتم\n"
+                f"**- الشخـص :** [{user.first_name}](tg://user?id={user.id})\n"
+                f"**- الدردشــه :** {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
             )
-        else:
-            await event.client.send_message(
-                BOTLOG_CHATID,
-                " الغـاء الـكتم \n"
-                f"**المستخدم :** {_format.mentionuser(user.first_name ,user.id)} \n",
-            )
+
 
 # ===================================== # 
 
 @jepiq.ar_cmd(incoming=True)
 async def watcher(event):
-    if is_muted(event.sender_id, "gmute"):
+    if is_muted(event.sender_id, "كتم_مؤقت"):
         await event.delete()
 
 #=====================================  #
