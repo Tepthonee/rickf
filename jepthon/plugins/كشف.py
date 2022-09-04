@@ -92,7 +92,7 @@ async def fetch_info(replied_user, event):
 
 @jepiq.on(admin_cmd(pattern="كشف(?:\s|$)([\s\S]*)"))
 async def _(event):
-    replied_user, error_i_a = await get_user_from_event(event)
+    replied_user = await get_user_from_event(event)
     if not replied_user:
         return
     catevent = await edit_or_reply(event, "جاري الكشف عن الشخص")
