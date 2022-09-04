@@ -20,58 +20,76 @@ ID_EDIT = gvarstatus("ID_ET") or "ايدي"
 
 plugin_category = "utils"
 LOGS = logging.getLogger(__name__)
+async def get_user_from_event(event):
+    if event.reply_to_msg_id:
+        previous_message = await event.get_reply_message()
+        user_object = await event.client.get_entity(previous_message.sender_id)
+    else:
+        user = event.pattern_match.group(1)
+        if user.isnumeric():
+            user = int(user)
+        if not user:
+            self_user = await event.client.get_me()
+            user = self_user.id
+        if event.message.entities:
+            probable_user_mention_entity = event.message.entities[0]
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
+                user_id = probable_user_mention_entity.user_id
+                user_obj = await event.client.get_entity(user_id)
+                return user_obj
+        if isinstance(user, int) or user.startswith("@"):
+            user_obj = await event.client.get_entity(user)
+            return user_obj
+        try:
+            user_object = await event.client.get_entity(user)
+        except (TypeError, ValueError) as err:
+            await event.edit(str(err))
+            return None
+    return user_object
+
+
 async def fetch_info(replied_user, event):
     """Get details from the User object."""
+    FullUser = (await event.client(GetFullUserRequest(replied_user.id))).full_user
     replied_user_profile_photos = await event.client(
-        GetUserPhotosRequest(
-            user_id=replied_user.id, offset=42, max_id=0, limit=80
-        )
-    )
-    replied_user_profile_photos_count = "⌯︙هذا المستخدم لم يضع اي صورة"
+        GetUserPhotosRequest(user_id=replied_user.id, offset=42, max_id=0, limit=80)    )
+    replied_user_profile_photos_count = "لايـوجـد بروفـايـل"
+    dc_id = "Can't get dc id"
     try:
         replied_user_profile_photos_count = replied_user_profile_photos.count
+        dc_id = replied_user.photo.dc_id
     except AttributeError:
         pass
     user_id = replied_user.id
     first_name = replied_user.first_name
-    last_name = replied_user.last_name
-    try:
-        dc_id, location = get_input_location(replied_user.profile_photo)
-    except Exception:
-        dc_id = "تعـذر جلـب ايدي الـديسي"
-    common_chat = replied_user.common_chats_count
+    full_name = FullUser.private_forward_name
+    common_chat = FullUser.common_chats_count
     username = replied_user.username
-    user_bio = replied_user.about
+    user_bio = FullUser.about
     is_bot = replied_user.bot
     restricted = replied_user.restricted
     verified = replied_user.verified
-    photo = await event.client.download_profile_photo(
-        user_id,
-        Config.TMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg",
-        download_big=True,
-    )
-    first_name = (
-        first_name.replace("\u2060", "")
+    photo = await event.client.download_profile_photo(     user_id,     Config.TMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg",    download_big=True  )
+    first_name = (      first_name.replace("\u2060", "")
         if first_name
-        else ("⌯︙هذا المستخدم ليس لديه اسم اول")
-    )
-    last_name = last_name.replace("\u2060", "") if last_name else (" ")
-    rotbat = ".「  مطـور السورس 𓄂𓆃 」." if user_id == 705475246 or user_id == 393120911 or user_id == 5560953298 else (".「  العضـو 𓅫  」.") 
-    rotbat = ".「 مـالك الحساب 𓀫 」." if user_id == (await event.client.get_me()).id and user_id != 705475246 else rotbat
-    username = "@{}".format(username) if username else ("⌯︙هـذا الشخص ليس لديـه معـرف ")
-    user_bio = "⌯︙هذا المستخدم ليس لديه اي نبـذة" if not user_bio else user_bio
-    caption = "✛━━━━━━━━━━━━━✛ \n"
-    caption += f"<b>{JEP_EM} الاسـم ›</b> {first_name} {last_name}\n"
-    caption += f"<b>{JEP_EM} المـعـرف ›</b> {username}\n"
-    caption += f"<b>{JEP_EM} الايـدي  ›</b> <code>{user_id}</code>\n"
-    caption += f"<b>{JEP_EM} عـدد الصـورة ›</b> {replied_user_profile_photos_count}\n"
-    caption += f"<b>{JEP_EM} الرتبـــه  ⇦ {rotbat} </b>\n"
-    caption += f"<b>{JEP_EM} الـنبـذه ›</b> \n<code>{user_bio}</code>\n\n"
-    caption += f"<b>{JEP_EM} الـمجموعات المشتـركة ›</b> {common_chat}\n"
-    caption += f"<b>{JEP_EM} رابط حسـابه ›</b> "
-    caption += f'<a href="tg://user?id={user_id}">{first_name}</a>\n'
-    caption += f"✛━━━━━━━━━━━━━✛"
+        else ("هذا المستخدم ليس له اسم أول")  )
+    full_name = full_name or first_name
+    username = "@{}".format(username) if username else ("لايـوجـد معـرف")
+    user_bio = "لاتـوجـد نبـذة" if not user_bio else user_bio
+    rotbat = "⌁ من مطورين السورس 𓄂𓆃 ⌁" if user_id == 705475246 else ("⌁ العضـو 𓅫 ⌁")
+    rotbat = "⌁ مـالك الحساب 𓀫 ⌁" if user_id == (await event.client.get_me()).id and user_id != 705475246  else rotbat
+    caption += f"✛━━━━━━━━━━━━━✛\n"
+    caption += f"<b> {JEP_EM}╎الاسـم    ⇠ </b> {full_name}\n"
+    caption += f"<b> {JEP_EM}╎المعـرف  ⇠ </b> {username}\n"
+    caption += f"<b> {JEP_EM}╎الايـدي   ⇠ </b> <code>{user_id}</code>\n"
+    caption += f"<b> {JEP_EM}╎الرتبـــه  ⇠ {rotbat} </b>\n"
+    caption += f"<b> {JEP_EM}╎الصـور   ⇠ </b> {replied_user_profile_photos_count}\n"
+    caption += f"<b> {JEP_EM}╎الحساب ⇠ </b> "
+    caption += f'<a href="tg://user?id={user_id}">{first_name}</a>'
+    caption += f"\n<b> {JEP_EM}╎البايـو    ⇠ </b> {user_bio} \n"
+    caption += f"ٴ✛━━━━━━━━━━━━━✛"
     return photo, caption
+
 
 
 @jepiq.ar_cmd(
