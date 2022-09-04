@@ -107,7 +107,7 @@ async def _(event):
     catevent = await edit_or_reply(event, "⌯︙جار إحضار معلومات المستخدم اننظر قليلا ⚒️")
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
     user_id = replied_user.users[0].id
-     first_name = html.escape(replied_user.users[0].first_name)
+    first_name = html.escape(replied_user.users[0].first_name)
     if first_name is not None:
         # some weird people (like me) have more than 4096 characters in their
         # names
