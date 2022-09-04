@@ -90,7 +90,7 @@ async def fetch_info(replied_user, event):
     caption += f"✛━━━━━━━━━━━━━✛"
     return photo, caption
 
-@jepthon.ar_cmd(
+@jepiq.ar_cmd(
     pattern="كشف(?:\s|$)([\s\S]*)",
     command=("كشف", plugin_category),
     info={
