@@ -96,7 +96,7 @@ async def _(event):
     if not replied_user:
         return
     catevent = await edit_or_reply(event, "جاري الكشف عن الشخص")
-    replied_user = await event.client(GetFullUserRequest(replied_id))
+    replied_user = await event.client(GetFullUserRequest(replied_user.id))
     user_id = replied_user.id
     first_name = html.escape(replied_user.user.first_name)
     if first_name is not None:
