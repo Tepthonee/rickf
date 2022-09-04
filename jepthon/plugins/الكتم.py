@@ -27,7 +27,7 @@ async def mute(event):
             return await event.edit(
                 "**- هـذا المسـتخـدم مڪتـوم . . سـابقـاً **"
             )
-        if event.chat_id == jepthon.uid:
+        if event.chat_id == jepiq.uid:
             return await edit_delete(event, "**- لا تستطــع كتـم نفسـك**")
         if event.chat_id == 705475246:
             return await edit_delete(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
@@ -54,7 +54,7 @@ async def mute(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-        if user.id == jepthon.uid:
+        if user.id == jepiq.uid:
             return await edit_or_reply(event, "**- عــذراً .. لا استطيــع كتــم نفســي**")
         if user.id == 705475246:
             return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
