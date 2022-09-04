@@ -90,49 +90,30 @@ async def fetch_info(replied_user, event):
     caption += f"✛━━━━━━━━━━━━━✛"
     return photo, caption
 
-
-
-@jepiq.ar_cmd(
-    pattern="كشف(?:\s|$)([\s\S]*)",
-    command=("كشف", plugin_category),
-    info={
-        "header": "Gets information of an user such as restrictions ban by spamwatch or cas.",
-        "description": "That is like whether he banned is spamwatch or cas and small info like groups in common, dc ..etc.",
-        "usage": "{tr}userinfo <username/userid/reply>",
-    },
-)
+@jepiq.on(admin_cmd(pattern="كشف(?:\s|$)([\s\S]*)"))
 async def _(event):
-    "Gets information of an user such as restrictions ban by spamwatch or cas"
     replied_user, error_i_a = await get_user_from_event(event)
     if not replied_user:
         return
-    catevent = await edit_or_reply(event, "⌯︙جار إحضار معلومات المستخدم اننظر قليلا ⚒️")
+    catevent = await edit_or_reply(event, "جاري الكشف عن الشخص")
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
-    #await jepiq.send_message("@earthlink_telecommunications", str(replied_user))
-    user_id = replied_user.users[0].id
-    # some people have weird HTML in their names
-    first_name = html.escape(replied_user.users[0].first_name)
-    # https://stackoverflow.com/a/5072031/4723940
-    # some Deleted Accounts do not have first_name
+    user_id = replied_user.user.id
+    first_name = html.escape(replied_user.user.first_name)
     if first_name is not None:
-        # some weird people (like me) have more than 4096 characters in their
-        # names
         first_name = first_name.replace("\u2060", "")
-    # inspired by https://telegram.dog/afsaI181
-    ##common_chats = replied_user.common_chats_count
-    common_chats = 1
+    common_chats = replied_user.common_chats_count
     try:
         dc_id, location = get_input_location(replied_user.profile_photo)
     except Exception:
-        dc_id = "Couldn't fetch DC ID!"
+        dc_id = " عذرا لانقدر على جلب المعلومات الخاصه له!"
     if spamwatch:
         ban = spamwatch.get_ban(user_id)
         if ban:
-            sw = f"**Spamwatch Banned :** `True` \n       **-**🤷‍♂️**Reason : **`{ban.reason}`"
+            sw = f"**حظر المشاهد :** `شغال` \n       **-**🤷‍♂️**السبب : **`{ban.reason}`"
         else:
-            sw = f"**Spamwatch Banned :** `False`"
+            sw = f"**حظر المشاهد :** `معطل`"
     else:
-        sw = "**Spamwatch Banned :**`Not Connected`"
+        sw = "**محظور المشاهد :**`غير متصل`"
     try:
         casurl = "https://api.cas.chat/check?user_id={}".format(user_id)
         data = get(casurl).json()
@@ -141,26 +122,26 @@ async def _(event):
         data = None
     if data:
         if data["ok"]:
-            cas = "**Antispam(CAS) Banned :** `True`"
+            cas = "**الحظر :** `محظور`"
         else:
-            cas = "**Antispam(CAS) Banned :** `False`"
+            cas = "**الحظر :** `لست محضور`"
     else:
-        cas = "**Antispam(CAS) Banned :** `Couldn't Fetch`"
-    caption = """**معلومات المسـتخدم[{}](tg://user?id={}):
-   ⌔︙⚕️ الايدي: **`{}`
-   ⌔︙👥**المجموعات المشتركه : **`{}`
-   ⌔︙🌏**رقم قاعده البيانات : **`{}`
-   ⌔︙🔏**هل هو حساب موثق  : **`{}`
-""".format(
-        first_name,
+        cas = "**الحظر :** `لايمكن جلب معلومات الشخص`"
+    caption = """**معلومات حول : [{}](tg://user?id={}):
+   -🔖 الايدي : **`{}`
+   **-**👥**المجموعات المشتركة : **`{}`
+   **-**🌏**رقم مركز البيانات : **`{}`
+   **-**🔏**مقيد من تليجرام : **`{}`
+   **-**🦅{}
+   **-**👮‍♂️{}
+""".format(        first_name,
         user_id,
         user_id,
         common_chats,
         dc_id,
-        replied_user.users[0].restricted,
+        replied_user.user.restricted,
         sw,
-        cas,
-    )
+        cas    )
     await edit_or_reply(catevent, caption)
 
 
