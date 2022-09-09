@@ -428,24 +428,45 @@ async def do_pm_spam_action(event, chat):
 #ترجمه وكتابة فريق جـيبثون
 @jepiq.ar_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def on_new_private_message(event):
-    if gvarstatus("pmpermit") is None:
-        return
-    chat = await event.get_chat()
-    if chat.bot or chat.verified:
-        return
-    if pmpermit_sql.is_approved(chat.id):
-        return
-    if str(chat.id) in sqllist.get_collection_list("pmspam"):
-        return await do_pm_spam_action(event, chat)
-    if str(chat.id) in sqllist.get_collection_list("pmchat"):
-        return await do_pm_chat_action(event, chat)
-    if str(chat.id) in sqllist.get_collection_list("pmrequest"):
-        return await do_pm_request_action(event, chat)
-    if str(chat.id) in sqllist.get_collection_list("pmenquire"):
-        return await do_pm_enquire_action(event, chat)
-    if str(chat.id) in sqllist.get_collection_list("pmoptions"):
-        return await do_pm_options_action(event, chat)
-    await do_pm_permit_action(event, chat)
+    try:
+        if gvarstatus("pmpermit") is None:
+            return
+        chat = await event.get_chat()
+        if chat.bot or chat.verified:
+            return
+        if pmpermit_sql.is_approved(chat.id):
+            return
+        if str(chat.id) in sqllist.get_collection_list("pmspam"):
+            return await do_pm_spam_action(event, chat)
+        if str(chat.id) in sqllist.get_collection_list("pmchat"):
+            return await do_pm_chat_action(event, chat)
+        if str(chat.id) in sqllist.get_collection_list("pmrequest"):
+            return await do_pm_request_action(event, chat)
+        if str(chat.id) in sqllist.get_collection_list("pmenquire"):
+            return await do_pm_enquire_action(event, chat)
+        if str(chat.id) in sqllist.get_collection_list("pmoptions"):
+            return await do_pm_options_action(event, chat)
+        await do_pm_permit_action(event, chat)
+    except BotInlineDisabledError:
+        jepiq.loop.run_until_complete(mybot())
+        if gvarstatus("pmpermit") is None:
+            return
+        chat = await event.get_chat()
+        if chat.bot or chat.verified:
+            return
+        if pmpermit_sql.is_approved(chat.id):
+            return
+        if str(chat.id) in sqllist.get_collection_list("pmspam"):
+            return await do_pm_spam_action(event, chat)
+        if str(chat.id) in sqllist.get_collection_list("pmchat"):
+            return await do_pm_chat_action(event, chat)
+        if str(chat.id) in sqllist.get_collection_list("pmrequest"):
+            return await do_pm_request_action(event, chat)
+        if str(chat.id) in sqllist.get_collection_list("pmenquire"):
+            return await do_pm_enquire_action(event, chat)
+        if str(chat.id) in sqllist.get_collection_list("pmoptions"):
+            return await do_pm_options_action(event, chat)
+        await do_pm_permit_action(event, chat)
 #ترجمه وكتابة فريق جـيبثون
 
 @jepiq.ar_cmd(outgoing=True, func=lambda e: e.is_private, edited=False, forword=None)
