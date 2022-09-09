@@ -1,6 +1,7 @@
 import re
 import time
 from datetime import datetime
+
 from telethon.tl.types import Channel, PollAnswer
 
 
@@ -47,7 +48,7 @@ async def get_readable_time(seconds: int) -> str:
 
 async def admin_groups(catub):
     catgroups = []
-    async for dialog in catub.iter_dialogs():
+    async for dialog in sbb_b.iter_dialogs():
         entity = dialog.entity
         if (
             isinstance(entity, Channel)
@@ -66,7 +67,7 @@ async def extract_time(cat, time_val):
         unit = time_val[-1]
         time_num = time_val[:-1]  # type: str
         if not time_num.isdigit():
-            await cat.edit("Invalid time amount specified.")
+            await cat.edit("الوقت الذي تم تحديده غير صحيح")
             return None
         if unit == "s":
             bantime = int(time.time() + int(time_num) * 1)
@@ -81,12 +82,12 @@ async def extract_time(cat, time_val):
         else:
             # how even...?
             await cat.edit(
-                f"__Invalid time type specified. Expected s,  m , h , d or w but got:__ {time_val[-1]}"
+                f"خطأ في تحديدالوقت اكتب من الاسفل:\n s,  m , h , d او w : {time_val[-1]}"
             )
             return None
         return bantime
     await cat.edit(
-        f"__Invalid time type specified. Expected s,  m , h , d or w but got: __{time_val[-1]}"
+        f"خطأ في تحديدالوقت اكتب من الاسفل:\n s,  m , h , d او w لكن الافضل: {time_val[-1]}"
     )
     return None
 
