@@ -103,7 +103,7 @@ async def mybot():
     The_noon = jepiq.uid
     jep_ment = f"[{JEPTH_USER}](tg://user?id={The_noon})"
     f"ـ {jep_ment}"
-    f"⪼ هذا هو بوت خاص بـ {rz_ment} يمكنك التواصل معه هنا"
+    f"⪼ هذا هو بوت خاص بـ {jep_ment} يمكنك التواصل معه هنا"
     starkbot = await jepiq.tgbot.get_me()
     perf = "[ جيبثون ]"
     bot_name = starkbot.first_name
