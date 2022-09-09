@@ -21,7 +21,7 @@ BASE_YT_URL = "https://www.youtube.com/watch?v="
 YOUTUBE_REGEX = re.compile(
     r"(?:youtube\.com|youtu\.be)/(?:[\w-]+\?v=|embed/|v/|shorts/)?([\w-]{11})"
 )
-PATH = "./jepthon/cache/ytsearch.json"
+PATH = "./sbb_b/cache/ytsearch.json"
 
 song_dl = "yt-dlp --force-ipv4 --write-thumbnail --add-metadata --embed-thumbnail -o './temp/%(title)s.%(ext)s' --extract-audio --audio-format mp3 --audio-quality {QUALITY} {video_link}"
 
@@ -32,11 +32,11 @@ name_dl = (
 )
 
 
-async def yt_search(jepthon):
+async def yt_search(jmthon):
     try:
-        jepthon = urllib.parse.quote(jepthon)
+        jmthon = urllib.parse.quote(jmthon)
         html = urllib.request.urlopen(
-            f"https://www.youtube.com/results?search_query={jepthon}"
+            f"https://www.youtube.com/results?search_query={jmthon}"
         )
 
         user_data = re.findall(r"watch\?v=(\S{11})", html.read().decode())
@@ -44,15 +44,15 @@ async def yt_search(jepthon):
         k = 0
         for i in user_data:
             if user_data:
-                video_link.append("https://www.youtube.com/watch?v=" + user_data[k])
+                video_link.append(f"https://www.youtube.com/watch?v={user_data[k]}")
             k += 1
             if k > 3:
                 break
         if video_link:
             return video_link[0]
-        return "⌔∮ لم يتم العثور على نتائج"
+        return "Couldnt fetch results"
     except Exception:
-        return "⌔∮ لم يتم العثور على نتائج"
+        return "Couldnt fetch results"
 
 
 async def ytsearch(query, limit):
@@ -63,11 +63,11 @@ async def ytsearch(query, limit):
         try:
             textresult += f"**الشرح : **`{v['descriptionSnippet'][-1]['text']}`\n"
         except Exception:
-            textresult += "**الشرح : لا يوجد**\n"
+            textresult += "**الشرح : **`None`\n"
         textresult += (
-            f"**الشرح : **{v['duration']}  **المشاهدات : ** {v['viewCount']['short']}\n"
+            f"**المدة : **{v['duration']}  **المشاهدات : **{v['viewCount']['short']}\n"
         )
-        result += f"⪼ {textresult}\n"
+        result += f"☞ {textresult}\n"
     return result
 
 
@@ -91,8 +91,8 @@ class YT_Search_X:
 ytsearch_data = YT_Search_X()
 
 """
-async def yt_data(jepiq):
-    params = {"format": "json", "url": jepiq}
+async def yt_data(jmthon):
+    params = {"format": "json", "url": jmthon}
     url = "https://www.youtube.com/oembed"  # https://stackoverflow.com/questions/29069444/returning-the-urls-as-a-list-from-a-youtube-search-query
     query_string = urllib.parse.urlencode(params)
     url = f"{url}?{query_string}"
@@ -141,11 +141,12 @@ def get_choice_by_id(choice_id, media_type: str):
         disp_str = "best(video+audio)[webm/mp4]"
     else:
         disp_str = str(choice_id)
-        if media_type == "v":
-            # mp4 video quality + best compatible audio
-            choice_str = f"{disp_str}+(258/256/140/bestaudio[ext=m4a])/best"
-        else:  # Audio
-            choice_str = disp_str
+        choice_str = (
+            f"{disp_str}+(258/256/140/bestaudio[ext=m4a])/best"
+            if media_type == "v"
+            else disp_str
+        )
+
     return choice_str, disp_str
 
 
@@ -161,12 +162,12 @@ async def result_formatter(results: list):
             out += "<code>{}</code>\n\n".format(
                 "".join(x.get("text") for x in r.get("descriptionSnippet"))
             )
-        out += f'<b>⪼  المدة:</b> {r.get("accessibility").get("duration")}\n'
-        views = f'<b>⪼  المشاهدات:</b> {r.get("viewCount").get("short")}\n'
+        out += f'<b>❯  المدة:</b> {r.get("accessibility").get("duration")}\n'
+        views = f'<b>❯  المشاهدات:</b> {r.get("viewCount").get("short")}\n'
         out += views
-        out += f'<b>⪼  تاريخ الرفع:</b> {r.get("publishedTime")}\n'
+        out += f'<b>❯  تايرخ الرفع:</b> {r.get("publishedTime")}\n'
         if upld:
-            out += "<b>⪼   الرافع:</b> "
+            out += "<b>❯  الرافع:</b> "
             out += f'<a href={upld.get("link")}>{upld.get("name")}</a>'
 
         output[index] = dict(
@@ -185,7 +186,7 @@ def yt_search_btns(
     buttons = [
         [
             Button.inline(
-                text="رجوع",
+                text="⬅️  رجوع",
                 data=f"ytdl_back_{data_key}_{page}",
             ),
             Button.inline(
@@ -195,11 +196,11 @@ def yt_search_btns(
         ],
         [
             Button.inline(
-                text=" قائمة الكل",
+                text="📜  قائمة الكل",
                 data=f"ytdl_listall_{data_key}_{page}",
             ),
             Button.inline(
-                text="تحميل",
+                text="⬇️  تحميل",
                 data=f"ytdl_download_{vid}_0",
             ),
         ],
@@ -211,6 +212,7 @@ def yt_search_btns(
 
 @pool.run_in_thread
 def download_button(vid: str, body: bool = False):  # sourcery no-metrics
+    # sourcery skip: low-code-quality
     try:
         vid_data = yt_dlp.YoutubeDL({"no-playlist": True}).extract_info(
             BASE_YT_URL + vid, download=False
@@ -219,9 +221,9 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
         vid_data = {"formats": []}
     buttons = [
         [
-            Button.inline("️ الصيغة MKV", data=f"ytdl_download_{vid}_mkv_v"),
+            Button.inline("⭐️ الافضل - 📹 MKV", data=f"ytdl_download_{vid}_mkv_v"),
             Button.inline(
-                "الصيغة WebM/MP4",
+                "⭐️ الافضل - 📹 WebM/MP4",
                 data=f"ytdl_download_{vid}_mp4_v",
             ),
         ]
@@ -260,7 +262,13 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
                 )
             )
     buttons += sublists(video_btns, width=2)
-    buttons += [[Button.inline(" 🎵 320Kbps - MP3", data=f"ytdl_download_{vid}_mp3_a")]]
+    buttons += [
+        [
+            Button.inline(
+                "⭐️ الافضل  - 🎵 320Kbps - MP3", data=f"ytdl_download_{vid}_mp3_a"
+            )
+        ]
+    ]
     buttons += sublists(
         [
             Button.inline(audio_dict.get(key_), data=f"ytdl_download_{vid}_{key_}_a")
@@ -300,7 +308,7 @@ def _tubeDl(url: str, starttime, uid: str):
     except DownloadError as e:
         LOGS.error(e)
     except GeoRestrictedError:
-        LOGS.error("⌔∮ هذا الفيديو غير متاح في بلدك")
+        LOGS.error("هذا الفيديو غير متاح  في بلدك")
     else:
         return x
 
