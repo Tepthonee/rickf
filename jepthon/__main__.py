@@ -48,9 +48,6 @@ class CatCheck:
 
 Catcheck = CatCheck()
 
-async def externalrepo():
-    await install_externalrepo("https://github.com/jepthoniq/JepVc", "jepvc", "jepthonvc")
-
 
 async def startup_process():
     check = await ipchange()
@@ -60,7 +57,6 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    await externalrepo()
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("⌯︙بـوت جـيبثون يعـمل بـنجاح ")
     print(
@@ -77,7 +73,10 @@ async def startup_process():
     Catcheck.sucess = True
     return
 
+async def externalrepo():
+    await install_externalrepo("https://github.com/jepthoniq/JepVc", "jepvc", "jepthonvc")
 
+jepiq.run_until_complete(externalrepo())
 jepiq.loop.run_until_complete(startup_process())
 
 if len(sys.argv) not in (1, 3, 4):
