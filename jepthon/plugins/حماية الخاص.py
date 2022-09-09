@@ -1,7 +1,8 @@
 import random
 import re
 from datetime import datetime
-
+from telethon.errors import BotInlineDisabledError
+from ..utils import mybot
 from telethon import Button, functions
 from telethon.events import CallbackQuery
 from telethon.utils import get_display_name
@@ -499,8 +500,12 @@ async def on_plug_in_callback_query_handler(event):
         del PM_WARNS[str(event.query.user_id)]
         sql.del_collection("pmwarns")
         sql.add_collection("pmwarns", PM_WARNS, {})
-    await event.edit(text, buttons=buttons)
-
+    try:
+        await event.edit(text, buttons=buttons)
+    except BotInlineDisabledError:
+        jepiq.loop.run_until_complete(mybot())
+        await event.edit(text, buttons=buttons)
+        
 #ترجمه وكتابة فريق جـيبثون
 @jepiq.tgbot.on(CallbackQuery(data=re.compile(rb"to_enquire_something")))
 async def on_plug_in_callback_query_handler(event):
