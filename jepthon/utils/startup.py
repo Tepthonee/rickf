@@ -178,10 +178,14 @@ async def saves():
             LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
             continue
 
-async def load_plugins(folder):
+async def load_plugins(folder, extfolder=None):
     """
     To load plugins from the mentioned folder
     """
+    if extfolder:
+        path = f"{extfolder}/*.py"
+        plugin_path = extfolder
+    else:
     path = f"jepthon/{folder}/*.py"
     files = glob.glob(path)
     files.sort()
@@ -312,4 +316,4 @@ async def install_externalrepo(repo, branch, cfolder):
         )
     if os.path.exists(rpath):
         await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
-    await load_plugins(folder="jepthon")
+    await load_plugins(folder="userbot", extfolder=cfolder)
