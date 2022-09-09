@@ -3,6 +3,7 @@ import asyncio
 import glob
 import os
 import sys
+import urllib.request
 from datetime import timedelta
 from pathlib import Path
 import requests
