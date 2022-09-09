@@ -3,8 +3,6 @@ import functools
 import shlex
 from typing import Tuple
 
-from telethon import functions, types
-
 from ...core.logger import logging
 
 LOGS = logging.getLogger(__name__)
@@ -34,17 +32,7 @@ def run_async(loop, coro):
     return asyncio.run_coroutine_threadsafe(coro, loop).result()
 
 
-async def unsavegif(event, jasme):
-    try:
-        await event.client(
-            functions.messages.SaveGifRequest(
-                id=types.InputDocument(
-                    id=jasme.media.document.id,
-                    access_hash=jasme.media.document.access_hash,
-                    file_reference=jasme.media.document.file_reference,
-                ),
-                unsave=True,
-            )
-        )
-    except Exception as e:
-        LOGS.info(str(e))
+def runasync(func: callable):
+    """Run async functions with the right event loop."""
+    loop = asyncio.get_event_loop()
+    return loop.run_until_complete(func)
