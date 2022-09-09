@@ -11,6 +11,7 @@ from .utils import (
     ipchange,
     load_plugins,
     setup_bot,
+    mybot,
     startupmessage,
     verifyLoggerGroup,
     saves,
