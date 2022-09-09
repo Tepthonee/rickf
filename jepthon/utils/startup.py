@@ -282,3 +282,31 @@ async def verifyLoggerGroup():
         args = [executable, "-m", "jepthon"]
         os.execle(executable, *args, os.environ)
         sys.exit(0)
+
+async def install_externalrepo(repo, branch, cfolder):
+    JEPTHONREPO = repo
+    rpath = os.path.join(cfolder, "requirements.txt")
+    if JEPTHONBRANCH := branch:
+        repourl = os.path.join(JEPTHONREPO, f"tree/{JEPTHONBRANCH}")
+        gcmd = f"git clone -b {JEPTHONBRANCH} {JEPTHONREPO} {cfolder}"
+        errtext = f"لا يوحد فرع بأسم `{JEPTHONBRANCH}` في الريبو الخارجي {JMTHONREPO}. تاكد من اسم الفرع عبر فار (`EXTERNAL_REPO_BRANCH`)"
+    else:
+        repourl = JEPTHONREPO
+        gcmd = f"git clone {JEPTHONREPO} {cfolder}"
+        errtext = f"الرابط ({JEPTHONREPO}) الذي وضعته لفار `EXTERNAL_REPO` غير صحيح عليك وضع رابط صحيح"
+    response = urllib.request.urlopen(repourl)
+    if response.code != 200:
+        LOGS.error(errtext)
+        return await sbb_b.tgbot.send_message(BOTLOG_CHATID, errtext)
+    await runcmd(gcmd)
+    if not os.path.exists(cfolder):
+        LOGS.error(
+            "هنالك خطأ اثناء استدعاء رابط الملفات الاضافية يجب التأكد من الرابط اولا "
+        )
+        return await sbb_b.tgbot.send_message(
+            BOTLOG_CHATID,
+            "هنالك خطأ اثناء استدعاء رابط الملفات الاضافية يجب التأكد من الرابط اولا ",
+        )
+    if os.path.exists(rpath):
+        await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
+    await load_plugins(folder="jepthon", extfolder=cfolder)
