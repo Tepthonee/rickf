@@ -56,7 +56,7 @@ async def _(event):
         last_name = last_name.replace("\u2060", "")
     if last_name is None:
         last_name = "⁪⁬⁮⁮⁮⁮ ‌‌‌‌"
-    replied_user = await event.client(GetFullUserRequest(replied_user.id))
+    replied_user = await event.client(GetFullUserRequest(replied_user.id)).full_user
     user_bio = None
     if user_bio is None:
         user_bio = replied_user.about
