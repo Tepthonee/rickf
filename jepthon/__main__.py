@@ -74,8 +74,7 @@ async def startup_process():
     return
 
 async def externalrepo():
-    if Config.VCMODE:
-        await install_externalrepo("https://github.com/jepthoniq/JepVc", "jepvc", "jepthonvc")
+    await install_externalrepo("https://github.com/jepthoniq/JepVc", "jepvc", "jepthonvc")
 
 jepiq.loop.run_until_complete(startup_process())
 
