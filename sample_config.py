@@ -67,6 +67,9 @@ class Config(object):
     P_PIC = os.environ.get("P_PIC", None)
     P_TEXT = os.environ.get("P_TEXT", None)
     PMBOT_START_MSSG = os.environ.get("PMBOT_START_MSSG", None)
+    VCMODE = os.environ.get("VCMODE", False)
+    VCMODE = bool(VCMODE and (VCMODE.lower() != "false"))
+    VC_SESSION = os.environ.get("VC_SESSION", None)
 
     BOT_PIC = os.environ.get("BOT_PIC", None)
     # Set this value with group id of private group(can be found this value by .id)
