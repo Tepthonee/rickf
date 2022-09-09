@@ -16,6 +16,7 @@ from ..Config import Config
 from ..core.logger import logging
 from ..core.session import jepiq
 from ..helpers.utils import install_pip
+from ..helpers.utils.utils import runcmd
 from ..sql_helper.global_collection import (
     del_keyword_collectionlist,
     get_item_collectionlist,
