@@ -298,13 +298,13 @@ async def install_externalrepo(repo, branch, cfolder):
     response = urllib.request.urlopen(repourl)
     if response.code != 200:
         LOGS.error(errtext)
-        return await sbb_b.tgbot.send_message(BOTLOG_CHATID, errtext)
+        return await jepiq.tgbot.send_message(BOTLOG_CHATID, errtext)
     await runcmd(gcmd)
     if not os.path.exists(cfolder):
         LOGS.error(
             "هنالك خطأ اثناء استدعاء رابط الملفات الاضافية يجب التأكد من الرابط اولا "
         )
-        return await sbb_b.tgbot.send_message(
+        return await jepiq.tgbot.send_message(
             BOTLOG_CHATID,
             "هنالك خطأ اثناء استدعاء رابط الملفات الاضافية يجب التأكد من الرابط اولا ",
         )
