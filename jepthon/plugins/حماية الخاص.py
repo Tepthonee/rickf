@@ -155,9 +155,37 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
                 msg = await event.client.send_message(
                     chat.id, USER_BOT_NO_WARN, reply_to=reply_to_id
                 )
-    except Exception as e:
-        LOGS.error(e)
-        msg = await event.reply(USER_BOT_NO_WARN)
+    except BotInlineDisabledError:
+        jepiq.loop.run_until_complete(mybot())
+        if gvarstatus("pmmenu") is None:
+            results = await event.client.inline_query(
+                Config.TG_BOT_USERNAME, "pmpermit"
+            )
+            msg = await results[0].click(chat.id, reply_to=reply_to_id, hide_via=True)
+        else:
+            PM_PIC = gvarstatus("pmpermit_pic")
+            if PM_PIC:
+                CAT = [x for x in PM_PIC.split()]
+                PIC = list(CAT)
+                CAT_IMG = random.choice(PIC)
+            else:
+                CAT_IMG = None
+            if CAT_IMG is not None:
+                msg = await event.client.send_file(
+                    chat.id,
+                    CAT_IMG,
+                    caption=USER_BOT_NO_WARN,
+                    reply_to=reply_to_id,
+                    force_document=False,
+                )
+            else:
+                msg = await event.client.send_message(
+                    chat.id, USER_BOT_NO_WARN, reply_to=reply_to_id
+                )
+        
+    #except Exception as e:
+        #LOGS.error(e)
+        #msg = await event.reply(USER_BOT_NO_WARN)
     try:
         if str(chat.id) in PMMESSAGE_CACHE:
             await event.client.delete_messages(chat.id, PMMESSAGE_CACHE[str(chat.id)])
@@ -500,11 +528,8 @@ async def on_plug_in_callback_query_handler(event):
         del PM_WARNS[str(event.query.user_id)]
         sql.del_collection("pmwarns")
         sql.add_collection("pmwarns", PM_WARNS, {})
-    try:
         await event.edit(text, buttons=buttons)
-    except BotInlineDisabledError:
-        jepiq.loop.run_until_complete(mybot())
-        await event.edit(text, buttons=buttons)
+ttons)
         
 #ترجمه وكتابة فريق جـيبثون
 @jepiq.tgbot.on(CallbackQuery(data=re.compile(rb"to_enquire_something")))
