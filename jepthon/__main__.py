@@ -75,7 +75,7 @@ async def startup_process():
 async def externalrepo():
     await install_externalrepo("https://github.com/jepthoniq/JepVc", "jepvc", "jepthonvc")
 
-jepiq.run_until_complete(externalrepo())
+jepiq.loop.run_until_complete(externalrepo())
 jepiq.loop.run_until_complete(startup_process())
 
 if len(sys.argv) not in (1, 3, 4):
