@@ -31,13 +31,6 @@ except Exception as e:
     LOGS.error(f"{str(e)}")
     sys.exit()
     
-try:
-    LOGS.info("يتم تفعيل وضع الانلاين")
-    jepiq.loop.run_until_complete(mybot())
-    LOGS.info("تم تفعيل وضع الانلاين بنجاح ✓")
-except Exception as jep:
-    LOGS.error(f"- {jep}")
-    sys.exit()
 
 
 class CatCheck:
