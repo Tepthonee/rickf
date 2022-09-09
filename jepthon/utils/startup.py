@@ -290,7 +290,7 @@ async def install_externalrepo(repo, branch, cfolder):
     if JEPTHONBRANCH := branch:
         repourl = os.path.join(JEPTHONREPO, f"tree/{JEPTHONBRANCH}")
         gcmd = f"git clone -b {JEPTHONBRANCH} {JEPTHONREPO} {cfolder}"
-        errtext = f"لا يوحد فرع بأسم `{JEPTHONBRANCH}` في الريبو الخارجي {JMTHONREPO}. تاكد من اسم الفرع عبر فار (`EXTERNAL_REPO_BRANCH`)"
+        errtext = f"لا يوحد فرع بأسم `{JEPTHONBRANCH}` في الريبو الخارجي {JEPTHONREPO}. تاكد من اسم الفرع عبر فار (`EXTERNAL_REPO_BRANCH`)"
     else:
         repourl = JEPTHONREPO
         gcmd = f"git clone {JEPTHONREPO} {cfolder}"
