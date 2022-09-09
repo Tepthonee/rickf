@@ -59,11 +59,16 @@ async def _(event):
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
     user_bio = None
     if user_bio is None:
-        user_bio = "مُنتحِل"
+        user_bio = replied_user.about
     await event.client(functions.account.UpdateProfileRequest(first_name=first_name))
     await event.client(functions.account.UpdateProfileRequest(last_name=last_name))
     await event.client(functions.account.UpdateProfileRequest(about=user_bio))
-    pfile = await event.client.upload_file(profile_pic)
+    try:
+        pfile = await event.client.upload_file(profile_pic)
+    except Exception as e:
+        return await edit_delete(event, f"**فشل في الانتحال بسبب:**\n__{e}__")
+    await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
+    await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
     await edit_delete(event, "⌁︙تـم نسـخ الـحساب بـنجاح ،✅")
     if BOTLOG:
