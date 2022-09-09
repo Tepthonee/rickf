@@ -28,10 +28,13 @@ LOGS = logging.getLogger("jepthon")
 
 cmdhr = Config.COMMAND_HAND_LER
 bot = jepiq
+ENV = bool(os.environ.get("ENV", False))
+
 if ENV:
     VPS_NOLOAD = ["سيرفر"]
 elif os.path.exists("config.py"):
     VPS_NOLOAD = ["هيروكو"]
+
 async def setup_bot():
     """
     To set up bot for jepthon
