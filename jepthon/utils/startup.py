@@ -187,35 +187,56 @@ async def load_plugins(folder, extfolder=None):
         plugin_path = extfolder
     else:
         path = f"jepthon/{folder}/*.py"
-        files = glob.glob(path)
-        files.sort()
+        plugin_path = f"jepthon/{folder}"
+    files = glob.glob(path)
+    files.sort()
+    success = 0
+    failure = []
     for name in files:
         with open(name) as f:
             path1 = Path(f.name)
             shortname = path1.stem
+            pluginname = shortname.replace(".py", "")
             try:
-                if shortname.replace(".py", "") not in Config.NO_LOAD:
+                if (pluginname not in Config.NO_LOAD) and (
+                    pluginname not in VPS_NOLOAD
+                ):
                     flag = True
                     check = 0
                     while flag:
                         try:
                             load_module(
-                                shortname.replace(".py", ""),
-                                plugin_path=f"jepthon/{folder}",
+                                pluginname,
+                                plugin_path=plugin_path,
                             )
+                            if shortname in failure:
+                                failure.remove(shortname)
+                            success += 1
                             break
                         except ModuleNotFoundError as e:
                             install_pip(e.name)
                             check += 1
+                            if shortname not in failure:
+                                failure.append(shortname)
                             if check > 5:
                                 break
                 else:
-                    os.remove(Path(f"jepthon/{folder}/{shortname}.py"))
+                    os.remove(Path(f"{plugin_path}/{shortname}.py"))
             except Exception as e:
-                os.remove(Path(f"jepthon/{folder}/{shortname}.py"))
+                if shortname not in failure:
+                    failure.append(shortname)
+                os.remove(Path(f"{plugin_path}/{shortname}.py"))
                 LOGS.info(
-                    f"⌯︙غير قادر على التحميل {shortname} يوجد هناك خطا بسبب : {e}"
+                    f"unable to load {shortname} because of error {e}\nBase Folder {plugin_path}"
                 )
+    if extfolder:
+        if not failure:
+            failure.append("None")
+        await jepiq.tgbot.send_message(
+            BOTLOG_CHATID,
+            f'Your external repo plugins have imported \n**No of imported plugins :** `{success}`\n**Failed plugins to import :** `{", ".join(failure)}`',
+        )
+
 
 
 async def verifyLoggerGroup():
