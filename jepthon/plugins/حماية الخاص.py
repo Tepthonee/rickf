@@ -1,7 +1,7 @@
 import random
 import re
 from datetime import datetime
-from telethon.errors import BotInlineDisabledError
+from telethon.errors.rpcerrorlist import BotInlineDisabledError
 from ..utils import mybot
 from telethon import Button, functions
 from telethon.events import CallbackQuery
