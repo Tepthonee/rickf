@@ -188,7 +188,7 @@ async def load_plugins(folder, extfolder=None):
     else:
         path = f"jepthon/{folder}/*.py"
         files = glob.glob(path)
-    files.sort()
+        files.sort()
     for name in files:
         with open(name) as f:
             path1 = Path(f.name)
