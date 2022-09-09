@@ -28,6 +28,10 @@ LOGS = logging.getLogger("jepthon")
 
 cmdhr = Config.COMMAND_HAND_LER
 bot = jepiq
+if ENV:
+    VPS_NOLOAD = ["سيرفر"]
+elif os.path.exists("config.py"):
+    VPS_NOLOAD = ["هيروكو"]
 async def setup_bot():
     """
     To set up bot for jepthon
@@ -180,7 +184,7 @@ async def saves():
 
 async def load_plugins(folder, extfolder=None):
     """
-    To load plugins from the mentioned folder
+    تحميل ملفات السورس
     """
     if extfolder:
         path = f"{extfolder}/*.py"
@@ -227,14 +231,14 @@ async def load_plugins(folder, extfolder=None):
                     failure.append(shortname)
                 os.remove(Path(f"{plugin_path}/{shortname}.py"))
                 LOGS.info(
-                    f"unable to load {shortname} because of error {e}\nBase Folder {plugin_path}"
+                    f"لم يتم تحميل {shortname} بسبب خطأ {e}\nمسار الملف {plugin_path}"
                 )
     if extfolder:
         if not failure:
             failure.append("None")
         await jepiq.tgbot.send_message(
             BOTLOG_CHATID,
-            f'Your external repo plugins have imported \n**No of imported plugins :** `{success}`\n**Failed plugins to import :** `{", ".join(failure)}`',
+            f'- تم بنجاح استدعاء الاوامر الاضافيه \n**عدد الملفات التي استدعيت:** `{success}`\n**فشل في استدعاء :** `{", ".join(failure)}`',
         )
 
 
