@@ -1,6 +1,5 @@
 import sys
 import jepthon
-import subprocess
 from jepthon import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
 from .Config import Config
 from .core.logger import logging
@@ -50,7 +49,6 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    subprocess.Popen(["node", "npm", "install", "open"], shell=True)
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("⌯︙بـوت جـيبثون يعـمل بـنجاح ")
     print(
