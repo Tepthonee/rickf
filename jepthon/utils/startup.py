@@ -344,4 +344,4 @@ async def install_externalrepo(repo, branch, cfolder):
         )
     if os.path.exists(rpath):
         await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
-    await load_plugins(folder="userbot", extfolder=cfolder)
+    await load_plugins(folder="jepthon", extfolder=cfolder)
