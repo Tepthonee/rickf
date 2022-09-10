@@ -54,7 +54,7 @@ async def _(event):
     except Exception as e:
         return await edit_delete(event, f"**فشل في الانتحال بسبب:**\n__{e}__")
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
-    await edit_delete(event, "**- تم بنجاح انتحال حساب المستخدم**")
+    await edit_delete(event, "**⌁︙تـم نسـخ الـحساب بـنجاح ،✅**")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
