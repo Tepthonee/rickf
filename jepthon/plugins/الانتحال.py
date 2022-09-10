@@ -26,23 +26,9 @@ DEFAULTUSERBIO = (
 )
 
 
-@jepiq.ar_cmd(
-    pattern="انتحال(?:\s|$)([\s\S]*)",
-    command=("انتحال", plugin_category),
-    info={
-        "header": "To clone account of mentiond user or replied user",
-        "usage": "{tr}clone <username/userid/reply>",
-    },
-)
+@jepiq.ar_cmd(pattern="انتحال(?:\s|$)([\s\S]*)")
 async def _(event):
-    "To clone account of mentiond user or replied user"
     replied_user, error_i_a = await get_user_from_event(event)
-    if replied_user.id == 705475246:
-        return await edit_delete(event, "**لا تحاول تنتحل المطورين ادبسز!**")
-    if replied_user.id == 393120911:
-        return await edit_delete(event, "**لا تحاول تنتحل المطورين ادبسز!**")
-    if replied_user.id == 1374312239:
-        return await edit_delete(event, "**لا تحاول تنتحل المطورين ادبسز!**")
     if replied_user is None:
         return
     user_id = replied_user.id
@@ -56,9 +42,9 @@ async def _(event):
         last_name = last_name.replace("\u2060", "")
     if last_name is None:
         last_name = "⁪⁬⁮⁮⁮⁮ ‌‌‌‌"
-    replied_user = await event.client(GetFullUserRequest(replied_user.id)).full_user
-    user_bio = None
-    if user_bio is None:
+    replied_user = (await event.client(GetFullUserRequest(replied_user.id))).full_user
+    user_bio = replied_user.about
+    if user_bio is not None:
         user_bio = replied_user.about
     await event.client(functions.account.UpdateProfileRequest(first_name=first_name))
     await event.client(functions.account.UpdateProfileRequest(last_name=last_name))
@@ -68,13 +54,11 @@ async def _(event):
     except Exception as e:
         return await edit_delete(event, f"**فشل في الانتحال بسبب:**\n__{e}__")
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
-    await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
-    await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
-    await edit_delete(event, "⌁︙تـم نسـخ الـحساب بـنجاح ،✅")
+    await edit_delete(event, "**- تم بنجاح انتحال حساب المستخدم**")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"#CLONED\nsuccessfully cloned [{first_name}](tg://user?id={user_id })",
+            f"#الانتحال\nتم انتحال المستخدم: [{first_name}](tg://user?id={user_id })",
         )
 
 
