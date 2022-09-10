@@ -130,7 +130,7 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
     addgvar("pmpermit_text", USER_BOT_NO_WARN)
     PM_WARNS[str(chat.id)] += 1
     if gvarstatus("pmmenu") is None:
-        Try:
+        try:
             results = await event.client.inline_query(
                 Config.TG_BOT_USERNAME, "pmpermit"
             )
