@@ -1,8 +1,6 @@
 import random
 import re
 from datetime import datetime
-from telethon.errors.rpcerrorlist import BotInlineDisabledError
-from ..utils import mybot
 from telethon import Button, functions
 from telethon.events import CallbackQuery
 from telethon.utils import get_display_name
@@ -129,44 +127,35 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
 لا تـكرر اذكـر سبب مـجيئك فقـط"""
     addgvar("pmpermit_text", USER_BOT_NO_WARN)
     PM_WARNS[str(chat.id)] += 1
-    if gvarstatus("pmmenu") is None:
-        try:
+    try:
+        if gvarstatus("pmmenu") is None:
             results = await event.client.inline_query(
                 Config.TG_BOT_USERNAME, "pmpermit"
             )
             msg = await results[0].click(chat.id, reply_to=reply_to_id, hide_via=True)
-        except BotInlineDisabledError:
-            jepiq.loop.run_until_complete(mybot())
-            results = await event.client.inline_query(
-                Config.TG_BOT_USERNAME, "pmpermit"
-            )
-            msg = await results[0].click(chat.id, reply_to=reply_to_id, hide_via=True)
-    else:
-        PM_PIC = gvarstatus("pmpermit_pic")
-        if PM_PIC:
-            CAT = [x for x in PM_PIC.split()]
-            PIC = list(CAT)
-            CAT_IMG = random.choice(PIC)
         else:
-             CAT_IMG = None
-        if CAT_IMG is not None:
-            msg = await event.client.send_file(
-                chat.id,
-                CAT_IMG,
-                caption=USER_BOT_NO_WARN,
-                reply_to=reply_to_id,
-                force_document=False,
-            )
-        else:
-            msg = await event.client.send_message(
-                chat.id, USER_BOT_NO_WARN, reply_to=reply_to_id
-            )
-    
-        
-        
-    #except Exception as e:
-        #LOGS.error(e)
-        #msg = await event.reply(USER_BOT_NO_WARN)
+            PM_PIC = gvarstatus("pmpermit_pic")
+            if PM_PIC:
+                CAT = [x for x in PM_PIC.split()]
+                PIC = list(CAT)
+                CAT_IMG = random.choice(PIC)
+            else:
+                CAT_IMG = None
+            if CAT_IMG is not None:
+                msg = await event.client.send_file(
+                    chat.id,
+                    CAT_IMG,
+                    caption=USER_BOT_NO_WARN,
+                    reply_to=reply_to_id,
+                    force_document=False,
+                )
+            else:
+                msg = await event.client.send_message(
+                    chat.id, USER_BOT_NO_WARN, reply_to=reply_to_id
+                )
+    except Exception as e:
+        LOGS.error(e)
+        msg = await event.reply(USER_BOT_NO_WARN)
     try:
         if str(chat.id) in PMMESSAGE_CACHE:
             await event.client.delete_messages(chat.id, PMMESSAGE_CACHE[str(chat.id)])
@@ -409,45 +398,24 @@ async def do_pm_spam_action(event, chat):
 #ترجمه وكتابة فريق جـيبثون
 @jepiq.ar_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def on_new_private_message(event):
-    try:
-        if gvarstatus("pmpermit") is None:
-            return
-        chat = await event.get_chat()
-        if chat.bot or chat.verified:
-            return
-        if pmpermit_sql.is_approved(chat.id):
-            return
-        if str(chat.id) in sqllist.get_collection_list("pmspam"):
-            return await do_pm_spam_action(event, chat)
-        if str(chat.id) in sqllist.get_collection_list("pmchat"):
-            return await do_pm_chat_action(event, chat)
-        if str(chat.id) in sqllist.get_collection_list("pmrequest"):
-            return await do_pm_request_action(event, chat)
-        if str(chat.id) in sqllist.get_collection_list("pmenquire"):
-            return await do_pm_enquire_action(event, chat)
-        if str(chat.id) in sqllist.get_collection_list("pmoptions"):
-            return await do_pm_options_action(event, chat)
-        await do_pm_permit_action(event, chat)
-    except BotInlineDisabledError:
-        jepiq.loop.run_until_complete(mybot())
-        if gvarstatus("pmpermit") is None:
-            return
-        chat = await event.get_chat()
-        if chat.bot or chat.verified:
-            return
-        if pmpermit_sql.is_approved(chat.id):
-            return
-        if str(chat.id) in sqllist.get_collection_list("pmspam"):
-            return await do_pm_spam_action(event, chat)
-        if str(chat.id) in sqllist.get_collection_list("pmchat"):
-            return await do_pm_chat_action(event, chat)
-        if str(chat.id) in sqllist.get_collection_list("pmrequest"):
-            return await do_pm_request_action(event, chat)
-        if str(chat.id) in sqllist.get_collection_list("pmenquire"):
-            return await do_pm_enquire_action(event, chat)
-        if str(chat.id) in sqllist.get_collection_list("pmoptions"):
-            return await do_pm_options_action(event, chat)
-        await do_pm_permit_action(event, chat)
+    if gvarstatus("pmpermit") is None:
+        return
+    chat = await event.get_chat()
+    if chat.bot or chat.verified:
+        return
+    if pmpermit_sql.is_approved(chat.id):
+        return
+    if str(chat.id) in sqllist.get_collection_list("pmspam"):
+        return await do_pm_spam_action(event, chat)
+    if str(chat.id) in sqllist.get_collection_list("pmchat"):
+        return await do_pm_chat_action(event, chat)
+    if str(chat.id) in sqllist.get_collection_list("pmrequest"):
+        return await do_pm_request_action(event, chat)
+    if str(chat.id) in sqllist.get_collection_list("pmenquire"):
+        return await do_pm_enquire_action(event, chat)
+    if str(chat.id) in sqllist.get_collection_list("pmoptions"):
+        return await do_pm_options_action(event, chat)
+    await do_pm_permit_action(event, chat)
 #ترجمه وكتابة فريق جـيبثون
 
 @jepiq.ar_cmd(outgoing=True, func=lambda e: e.is_private, edited=False, forword=None)
@@ -529,7 +497,7 @@ async def on_plug_in_callback_query_handler(event):
     if str(event.query.user_id) in PM_WARNS:
         del PM_WARNS[str(event.query.user_id)]
         sql.del_collection("pmwarns")
-        sql.add_collection("pmwarns", PM_WARNS, {})
+        sql.add_collection("pmwarns", PM_WARNS, {}) 
         await event.edit(text, buttons=buttons)
         
 #ترجمه وكتابة فريق جـيبثون
