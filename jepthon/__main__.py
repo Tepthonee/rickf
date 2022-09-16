@@ -24,9 +24,9 @@ print("Licensed under the terms of the " + jepthon.__license__)
 cmdhr = Config.COMMAND_HAND_LER
 
 try:
-    LOGS.info("Starting jepthon")
+    LOGS.info("جارِ بدء بوت جيبثون ✓")
     jepiq.loop.run_until_complete(setup_bot())
-    LOGS.info("TG Bot Startup Completed")
+    LOGS.info("تم اكتمال تنصيب البوت ✓")
 except Exception as e:
     LOGS.error(f"{str(e)}")
     sys.exit()
@@ -59,7 +59,7 @@ async def startup_process():
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("⌯︙بـوت جـيبثون يعـمل بـنجاح ")
     print(
-        f"تم وضع الانلاين تلقائياً ارسل {cmdhr}فحص لـرؤيـة اذا كـان البوت شـغال\
+        f"تم تشغيل الانلاين تلقائياً ارسل {cmdhr}فحص لـرؤيـة اذا كـان البوت شـغال\
         \nللمسـاعدة تواصـل  https://t.me/JepthonSupport"
     )
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
