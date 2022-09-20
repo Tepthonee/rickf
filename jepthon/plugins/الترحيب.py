@@ -1,6 +1,8 @@
 # Copyright (C) 2021 JepThon TEAM
 # FILES WRITTEN BY  @lMl10l
+
 from telethon import events
+from telethon.utils import get_display_name
 
 from jepthon import jepiq
 from jepthon.core.logger import logging
@@ -14,13 +16,13 @@ from ..sql_helper.welcome_sql import (
     update_previous_welcome,
 )
 from . import BOTLOG_CHATID
-from ..Config import Config
 
 plugin_category = "utils"
 LOGS = logging.getLogger(__name__)
 
+
 @jepiq.on(events.ChatAction)
-async def _(event):  # sourcery no-metrics
+async def _(event):  # sourcery no-metrics  # sourcery skip: low-code-quality
     cws = get_current_welcome_settings(event.chat_id)
     if (
         cws
@@ -35,13 +37,11 @@ async def _(event):  # sourcery no-metrics
         a_user = await event.get_user()
         chat = await event.get_chat()
         me = await event.client.get_me()
-        title = chat.title or "لـهذه الـدردشـة"
+        title = get_display_name(await event.get_chat()) or "this chat"
         participants = await event.client.get_participants(chat)
         count = len(participants)
-        mention = "<a href='tg://user?id={}'>{}</a>".format(
-            a_user.id, a_user.first_name
-        )
-        my_mention = "<a href='tg://user?id={}'>{}</a>".format(me.id, me.first_name)
+        mention = f"<a href='tg://user?id={a_user.id}'>{a_user.first_name}</a>"
+        my_mention = f"<a href='tg://user?id={me.id}'>{me.first_name}</a>"
         first = a_user.first_name
         last = a_user.last_name
         fullname = f"{first} {last}" if last else first
@@ -60,8 +60,10 @@ async def _(event):  # sourcery no-metrics
                 )
                 file_media = msg_o.media
                 current_saved_welcome_message = msg_o.message
+                link_preview = True
             elif cws.reply:
                 current_saved_welcome_message = cws.reply
+                link_preview = False
         current_message = await event.reply(
             current_saved_welcome_message.format(
                 mention=mention,
@@ -80,11 +82,39 @@ async def _(event):  # sourcery no-metrics
             ),
             file=file_media,
             parse_mode="html",
+            link_preview=link_preview,
         )
         update_previous_welcome(event.chat_id, current_message.id)
 
 
-@jepiq.on(admin_cmd(pattern=f"ترحيب(?:\s|$)([\s\S]*)"))
+@jepiq.ar_cmd(
+    pattern="ترحيب(?:\s|$)([\s\S]*)",
+    command=("ترحيب", plugin_category),
+    info={
+        "header": "To welcome new users in chat.",
+        "description": "Saves the message as a welcome note in the chat. And will send welcome message to every new user in group who ever joins newly in group.",
+        "option": {
+            "{mention}": "To mention the user",
+            "{title}": "To get chat name in message",
+            "{count}": "To get group members",
+            "{first}": "To use user first name",
+            "{last}": "To use user last name",
+            "{fullname}": "To use user full name",
+            "{userid}": "To use userid",
+            "{username}": "To use user username",
+            "{my_first}": "To use my first name",
+            "{my_fullname}": "To use my full name",
+            "{my_last}": "To use my last name",
+            "{my_mention}": "To mention myself",
+            "{my_username}": "To use my username.",
+        },
+        "usage": [
+            "{tr}savewelcome <welcome message>",
+            "reply {tr}savewelcome to text message or supported media with text as media caption",
+        ],
+        "examples": "{tr}savewelcome Hi {mention}, Welcome to {title} chat",
+    },
+)
 async def save_welcome(event):
     "To set welcome message in chat."
     msg = await event.get_reply_message()
@@ -105,35 +135,50 @@ async def save_welcome(event):
         else:
             return await edit_or_reply(
                 event,
-                "-",
+                "`Saving media as part of the welcome note requires the BOTLOG_CHATID to be set.`",
             )
     elif event.reply_to_msg_id and not string:
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
-    success = "⌯︙الترحيب {} بنجاح ✅"
+    success = "**⌯︙الترحيب {} تم بنجاح ✓"
     if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
-        return await edit_or_reply(event, success.format("تـم الحفـظ"))
+        return await edit_or_reply(event, success.format("**تم الحفظ ✓**"))
     rm_welcome_setting(event.chat_id)
     if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
-        return await edit_or_reply(event, success.format("تم الـتحديث"))
-    await edit_or_reply("⌯︙هـنالك خـطأ في وضـع الـترحيب هـنا")
+        return await edit_or_reply(event, success.format("**تم التحديث ✓**"))
+    await edit_or_reply("**⌯︙هـنالك خـطأ في وضـع الـترحيب هـنا**")
 
 
-@jepiq.on(admin_cmd(pattern=f"حذف الترحيب(?:\s|$)([\s\S]*)"))
+@jepiq.ar_cmd(
+    pattern="حذف الترحيب$",
+    command=("حذف الترحيب", plugin_category),
+    info={
+        "header": "To turn off welcome message in group.",
+        "description": "Deletes the welcome note for the current chat.",
+        "usage": "{tr}clearwelcome",
+    },
+)
 async def del_welcome(event):
     "To turn off welcome message"
     if rm_welcome_setting(event.chat_id) is True:
-        await edit_or_reply(event, "⌯︙تم حذف الترحيبات بنجاح ✅.")
+        await edit_or_reply(event, "**⌯︙تم حذف الترحيبات بنجاح ✓**")
     else:
-        await edit_or_reply(event, "⌯︙ليـس لـدي اي تـرحيبـات بالأصـل")
+        await edit_or_reply(event, "**⌯︙ليـس لـدي اي تـرحيبـات بالأصـل ✓**")
 
 
-@jepiq.on(admin_cmd(pattern=f"{allwelcome}(?:\s|$)([\s\S]*)"))
+@jepiq.ar_cmd(
+    pattern="الترحيب السابق$",
+    command=("الترحيب السابق", plugin_category),
+    info={
+        "header": "To check current welcome message in group.",
+        "usage": "{tr}listwelcome",
+    },
+)
 async def show_welcome(event):
     "To show current welcome message in group"
     cws = get_current_welcome_settings(event.chat_id)
     if not cws:
-        return await edit_or_reply(event, "⌯︙لم يتم حفظ اي ترحيب هنا !")
+        return await edit_or_reply(event, "**⌯︙لم يتم حفظ اي ترحيب هنا**")
     if cws.f_mesg_id:
         msg_o = await event.client.get_messages(
             entity=BOTLOG_CHATID, ids=int(cws.f_mesg_id)
@@ -146,31 +191,32 @@ async def show_welcome(event):
         await edit_or_reply(
             event, "⌯︙أنا الان اقوم بالترحيب بالمستخدمين الجدد مع هذه الرسالة"
         )
-        await event.reply(cws.reply)
+        await event.reply(cws.reply, link_preview=False)
+
 
 @jepiq.ar_cmd(
-    pattern="الترحيب السابق (تشغيل|ايقاف)$",
-    command=("الترحيب السابق", plugin_category),
+    pattern="الترحيب (تشغيل|ايقاف)$",
+    command=("cleanwelcome", plugin_category),
     info={
-        "header": "⌔︙لإيقاف أو تشغيل حذف رسالة الترحيب السابقة .",
-        "description": "⌯︙إذا كنت ترغب في حذف رسالة الترحيب السابقة وإرسال رسالة ترحيب جديدة ، فقم بتشغيلها عن طريق  قم بإيقاف تشغيله إذا كنت بحاجة",
-        "usage": "{tr}<رساله الترحيب السابقه <تشغيل/ايقاف",
+        "header": "To turn off or turn on of deleting previous welcome message.",
+        "description": "if you want to delete previous welcome message and send new one turn on it by deafult it will be on. Turn it off if you need",
+        "usage": "{tr}cleanwelcome <on/off>",
     },
 )
 async def del_welcome(event):
-    "⌯︙لإيقاف أو تشغيل حذف رسالة الترحيب السابقة ."
+    "To turn off or turn on of deleting previous welcome message."
     input_str = event.pattern_match.group(1)
-    if input_str == "تشغيل":
+    if input_str == "on":
         if gvarstatus("clean_welcome") is None:
-            return await edit_delete(event, "**⌔︙تم تشغيلها بالفعل ✅**")
+            return await edit_delete(event, "**تم تشغيل الترحيب بنجاح ✓ **")
         delgvar("clean_welcome")
         return await edit_delete(
             event,
-            "**⌯︙من الآن رسالة الترحيب السابقة سيتم حذفها وسيتم إرسال رسالة الترحيب الجديدة **",
+            "__From now on previous welcome message will be deleted and new welcome message will be sent.__",
         )
     if gvarstatus("clean_welcome") is None:
         addgvar("clean_welcome", "false")
         return await edit_delete(
-            event, "**⌯︙من الآن لن يتم حذف رسالة الترحيب السابقة **"
+            event, "__From now on previous welcome message will not be deleted .__"
         )
-    await edit_delete(event, "**⌯︙تم إيقافها بالفعل ✅")
+    await edit_delete(event, "** تم تعطيل الترحيب بنجاح ✓")
