@@ -2,8 +2,8 @@
 # FILES WRITTEN BY  @lMl10l
 from telethon import events
 
-from jepthon import jepiq
-from jepthon.core.logger import logging
+from userbot import jmthon
+from userbot.core.logger import logging
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
@@ -18,10 +18,6 @@ from ..Config import Config
 
 plugin_category = "utils"
 LOGS = logging.getLogger(__name__)
-
-welcome = Config.WEL_ET or "ترحيب"
-rmvwelcome = Config.RMVWEL_ET or "حذف الترحيبات"
-allwelcome = Config.ALLWEL_ET or "الترحيبات"
 
 @jepiq.on(events.ChatAction)
 async def _(event):  # sourcery no-metrics
