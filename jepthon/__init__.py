@@ -18,7 +18,7 @@ LOGS = logging.getLogger("jepthon")
 bot = jepiq
 
 StartTime = time.time()
-JMVERSION = "5.2.0"
+JEPVERSION = "3.1.3"
 
 
 if Config.UPSTREAM_REPO == "jepthoniq":
