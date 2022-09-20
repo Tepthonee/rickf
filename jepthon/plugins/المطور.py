@@ -11,7 +11,7 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from jepthon import StartTime, jepiq, JMVERSION
+from jepthon import StartTime, jepiq, JEPVERSION
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
