@@ -84,7 +84,7 @@ async def _(event):  # sourcery no-metrics
         update_previous_welcome(event.chat_id, current_message.id)
 
 
-@jepiq.on(admin_cmd(pattern=f"{welcome}(?:\s|$)([\s\S]*)"))
+@jepiq.on(admin_cmd(pattern=f"ترحيب(?:\s|$)([\s\S]*)"))
 async def save_welcome(event):
     "To set welcome message in chat."
     msg = await event.get_reply_message()
@@ -119,7 +119,7 @@ async def save_welcome(event):
     await edit_or_reply("⌯︙هـنالك خـطأ في وضـع الـترحيب هـنا")
 
 
-@jepiq.on(admin_cmd(pattern=f"{rmvwelcome}(?:\s|$)([\s\S]*)"))
+@jepiq.on(admin_cmd(pattern=f"حذف الترحيب(?:\s|$)([\s\S]*)"))
 async def del_welcome(event):
     "To turn off welcome message"
     if rm_welcome_setting(event.chat_id) is True:
