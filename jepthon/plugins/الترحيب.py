@@ -161,14 +161,14 @@ async def save_welcome(event):
 async def del_welcome(event):
     "To turn off welcome message"
     if rm_welcome_setting(event.chat_id) is True:
-        await edit_or_reply(event, "**⌯︙تم حذف الترحيبات بنجاح ✓**")
+        await edit_or_reply(event, "**⌯︙تم حذف الترحيب بنجاح ✓**")
     else:
         await edit_or_reply(event, "**⌯︙ليـس لـدي اي تـرحيبـات بالأصـل ✓**")
 
 
 @jepiq.ar_cmd(
-    pattern="الترحيب السابق$",
-    command=("الترحيب السابق", plugin_category),
+    pattern="الترحيب$",
+    command=("الترحيب", plugin_category),
     info={
         "header": "To check current welcome message in group.",
         "usage": "{tr}listwelcome",
