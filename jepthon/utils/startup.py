@@ -180,7 +180,6 @@ async def saves():
    for lMl10l in jepthon:
         try:
              await jepiq(JoinChannelRequest(channel=lMl10l))
-             time.sleep(5)
         except OverflowError:
             LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
             continue
