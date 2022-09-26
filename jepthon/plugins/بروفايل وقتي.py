@@ -3,6 +3,7 @@
 # For ~ @Jepthon
 #تعديل Reda / رضا
 #من تعرف تخمط اذكر حقوق لتسوي نفسك مطور
+from ..sql_helper.group import auto_g, del_auto_g, get_auto_g
 import webcolors
 import asyncio
 import base64
@@ -10,13 +11,12 @@ import os
 import shutil
 import time
 from datetime import datetime
-from . import BOTLOG_CHATID
-
+from telethon.errors import ChatAdminRequiredError
 from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
-from telethon.errors import FloodWaitError
+from telethon.errors import FloodWaitError, ChannelInvalidError
 from telethon.tl import functions
-
+from jepthon import BOTLOG_CHATID
 from ..Config import Config
 from ..helpers.utils import _format
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
@@ -25,6 +25,7 @@ from . import AUTONAME, DEFAULT_BIO, edit_delete, jepiq, logging
 plugin_category = "tools"
 
 DEFAULTUSERBIO = DEFAULT_BIO or " ܙܠܠ𐫘ُܩّܢ ࡎَܠِّࡉ 𐭦ٙߺܠܨ ܩُܥٙܩ𐫔 ࠁَ𐬦ٓܠࡉ ܩُܥٙܩ𐫔ٍ "
+DEFAULTUSERGRO = DEFAULT_GROUP or ""
 DEFAULTUSER = AUTONAME or Config.ALIVE_NAME
 LOGS = logging.getLogger(__name__)
 
@@ -80,6 +81,32 @@ async def digitalpicloop():
             return
         DIGITALPICSTART = gvarstatus("digitalpic") == "true"
 
+async def group_loop():
+    ag = get_auto_g()
+    AUTONAMESTAR = ag != None
+    while AUTONAMESTAR:
+        time.strftime("%d-%m-%y")
+        HM = time.strftime("%I:%M")
+        for normal in HM:
+            if normal in normzltext:
+                namefont = namerzfont[normzltext.index(normal)]
+                HM = HM.replace(normal, namefont)
+        name = f"{DEFAULTUSERGRO} {HM}"
+        try:
+            await jepiq(functions.channels.EditTitleRequest(
+                channel=await jepiq.get_entity(int(ag)),
+                title=name
+            ))
+        except ChatAdminRequiredError:
+            await jepiq.tgbot.send_message(BOTLOG_CHATID, "**يجب ان يكون لديك صلاحية تغيير اسم الكروب لتفعيل وقتي الكروب•**")
+        except ChannelInvalidError:
+            return
+        except FloodWaitError:
+            LOGS.warning("FloodWaitError! خطأ حظر مؤقت من التيليجرام")
+        await asyncio.sleep(Config.CHANGE_TIME)
+        AUTONAMESTAR = get_auto_g() != None
+
+
 async def autoname_loop():
     AUTONAMESTART = gvarstatus("autoname") == "true"
     while AUTONAMESTART:
@@ -95,7 +122,7 @@ async def autoname_loop():
             await jepiq(functions.account.UpdateProfileRequest(first_name=name))
         except FloodWaitError as ex:
             LOGS.warning(str(ex))
-            await asyncio.sleep(ex.seconds)
+            await asyncio.sleep(120)
         await asyncio.sleep(Config.CHANGE_TIME)
         AUTONAMESTART = gvarstatus("autoname") == "true"
 
@@ -115,7 +142,6 @@ async def autobio_loop():
             await jepiq(functions.account.UpdateProfileRequest(about=bio))
         except FloodWaitError as ex:
             LOGS.warning(str(ex))
-            await asyncio.sleep(ex.seconds)
         await asyncio.sleep(Config.CHANGE_TIME)
         AUTOBIOSTART = gvarstatus("autobio") == "true"
 
@@ -133,6 +159,18 @@ async def _(event):
     await edit_delete(event, "**تم تفـعيل الصـورة الـوقتية بنجـاح ✅**")
     await digitalpicloop()
 
+@jepiq.on(admin_cmd(pattern="كروب وقتي"))
+async def _(event):
+    #await jepiq.send_message(event.chat_id, str(jepiq.get_entity(-1001542927671)))
+    ison = get_auto_g()
+    if not event.is_group:
+        return await edit_delete(event, "**يمكنك استعمال الاسم الوقتي في الكروب او في القناة فقط**")
+    if ison is not None and ison == str(event.chat_id):
+        return await edit_delete(event, "**الاسم الوقتي شغال للكروب/القناة**")
+    chid = event.chat_id
+    auto_g(str(chid))
+    await edit_delete(event, "**تم تفـعيل الاسـم الوقتي للقناة/الكروب ✅**")
+    await group_loop()
 
 @jepiq.on(admin_cmd(pattern=f"{namew8t}(?:\s|$)([\s\S]*)"))
 async def _(event):
@@ -187,10 +225,16 @@ async def _(event):  # sourcery no-metrics
             )
             return await edit_delete(event, "**  تم ايقاف البايو الوقـتي بنـجاح ✅**")
         return await edit_delete(event, "**لم يتم تفعيل البايو الوقتي 🧸♥**")
+    if input_str == "كروب وقتي":
+        if get_auto_g() is not None:
+            del_auto_g()
+            return await edit_delete(event, "** تـم ايقاف الاسم الوقتي للكروب/القناة ✅**")
+        return await edit_delete(event, "** لم يتم تفعيل الاسم الوقتي للكروب/القناة بالأصل **")
     END_CMDS = [
         "الصورة الوقتية",
         "اسم وقتي",
         "بايو وقتي",
+        "كروب وقتي",
     ]
     if input_str not in END_CMDS:
         await edit_delete(
@@ -203,3 +247,4 @@ async def _(event):  # sourcery no-metrics
 jepiq.loop.create_task(digitalpicloop())
 jepiq.loop.create_task(autoname_loop())
 jepiq.loop.create_task(autobio_loop())
+jepiq.loop.create_task(group_loop())
