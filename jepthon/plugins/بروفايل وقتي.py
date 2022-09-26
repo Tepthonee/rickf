@@ -20,7 +20,7 @@ from jepthon import BOTLOG_CHATID
 from ..Config import Config
 from ..helpers.utils import _format
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-from . import AUTONAME, DEFAULT_BIO, edit_delete, jepiq, logging
+from . import AUTONAME, DEFAULT_GROUP, DEFAULT_BIO, edit_delete, jepiq, logging
 
 plugin_category = "tools"
 
