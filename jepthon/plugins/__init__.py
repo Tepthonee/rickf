@@ -24,6 +24,7 @@ USERID = jepiq.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
 ALIVE_NAME = Config.ALIVE_NAME
 AUTONAME = Config.AUTONAME
 DEFAULT_BIO = Config.DEFAULT_BIO
+DEFAULT_GROUP = Config.DEFAULT_GROUP
 
 
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
