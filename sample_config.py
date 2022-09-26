@@ -111,6 +111,7 @@ class Config(object):
     DEFAULT_BIO = os.environ.get("DEFAULT_BIO", None)
     # set this with your deafult name
     DEFAULT_NAME = os.environ.get("DEFAULT_NAME", None)
+    DEFAULT_GROUP = os.environ.get("DEFAULT_GROUP", None)
     # specify command handler that should be used for the plugins
     # this should be a valid "regex" pattern
     COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", r".")
