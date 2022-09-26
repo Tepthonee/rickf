@@ -169,7 +169,7 @@ async def _(event):
         return await edit_delete(event, "**الاسم الوقتي شغال للكروب/القناة**")
     chid = event.chat_id
     auto_g(str(chid))
-    await edit_delete(event, "**تم تفـعيل الاسـم الوقتي للقناة/الكروب ✅**")
+    await edit_delete(event, "**تم تفـعيل الاسـم الوقتي للقناة/الكروب ✓**")
     await group_loop()
 
 @jepiq.on(admin_cmd(pattern=f"{namew8t}(?:\s|$)([\s\S]*)"))
@@ -228,7 +228,7 @@ async def _(event):  # sourcery no-metrics
     if input_str == "كروب وقتي":
         if get_auto_g() is not None:
             del_auto_g()
-            return await edit_delete(event, "** تـم ايقاف الاسم الوقتي للكروب/القناة ✅**")
+            return await edit_delete(event, "** تـم ايقاف الاسم الوقتي للكروب/القناة ✓**")
         return await edit_delete(event, "** لم يتم تفعيل الاسم الوقتي للكروب/القناة بالأصل **")
     END_CMDS = [
         "الصورة الوقتية",
