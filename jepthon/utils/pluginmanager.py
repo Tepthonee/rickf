@@ -13,7 +13,7 @@ from ..helpers.tools import media_type
 from ..helpers.utils import _cattools, _catutils, _format, install_pip, reply_id
 from .decorators import admin_cmd, sudo_cmd
 
-LOGS = logging.getLogger("jepthon")
+LOGS = logging.getLogger("𝐑𝐄𝐏𝐓𝐇𝐎𝐍")
 
 
 def load_module(shortname, plugin_path=None):
