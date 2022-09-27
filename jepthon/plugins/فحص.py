@@ -37,7 +37,7 @@ async def amireallyalive(event):
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     EMOJI = gvarstatus("ALIVE_EMOJI") or "⿻┊‌‎"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**父[ 𝗝𝗘𝗣𝗧𝗛𝗢𝗡 𝗜𝗦 𝗪𝗢𝗥𝗞𝗜𝗡𝗚 ✓ ](t.me/Jepthon)父**"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**父[ 𝐑𝐄𝐏𝐓𝐇𝐎𝐍 𝗜𝗦 𝗪𝗢𝗥𝗞𝗜𝗡𝗚 ✓ ](t.me/Repthon)父**"
     RR7_IMG = gvarstatus("ALIVE_PIC") or Config.A_PIC
     jepiq_caption = gvarstatus("ALIVE_TEMPLATE") or temp
     caption = jepiq_caption.format(
