@@ -367,7 +367,7 @@ async def kakashi(event):
         end = datetime.now()
         ms = (end - start).seconds
         await cat.edit(
-            f"꙳ ¦ تم تنزيل بواسطة  : @JepThon ",
+            f"꙳ ¦ تم تنزيل بواسطة  : @Repthon",
             parse_mode="html",
         )
     await event.client.delete_messages(
@@ -395,7 +395,7 @@ async def _(event):
             msg = await conv.send_message(r_link)
             details = await conv.get_response()
             video = await conv.get_response()
-            """ قناة جيبثون  @Jepthon """
+            """ قناة ريبثون  @Repthon """
             await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await event.edit("▾∮ الغـي حـظر هـذا البـوت و حـاول مجـددا @ttsavebot")
