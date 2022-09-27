@@ -18,7 +18,7 @@ async def _(event):
     "To list all plugins in jepthon"
     cmd = "ls jepthon/plugins"
     o = (await _catutils.runcmd(cmd))[0]
-    OUTPUT = f"**[جيـبثون](tg://need_update_for_some_feature/) الـمـلفـات:**\n{o}"
+    OUTPUT = f"**[ريبثون](tg://need_update_for_some_feature/) الـمـلفـات:**\n{o}"
     await edit_or_reply(event, OUTPUT)
 
 
