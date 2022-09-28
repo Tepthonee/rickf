@@ -24,7 +24,7 @@ from . import AUTONAME, DEFAULT_GROUP, DEFAULT_BIO, edit_delete, jepiq, logging
 
 plugin_category = "tools"
 
-DEFAULTUSERBIO = DEFAULT_BIO or " على نحوٍ ما كل شيء أصبح هُراء ≁ Ch: @Repthon "
+DEFAULTUSERBIO = DEFAULT_BIO or "  على نحوٍ ما كل شيء أصبح هُراء  ≁ Ch: @Repthon  "
 DEFAULTUSERGRO = DEFAULT_GROUP or ""
 DEFAULTUSER = AUTONAME or Config.ALIVE_NAME
 LOGS = logging.getLogger(__name__)
@@ -161,16 +161,16 @@ async def _(event):
 
 @jepiq.on(admin_cmd(pattern="كروب وقتي"))
 async def _(event):
-    #await jepiq.send_message(event.chat_id, str(jepiq.get_entity(-1001542927671)))
     ison = get_auto_g()
-    if not event.is_group:
+    if event.is_group or event.is_channel:
+        if ison is not None and ison == str(event.chat_id):
+            return await edit_delete(event, "**الاسم الوقتي شغال للكروب/القناة**")
+        chid = event.chat_id
+        auto_g(str(chid))
+        await edit_delete(event, "**تم تفـعيل الاسـم الوقتي للقناة/الكروب ✓**")
+        await group_loop()
+    else:
         return await edit_delete(event, "**يمكنك استعمال الاسم الوقتي في الكروب او في القناة فقط**")
-    if ison is not None and ison == str(event.chat_id):
-        return await edit_delete(event, "**الاسم الوقتي شغال للكروب/القناة**")
-    chid = event.chat_id
-    auto_g(str(chid))
-    await edit_delete(event, "**تم تفـعيل الاسـم الوقتي للقناة/الكروب ✓**")
-    await group_loop()
 
 @jepiq.on(admin_cmd(pattern=f"{namew8t}(?:\s|$)([\s\S]*)"))
 async def _(event):
