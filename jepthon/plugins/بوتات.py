@@ -22,7 +22,7 @@ async def _(event):
         except YouBlockedUserError:
             await event.edit("** اولا الغي حظر @SpamBot وحاول مجددا**")
             return
-        await event.edit(f"- {response.message.message}\n @jepthon")
+        await event.edit(f"- {response.message.message}\n @Repthon")
 
 
 @jepiq.on(admin_cmd(pattern="الاغنية ?(.*)"))
