@@ -29,7 +29,7 @@ class Config(object):
     TZ = os.environ.get("TZ", "Asia/Kolkata")
     # set this with required cat repo link
     UPSTREAM_REPO = os.environ.get(
-        "UPSTREAM_REPO", "https://github.com/jepthoniq/jepthon.git"
+        "UPSTREAM_REPO", "https://github.com/rogerpq/RepthonAr.git"
     )
 
     # BASIC and MAIN CONFIG VARS
@@ -105,6 +105,8 @@ class Config(object):
     # for custom pic for .digitalpfp
     DIGITAL_PIC = os.environ.get("DIGITAL_PIC", None)
     DIGITAL_PIC_COLOR = os.environ.get("DIGITAL_PIC_COLOR", None)
+    DIGITAL_GROUP_PIC = os.environ.get("DIGITAL_GROUP_PIC", None)
+    DIGITAL_GROUP_PIC_COLOR = os.environ.get("DIGITAL_GROUP_PIC_COLOR", None)
     # your default pic telegraph link
     DEFAULT_PIC = os.environ.get("DEFAULT_PIC", None)
     # set this with your default bio
