@@ -1,7 +1,7 @@
 """
-Jepthon team ©
-By Reda
-sub Hussein
+Repthon team ©
+By Lufyy
+sub Roger
 """
 import os
 from datetime import datetime
@@ -11,9 +11,12 @@ from pydub import AudioSegment
 from jepthon import jepiq
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import media_type
+from ..helpers.utils import reply_id
+import ocrspace
 
 plugin_category = "utils"
 
+#لتخمط الملف اذا انته ابن گحبة انسخ وألصق لسورسك وصيح اني مطور الملف متعوب عليه وشغل ايد
 
 @jepiq.ar_cmd(pattern="احجي(?:\s|$)([\s\S]*)",
                command=("احجي", plugin_category),
@@ -66,3 +69,66 @@ async def _(event):
     # now, remove the temporary file
     os.remove(oggfi)
     os.remove(f"{ogg}.wav")
+
+langs = {
+    'عربي': 'ara',
+    'بلغاري': 'bul',
+    'صيني مبسط': 'chs',
+    'صيني تقليدي ': 'cht',
+    'كرواتي': 'hrv',
+    'دنماركي': 'dan',
+    'الماني': 'dut',
+    'انجليزي': 'eng',
+    'فنلندي': 'fin',
+    'فرنسي': 'fre',
+    'الماني': 'ger',
+    'يوناني': 'gre',
+    'هنغاري': 'hun',
+    'كوري': 'kor',
+    'ايطالي': 'ita',
+    'ياباني': 'jpn',
+    'نرويجي': 'nor',
+    'بولندي': 'pol',
+    'برتغالي': 'por',
+    'روسي': 'rus',
+    'سلوفيني': 'slv',
+    'اسباني': 'spa',
+    'سويدي': 'swe',
+    'تركي': 'tur',
+}
+
+def to_text(pic, api):
+    try:
+        output = api.ocr_file(open(pic, 'rb'))
+    except Exception as e:
+        return "حدث الخطأ التالي:\n{e}"
+    else:
+        if output:
+            return output
+        else:
+            return "حدث خطأ في النضام , حاول مجدداً"
+    finally:
+        os.remove(pic)
+
+@jepiq.ar_cmd(pattern="استخرج(?:\s|$)([\s\S]*)",
+               command=("استخرج", plugin_category),
+              )
+async def _(event):
+    reply = await event.get_reply_message()
+    lan = event.pattern_match.group(1)
+    if not reply:
+     return edit_delete(event, "**⌯︙قم بالرد على الصورة المراد استخراج النص منه**")
+    pic_file = await jepiq.download_media(reply, Config.TMP_DOWNLOAD_DIRECTORY)
+    if not pic_file:
+        return await edit_delete(event, "**⌯︙قم بالرد على صورة**")
+    else:
+     if not lan:
+            api = ocrspace.API()
+     else:    
+            try:  
+             lang = langs[lan.replace(" ", "")]
+             api = ocrspace.API(language=lang)
+            except BaseException as er:
+             return await edit_delete(event, "**⌯︙!لا يوجد هكذا لغة**")
+     await edit_or_reply(event, "**⌯︙يجري استخراج النص...**")
+     await edit_or_reply(event, to_text(pic_file, api))
