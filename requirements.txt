@@ -9,7 +9,7 @@ cairosvg
 cfscrape
 colour
 covid
-emoji
+emoji==1.7.0
 cryptg
 csvfaker
 DateTime
