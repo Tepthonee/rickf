@@ -11,31 +11,37 @@ import os
 import shutil
 import time
 from datetime import datetime
+from telethon import events
 from telethon.errors import ChatAdminRequiredError
 from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
 from telethon.errors import FloodWaitError, ChannelInvalidError
 from telethon.tl import functions
+from telethon import types
 from jepthon import BOTLOG_CHATID
 from ..Config import Config
 from ..helpers.utils import _format
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from . import AUTONAME, DEFAULT_GROUP, DEFAULT_BIO, edit_delete, jepiq, logging
+from colour import Color
 
 plugin_category = "tools"
-
-DEFAULTUSERBIO = DEFAULT_BIO or "  على نحوٍ ما كل شيء أصبح هُراء  ≁ Ch: @Repthon  "
+# لتخمط ابن الكحبة
+DEFAULTUSERBIO = DEFAULT_BIO or " ܙܠܠ𐫘ُܩّܢ ࡎَܠِّࡉ 𐭦ٙߺܠܨ ܩُܥٙܩ𐫔 ࠁَ𐬦ٓܠࡉ ܩُܥٙܩ𐫔ٍ "
 DEFAULTUSERGRO = DEFAULT_GROUP or ""
-DEFAULTUSER = AUTONAME or Config.ALIVE_NAME
+DEFAULTUSER = AUTONAME or ""
 LOGS = logging.getLogger(__name__)
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 autopic_path = os.path.join(os.getcwd(), "jepthon", "original_pic.png")
 digitalpic_path = os.path.join(os.getcwd(), "jepthon", "digital_pic.png")
+digital_group_pic_path = os.path.join(os.getcwd(), "jepthon", "digital_group_pic.png")
 autophoto_path = os.path.join(os.getcwd(), "jepthon", "photo_pfp.png")
+auto_group_photo_path = os.path.join(os.getcwd(), "jepthon", "photo_pfp.png")
 
 digitalpfp = Config.DIGITAL_PIC or "https://telegra.ph/file/63a826d5e5f0003e006a0.jpg"
+digitalgrouppfp = Config.DIGITAL_GROUP_PIC or "https://telegra.ph/file/63a826d5e5f0003e006a0.jpg"
 lMl10l = Config.TIME_JEP or ""
 jep = Config.DEFAULT_PIC or "jepthon/helpers/styles/PaybAck.ttf"
 normzltext = "1234567890"
@@ -44,10 +50,20 @@ namew8t = Config.NAME_ET or "اسم وقتي"
 biow8t = Config.BIO_ET or "بايو وقتي"
 phow8t = Config.PHOTO_ET or "الصورة الوقتية"
 
+def check_color(color):
+    try:
+        color = color.replace(" ", "")
+        Color(color)
+        return True
+    except ValueError:
+        return False
+
 async def digitalpicloop():
     colorco = gvarstatus("digitalpiccolor") or Config.DIGITAL_PIC_COLOR
     if colorco is None:
         colorco = "white"
+    if not check_color(colorco):
+        colorco = "red"
     colo = webcolors.name_to_rgb(colorco)
     DIGITALPICSTART = gvarstatus("digitalpic") == "true"
     i = 0
@@ -80,6 +96,57 @@ async def digitalpicloop():
         except BaseException:
             return
         DIGITALPICSTART = gvarstatus("digitalpic") == "true"
+
+#Reda
+#اننننسخخخخخ ههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههههه 
+async def digitalgrouppicloop():
+    "2KjZiNin2LPYt9ipINiz2YjYsdizINis2YrYqNir2YjZhiAo2KfYsNinINin2LPYqtio2K/ZhNiq2Ycg2LHYp9itINiq2KvYqNiqINmB2LTZhNmDKSDZhdi5INiq2K3Zitin2KrZiiDYp9iu2YjZg9mFINix2LbYpyBAcmQwcjA="
+
+    dgp = gvarstatus("digitalgrouppic")
+    colorco = gvarstatus("digitalgrouppiccolor") or Config.DIGITAL_PIC_COLOR
+    if colorco is None:
+        colorco = "white"
+    if not check_color(colorco):
+        colorco = "red"
+    colo = webcolors.name_to_rgb(colorco)
+    i = 0
+    DIGITALPICSTART = gvarstatus("digitalgrouppic") != None
+    while DIGITALPICSTART:
+        if not os.path.exists(digital_group_pic_path):
+            downloader = SmartDL(digitalgrouppfp, digital_group_pic_path, progress_bar=False)
+            downloader.start(blocking=False)
+            while not downloader.isFinished():
+                pass
+        shutil.copy(digital_group_pic_path, autophoto_path)
+        Image.open(auto_group_photo_path)
+        current_time = datetime.now().strftime("%I:%M")
+        img = Image.open(auto_group_photo_path)
+        drawn_text = ImageDraw.Draw(img)
+        fnt = ImageFont.truetype(jep, 65)
+        drawn_text.text((200, 200), current_time, font=fnt, fill=colo)
+        img.save(auto_group_photo_path)
+        file = await jepiq.upload_file(auto_group_photo_path)
+        try:
+            if i > 0:
+                async for photo in jepiq.iter_profile_photos(int(dgp), limit=1) :
+                    await jepiq(
+                    functions.photos.DeletePhotosRequest(id=[types.InputPhoto( id=photo.id, access_hash=photo.access_hash, file_reference=photo.file_reference )])
+                    )
+            i += 1
+            await jepiq(functions.channels.EditPhotoRequest(int(dgp), file))
+            os.remove(auto_group_photo_path)
+            await asyncio.sleep(60)
+        except ChatAdminRequiredError:
+            return await jepiq.tgbot.send_message(BOTLOG_CHATID, "**يجب ان يكون لديك صلاحية تغيير صورة الكروب لتغيير صورة الكروب الوقتية •**")
+        except ChannelInvalidError:
+            return
+        except FloodWaitError:
+            return LOGS.warning("FloodWaitError! خطأ حظر مؤقت من التيليجرام")
+        DIGITALPICSTART = gvarstatus("digitalgrouppic") != None
+        base64m = 'QnkgQEplcHRob24gLyBSZWRhIEByZDByMCBkb24ndCByZW1vdmUgaXQ='
+        message = base64.b64decode(base64m)
+        messageo = message.decode()
+        LOGS.info(messageo)
 
 async def group_loop():
     ag = get_auto_g()
@@ -119,7 +186,7 @@ async def autoname_loop():
         name = f"{lMl10l} {HM}"
         LOGS.info(name)
         try:
-            await jepiq(functions.account.UpdateProfileRequest(first_name=name))
+            await jepiq(functions.account.UpdateProfileRequest(last_name=name))
         except FloodWaitError as ex:
             LOGS.warning(str(ex))
             await asyncio.sleep(120)
@@ -156,7 +223,7 @@ async def _(event):
     if gvarstatus("digitalpic") is not None and gvarstatus("digitalpic") == "true":
         return await edit_delete(event, "**الصـورة الـوقتية شغـالة بالأصـل 🧸♥**")
     addgvar("digitalpic", True)
-    await edit_delete(event, "**تم تفـعيل الصـورة الـوقتية بنجـاح ✅**")
+    await edit_delete(event, "**تم تفـعيل الصـورة الـوقتية بنجـاح ✓**")
     await digitalpicloop()
 
 @jepiq.on(admin_cmd(pattern="كروب وقتي"))
@@ -172,13 +239,26 @@ async def _(event):
     else:
         return await edit_delete(event, "**يمكنك استعمال الاسم الوقتي في الكروب او في القناة فقط**")
 
+@jepiq.on(admin_cmd(pattern="كروب صورة وقتي"))
+async def _(event):
+    ison = gvarstatus("digitalgrouppic")
+    if event.is_group or event.is_channel:
+        if ison is not None and ison == str(event.chat_id):
+            return await edit_delete(event, "**الصورة الوقتية شغالة للكروب/القناة**")
+        chid = event.chat_id
+        addgvar("digitalgrouppic", str(chid))
+        await edit_delete(event, "**تم تفعيل الصورة الوقتية للكروب/ القناة ✓**")
+        await digitalgrouppicloop()
+    else:
+        return await edit_delete(event, "**يمكنك استعمال الصورة الوقتية في كروب او قناة**")
+
 @jepiq.on(admin_cmd(pattern=f"{namew8t}(?:\s|$)([\s\S]*)"))
 async def _(event):
     "To set your display name along with time"
     if gvarstatus("autoname") is not None and gvarstatus("autoname") == "true":
         return await edit_delete(event, "**الاسـم الـوقتي شغـال بالأصـل 🧸♥**")
     addgvar("autoname", True)
-    await edit_delete(event, "**تم تفـعيل الاسـم الـوقتي بنجـاح ✅**")
+    await edit_delete(event, "**تم تفـعيل الاسـم الـوقتي بنجـاح ✓**")
     await autoname_loop()
 
 
@@ -188,7 +268,7 @@ async def _(event):
     if gvarstatus("autobio") is not None and gvarstatus("autobio") == "true":
         return await edit_delete(event, "**الـبايو الـوقتي شغـال بالأصـل 🧸♥**")
     addgvar("autobio", True)
-    await edit_delete(event, "**تم تفـعيل البـايو الـوقتي بنجـاح ✅**")
+    await edit_delete(event, "**تم تفـعيل البـايو الـوقتي بنجـاح ✓**")
     await autobio_loop()
 
 
@@ -207,15 +287,15 @@ async def _(event):  # sourcery no-metrics
                     await event.client.get_profile_photos("me", limit=1)
                 )
             )
-            return await edit_delete(event, "**تم ايقاف الصورة الوقتية بنـجاح ✅**")
+            return await edit_delete(event, "**تم ايقاف الصورة الوقتية بنـجاح ✓ **")
         return await edit_delete(event, "**لم يتم تفعيل الصورة الوقتية بالأصل 🧸♥**")
     if input_str == "اسم وقتي":
         if gvarstatus("autoname") is not None and gvarstatus("autoname") == "true":
             delgvar("autoname")
             await event.client(
-                functions.account.UpdateProfileRequest(first_name=DEFAULTUSER)
+                functions.account.UpdateProfileRequest(last_name=DEFAULTUSER)
             )
-            return await edit_delete(event, "**تم ايقاف  الاسم الوقتي بنـجاح ✅**")
+            return await edit_delete(event, "**تم ايقاف  الاسم الوقتي بنـجاح ✓ **")
         return await edit_delete(event, "**لم يتم تفعيل الاسم الوقتي بالأصل 🧸♥**")
     if input_str == "بايو وقتي":
         if gvarstatus("autobio") is not None and gvarstatus("autobio") == "true":
@@ -223,8 +303,13 @@ async def _(event):  # sourcery no-metrics
             await event.client(
                 functions.account.UpdateProfileRequest(about=DEFAULTUSERBIO)
             )
-            return await edit_delete(event, "**  تم ايقاف البايو الوقـتي بنـجاح ✅**")
+            return await edit_delete(event, "**  تم ايقاف البايو الوقـتي بنـجاح ✓**")
         return await edit_delete(event, "**لم يتم تفعيل البايو الوقتي 🧸♥**")
+    if input_str == "كروب صورة وقتي":
+        if gvarstatus("digitalgrouppic") is not None:
+            delgvar("digitalgrouppic")
+            return await edit_delete(event, "**  تم ايقاف صورة الكروب الوقتية بنجاح ✓**")
+        return await edit_delete(event, "**لم يتم تفعيل صورة الكروب/ القناة الوقتية بالأصل**")
     if input_str == "كروب وقتي":
         if get_auto_g() is not None:
             del_auto_g()
@@ -235,6 +320,7 @@ async def _(event):  # sourcery no-metrics
         "اسم وقتي",
         "بايو وقتي",
         "كروب وقتي",
+        "كروب صورة وقتي",
     ]
     if input_str not in END_CMDS:
         await edit_delete(
@@ -245,6 +331,7 @@ async def _(event):  # sourcery no-metrics
 
 
 jepiq.loop.create_task(digitalpicloop())
+jepiq.loop.create_task(digitalgrouppicloop())
 jepiq.loop.create_task(autoname_loop())
 jepiq.loop.create_task(autobio_loop())
 jepiq.loop.create_task(group_loop())
