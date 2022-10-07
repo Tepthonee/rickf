@@ -112,7 +112,7 @@ async def variable(var):
                 var,
                 "**⌔∮ تم بنجاح تغيير فار الكروب\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
             )
-        heroku_var[variable] = vra
+        heroku_var[variable] = vra 
     if exe == "الصورة" or exe == "الصوره":
         variable = "DIGITAL_PIC"
         await asyncio.sleep(1)
@@ -125,6 +125,20 @@ async def variable(var):
             await edit_or_reply(
                 var,
                 "**⌔∮ تم بنجاح تغيير فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
+            )
+        heroku_var[variable] = vra
+    if exe == "صورة القروب" or exe == "صورة الكروب":
+        variable = "DIGITAL_GROUP_PIC"
+        await asyncio.sleep(1)
+        if variable in heroku_var:
+            await edit_or_reply(
+                var,
+                "**⌔∮ تم بنجاح تغيير فار صورة المجموعة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
+            )
+        else:
+            await edit_or_reply(
+                var,
+                "**⌔∮ تم بنجاح تغيير فار المجموعة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
             )
         heroku_var[variable] = vra
     if exe == "لون" or exe == "اللون":
