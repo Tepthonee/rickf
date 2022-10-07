@@ -32,11 +32,11 @@ name_dl = (
 )
 
 
-async def yt_search(jmthon):
+async def yt_search(jepthon):
     try:
-        jmthon = urllib.parse.quote(jmthon)
+        jepthon = urllib.parse.quote(jepthon)
         html = urllib.request.urlopen(
-            f"https://www.youtube.com/results?search_query={jmthon}"
+            f"https://www.youtube.com/results?search_query={jepthon}"
         )
 
         user_data = re.findall(r"watch\?v=(\S{11})", html.read().decode())
@@ -61,12 +61,10 @@ async def ytsearch(query, limit):
     for v in videolinks.result()["result"]:
         textresult = f"[{v['title']}](https://www.youtube.com/watch?v={v['id']})\n"
         try:
-            textresult += f"**الشرح : **`{v['descriptionSnippet'][-1]['text']}`\n"
+            textresult += f"**Description : **`{v['descriptionSnippet'][-1]['text']}`\n"
         except Exception:
-            textresult += "**الشرح : **`None`\n"
-        textresult += (
-            f"**المدة : **{v['duration']}  **المشاهدات : **{v['viewCount']['short']}\n"
-        )
+            textresult += "**Description : **`None`\n"
+        textresult += f"**Duration : **__{v['duration']}__  **Views : **__{v['viewCount']['short']}__\n"
         result += f"☞ {textresult}\n"
     return result
 
@@ -91,8 +89,8 @@ class YT_Search_X:
 ytsearch_data = YT_Search_X()
 
 """
-async def yt_data(jmthon):
-    params = {"format": "json", "url": jmthon}
+async def yt_data(cat):
+    params = {"format": "json", "url": cat}
     url = "https://www.youtube.com/oembed"  # https://stackoverflow.com/questions/29069444/returning-the-urls-as-a-list-from-a-youtube-search-query
     query_string = urllib.parse.urlencode(params)
     url = f"{url}?{query_string}"
@@ -162,12 +160,12 @@ async def result_formatter(results: list):
             out += "<code>{}</code>\n\n".format(
                 "".join(x.get("text") for x in r.get("descriptionSnippet"))
             )
-        out += f'<b>❯  المدة:</b> {r.get("accessibility").get("duration")}\n'
-        views = f'<b>❯  المشاهدات:</b> {r.get("viewCount").get("short")}\n'
+        out += f'<b>❯  Duration:</b> {r.get("accessibility").get("duration")}\n'
+        views = f'<b>❯  Views:</b> {r.get("viewCount").get("short")}\n'
         out += views
-        out += f'<b>❯  تايرخ الرفع:</b> {r.get("publishedTime")}\n'
+        out += f'<b>❯  Upload date:</b> {r.get("publishedTime")}\n'
         if upld:
-            out += "<b>❯  الرافع:</b> "
+            out += "<b>❯  Uploader:</b> "
             out += f'<a href={upld.get("link")}>{upld.get("name")}</a>'
 
         output[index] = dict(
@@ -186,7 +184,7 @@ def yt_search_btns(
     buttons = [
         [
             Button.inline(
-                text="⬅️  رجوع",
+                text="⬅️  Back",
                 data=f"ytdl_back_{data_key}_{page}",
             ),
             Button.inline(
@@ -196,11 +194,11 @@ def yt_search_btns(
         ],
         [
             Button.inline(
-                text="📜  قائمة الكل",
+                text="📜  List all",
                 data=f"ytdl_listall_{data_key}_{page}",
             ),
             Button.inline(
-                text="⬇️  تحميل",
+                text="⬇️  Download",
                 data=f"ytdl_download_{vid}_0",
             ),
         ],
@@ -221,9 +219,9 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
         vid_data = {"formats": []}
     buttons = [
         [
-            Button.inline("⭐️ الافضل - 📹 MKV", data=f"ytdl_download_{vid}_mkv_v"),
+            Button.inline("⭐️ BEST - 📹 MKV", data=f"ytdl_download_{vid}_mkv_v"),
             Button.inline(
-                "⭐️ الافضل - 📹 WebM/MP4",
+                "⭐️ BEST - 📹 WebM/MP4",
                 data=f"ytdl_download_{vid}_mp4_v",
             ),
         ]
@@ -263,11 +261,7 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
             )
     buttons += sublists(video_btns, width=2)
     buttons += [
-        [
-            Button.inline(
-                "⭐️ الافضل  - 🎵 320Kbps - MP3", data=f"ytdl_download_{vid}_mp3_a"
-            )
-        ]
+        [Button.inline("⭐️ BEST - 🎵 320Kbps - MP3", data=f"ytdl_download_{vid}_mp3_a")]
     ]
     buttons += sublists(
         [
@@ -308,7 +302,9 @@ def _tubeDl(url: str, starttime, uid: str):
     except DownloadError as e:
         LOGS.error(e)
     except GeoRestrictedError:
-        LOGS.error("هذا الفيديو غير متاح  في بلدك")
+        LOGS.error(
+            "ERROR: The uploader has not made this video available in your country"
+        )
     else:
         return x
 
@@ -329,7 +325,7 @@ def _mp3Dl(url: str, starttime, uid: str):
                 "preferredcodec": "mp3",
                 "preferredquality": uid,
             },
-            {"key": "EmbedThumbnail"},
+            {"key": "EmbedThumbnail"},  # ERROR: Conversion failed!
             {"key": "FFmpegMetadata"},
         ],
         "quiet": True,
