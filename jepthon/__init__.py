@@ -4,7 +4,7 @@ import heroku3
 
 from .Config import Config
 from .core.logger import logging
-from .core.session import repiq
+from .core.session import jepiq
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 __version__ = "1.0.0"
