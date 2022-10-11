@@ -12,7 +12,7 @@ __license__ = "كـتابة وتـعديل فريـق ريبثون"
 __author__ = "ريبثون <https://T.ME/Repthon>"
 __copyright__ = "Repthon TEAM (C) 2020 - 2021  " + __author__
 
-repiq.version = __version__
+jepiq.version = __version__
 repiq.tgbot.version = __version__
 LOGS = logging.getLogger("𝐑𝐄𝐏𝐓𝐇𝐎𝐍")
 bot = repiq
