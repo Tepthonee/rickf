@@ -13,9 +13,9 @@ __author__ = "ريبثون <https://T.ME/Repthon>"
 __copyright__ = "Repthon TEAM (C) 2020 - 2021  " + __author__
 
 jepiq.version = __version__
-repiq.tgbot.version = __version__
+jepiq.tgbot.version = __version__
 LOGS = logging.getLogger("𝐑𝐄𝐏𝐓𝐇𝐎𝐍")
-bot = repiq
+bot = jepiq
 
 StartTime = time.time()
 REPVERSION = "3.2.3"
