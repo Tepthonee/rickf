@@ -25,7 +25,7 @@ plugin_category = "utils"
 
 #كتـابة وتعـديل:  @lMl10l
 ALIVE_ET = Config.ALIVE_ET or "فحص"
-@jepiq.on(admin_cmd(pattern=f"{ALIVE_ET}(?:\s|$)([\s\S]*)"))
+@repiq.on(admin_cmd(pattern=f"{ALIVE_ET}(?:\s|$)([\s\S]*)"))
     
 async def amireallyalive(event):
     "للتـأكد من ان البـوت يعـمـل"
