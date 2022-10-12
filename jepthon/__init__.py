@@ -18,7 +18,7 @@ LOGS = logging.getLogger("𝐑𝐄𝐏𝐓𝐇𝐎𝐍")
 bot = jepiq
 
 StartTime = time.time()
-REPVERSION = "3.1.3"
+JEPVERSION = "3.1.3"
 
 
 if Config.UPSTREAM_REPO == "Rep":
