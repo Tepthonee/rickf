@@ -14,7 +14,7 @@ __copyright__ = "Repthon TEAM (C) 2020 - 2021  " + __author__
 
 jepiq.version = __version__
 jepiq.tgbot.version = __version__
-LOGS = logging.getLogger("jepthon")
+LOGS = logging.getLogger("𝐑𝐄𝐏𝐓𝐇𝐎𝐍")
 bot = jepiq
 
 StartTime = time.time()
