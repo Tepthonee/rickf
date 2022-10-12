@@ -12,7 +12,7 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from jepthon import StartTime, jepiq, JEPVERSION
+from jepthon import StartTime, jepiq, REPVERSION
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
@@ -46,7 +46,7 @@ async def amireallyalive(event):
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
-        jepver=JEPVERSION,
+        repver=REPVERSION,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
