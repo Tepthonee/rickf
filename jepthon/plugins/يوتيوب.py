@@ -1,4 +1,4 @@
-#@lMl10l  - @UNZZ  - @JepThon
+#@lMl10l   - @JepThon
 # Copyright (C) 2021 JepThon TEAM
 # FILES WRITTEN BY  @lMl10l
 import asyncio
@@ -14,6 +14,9 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import types
 from telethon.utils import get_attributes
 from youtube_dl import YoutubeDL
+from urlextract import URLExtract
+from wget import download
+from jepthon import jepiq
 from youtube_dl.utils import (
     ContentTooShortError,
     DownloadError,
@@ -26,7 +29,9 @@ from youtube_dl.utils import (
 )
 
 from ..helpers.utils import _format
-from . import jepiq, edit_delete, edit_or_reply, hmention, progress, reply_id, ytsearch
+from ..helpers.functions.utube import _mp3Dl, get_yt_video_id, get_ytthumb, ytsearch
+from ..core.managers import edit_delete, edit_or_reply
+from ..helpers import progress, reply_id
 
 plugin_category = "misc"
 
@@ -289,7 +294,7 @@ async def download_video(event):
 
 
 @jepiq.ar_cmd(
-    pattern="يوت(?: |$)(\d*)? ?(.*)",
+    pattern="يوت(?: |$)(\d*)? ?([\s\S]*)",
     command=("يوت", plugin_category),
     info={
         "header": "To search youtube videos",
@@ -309,20 +314,20 @@ async def yt_search(event):
         query = str(event.pattern_match.group(2))
     if not query:
         return await edit_delete(
-            event, "⌯︙ يرجى الرد على الرسالة او كتابة الرابط اولا"
+            event, "**⌯︙قم بالرد على النص او كتابته مع الامر**"
         )
-    video_q = await edit_or_reply(event, "⌯︙يتم البحث عن المطلوب انتظر")
+    video_q = await edit_or_reply(event, "**⌯︙يتم البحث في اليوتيوب**")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
         if lim <= 0:
-            lim = int(10)
+            lim = 10
     else:
-        lim = int(10)
+        lim = 10
     try:
         full_response = await ytsearch(query, limit=lim)
     except Exception as e:
         return await edit_delete(video_q, str(e), time=10, parse_mode=_format.parse_pre)
-    reply_text = f"⌯︙• البحث :\n`{query}`\n\n⌯︙•  نتائج :\n{full_response}"
+    reply_text = f"**•  البحث المطلوب:**\n`{query}`\n\n**•  النتائج:**\n{full_response}"
     await edit_or_reply(video_q, reply_text)
 
 
