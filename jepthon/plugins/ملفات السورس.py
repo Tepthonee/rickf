@@ -36,9 +36,10 @@ async def _(event):
     cmd = "env"
     o = (await _catutils.runcmd(cmd))[0]
     OUTPUT = (
-        f"**[جيـبثون](tg://need_update_for_some_feature/) قـائمـة الـفـارات:**\n\n\n{o}"
+        f"**[ريبثون](tg://need_update_for_some_feature/) قـائمـة الـفـارات:**\n\n\n{o}\n\n**انتبه هنالك معلومات حساسة لا تُعطِها لشخص غير موثوق**"
     )
-    await edit_or_reply(event, OUTPUT)
+    await edit_or_reply(event, "**تم إرسال الفارات بالرسائل المحفوظة **")
+    await jepiq.send_message("me", OUTPUT)
 
 @jepiq.ar_cmd(
     pattern="متى$",
