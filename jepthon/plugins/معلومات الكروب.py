@@ -191,6 +191,8 @@ async def get_users(show):
 )
 async def info(event):
     "⌯︙للحصـول على معلومـات المجموعـة 🝢"
+    if not event.is_group:
+        return await edit_delete(event, "**لا يمكن استعمال الأمر سوى في المجموعات**")
     catevent = await edit_or_reply(event, "**⌔︙يتـمّ جلـب معلومـات الدردشـة، إنتظـر ⅏**")
     chat = await get_chatinfo(event, catevent)
     caption = await fetch_info(chat, event)
