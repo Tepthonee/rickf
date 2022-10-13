@@ -1,7 +1,5 @@
 # By Jepthon 2021-2022
 import asyncio
-import base64
-
 from telethon.tl import functions, types
 from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
@@ -129,24 +127,7 @@ async def spammer(event):
     addgvar("spamwork", True)
     await spam_function(event, jepthon, jepiq, sleeptimem, sleeptimet)
 
-
-@jepiq.ar_cmd(pattern=f"مكرر (.*)")
-async def spammer(event):
-    reply = await event.get_reply_message()
-    input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
-    try:
-        sleeptimet = sleeptimem = int(input_str[0])
-        sleeptimet = sleeptimet * 60
-    except Exception:
-        return await edit_delete(
-            event, "⌔∮ يجب استخدام كتابة صحيحة الرجاء التاكد من الامر اولا ⚠️"
-        )
-    jepiq = input_str[1:]
-    await event.delete()
-    addgvar("spamwork", True)
-    await spam_function(event, reply, jepiq, sleeptimem, sleeptimet, DelaySpam=True)
-
-@jepiq.ar_cmd(pattern=f"مكرر_ثواني (.*)")
+@jepiq.ar_cmd(pattern=f"مكرر(.*)")
 async def spammer(event):
     reply = await event.get_reply_message()
     input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
