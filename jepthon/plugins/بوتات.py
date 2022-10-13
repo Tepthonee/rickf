@@ -82,98 +82,103 @@ async def _(event):
         await event.edit(
             f"الايميل الخاص هو `{response.message.message}`\n[ اضغط هنا لرؤية من رسائل الايميل الواردة]({jepthon})"
         )
-
-@bot.on(admin_cmd(pattern="دريس ?(.*)"))
-async def _(event):
-    if event.reply_to_msg_id:
-        return
-    input_str = event.pattern_match.group(1)
-    reply_to_id = await reply_id(event)
-    if event.reply_to_msg_id and not event.pattern_match.group(1):
-        reply_to_id = await event.get_reply_message()
-        reply_to_id = str(reply_to_id.message)
-    else:
-        reply_to_id = str(event.pattern_match.group(1))
-    if not reply_to_id:
-        return await edit_or_reply(
-            event, "**╮ .دريس + اسم النادي + اسمك بلانجليزي + رقمك المفضل ... لتصميم دريس ...╰**"
-        )
-    chat = "@Jepthon1BoT"
-    catevent = await edit_or_reply(event, "**╮•⎚ اصبر جاي نخيط بدريسك ... 🧸🎈**")
-    async with event.client.conversation(chat) as conv:
-        try:
-            response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=2034059015)
-            )
-            await event.client.send_message(chat, "{}".format(input_str))
-            response = await response
-            await event.client.send_read_acknowledge(conv.chat_id)
-        except YouBlockedUserError:
-            await catevent.edit("**╮•⎚ تحـقق من انـك لم تقـم بحظر البوت @Jepthon1BoT .. ثم اعـد استخدام الامـر ...🤖♥️**")
-            return
-        if response.text.startswith("I can't find that"):
-            await catevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
-        else:
-            await catevent.delete()
-            await event.client.send_message(event.chat_id, response.message)
-
-
-@bot.on(admin_cmd(pattern="برج ?(.*)"))
-async def _(event):
-
-    if event.reply_to_msg_id:
-        return
-    input_str = event.pattern_match.group(1)
-    reply_to_id = await reply_id(event)
-    if event.reply_to_msg_id and not event.pattern_match.group(1):
-        reply_to_id = await event.get_reply_message()
-        reply_to_id = str(reply_to_id.message)
-    else:
-        reply_to_id = str(event.pattern_match.group(1))
-    if not reply_to_id:
-        return await edit_or_reply(
-            event, "**╮ .برج + اسم برجك ... ...╰**"
-        )
-    chat = "@TermexJepBoT"
-    catevent = await edit_or_reply(event, "**╮•⎚ اصبر جاي نطلع برجك ... 🧸🎈**")
-    async with event.client.conversation(chat) as conv:
-        try:
-            response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=2142702957)
-            )
-            await event.client.send_message(chat, "{}".format(input_str))
-            response = await response
-            await event.client.send_read_acknowledge(conv.chat_id)
-        except YouBlockedUserError:
-            await catevent.edit("**╮•⎚ تحـقق من انـك لم تقـم بحظر البوت @TermexJepBoT .. ثم اعـد استخدام الامـر ...🤖♥️**")
-            return
-        if response.text.startswith("I can't find that"):
-            await catevent.edit("**╮•⎚ عـذراً .. لـم استطـع ايجـاد المطلـوب ☹️💔**")
-        else:
-            await catevent.delete()
-            await event.client.send_message(event.chat_id, response.message)
 @jepiq.on(admin_cmd(outgoing=True, pattern="غنيلي$"))
 async def jepvois(vois):
   rl = random.randint(3,267)
   url = f"https://t.me/DwDi1/{rl}"
-  await vois.client.send_file(vois.chat_id,url,caption="⌯︙BY : @Repthon 🎀",parse_mode="html")
+  await vois.client.send_file(vois.chat_id,url,caption="⌯︙BY : @JEPTHON 🎀",parse_mode="html")
   await vois.delete()
 
 @jepiq.on(admin_cmd(outgoing=True, pattern="شعر$"))
 async def jepvois(vois):
   rl = random.randint(2,101)
   url = f"https://t.me/L1BBBL/{rl}"
-  await vois.client.send_file(vois.chat_id,url,caption="⌯︙BY : @Repthon 🎀",parse_mode="html")
+  await vois.client.send_file(vois.chat_id,url,caption="⌯︙BY : @JEPTHON 🎀",parse_mode="html")
   await vois.delete()
 @jepiq.on(admin_cmd(outgoing=True, pattern="قران$"))
 async def jepvois(vois):
   rl = random.randint(2,101)
   url = f"https://t.me/QuraanJep/{rl}"
-  await vois.client.send_file(vois.chat_id,url,caption="⌯︙BY : @Repthon 🤲🏻☪️",parse_mode="html")
+  await vois.client.send_file(vois.chat_id,url,caption="⌯︙BY : @JEPTHON 🤲🏻☪️",parse_mode="html")
   await vois.delete()
 @jepiq.on(admin_cmd(outgoing=True, pattern="ثيم$"))
 async def jepThe(theme):
   rl = random.randint(2,510)
   url = f"https://t.me/GSSSD/{rl}"
-  await theme.client.send_file(theme.chat_id,url,caption="⌯︙THEME BY : @Repthon 🎊",parse_mode="html")
+  await theme.client.send_file(theme.chat_id,url,caption="⌯︙THEME BY : @JEPTHON 🎊",parse_mode="html")
   await theme.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="لاتغلط$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/4"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="بجيت$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/5"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="نشاقة$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/3"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="احب الله$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/2"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="روح$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/6"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="انمي1$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/7"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="انمي2$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/9"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="انمي3$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/11"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="انمي4$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/12"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="انمي5$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/13"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="انمي6$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/14"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="انمي7$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/15"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="انمي8$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/16"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="انمي9$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/17"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
+@jepiq.on(admin_cmd(outgoing=True, pattern="انمي10$"))
+async def jepmeme(memejep):
+  url = f"https://t.me/MemeSoundJep/18"
+  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
+  await memejep.delete()
