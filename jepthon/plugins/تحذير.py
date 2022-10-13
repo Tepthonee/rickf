@@ -25,10 +25,10 @@ async def _(event):
     reply_message = await event.get_reply_message()
     limit, soft_warn = sql.get_warn_setting(event.chat_id)
     num_warns, reasons = sql.warn_user(
-        reply_message.sender_id, event.chat_id, warn_reason
+        str(reply_message.sender_id), event.chat_id, warn_reason
     )
     if num_warns >= limit:
-        sql.reset_warns(reply_message.sender_id, event.chat_id)
+        sql.reset_warns(str(reply_message.sender_id), event.chat_id)
         if soft_warn:
             logger.info("TODO: kick user")
             reply = "**▸┊بسبب تخطي التحذيرات الـ {} ، يجب طرد المستخدم! 🚷**".format(
@@ -63,7 +63,7 @@ async def _(event):
         return await edit_delete(
             event, "**▸┊قم بالرد ع المستخدم للحصول ع تحذيراته . ☻**"
         )
-    result = sql.get_warns(reply_message.sender_id, event.chat_id)
+    result = sql.get_warns(str(reply_message.sender_id), event.chat_id)
     if not result or result[0] == 0:
         return await edit_or_reply(event, "__▸┊هذا المستخدم ليس لديه أي تحذير! ツ__")
     num_warns, reasons = result
@@ -71,14 +71,9 @@ async def _(event):
     if not reasons:
         return await edit_or_reply(
             event,
-            "**▸┊[ المستخدم 👤](tg://user?id={}) **لديه {}/{} تحذيرات ، لكن لا توجد اسباب !**".format(
-                num_warns, limit
-            ),
+            f"▸┊هذا المستخدم لديه {num_warns} / {limit} تحذيرات ، لكن لا توجد اسباب !",
         )
-
-    text = "**▸┊[ المستخدم 👤](tg://user?id={}) **لديه {}/{} تحذيرات ، للأسباب : ↶**".format(
-        num_warns, limit
-    )
+    text = f"▸┊هذا المستخدم لديه {num_warns} / {limit} تحذيرات ، للأسباب : ↶"
     text += "\r\n"
     text += reasons
     await event.edit(text)
@@ -98,5 +93,5 @@ async def _(event):
 async def _(event):
     "لحذف او اعادة تحذيرات المستخدم الذي تم الرد عليه"
     reply_message = await event.get_reply_message()
-    sql.reset_warns(reply_message.sender_id, event.chat_id)
+    sql.reset_warns(str(reply_message.sender_id), event.chat_id)
     await edit_or_reply(event, "**▸┊تم إعادة ضبط التحذيرات!**")
