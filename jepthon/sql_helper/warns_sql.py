@@ -7,13 +7,13 @@ from . import BASE, SESSION
 
 class Warns(BASE):
     __tablename__ = "warns"
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(String, primary_key=True)
     chat_id = Column(String(14), primary_key=True)
     num_warns = Column(Integer, default=0)
     reasons = Column(UnicodeText)
 
     def __init__(self, user_id, chat_id):
-        self.user_id = user_id
+        self.user_id = str(user_id)
         self.chat_id = str(chat_id)
         self.num_warns = 0
         self.reasons = ""
