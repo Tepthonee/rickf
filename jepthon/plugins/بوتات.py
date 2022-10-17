@@ -180,8 +180,5 @@ async def jepmeme(memejep):
 @jepiq.on(admin_cmd(outgoing=True, pattern="انمي10$"))
 async def jepmeme(memejep):
   url = f"https://t.me/MemeSoundJep/18"
-@jepiq.on(admin_cmd(outgoing=True, pattern="زيج2$"))
-async def jepmeme(memejep):
-url = f"https://t.me/illlil0l/7"
 await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html")
   await memejep.delete()
