@@ -2,7 +2,7 @@ from jepthon import *
 from jepthon import jepiq
 from ..sql_helper.globals import gvarstatus
 
-@jepiq.on(admin_cmd(pattern="(ذاتية|ذاتيه)"))
+@jepiq.on(admin_cmd(pattern="(جلب الصورة|جلب الصوره|ذاتيه|ذاتية|حفظ)"))
 async def dato(event):
     if not event.is_reply:
         return await event.edit("..")
@@ -12,10 +12,10 @@ async def dato(event):
         "me",
         pic,
         caption=f"""
-- تـم جـلب الصـورة بنجـاح ✓ 
+- تـم حفظ الصـورة بنجـاح ✓ 
 - غير مبري الذمه اذا استخدمت الامر للابتزاز
 - CH: @Repthon
 - Dev: @ZQ_LO
   """,
     )
-    await event.edit(" 🙂❤️ ")
+    await event.delete()
