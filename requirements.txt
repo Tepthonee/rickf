@@ -3,7 +3,6 @@ setuptools
 wheel
 aiofiles
 aiohttp
-json
 beautifulsoup4
 cairosvg
 cfscrape
@@ -23,7 +22,6 @@ base64
 bs4
 tgcrypto
 pymongo[srv]
-ujson
 glitch_this
 google-api-python-client
 google-auth-httplib2
@@ -31,7 +29,6 @@ google-auth-oauthlib
 gsearch
 git+https://github.com/buddhhu/img2html.git
 git+https://github.com/yt-dlp/yt-dlp
-git+https://github.com/pytgcalls/pytgcalls
 gtts
 hachoir
 heroku3
@@ -82,6 +79,6 @@ youtube_dl
 youtube-search
 youtube-search-python==1.4.9
 yt_dlp
-git+gttps://github.com/redaiq90/webcolors
+git+https://github.com/redaiq90/webcolors
 git+https://github.com/cinemagoer/cinemagoer
 git+https://github.com/sandy1709/py-googletrans
