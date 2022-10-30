@@ -87,7 +87,7 @@ async def _(event):
 async def jepvois(vois):
   rl = random.randint(3,267)
   url = f"https://t.me/DwDi1/{rl}"
-  await vois.client.send_file(vois.chat_id,url,caption="᯽︙ BY : @Repthon 🎀",parse_mode="html")
+  await vois.client.send_file(vois.chat_id,url,caption="✦┊تم اختياࢪ الاغنيـه لك 💞🎶**ٴ▁ ▂ ▉ ▄ ▅ ▆ ▇ ▅ ▆ ▇ █ ▉ ▂ ▁/n/n[➧𝙎𝙤𝙪𝙧𝙘𝙚 𝙧𝙚𝙥𝙩𝙝𝙤𝙣](https://t.me/Repthon),parse_mode="html")
   await vois.delete()
 
 @jepiq.on(admin_cmd(outgoing=True, pattern="شعر$"))
