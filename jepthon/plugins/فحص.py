@@ -46,7 +46,7 @@ async def amireallyalive(event):
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
-        jepver=JEPVERSION,
+        repver=JEPVERSION,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
