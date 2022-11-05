@@ -13,10 +13,10 @@ loop = None
 if Config.STRING_SESSION:
     session = StringSession(str(Config.STRING_SESSION))
 else:
-    session = "Repthon"
+    session = "Jepthon"
 
 try:
-    repiq = CatUserBotClient(
+    jepiq = CatUserBotClient(
         session=session,
         api_id=Config.APP_ID,
         api_hash=Config.API_HASH,
@@ -31,7 +31,7 @@ except Exception as e:
     sys.exit()
 
 
-repiq.tgbot = tgbot = CatUserBotClient(
+jepiq.tgbot = tgbot = CatUserBotClient(
     session="arTgbot",
     api_id=Config.APP_ID,
     api_hash=Config.API_HASH,
