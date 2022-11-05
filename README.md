@@ -31,4 +31,4 @@ published by the Free Software Foundation, either version 3 of the License, or
 ## Dev
    <a href="https://t.me/ZQ_LO"><img src="https://img.shields.io/badge/Source%20Dev%3F-here-inactive?&style=plastic?&logo=telegram" width=220px></a></p>
 ✗ ¦ ↱𝐺𝑜𝑙 𝐷. 𝑅𝑜𝑔𝑒𝑟↲ ¦ ✗ 𐇮
-
+.
