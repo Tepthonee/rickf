@@ -1,7 +1,7 @@
 import sys
 from asyncio.exceptions import CancelledError
 from time import sleep
-
+import asyncio
 from jepthon import jepiq
 
 from ..core.logger import logging
@@ -30,11 +30,26 @@ plugin_category = "tools"
 async def _(event):
     "Restarts the bot !!"
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "**⌔︙ ريبثون ↻** \n" "**⌯︙تم تحديث السورس بنجاح ✅ ↻**")
-    lMl10l = await edit_or_reply(
-        event,
-        "**⌯︙جـاري تحديث سورس ريبثون ، قـد يستغـرق الأمـر 2-3 دقائـق لاتقم بكتابة تحديث مـره اخـرى انتـظـر ⏱**",
-    )
+        await event.client.send_message(BOTLOG_CHATID, "**⌔︙ريبثون ↻** \n" "**᯽︙ تم اعادة تشغيل السورس بنجاح ✅ ↻**")
+    ZQ_LO = await edit_or_reply(event, "᯽︙ سيتم اعادة التشغيل انتظر ")
+    await event.edit("0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒")
+    await asyncio.sleep(2)
+    await event.edit("4%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒")
+    await asyncio.sleep(2)
+    await event.edit("8%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒")
+    await asyncio.sleep(2)
+    await event.edit("20%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒")
+    await asyncio.sleep(2)
+    await event.edit("36%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒")
+    await asyncio.sleep(2)
+    await event.edit("52%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒")
+    await asyncio.sleep(2)
+    await event.edit("84%\n█████████████████████▒▒▒▒")
+    await asyncio.sleep(2)
+    await event.edit("100%\n████████████████████████")
+    await asyncio.sleep(2)
+    await event.edit("**᯽︙ تم اعادة تشغيل بنجاح ✓ \nانتظر 2-5 دقائق**")
+    await asyncio.sleep(2)
     try:
         ulist = get_collectionlist_items()
         for i in ulist:
@@ -43,7 +58,7 @@ async def _(event):
     except Exception as e:
         LOGS.error(e)
     try:
-        add_to_collectionlist("restart_update", [lMl10l.chat_id, lMl10l.id])
+        add_to_collectionlist("restart_update", [ZQ_LO.chat_id, ZQ_LO.id])
     except Exception as e:
         LOGS.error(e)
     try:
@@ -67,8 +82,8 @@ async def _(event):
 async def _(event):
     "Shutdowns the bot"
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "**⌯︙إيقاف التشغيـل ✕ **\n" "**⌯︙تـم إيقـاف تشغيـل البـوت بنجـاح ✓**")
-    await edit_or_reply(event, "**⌯︙جـاري إيقـاف تشغيـل البـوت الآن ..**\n⌯︙ **أعـد تشغيـلي يدويـاً لاحقـاً عـبر هيـروڪو ..**\n⌔︙**سيبقى البـوت متوقفـاً عن العمـل**")
+        await event.client.send_message(BOTLOG_CHATID, "**᯽︙ إيقاف التشغيـل ✕ **\n" "**᯽︙ تـم إيقـاف تشغيـل البـوت بنجـاح ✓**")
+    await edit_or_reply(event, "**᯽︙ جـاري إيقـاف تشغيـل البـوت الآن ..**\n᯽︙  **أعـد تشغيـلي يدويـاً لاحقـاً عـبر هيـروڪو ..**\n⌔︙**سيبقى البـوت متوقفـاً عن العمـل**")
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
     else:
@@ -78,7 +93,7 @@ async def _(event):
     pattern="التحديثات (تشغيل|ايقاف)$",
     command=("التحديثات", plugin_category),
     info={
-        "header": "⌯︙لتحديـث الدردشـة بعـد إعـادة التشغيـل  أو إعـادة التحميـل  ",
+        "header": "᯽︙ لتحديـث الدردشـة بعـد إعـادة التشغيـل  أو إعـادة التحميـل  ",
         "description": "⌔︙سيتـم إرسـال بنـك cmds ڪـرد على الرسالـة السابقـة الأخيـرة لـ (إعادة تشغيل/إعادة تحميل/تحديث cmds) 💡.",
         "usage": [
             "{tr}التحديثات <تشغيل/ايقاف",
@@ -86,14 +101,14 @@ async def _(event):
     },
 )
 async def set_pmlog(event):
-    "⌯︙لتحديـث الدردشـة بعـد إعـادة التشغيـل  أو إعـادة التحميـل  "
+    "᯽︙ لتحديـث الدردشـة بعـد إعـادة التشغيـل  أو إعـادة التحميـل  "
     input_str = event.pattern_match.group(1)
     if input_str == "ايقاف":
         if gvarstatus("restartupdate") is None:
-            return await edit_delete(event, "**⌯︙تـم تعطيـل التـحديـثات بالفعـل ❗️**")
+            return await edit_delete(event, "**᯽︙ تـم تعطيـل التـحديـثات بالفعـل ❗️**")
         delgvar("restartupdate")
         return await edit_or_reply(event, "**⌔︙تـم تعطيـل التـحديـثات بنجـاح ✓**")
     if gvarstatus("restartupdate") is None:
         addgvar("restartupdate", "turn-oned")
         return await edit_or_reply(event, "**⌔︙تـم تشغيل التـحديـثات بنجـاح ✓**")
-    await edit_delete(event, "**⌯︙تـم تشغيل التـحديـثات بالفعـل ❗️**")
+    await edit_delete(event, "**᯽︙ تـم تشغيل التـحديـثات بالفعـل ❗️**")
