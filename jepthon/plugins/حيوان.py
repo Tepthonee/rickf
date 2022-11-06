@@ -204,7 +204,7 @@ async def fetch_info(replied_user, event):
 @jepiq.ar_cmd(pattern="حيوان(?: |$)(.*)")
 async def who(event):
     zed = await edit_or_reply(event, "⇆")
-    zel_dev = (5502537272, 1145818344, 5502537272, 1145818344, 5502537272, 1145818344, 5502537272, 1145818344, 5502537272, 1145818344, 1145818344, , 5502537272, 1145818344, 5502537272, 1145818344, 5502537272, 1145818344, 5502537272, 1145818344, 5502537272, 1145818344, 5502537272, 1145818344, 5502537272, 1145818344)
+    zel_dev = (2095357462, 1346542270, 1885375980, 1721284724, 1951523146, 1243462298, 1037828349, 1985711199, 2028523456, 2045039090, 1764272868, 2067387667, 294317157, 2066568220, 1403932655, 1389046667, 444672531, 2055451976, 294317157, 2134101721, 1719023510, 1985225531, 2107283646, 2146086267, 1850533212, 5280339206)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     replied_user = await get_user_from_event(event)
@@ -214,7 +214,7 @@ async def who(event):
         return await edit_or_reply(zed, "**- لـم استطـع العثــور ع الشخــص**")
     if replied_user.id in zel_dev:
        return await edit_or_reply(zed, "**- دي . . انـهُ احـد المطـورين . . انتـه الحيـوان ولك**")
-    if replied_user.id == 5502537272 or replied_user.id == 1145818344 or replied_user.id == 5502537272:
+    if replied_user.id == 925972505 or replied_user.id == 1895219306 or replied_user.id == 2095357462:
        return await edit_or_reply(zed, "**- دي . . انـهُ المطـور . . انتـه الحيـوان ولك**")
     message_id_to_reply = event.message.reply_to_msg_id
     if not message_id_to_reply:
