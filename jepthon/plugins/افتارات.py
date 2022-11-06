@@ -1,5 +1,5 @@
-#𝙕𝙚𝙙𝙏𝙝𝙤𝙣 ®
-#الملـف حقـوق وكتابـة زلـزال الهيبـه ⤶ @zzzzl1l خاص بسـورس ⤶ 𝙕𝙚𝙙𝙏𝙝𝙤𝙣
+#R𝙀𝙋𝙏𝙃𝙊𝙉𖠏 ®
+#الملـف حقـوق وكتابـة روجر ⤶ @ZQ_LO خاص بسـورس ⤶ 𝐑𝐄𝐏
 
 
 import asyncio
@@ -13,9 +13,9 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import InputMessagesFilterVideo, InputMessagesFilterVoice, InputMessagesFilterPhotos
 
-from zthon import zedub
+from jepthon import jepiq
 
-from zthon.core.logger import logging
+from jepthon.core.logger import logging
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from . import ALIVE_NAME, mention
