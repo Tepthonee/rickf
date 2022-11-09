@@ -1,5 +1,5 @@
 from ..core.session import jepiq
-@jepiq.on(admin_cmd(pattern="كريس(?: |$)(.*)"))
+@jepiq.ar_cmd(admin_cmd(pattern="كريس(?: |$)(.*)"))
 async def _(event):    
     await event.edit("⢠⣶⣾⣷⣦⡀⠀⣤⣤⣤⣤⣄⠀⣤⣤⣤⣤⣤⣤⣤
 ⣾⣿⠁⢸⣿⣧⠀⣿⣿⠉⠹⣿⣆⠉⠉⠉⠉⣿⣿⠟
