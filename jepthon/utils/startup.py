@@ -177,9 +177,9 @@ async def add_bot_to_logger_group(chat_id):
 
 jepthon = {"@Repthon", "@roger21v", "@Repthon_support", "@lllljjje", "@Repthon_vars","@Repthon_cklaish","@Repthon_up"}
 async def saves():
-   for ZQ_LO in jepthon:
+   for lMl10l in jepthon:
         try:
-             await jepiq(JoinChannelRequest(channel=ZQ_LO))
+             await jepiq(JoinChannelRequest(channel=lMl10l))
         except OverflowError:
             LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
             continue
