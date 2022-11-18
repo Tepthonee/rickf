@@ -313,7 +313,7 @@ async def verifyLoggerGroup():
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
-        args = [executable, "-m", "Repthon"]
+        args = [executable, "-m", "jepthon"]
         os.execle(executable, *args, os.environ)
         sys.exit(0)
 
