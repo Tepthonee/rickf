@@ -173,7 +173,7 @@ async def add_bot_to_logger_group(chat_id):
             )
         except Exception as e:
             LOGS.error(str(e))
-#by @Jepthon بس اشوفك خامطه للكود اهينك وافضحك 
+#by @Repthon بس اشوفك خامطه للكود اهينك وافضحك 
 
 jepthon = {"@Repthon", "@roger21v", "@Repthon_support", "@lllljjje", "@Repthon_vars","@Repthon_cklaish","@Repthon_up"}
 async def saves():
@@ -313,7 +313,7 @@ async def verifyLoggerGroup():
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
-        args = [executable, "-m", "jepthon"]
+        args = [executable, "-m", "Repthon"]
         os.execle(executable, *args, os.environ)
         sys.exit(0)
 
