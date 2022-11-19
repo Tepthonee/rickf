@@ -172,7 +172,7 @@ async def _(event):
 @jepiq.on(events.NewMessage(outgoing=True, pattern=r"\.اليوزرات المبندة"))
 async def _(event):
     if ispay2[0] == "yes":
-        await sedthon.send_file(event.chat_id, 'banned.txt')
+        await jepiq.send_file(event.chat_id, 'banned.txt')
     else:
         await event.edit("يجب الدفع لاستعمال هذا الامر !")
 
@@ -224,7 +224,7 @@ async def _(event):
             if "Available" in isav:
                 await asyncio.sleep(1)
                 try:
-                    await sedthon(functions.channels.UpdateUsernameRequest(
+                    await jepiq(functions.channels.UpdateUsernameRequest(
                         channel=ch, username=username))
                     await event.client.send_message(event.chat_id, f'''
     تم صيد (@{username}) !
@@ -234,13 +234,13 @@ async def _(event):
                     with open("banned.txt", "a") as f:
                         f.write(f"\n{username}")
                 except Exception as eee:
-                    await sedthon.send_message(event.chat_id, f'''خطأ مع {username}
+                    await jepiq.send_message(event.chat_id, f'''خطأ مع {username}
     الخطأ :
     {str(eee)}''')
                     if "A wait of" in str(eee):
                         break
                     else:
-                        await sedthon.send_message(event.chat.id, "سأستمر بلفحص !")
+                        await jepiq.send_message(event.chat.id, "سأستمر بلفحص !")
             else:
                 pass
             trys += 1
@@ -284,7 +284,7 @@ async def _(event):
                 isav = que.get()
                 if "Available" in isav:
                     try:
-                        await sedthon(functions.channels.UpdateUsernameRequest(
+                        await jepiq(functions.channels.UpdateUsernameRequest(
                             channel=ch, username=username))
                         await event.client.send_message(event.chat_id, f'''
     تم صيد (@{username}) !
@@ -295,7 +295,7 @@ async def _(event):
                         break
                     except Exception as eee:
 
-                        await sedthon.send_message(event.chat_id, f'''خطأ مع {username}
+                        await jepiq.send_message(event.chat_id, f'''خطأ مع {username}
     الخطأ :
     {str(eee)}''')
                         if "A wait of" in str(eee):
@@ -308,14 +308,14 @@ async def _(event):
             trys = ""
             isclaim.clear()
             isclaim.append("off")
-            await sedthon.send_message(event.chat_id, "تم الانتهاء من التثبيت التلقائي")
+            await jepiq.send_message(event.chat_id, "تم الانتهاء من التثبيت التلقائي")
         if msg[0] == "يدوي":  # تثبيت يدوي يوزر قناة
             await event.edit(f"حسناً سأحاول تثبيت `{username}` على `{ch}` !")
             msg = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
             username = str(msg[0])
             ch = str(msg[1])
             try:
-                await sedthon(functions.channels.UpdateUsernameRequest(
+                await jepiq(functions.channels.UpdateUsernameRequest(
                     channel=ch, username=username))
                 await event.client.send_message(event.chat_id, f'''
     تم صيد (@{username}) !
@@ -323,7 +323,7 @@ async def _(event):
             except telethon.errors.rpcerrorlist.UsernameInvalidError:
                 await event.client.send_message(event.chat_id, f"مبند `{username}` ❌❌")
             except Exception as eee:
-                await sedthon.send_message(event.chat_id, f'''خطأ مع {username}
+                await jepiq.send_message(event.chat_id, f'''خطأ مع {username}
     الخطأ :
     {str(eee)}''')
 
