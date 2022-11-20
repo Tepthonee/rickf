@@ -1,3 +1,4 @@
+from jepthon import jepiq
 import random
 import asyncio
 import telethon
@@ -161,7 +162,7 @@ def gen_user(choice):
     return username
 
 
-@jepiq.on(events.NewMessage(outgoing=True, pattern=r"\.تشيكر تلي"))
+@jepiq.on(events.NewMessage(outgoing=True, pattern=r".تشيكر تلي"))
 async def _(event):
     if ispay2[0] == "yes":
         await event.edit(tele_checker)
@@ -169,7 +170,7 @@ async def _(event):
         await event.edit("يجب الدفع لاستعمال هذا الامر !")
 
 
-@jepiq.on(events.NewMessage(outgoing=True, pattern=r"\.اليوزرات المبندة"))
+@jepiq.on(events.NewMessage(outgoing=True, pattern=r".اليوزرات المبندة"))
 async def _(event):
     if ispay2[0] == "yes":
         await jepiq.send_file(event.chat_id, 'banned.txt')
@@ -177,7 +178,7 @@ async def _(event):
         await event.edit("يجب الدفع لاستعمال هذا الامر !")
 
 
-@jepiq.on(events.NewMessage(outgoing=True, pattern=r"\.الانواع"))
+@jepiq.on(events.NewMessage(outgoing=True, pattern=r".الانواع"))
 async def _(event):
     if ispay2[0] == "yes":
         await event.edit(tele_checker2)
@@ -188,7 +189,7 @@ async def _(event):
 # كلايم عدد نوع قناة
 
 
-@jepiq.on(events.NewMessage(outgoing=True, pattern=r"\.كلايم (.*)"))
+@jepiq.on(events.NewMessage(outgoing=True, pattern=r".كلايم (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         isclaim.clear()
@@ -253,7 +254,7 @@ async def _(event):
         await event.edit("يجب الدفع لاستعمال هذا الامر !")
 
 
-@jepiq.on(events.NewMessage(outgoing=True, pattern=r"\.تثبيت (.*)"))
+@jepiq.on(events.NewMessage(outgoing=True, pattern=r".تثبيت (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         trys = 0
