@@ -162,7 +162,7 @@ def gen_user(choice):
     return username
 
 
-@jepiq.on(events.NewMessage(outgoing=True, pattern=r".تشيكر تلي"))
+@jepiq.ar_cmd(events.NewMessage(outgoing=True, pattern=r"تشيكر تلي$"))
 async def _(event):
     if ispay2[0] == "yes":
         await event.edit(tele_checker)
@@ -170,7 +170,7 @@ async def _(event):
         await event.edit("يجب الدفع لاستعمال هذا الامر !")
 
 
-@jepiq.on(events.NewMessage(outgoing=True, pattern=r".اليوزرات المبندة"))
+@jepiq.ar_cmd(events.NewMessage(outgoing=True, pattern=r"اليوزرات المبندة"$))
 async def _(event):
     if ispay2[0] == "yes":
         await jepiq.send_file(event.chat_id, 'banned.txt')
@@ -178,7 +178,7 @@ async def _(event):
         await event.edit("يجب الدفع لاستعمال هذا الامر !")
 
 
-@jepiq.on(events.NewMessage(outgoing=True, pattern=r".الانواع"))
+@jepiq.ar_cmd(events.NewMessage(outgoing=True, pattern=r"الانواع$"))
 async def _(event):
     if ispay2[0] == "yes":
         await event.edit(tele_checker2)
@@ -189,7 +189,7 @@ async def _(event):
 # كلايم عدد نوع قناة
 
 
-@jepiq.on(events.NewMessage(outgoing=True, pattern=r".كلايم (.*)"))
+@jepiq.ar_cmd(events.NewMessage(outgoing=True, pattern=r"كلايم$ (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         isclaim.clear()
@@ -200,7 +200,7 @@ async def _(event):
         trys = 0
         await event.edit(f"حسناً سأفحص نوع `{choice}` من اليوزرات على `{ch}` , بعدد `{msg[0]}` من المحاولات !")
 
-        @jepiq.on(events.NewMessage(outgoing=True, pattern=r"\.حالة الكلايم"))
+        @jepiq.ar_cmd(events.NewMessage(outgoing=True, pattern=r"حالة الكلايم$"))
         async def _(event):
             if ispay2[0] == "yes":
                 if "on" in isclaim:
@@ -254,7 +254,7 @@ async def _(event):
         await event.edit("يجب الدفع لاستعمال هذا الامر !")
 
 
-@jepiq.on(events.NewMessage(outgoing=True, pattern=r".تثبيت (.*)"))
+@jepiq.ar_cmd(events.NewMessage(outgoing=True, pattern=r"تثبيت$ (.*)"))
 async def _(event):
     if ispay2[0] == "yes":
         trys = 0
@@ -267,7 +267,7 @@ async def _(event):
             ch = str(msg[1])
             await event.edit(f"حسناً سأحاول تثبيت `{username}` على `{ch}` , بعدد `{msg[0]}` من المحاولات !")
 
-            @jepiq.on(events.NewMessage(outgoing=True, pattern=r"\.حالة التثبيت التلقائي"))
+            @jepiq.ar_cmd(events.NewMessage(outgoing=True, pattern=r"حالة التثبيت التلقائي$"))
             async def _(event):
                 if "on" in isauto:
                     msg = await event.edit(f"التثبيت وصل لـ({trys}) من المحاولات")
