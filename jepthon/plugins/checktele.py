@@ -1,4 +1,4 @@
-from jepthon import jepiq
+from ..core.session import jepiq
 import random
 import asyncio
 import telethon
