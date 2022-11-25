@@ -85,7 +85,7 @@ async def variable(var):
                 "**⌔∮ تم بنجاح تغيير فار رمز الاسم \n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
             )
         heroku_var[variable] = vra
-    if exe == "البايو" or exe == "النبذة":
+    if exe == "البايو" or exe == "النبذة" or exe == "بايو":
         variable = "DEFAULT_BIO"
         await asyncio.sleep(1)
         if variable in heroku_var:
@@ -99,7 +99,7 @@ async def variable(var):
                 "**⌔∮ تم بنجاح تغيير فار البايو\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
             )
         heroku_var[variable] = vra
-    if exe == "القروب" or exe == "الكروب":
+    if exe == "القروب" or exe == "الكروب" or exe == "كروب":
         variable = "DEFAULT_GROUP"
         await asyncio.sleep(1)
         if variable in heroku_var:
@@ -113,7 +113,7 @@ async def variable(var):
                 "**⌔∮ تم بنجاح تغيير فار الكروب\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
             )
         heroku_var[variable] = vra 
-    if exe == "الصورة" or exe == "الصوره":
+    if exe == "الصورة" or exe == "الصوره" or exe == "صورة":
         variable = "DIGITAL_PIC"
         await asyncio.sleep(1)
         if variable in heroku_var:
@@ -198,20 +198,6 @@ async def variable(var):
             )
         heroku_var[variable] = vra
     if exe == "كروب الحفظ":
-        variable = "PRIVATE_GROUP_BOT_API_ID"
-        await asyncio.sleep(1)
-        if variable in heroku_var:
-            await edit_or_reply(
-                var,
-                "**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
-            )
-        else:
-            await edit_or_reply(
-                var,
-                "**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**",
-            )
-        heroku_var[variable] = vra
-    if exe == "ميوزك":
         variable = "PRIVATE_GROUP_BOT_API_ID"
         await asyncio.sleep(1)
         if variable in heroku_var:
@@ -466,7 +452,7 @@ async def variable(event):
 @jepiq.ar_cmd(pattern="زخرفة الصورة(?:\s|$)([\s\S]*)")
 async def variable(event):
     if Config.HEROKU_API_KEY is None:
-        return await ed(
+        return await edit_delete(
             event,
             "اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ",
         )
@@ -637,7 +623,7 @@ async def variable(event):
 @jepiq.ar_cmd(pattern="ميوزك(?:\s|$)([\s\S]*)")
 async def variable(event):
     if Config.HEROKU_API_KEY is None:
-        return await ed(
+        return await edit_delete(
             event,
             "اضبط Var المطلوب في Heroku على وظيفة هذا بشكل طبيعي `HEROKU_API_KEY` اذا كنت لاتعلم اين يوجد فقط اذهب الى حسابك في هيروكو ثم الى الاعدادات ستجده بالاسفل انسخه ودخله في الفار. ",
         )
@@ -745,11 +731,11 @@ async def _(dyno):
         )
     data = app.get_log()
     await edit_or_reply(
-        dyno, data, deflink=True, linktext="**اخر 100 سطر في لوك هيروكو: **"
+        dyno, data, deflink=True, linktext="**اخر 200 سطر في لوك هيروكو: **"
     )
 
 
-def prettyjson(obj, indent=2, maxlinelength=80):
+def prettyjson(obj, indent=4, maxlinelength=80):
     items, _ = getsubitems(
         obj,
         itemkey="",
