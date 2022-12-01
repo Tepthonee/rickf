@@ -37,7 +37,7 @@ REGEX_ = REGEX()
 sudo_enabledcmds = sudo_enabled_cmds()
 
 
-class CatUserBotClient(TelegramClient):
+class JokerClient(TelegramClient):
     def ar_cmd(
         self: TelegramClient,
         pattern: str or tuple = None,
@@ -292,14 +292,14 @@ class CatUserBotClient(TelegramClient):
         self.running_processes.clear()
 
 
-CatUserBotClient.fast_download_file = download_file
-CatUserBotClient.fast_upload_file = upload_file
-CatUserBotClient.reload = restart_script
-CatUserBotClient.get_msg_link = get_message_link
-CatUserBotClient.check_testcases = checking
+JokerClient.fast_download_file = download_file
+JokerClient.fast_upload_file = upload_file
+JokerClient.reload = restart_script
+JokerClient.get_msg_link = get_message_link
+JokerClient.check_testcases = checking
 try:
     send_message_check = TelegramClient.send_message
 except AttributeError:
-    CatUserBotClient.send_message = send_message
-    CatUserBotClient.send_file = send_file
-    CatUserBotClient.edit_message = edit_message
+    JokerClient.send_message = send_message
+    JokerClient.send_file = send_file
+    JokerClient.edit_message = edit_message
