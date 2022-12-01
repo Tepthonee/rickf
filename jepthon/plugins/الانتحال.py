@@ -24,7 +24,7 @@ DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
 DEFAULTUSERBIO = (
     str(DEFAULT_BIO)
     if DEFAULT_BIO
-    else "الحمد لله دائماً وابداً 🎀 𝑆𝐻 : @Repthon"
+    else "الحمد لله دائماً وابداً 🎀 𝑆𝐻 : @RICKTHON"
 )
 
 
@@ -37,11 +37,11 @@ async def _(event):
     replied_user, error_i_a = await get_user_from_event(event)
     if replied_user is None:
         return await edit_delete(event, "**يجب الرد على رسالة اولاً**")
-    if replied_user.id == 5502537272:
+    if replied_user.id == 5582470474:
+        return await edit_delete(event, "**لا تحاول تنتحل المطور مطي!**")
+    if replied_user.id == 1887927704:
         return await edit_delete(event, "**لا تحاول تنتحل المطورين ادبسز!**")
-    if replied_user.id == 5502537272:
-        return await edit_delete(event, "**لا تحاول تنتحل المطورين ادبسز!**")
-    if replied_user.id == 5502537272:
+    if replied_user.id == 5543149965:
         return await edit_delete(event, "**لا تحاول تنتحل المطورين ادبسز!**")
     user_id = replied_user.id
     profile_pic = await event.client.download_profile_photo(user_id, Config.TEMP_DIR)
@@ -119,7 +119,7 @@ async def _(event):
         await event.client.send_message(
             BOTLOG_CHATID, f"⌁︙تـم اعادة الـحساب الى وضـعه الاصلـي ،✅")
 #Reda
-jeps = ["Repthon", "Repthon_support"]
+jeps = ["rickthon", "rickthon_group", "rickthon_super", "x7_cm"]
 @jepiq.ar_cmd(pattern="انتحال_الدردشه")
 async def reda(event):
     if event.is_group or event.is_channel:
@@ -168,11 +168,11 @@ async def reda(event):
         except FloodWaitError:
             return await edit_delete(event, "**انتضر مدة لا تقل عن 5 دقائق للانتحال مجدداً FLOODWAITERROR خطأ من التيليجرام**")
         await edit_delete(event, "**⌯︙تم الانتحال بنجاح ✓**")
-        base64m = 'QFJlcHRob24='
+        base64m = 'QFJJQ0tUSE9O='
         message = base64.b64decode(base64m)
         messageo = message.decode()
         if len(messageo) != 8:
-            return await edit_delete(event, "لا تغير الرسالة @Repthon")
+            return await edit_delete(event, "لا تغير الرسالة @RICKTHON")
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
