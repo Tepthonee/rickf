@@ -3,7 +3,7 @@ from ..Config import Config
 from ..sql_helper.globals import gvarstatus
 from JepIQ.razan.resources.mybot import *
 
-ROZ_PIC = "https://telegra.ph/file/3c595e91d922a8df1fc5c.jpg"
+ROZ_PIC = "https://telegra.ph/file/632932f6b937df7d1ac4f.jpg"
 
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(events.InlineQuery)
@@ -13,7 +13,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         query = event.text
         await bot.get_me()
         if query.startswith("السورس") and event.query.user_id == bot.uid:
-            buttons = [[Button.url("1- شرح التنصيب", "https://youtu.be/5VBVpjBntTs"), Button.url("2- استخراج ايبيات", "https://my.telegram.org/"),],[Button.url("3- ستخراج تيرمكس", "https://replit.com/@taabn-tabantaba/CodeTelethon-1?v=1"), Button.url("4- بوت فاذر", "http://t.me/BotFather"),],[Button.url("5- رابط التنصيب", "https://heroku.com/deploy?template=https://github.com/rogerpq/ZQ_LO"),],[Button.url("المطـور 👨🏼‍💻", "https://t.me/ZQ_LO"),]]
+            buttons = [[Button.url("1- شرح التنصيب", "https://youtu.be/eXaxtjZPEj8"), Button.url("2- استخراج ايبيات", "https://my.telegram.org/"),],[Button.url("3- ستخراج تيرمكس", "https://replit.com/@saif61/generatestringsession#main.py"), Button.url("4- بوت فاذر", "http://t.me/BotFather"),],[Button.url("5- رابط التنصيب", "https://app.koyeb.com/apps/deploy?type=git&repository=github.com/rick1128/rickthoniq&branch=rickthon&name=rickthon&env[APP_ID]=ضع_ابب_ايدي&env[API_HASH]=ضع_ايبي_هاش&env[ENV]=ANYTHING&env[DATABASE_URL]=قاعدة_البيانات&env[STRING_SESSION]=كود_تريمكس&env[TG_BOT_USERNAME]=معرف_البوت&env[TG_BOT_TOKEN]=توكن_البوت&env[ALIVE_NAME]=اسم_المستخدم&env[TZ]=Asia/Baghdad"),],[Button.url("المطـور 👨🏼‍💻", "https://t.me/a9aa99a"),]]
             if ROZ_PIC and ROZ_PIC.endswith((".jpg", ".png", "gif", "mp4")):
                 result = builder.photo(ROZ_PIC, text=ROZ, buttons=buttons, link_preview=False)
             elif ROZ_PIC:
