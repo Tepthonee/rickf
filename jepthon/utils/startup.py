@@ -13,6 +13,8 @@ from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.errors.rpcerrorlist import FloodWaitError
 from jepthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from ..Config import Config
+from aiohttp import web
+from ..core import web_server
 from ..core.logger import logging
 from ..core.session import jepiq
 from ..helpers.utils import install_pip
@@ -55,6 +57,11 @@ async def setup_bot():
         bot_details = await jepiq.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
         # await jepiq.start(bot_token=Config.TG_BOT_USERNAME)
+        app = web.AppRunner(await web_server())
+        await app.setup()
+        bind_address = "0.0.0.0"
+        redaport = Config.PORT
+        await web.TCPSite(app, bind_address, redaport).start()
         jepiq.me = await jepiq.get_me()
         jepiq.uid = jepiq.tgbot.uid = utils.get_peer_id(jepiq.me)
         if Config.OWNER_ID == 0:
@@ -72,9 +79,9 @@ async def startupmessage():
         if BOTLOG:
             Config.CATUBLOGO = await jepiq.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://telegra.ph/file/7a15378b69199ca46c072.jpg",
-                caption="⌯︙**بــوت ريك ثون يـعـمـل بـنـجـاح**  ✅ \n⌯︙**قـنـاة الـسـورس**  :  @Repthon",
-                buttons=[(Button.url("كروب ريبثون", "https://t.me/rickthon_group"),)],
+                "https://telegra.ph/file/3c595e91d922a8df1fc5c.jpg",
+                caption="**᯽︙ بــوت ريك ثون يـعـمـل بـنـجـاح ✓ **\n**᯽︙ ارسل `.الاوامر` لرؤية اوامر السورس**",
+                buttons=[(Button.url("كروب ريك ثون", "https://t.me/rickthon_group"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -92,7 +99,7 @@ async def startupmessage():
             message = await jepiq.get_messages(msg_details[0], ids=msg_details[1])
             text = (
                 message.text
-                + "\n\n**⌯︙اهلا وسهلا لقد قمت باعاده تشغيل بـوت ريك ثون تمت بنجاح**"
+                + "\n\n**᯽︙اهلا وسهلا لقد قمت باعاده تشغيل بـوت ريك ثون تمت بنجاح**"
             )
             
             if gvarstatus("restartupdate") is not None:
@@ -135,7 +142,7 @@ async def ipchange():
     """
     Just to check if ip change or not
     """
-    newip = (requests.get("https://httpbin.org/ip").json())["origin"]
+    newip = (requests.get("https://api.ipify.org/?format=json").json())["ip"]
     if gvarstatus("ipaddress") is None:
         addgvar("ipaddress", newip)
         return None
@@ -175,7 +182,7 @@ async def add_bot_to_logger_group(chat_id):
             LOGS.error(str(e))
 #by @rickthon بس اشوفك خامطه للكود اهينك وافضحك 
 
-jepthon = {"@rickthon", "@rickthon_super", "@rickthon_group", "@x7_cm"}
+jepthon = {"@rickthon","@rickthon_group","@rickthon_super","@x7_cm"}
 async def saves():
    for lMl10l in jepthon:
         try:
@@ -256,31 +263,31 @@ async def verifyLoggerGroup():
             if not isinstance(entity, types.User) and not entity.creator:
                 if entity.default_banned_rights.send_messages:
                     LOGS.info(
-                        "⌯︙الفار الأذونات مفقودة لإرسال رسائل لـ PRIVATE_GROUP_BOT_API_ID المحدد."
+                        "᯽︙الفار الأذونات مفقودة لإرسال رسائل لـ PRIVATE_GROUP_BOT_API_ID المحدد."
                     )
                 if entity.default_banned_rights.invite_users:
                     LOGS.info(
-                        "⌯︙الفار الأذونات مفقودة لإرسال رسائل لـ PRIVATE_GROUP_BOT_API_ID المحدد."
+                        "᯽︙الفار الأذونات مفقودة لإرسال رسائل لـ PRIVATE_GROUP_BOT_API_ID المحدد."
                     )
         except ValueError:
-            LOGS.error("⌯︙تـأكد من فـار المجـموعة  PRIVATE_GROUP_BOT_API_ID.")
+            LOGS.error("᯽︙تـأكد من فـار المجـموعة  PRIVATE_GROUP_BOT_API_ID.")
         except TypeError:
             LOGS.error(
-                "⌯︙لا يمكـن العثور على فار المجموعه PRIVATE_GROUP_BOT_API_ID. تأكد من صحتها."
+                "᯽︙لا يمكـن العثور على فار المجموعه PRIVATE_GROUP_BOT_API_ID. تأكد من صحتها."
             )
         except Exception as e:
             LOGS.error(
-                "⌯︙حدث استثناء عند محاولة التحقق من PRIVATE_GROUP_BOT_API_ID.\n"
+                "᯽︙حدث استثناء عند محاولة التحقق من PRIVATE_GROUP_BOT_API_ID.\n"
                 + str(e)
             )
     else:
         descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @RICKTHON"
         photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/rickthon.jpg")
         _, groupid = await create_supergroup(
-            "مجموعة اشعارات ريك ثون", jepiq, Config.TG_BOT_USERNAME, descript, photobt
+            "مجموعة أشعارات ريك ثون", jepiq, Config.TG_BOT_USERNAME, descript, photobt
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
-        print("⌯︙تم إنشاء مجموعة المسـاعدة بنجاح وإضافتها إلى المتغيرات.")
+        print("᯽︙تم إنشاء مجموعة المسـاعدة بنجاح وإضافتها إلى المتغيرات.")
         flag = True
     if PM_LOGGER_GROUP_ID != -100:
         try:
@@ -288,23 +295,23 @@ async def verifyLoggerGroup():
             if not isinstance(entity, types.User) and not entity.creator:
                 if entity.default_banned_rights.send_messages:
                     LOGS.info(
-                        "⌯︙الأذونات مفقودة لإرسال رسائل لـ PM_LOGGER_GROUP_ID المحدد."
+                        "᯽︙الأذونات مفقودة لإرسال رسائل لـ PM_LOGGER_GROUP_ID المحدد."
                     )
                 if entity.default_banned_rights.invite_users:
                     LOGS.info(
-                        "⌯︙الأذونات مفقودة للمستخدمين الإضافيين لـ PM_LOGGER_GROUP_ID المحدد."
+                        "᯽︙الأذونات مفقودة للمستخدمين الإضافيين لـ PM_LOGGER_GROUP_ID المحدد."
                     )
         except ValueError:
-            LOGS.error("⌯︙لا يمكن العثور على فار  PM_LOGGER_GROUP_ID. تأكد من صحتها.")
+            LOGS.error("᯽︙لا يمكن العثور على فار  PM_LOGGER_GROUP_ID. تأكد من صحتها.")
         except TypeError:
-            LOGS.error("⌯︙PM_LOGGER_GROUP_ID غير مدعوم. تأكد من صحتها.")
+            LOGS.error("᯽︙PM_LOGGER_GROUP_ID غير مدعوم. تأكد من صحتها.")
         except Exception as e:
             LOGS.error(
                 "⌯︙حدث استثناء عند محاولة التحقق من PM_LOGGER_GROUP_ID.\n" + str(e)
             )
     else:
-        descript = "⌯︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @RICKTHON"
-        photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/rickhon.jpg")
+        descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @RICKTHON"
+        photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/rickthon.jpg")
         _, groupid = await create_supergroup(
             "مجموعة التخزين", jepiq, Config.TG_BOT_USERNAME, descript, photobt
         )
