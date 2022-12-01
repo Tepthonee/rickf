@@ -27,7 +27,7 @@ from colour import Color
 
 plugin_category = "tools"
 # لتخمط ابن الكحبة
-DEFAULTUSERBIO = DEFAULT_BIO or " ܙܠܠ𐫘ُܩّܢ ࡎَܠِّࡉ 𐭦ٙߺܠܨ ܩُܥٙܩ𐫔 ࠁَ𐬦ٓܠࡉ ܩُܥٙܩ𐫔ٍ "
+DEFAULTUSERBIO = DEFAULT_BIO or "﴿ لا تَحزَن إِنَّ اللَّهَ مَعَنا ﴾ "
 DEFAULTUSERGRO = DEFAULT_GROUP or ""
 DEFAULTUSER = AUTONAME or ""
 LOGS = logging.getLogger(__name__)
@@ -45,7 +45,7 @@ digitalgrouppfp = Config.DIGITAL_GROUP_PIC or "https://telegra.ph/file/63a826d5e
 lMl10l = Config.TIME_JEP or ""
 jep = Config.DEFAULT_PIC or "jepthon/helpers/styles/PaybAck.ttf"
 normzltext = "1234567890"
-namerzfont = Config.JP_FN or "𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗𝟎"
+namerzfont = Config.JP_FN or "𝟣𝟤𝟥𝟦𝟧𝟨𝟩𝟪𝟫𝟢"
 namew8t = Config.NAME_ET or "اسم وقتي"
 biow8t = Config.BIO_ET or "بايو وقتي"
 phow8t = Config.PHOTO_ET or "الصورة الوقتية"
@@ -258,7 +258,7 @@ async def _(event):
     if gvarstatus("autoname") is not None and gvarstatus("autoname") == "true":
         return await edit_delete(event, "**الاسـم الـوقتي شغـال بالأصـل 🧸♥**")
     addgvar("autoname", True)
-    await edit_delete(event, "**تم تفـعيل الاسـم الـوقتي بنجـاح ✓**")
+    await edit_delete(event, "**تم تفـعيل اسـم الـوقتي بنجـاح ✓**")
     await autoname_loop()
 
 
