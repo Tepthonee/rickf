@@ -14,8 +14,8 @@ async def dato(event):
         caption=f"""
 - تـم حفظ الصـورة بنجـاح ✓ 
 - غير مبري الذمه اذا استخدمت الامر للابتزاز
-- CH: @Repthon
-- Dev: @ZQ_LO
+- CH: @RICKTHON
+- Dev: @A9AA99A
   """,
     )
     await event.delete()
