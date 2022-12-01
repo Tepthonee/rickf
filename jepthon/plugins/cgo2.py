@@ -1,4 +1,4 @@
-#----------ZQ_LO,ul4ul,zq_lo-Repthon
+#----------A9AA99A,huks3,i_m_q-RICKTHON
 #شعندك بلملف تريد تخمط؟
 #تخمط وماتذكر حقوق انت اكبر فرخ
 from bs4 import BeautifulSoup
@@ -132,7 +132,7 @@ async def e(event):
 
 • iD : {uid}
 = = = = = = = = = = = = = = = = = = = = 
-By : @ZQ_LO , @ul4ul To : @Repthon''')
+By : @A9AA99A , @HUKS3 , @I_m_q To : @RICKTHON''')
 #RICKTHON
 @jepiq.on(admin_cmd(pattern=r'^\.ذك'))
 async def hne(event):
@@ -141,7 +141,7 @@ async def hne(event):
     
     
     await jepiq.send_file(event.to_id, AiArt(query=command).Generator(),
-                           caption=f'Done Art \nArt name : {command}\n\n•••••••••••••••\nBy : @ZQ_LO , @ul4ul ,@Repthon')
+                           caption=f'Done Art \nArt name : {command}\n\n•••••••••••••••\nBy : @A9AA99A , @HUKS3 ,@i_m_q')
     await jepiq.delete_messages(chat, event.message)
 @jepiq.on(admin_cmd(pattern=r'^\.سيارات'))
 async def bi(event):
@@ -193,7 +193,7 @@ async def hf(event):
     query = event.raw_text.replace('.سكرين ','')
     q = (f'https://mr-abood.herokuapp.com/Screenshot/API?Link={query}')
     await jepiq.delete_messages(chat, event.message)
-    await jepiq.send_file(event.to_id, q,caption=f'Done screen \nscreen url : {query}\n\n•••••••••••••••\nBy : @ZQ_LO , @ul4ul , @Repthon')
+    await jepiq.send_file(event.to_id, q,caption=f'Done screen \nscreen url : {query}\n\n•••••••••••••••\nBy : @A9AA99A , @huks3 , @i_m_q')
 
 @jepiq.on(admin_cmd(pattern=r'^\.بن'))
 async def bv(event):
@@ -234,7 +234,7 @@ async def bv(event):
         await jepiq.delete_messages(chat, event.message)
 
         await jepiq.send_file(event.to_id, q,
-                               caption=f'Done Serch \nserch name : {query}\n\n•••••••••••••••\nBy : @ZQ_LO , @ul4ul , @Repthon')
+                               caption=f'Done Serch \nserch name : {query}\n\n•••••••••••••••\nBy : @A9AA99A , @huks3 , @i_m_q')
                                
     except Exception as s:
         uk=(requests.get(url, headers=headers).json()['resource_response']['data']['nag']['messages'])
