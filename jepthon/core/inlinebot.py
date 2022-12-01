@@ -53,10 +53,10 @@ def ibuild_keyboard(buttons):
 
 
 def main_menu():
-    text = f"**- [سـورس ريبثون](https://t.me/Repthon)\
+    text = f"**- [سـورس ريك ثون](https://t.me/Rickthon)\
         \n المسـاعد\
         \n\
-        \n◽ ريبثون لـ {mention}**"
+        \n◽ ريك ثون لـ {mention}**"
     buttons = [
         (Button.inline("ℹ️ • التعليمات •", data="check"),),
         (
@@ -228,7 +228,7 @@ async def inline_handler(event):  # sourcery no-metrics
             buttons = [
                 (
                     Button.inline("الحـالة ⚒️", data="stats"),
-                    Button.url(" Repthon UsᴇʀBoᴛ", "https://t.me/Repthon"),
+                    Button.url(" Rickthon UsᴇʀBoᴛ", "https://t.me/Rickthon"),
                 )
             ]
             ALIVE_PIC = gvarstatus("ALIVE_PIC")
@@ -336,7 +336,7 @@ async def inline_handler(event):  # sourcery no-metrics
 
             buttons = [Button.inline("عـرض الـرسـالة 🔐", data=f"troll_{timestamp}")]
             result = builder.article(
-                title="رسـالة تـرول من سـورس ريبثون 🧸♥",
+                title="رسـالة تـرول من سـورس ريك ثون 🧸♥",
                 text=f"فقـط {razan} هـو مـن يستـطيع مشـاهدتهـا !",
                 buttons=buttons,
             )
@@ -386,7 +386,7 @@ async def inline_handler(event):  # sourcery no-metrics
 
             buttons = [Button.inline("عـرض الـرسـالة 🔐", data=f"rzan_{timestamp}")]
             result = builder.article(
-                title="همسـة سـرية من سـورس ريبثون 🧸♥",
+                title="همسـة سـرية من سـورس ريك ثون 🧸♥",
                 text=f"فقـط {razan} هـو مـن يستـطيع مشـاهدتهـا !",
                 buttons=buttons,
             )
@@ -409,7 +409,7 @@ async def inline_handler(event):  # sourcery no-metrics
 
             buttons = [Button.inline("قراءة الـرسالـة ", data=f"hide_{timestamp}")]
             result = builder.article(
-                title="رسـالة مخفيـة من سـورس ريبثون 🧸♥",
+                title="رسـالة مخفيـة من سـورس ريك ثون 🧸♥",
                 text=f"✖✖✖",
                 buttons=buttons,
             )
@@ -559,10 +559,10 @@ async def inline_handler(event):  # sourcery no-metrics
     else:
         buttons = [
             (
-                Button.url("قنـاة السـورس ⚒️", "https://t.me/Repthon"),
+                Button.url("قنـاة السـورس ⚒️", "https://t.me/rickthon"),
                 Button.url(
                     "كـروب المـساعدة 📬",
-                    "https://t.me/Repthon_support",
+                    "https://t.me/rickthon_group",
                 ),
             )
         ]
@@ -571,20 +571,20 @@ async def inline_handler(event):  # sourcery no-metrics
             url=ROZLOGO, size=0, mime_type="image/jpeg", attributes=[]
         )
         text, msg_entities = await event.client._parse_message_text(
-            "**[بـوت ريبثون 🧸♥](https://t.me/Repthon)**\
+            "**[بـوت ريك ثون 🧸♥](https://t.me/Rickthon)**\
             \n\
-            \n❤ ريبثون هـو بـوت بسـيط يدخـل الـى حسـابك لجعـلك تتحـكم به معـ اوامـر معينـة.\
+            \n❤ ريك ثون هـو بـوت بسـيط يدخـل الـى حسـابك لجعـلك تتحـكم به معـ اوامـر معينـة.\
             \n\
             \n**اذا كـنت تـرغب بتـنصيـب السـورس عـلى حسـابك ,\
-            \n🐾 تعال الـى [كروب المسـاعدة](https://t.me/Repthon_support)!**",
+            \n🐾 تعال الـى [كروب المسـاعدة](https://t.me/Rickthon_group)!**",
             "md",
         )
         result = types.InputBotInlineResult(
             id=str(uuid4()),
             type="photo",
-            title="repiq 🧸♥",
+            title="rickiq 🧸♥",
             description="ادخـل كـروب المسـاعدة",
-            url="https://t.me/Repthon_support",
+            url="https://t.me/Rickthon_group",
             thumb=photo,
             content=photo,
             send_message=types.InputBotInlineMessageMediaAuto(
