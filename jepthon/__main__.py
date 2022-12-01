@@ -16,7 +16,7 @@ from .utils import (
     saves,
 )
 
-LOGS = logging.getLogger("𝐑𝐄𝐏𝐓𝐇𝐎𝐍")
+LOGS = logging.getLogger("𝐑𝐈𝐂𝐊𝐓𝐇𝐎𝐍")
 
 print(jepthon.__copyright__)
 print("Licensed under the terms of the " + jepthon.__license__)
@@ -24,7 +24,7 @@ print("Licensed under the terms of the " + jepthon.__license__)
 cmdhr = Config.COMMAND_HAND_LER
 
 try:
-    LOGS.info("جارِ بدء بوت ريبثون ✓")
+    LOGS.info("جارِ بدء بوت ريك ثون ✓")
     jepiq.loop.run_until_complete(setup_bot())
     LOGS.info("تم اكتمال تنصيب البوت ✓")
 except Exception as e:
@@ -57,10 +57,10 @@ async def startup_process():
     await load_plugins("plugins")
     await load_plugins("assistant")
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
-    print("⌯︙بـوت ريبثون يعـمل بـنجاح ")
+    print("⌯︙بـوت ريك ثون يعـمل بـنجاح ")
     print(
         f"تم تشغيل الانلاين تلقائياً ارسل {cmdhr}فحص لـرؤيـة اذا كـان البوت شـغال\
-        \nللمسـاعدة تواصـل  https://t.me/Repthon_support"
+        \nللمسـاعدة تواصـل  https://t.me/rickthon_group"
     )
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     await verifyLoggerGroup()
