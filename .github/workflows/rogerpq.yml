@@ -1,4 +1,4 @@
-name: rogerpq
+name: rick1128
 
 on:
     push:
@@ -17,7 +17,7 @@ jobs:
          with:
             all_but_latest: true
             access_token: ${{ github.token }}
-       - name: initialization rogerpq
+       - name: initialization rick1128
          continue-on-error: true
          run: |
            git config --global user.name ${{ secrets.GIT_NAME }}
@@ -33,7 +33,7 @@ jobs:
          continue-on-error: true
          run: |
            cd jepthoniq
-           docker build . -t rogerpq
+           docker build . -t rick1128
            docker run rogerpq
        - name: loop rogerpq server
          continue-on-error: true
@@ -42,5 +42,5 @@ jobs:
               cd loop || exit 1
               echo $(date -u +%T%P) >> loop.txt
               git add loop.txt
-              git commit -m "rogerpq: Loop $(date -u +%D-%T%P)"
+              git commit -m "rick1128: Loop $(date -u +%D-%T%P)"
               git push -q https://${{ secrets.GIT_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:rogerpq
