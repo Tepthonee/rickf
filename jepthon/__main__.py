@@ -16,7 +16,7 @@ from .utils import (
     saves,
 )
 
-LOGS = logging.getLogger("𝐑𝐈𝐂𝐊𝐓𝐇𝐎𝐍")
+LOGS = logging.getLogger("TEPTHON")
 
 print(jepthon.__copyright__)
 print("Licensed under the terms of the " + jepthon.__license__)
