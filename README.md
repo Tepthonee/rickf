@@ -1,4 +1,4 @@
-<p align="center"><a href="https://t.me/RICKTHON"><img src="https://telegra.ph/file/7a15378b69199ca46c072.jpg" width="5000"></a></p>
+<p align="center"><a href="https://t.me/Tepthone"><img src="https://telegra.ph/file/f8505be4323901b707dc9.jpg" width="5000"></a></p>
 <h1 align="center"><b>RICKTHON_USERBOT 🇮🇶 </b></h1>
 <h4 align="center">𓆰♥️🧸 𝐖𝐞𝐥𝐂𝐨𝐦𝐞 𝑻𝐨 𝙎𝙊𝙐𝙍𝘾𝞝_𝐑𝐈𝐂𝐊𝐓𝐇𝐎𝐍↷.</h4>
 
@@ -29,6 +29,6 @@ published by the Free Software Foundation, either version 3 of the License, or
 
   
 ## Dev
-   <a href="https://t.me/ZQ_LO"><img src="https://img.shields.io/badge/Source%20Dev%3F-here-inactive?&style=plastic?&logo=telegram" width=220px></a></p>
-✗ ¦ ↱SAIF↲ ¦ ✗ 𐇮
+   <a href="https://t.me/PPF22"><img src="https://img.shields.io/badge/Source%20Dev%3F-here-inactive?&style=plastic?&logo=telegram" width=220px></a></p>
+✗ ¦ ↱Hmَd↲ ¦ ✗ 𐇮
 .
