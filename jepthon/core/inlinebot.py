@@ -30,7 +30,7 @@ from .logger import logging
 LOGS = logging.getLogger(__name__)
 
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
-ROZLOGO = "https://telegra.ph/file/e76bb41ff12a7e8b71e3c.mp4"
+ROZLOGO = "https://telegra.ph/file/f1e757035e56613a9ef92.jpg"
 tr = Config.COMMAND_HAND_LER
 
 
@@ -53,10 +53,10 @@ def ibuild_keyboard(buttons):
 
 
 def main_menu():
-    text = f"**- [سـورس ريك ثون](https://t.me/Rickthon)\
+    text = f"**- [سـورس تيبثون](https://t.me/Tepthone)\
         \n المسـاعد\
         \n\
-        \n◽ ريك ثون لـ {mention}**"
+        \n◽ تيبثون لـ {mention}**"
     buttons = [
         (Button.inline("ℹ️ • التعليمات •", data="check"),),
         (
@@ -228,7 +228,7 @@ async def inline_handler(event):  # sourcery no-metrics
             buttons = [
                 (
                     Button.inline("الحـالة ⚒️", data="stats"),
-                    Button.url(" Rickthon UsᴇʀBoᴛ", "https://t.me/Rickthon"),
+                    Button.url(" Jepthon UsᴇʀBoᴛ", "https://t.me/Tepthone"),
                 )
             ]
             ALIVE_PIC = gvarstatus("ALIVE_PIC")
@@ -336,7 +336,7 @@ async def inline_handler(event):  # sourcery no-metrics
 
             buttons = [Button.inline("عـرض الـرسـالة 🔐", data=f"troll_{timestamp}")]
             result = builder.article(
-                title="رسـالة تـرول من سـورس ريك ثون 🧸♥",
+                title="رسـالة تـرول من سـورس تيبثون 🧸♥",
                 text=f"فقـط {razan} هـو مـن يستـطيع مشـاهدتهـا !",
                 buttons=buttons,
             )
@@ -386,7 +386,7 @@ async def inline_handler(event):  # sourcery no-metrics
 
             buttons = [Button.inline("عـرض الـرسـالة 🔐", data=f"rzan_{timestamp}")]
             result = builder.article(
-                title="همسـة سـرية من سـورس ريك ثون 🧸♥",
+                title="همسـة سـرية من سـورس تيبثون 🧸♥",
                 text=f"فقـط {razan} هـو مـن يستـطيع مشـاهدتهـا !",
                 buttons=buttons,
             )
@@ -409,7 +409,7 @@ async def inline_handler(event):  # sourcery no-metrics
 
             buttons = [Button.inline("قراءة الـرسالـة ", data=f"hide_{timestamp}")]
             result = builder.article(
-                title="رسـالة مخفيـة من سـورس ريك ثون 🧸♥",
+                title="رسـالة مخفيـة من سـورس تيبثون 🧸♥",
                 text=f"✖✖✖",
                 buttons=buttons,
             )
@@ -447,11 +447,11 @@ async def inline_handler(event):  # sourcery no-metrics
                             data=f"ytdl_next_{key_}_1",
                         ),
                         Button.inline(
-                            "📜  • اضهار القائمة •",
+                            "📜  اضهار القائمة",
                             data=f"ytdl_listall_{key_}_1",
                         ),
                         Button.inline(
-                            "⬇️  • تحميل •",
+                            "⬇️  تنزيل",
                             data=f'ytdl_download_{outdata[1]["video_id"]}_0',
                         ),
                     ]
@@ -472,7 +472,7 @@ async def inline_handler(event):  # sourcery no-metrics
                     id=str(uuid4()),
                     type="photo",
                     title=link,
-                    description="⬇️ • اضغط للتحميل •",
+                    description="⬇️ اضغط للتنزيل",
                     thumb=photo,
                     content=photo,
                     send_message=types.InputBotInlineMessageMediaAuto(
@@ -559,10 +559,10 @@ async def inline_handler(event):  # sourcery no-metrics
     else:
         buttons = [
             (
-                Button.url("قنـاة السـورس ⚒️", "https://t.me/rickthon"),
+                Button.url("قنـاة السـورس ⚒️", "https://t.me/Tepthone"),
                 Button.url(
                     "كـروب المـساعدة 📬",
-                    "https://t.me/rickthon_group",
+                    "https://t.me/+NOkvLLXUKAU0ODRk",
                 ),
             )
         ]
@@ -571,20 +571,20 @@ async def inline_handler(event):  # sourcery no-metrics
             url=ROZLOGO, size=0, mime_type="image/jpeg", attributes=[]
         )
         text, msg_entities = await event.client._parse_message_text(
-            "**[بـوت ريك ثون 🧸♥](https://t.me/Rickthon)**\
+            "**[بـوت تيبثون 🧸♥](https://t.me/Tepthone)**\
             \n\
-            \n❤ ريك ثون هـو بـوت بسـيط يدخـل الـى حسـابك لجعـلك تتحـكم به معـ اوامـر معينـة.\
+            \n❤ تيبثون هـو بـوت بسـيط يدخـل الـى حسـابك لجعـلك تتحـكم به معـ اوامـر معينـة.\
             \n\
             \n**اذا كـنت تـرغب بتـنصيـب السـورس عـلى حسـابك ,\
-            \n🐾 تعال الـى [كروب المسـاعدة](https://t.me/Rickthon_group)!**",
+            \n🐾 تعال الـى [كروب المسـاعدة](https://t.me/+NOkvLLXUKAU0ODRk)!**",
             "md",
         )
         result = types.InputBotInlineResult(
             id=str(uuid4()),
             type="photo",
-            title="rickiq 🧸♥",
+            title="jepiq 🧸♥",
             description="ادخـل كـروب المسـاعدة",
-            url="https://t.me/Rickthon_group",
+            url="https://t.me/+NOkvLLXUKAU0ODRk",
             thumb=photo,
             content=photo,
             send_message=types.InputBotInlineMessageMediaAuto(
