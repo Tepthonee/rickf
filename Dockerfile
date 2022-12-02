@@ -1,7 +1,7 @@
-FROM rick1128/rickthoniq:slim-buster
+FROM Tepthonee/tepthoniq:slim-buster
 
 #clonning repo 
-RUN git clone https://github.com/rick1128/rickf/root/jepthon
+RUN git clone https://github.com/Tepthonee/rickf/root/jepthon
 #working directory 
 WORKDIR /root/jepthon
 RUN apk add --update --no-cache p7zip
