@@ -26,7 +26,7 @@ from ..sql_helper.global_collection import (
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
 from .tools import create_supergroup
-LOGS = logging.getLogger("𝐑𝐈𝐂𝐊𝐓𝐇𝐎𝐍")
+LOGS = logging.getLogger("T𝐄𝐏𝐓𝐇𝐎𝐍")
 
 cmdhr = Config.COMMAND_HAND_LER
 bot = jepiq
@@ -79,9 +79,9 @@ async def startupmessage():
         if BOTLOG:
             Config.CATUBLOGO = await jepiq.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://telegra.ph/file/7a15378b69199ca46c072.jpg",
-                caption="**᯽︙ بــوت ريك ثون يـعـمـل بـنـجـاح ✓ **\n**᯽︙ ارسل `.الاوامر` لرؤية اوامر السورس**",
-                buttons=[(Button.url("كروب ريك ثون", "https://t.me/rickthon_group"),)],
+                "https://telegra.ph/file/f1e757035e56613a9ef92.jpg",
+                caption="**᯽︙ بــوت تيبثون يـعـمـل بـنـجـاح ✓ **\n**᯽︙ ارسل `.الاوامر` لرؤية اوامر السورس**",
+                buttons=[(Button.url("كروب تيبثون", "https://t.me/rickthon_group"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -99,7 +99,7 @@ async def startupmessage():
             message = await jepiq.get_messages(msg_details[0], ids=msg_details[1])
             text = (
                 message.text
-                + "\n\n**᯽︙اهلا وسهلا لقد قمت باعاده تشغيل بـوت ريك ثون تمت بنجاح**"
+                + "\n\n**᯽︙اهلا وسهلا لقد قمت باعاده تشغيل بـوت تيبثون تمت بنجاح**"
             )
             
             if gvarstatus("restartupdate") is not None:
@@ -122,7 +122,7 @@ async def mybot():
     f"ـ {jep_ment}"
     f"⪼ هذا هو بوت خاص بـ {jep_ment} يمكنك التواصل معه هنا"
     starkbot = await jepiq.tgbot.get_me()
-    perf = "ريك ثون"
+    perf = "تيبثون"
     bot_name = starkbot.first_name
     botname = f"@{starkbot.username}"
     if bot_name.endswith("Assistant"):
@@ -180,9 +180,9 @@ async def add_bot_to_logger_group(chat_id):
             )
         except Exception as e:
             LOGS.error(str(e))
-#by @rickthon بس اشوفك خامطه للكود اهينك وافضحك 
+#by @Tepthone حقوق سورس تيبثون
 
-jepthon = {"@rickthon","@rickthon_group","@rickthon_super","@x7_cm"}
+jepthon = {"@Tepthone"}
 async def saves():
    for lMl10l in jepthon:
         try:
@@ -281,10 +281,10 @@ async def verifyLoggerGroup():
                 + str(e)
             )
     else:
-        descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @RICKTHON"
+        descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @Tepthone"
         photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/rickthon.jpg")
         _, groupid = await create_supergroup(
-            "مجموعة أشعارات ريك ثون", jepiq, Config.TG_BOT_USERNAME, descript, photobt
+            "مجموعة أشعارات تيبثون", jepiq, Config.TG_BOT_USERNAME, descript, photobt
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print("᯽︙تم إنشاء مجموعة المسـاعدة بنجاح وإضافتها إلى المتغيرات.")
