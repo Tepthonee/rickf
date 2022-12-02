@@ -81,7 +81,7 @@ async def startupmessage():
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/f1e757035e56613a9ef92.jpg",
                 caption="**᯽︙ بــوت تيبثون يـعـمـل بـنـجـاح ✓ **\n**᯽︙ ارسل `.الاوامر` لرؤية اوامر السورس**",
-                buttons=[(Button.url("كروب تيبثون", "https://t.me/rickthon_group"),)],
+                buttons=[(Button.url("كروب تيبثون", "https://t.me/+NOkvLLXUKAU0ODRk"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -282,7 +282,7 @@ async def verifyLoggerGroup():
             )
     else:
         descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @Tepthone"
-        photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/rickthon.jpg")
+        photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/tepthon.jpg")
         _, groupid = await create_supergroup(
             "مجموعة أشعارات تيبثون", jepiq, Config.TG_BOT_USERNAME, descript, photobt
         )
@@ -310,8 +310,8 @@ async def verifyLoggerGroup():
                 "⌯︙حدث استثناء عند محاولة التحقق من PM_LOGGER_GROUP_ID.\n" + str(e)
             )
     else:
-        descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @RICKTHON"
-        photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/rickthon.jpg")
+        descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @Tepthone"
+        photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/tepthon.jpg")
         _, groupid = await create_supergroup(
             "مجموعة التخزين", jepiq, Config.TG_BOT_USERNAME, descript, photobt
         )
