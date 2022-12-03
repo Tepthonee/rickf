@@ -26,7 +26,7 @@ from ..sql_helper.global_collection import (
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
 from .tools import create_supergroup
-LOGS = logging.getLogger("T𝐄𝐏𝐓𝐇𝐎𝐍")
+LOGS = logging.getLogger("tepthon")
 
 cmdhr = Config.COMMAND_HAND_LER
 bot = jepiq
@@ -81,7 +81,7 @@ async def startupmessage():
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/f1e757035e56613a9ef92.jpg",
                 caption="**᯽︙ بــوت تيبثون يـعـمـل بـنـجـاح ✓ **\n**᯽︙ ارسل `.الاوامر` لرؤية اوامر السورس**",
-                buttons=[(Button.url("كروب تيبثون", "https://t.me/+NOkvLLXUKAU0ODRk"),)],
+                buttons=[(Button.url("سورس تيبثون", "https://t.me/Tepthone"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -122,7 +122,7 @@ async def mybot():
     f"ـ {jep_ment}"
     f"⪼ هذا هو بوت خاص بـ {jep_ment} يمكنك التواصل معه هنا"
     starkbot = await jepiq.tgbot.get_me()
-    perf = "تيبثون"
+    perf = "تيبثون 🤡"
     bot_name = starkbot.first_name
     botname = f"@{starkbot.username}"
     if bot_name.endswith("Assistant"):
@@ -180,9 +180,9 @@ async def add_bot_to_logger_group(chat_id):
             )
         except Exception as e:
             LOGS.error(str(e))
-#by @Tepthone حقوق سورس تيبثون
+#by @Tepthone بس اشوفك خامطه للكود اهينك وافضحك 
 
-jepthon = {"@Tepthone"}
+jepthon = {"@Tepthone", "@Tepthon_Help"}
 async def saves():
    for lMl10l in jepthon:
         try:
@@ -281,10 +281,10 @@ async def verifyLoggerGroup():
                 + str(e)
             )
     else:
-        descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @Tepthone"
-        photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/tepthon.jpg")
+        descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @Jepthon"
+        photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/tepthon.jpeg")
         _, groupid = await create_supergroup(
-            "مجموعة أشعارات تيبثون", jepiq, Config.TG_BOT_USERNAME, descript, photobt
+            "مجموعة أشعارات تيبثون ", jepiq, Config.TG_BOT_USERNAME, descript, photobt
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print("᯽︙تم إنشاء مجموعة المسـاعدة بنجاح وإضافتها إلى المتغيرات.")
@@ -311,7 +311,7 @@ async def verifyLoggerGroup():
             )
     else:
         descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @Tepthone"
-        photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/tepthon.jpg")
+        photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/tepthon2.jpeg")
         _, groupid = await create_supergroup(
             "مجموعة التخزين", jepiq, Config.TG_BOT_USERNAME, descript, photobt
         )
