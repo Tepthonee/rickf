@@ -30,7 +30,7 @@ plugin_category = "tools"
 async def _(event):
     "Restarts the bot !!"
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "**⌔︙ريك ثون↻** \n" "**᯽︙ تم اعادة تشغيل السورس بنجاح ✅ ↻**")
+        await event.client.send_message(BOTLOG_CHATID, "**⌔︙تيبثون↻** \n" "**᯽︙ تم اعادة تشغيل السورس بنجاح ✅ ↻**")
     ZQ_LO = await edit_or_reply(event, "᯽︙ سيتم اعادة التشغيل انتظر ")
     await event.edit("0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒")
     await asyncio.sleep(2)
@@ -83,7 +83,7 @@ async def _(event):
     "Shutdowns the bot"
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "**᯽︙ إيقاف التشغيـل ✕ **\n" "**᯽︙ تـم إيقـاف تشغيـل البـوت بنجـاح ✓**")
-    await edit_or_reply(event, "**᯽︙ جـاري إيقـاف تشغيـل البـوت الآن ..**\n᯽︙  **أعـد تشغيـلي يدويـاً لاحقـاً عـبر هيـروڪو ..**\n⌔︙**سيبقى البـوت متوقفـاً عن العمـل**")
+    await edit_or_reply(event, "**᯽︙ جـاري إيقـاف تشغيـل البـوت الآن ..**\n᯽︙  **أعـد تشغيـلي يدويـاً لاحقـاً عـبر كويب أو موجينس أو هيروكو ..**\n⌔︙**سيبقى البـوت متوقفـاً عن العمـل**")
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
     else:
