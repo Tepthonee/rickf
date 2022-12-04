@@ -1,13 +1,12 @@
-#    جميع الحقوق لمطوري سورس تيبثون حصريا لهم فقط
+#    جميع الحقوق لمطوري سورس تـيبثون حصريا لهم فقط
 #    اذا تخمط الملف اذك الحقوق وكاتبيه ومطوريه لا تحذف الحقوق وتصير فاشل 👍
-#    كتابة حمد صاحب سورس تيبثون 
+#    كتابة الشسد 
 import asyncio
 import io
 import re
 
 from telethon import Button, custom, events
 from telethon.tl.functions.users import GetFullUserRequest
-from . import *
 from jepthon import bot
 from jepthon.sql_helper.blacklist_assistant import (
     add_nibba_in_db,
@@ -20,15 +19,15 @@ from jepthon.sql_helper.idadder_sql import (
     already_added,
     get_all_users,
 )
-
+from JepIQ.razan.resources.assistant import *
 #start 
 @tgbot.on(events.NewMessage(pattern="^/start"))
 async def start(event):
-    razan = await tgbot.get_me()
-    bot_id = razan.first_name
-    bot_username = razan.username
+    rehu = await tgbot.get_me()
+    bot_id = rehu.first_name
+    bot_username = rehu.username
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
-    firstname = replied_user.user.first_name
+    firstname = replied_user.users[0].first_name
     vent = event.chat_id
     starttext = f"**مـرحبا {firstname} ! انـا هـو {bot_id}, بـوت مساعـد بسيـط 🧸🤍 \n\n- [مـالك البـوت](tg://user?id={bot.uid}) \nيمكـنك مراسلـة المـالك عبـر هذا البـوت . \n\nاذا كـنت تـريد تنـصيب بـوت خـاص بـك تـاكد من الازرار بالأسفل**"
     if event.sender_id == bot.uid:
@@ -52,7 +51,7 @@ async def start(event):
             message=starttext,
             link_preview=False,
             buttons=[
-                [custom.Button.inline("تنـصيب تيبثون  🐍", data="deploy")],
+                [custom.Button.inline("تنـصيب تـيبثون  🐍", data="deploy")],
                 [Button.url("تحتاج مسـاعدة ❓", "https://t.me/PPF22")],
             ],
         )
@@ -67,8 +66,8 @@ async def help(event):
             event.chat_id,
             message="**لتـنصيب البـوت الخاص بك اتبـع الخطـوات في الاسفـل وحاول واذا لم تستطيع تفضل الى مجموعة المساعدة ليساعدوك 🧸♥**.",
             buttons=[
-                [Button.url("‹ سورس تيبثون ›", "https://t.me/Tepthone")],
-                [Button.url("كروب المساعدة ❓", "https://t.me/+NOkvLLXUKAU0ODRk")],
+                [Button.url("رابط التنصيب", "https://app.koyeb.com/apps/deploy?type=git&repository=github.com/Tepthonee/tepthoniq&branch=Tepthon&name=tepthon&env[APP_ID]=%D8%B6%D8%B9_%D8%A7%D8%A8%D8%A8_%D8%A7%D9%8A%D8%AF%D9%8A&env[API_HASH]=%D8%B6%D8%B9_%D8%A7%D9%8A%D8%A8%D9%8A_%D9%87%D8%A7%D8%B4&env[ENV]=ANYTHING&env[DATABASE_URL]=%D9%82%D8%A7%D8%B9%D8%AF%D8%A9_%D8%A7%D9%84%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA&env[STRING_SESSION]=%D9%83%D9%88%D8%AF_%D8%AA%D8%B1%D9%8A%D9%85%D9%83%D8%B3&env[TG_BOT_USERNAME]=%D9%85%D8%B9%D8%B1%D9%81_%D8%A7%D9%84%D8%A8%D9%88%D8%AA&env[TG_BOT_TOKEN]=%D8%AA%D9%88%D9%83%D9%86_%D8%A7%D9%84%D8%A8%D9%88%D8%AA&env[ALIVE_NAME]=%D8%A7%D8%B3%D9%85_%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AE%D8%AF%D9%85&env[TZ]=Asia/Baghdad&env[COMMAND_HAND_LER]=.&env[ELEPHANT_API_KEY]=%D8%B6%D8%B9_%D8%A7%D9%8A%D8%A8%D9%8A_%D9%83%D9%8A&env[KOYEB_APP_NAME]=%D8%B6%D8%B9_%D8%A7%D8%B3%D9%85_%D8%A7%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82")],
+                [Button.url("كروب المساعدة ❓", "https://t.me/Tepthon_Help")],
             ],
         )
 
@@ -82,7 +81,7 @@ async def users(event):
         for starked in total_users:
             users_list += ("==> {} \n").format(int(starked.chat_id))
         with io.BytesIO(str.encode(users_list)) as tedt_file:
-            tedt_file.name = "razan.txt"
+            tedt_file.name = "jepthon.txt"
             await tgbot.send_file(
                 event.chat_id,
                 tedt_file,
@@ -108,7 +107,7 @@ async def starkislub(event):
 
 @tgbot.on(events.NewMessage(pattern="^/alive", func=lambda e: e.sender_id == bot.uid))
 async def starkislub(event):
-    razan = "**Tepthone 𝘜𝘚𝘌𝘙𝘉𝘖𝘛**\n•━═━═━═━═━━═━═━═━═━•‌‌\n**- حالة البوت **  يعمـل بنجـاح\n**- اصدار التليثون  **: 1.23.0\n**- اصدار البايثون **: 3.9.6\n**- يوزرك ** {mention}\n**- CH : @Tepthone\n•━═━═━═━═━━═━═━═━═━•‌‌\n"
+    razan = "**𝘛𝘌𝘗𝘛𝘏𝘖𝘕 𝘜𝘚𝘌𝘙𝘉𝘖𝘛**\n•━═━═━═━═━━═━═━═━═━•‌‌\n**- حالة البوت **  يعمـل بنجـاح\n**- اصدار التليثون  **: 1.23.0\n**- اصدار البايثون **: 3.9.6\n**- يوزرك ** {mention}\n**- CH : @JepThon\n•━═━═━═━═━━═━═━═━═━•‌‌\n"
     await event.reply(razan)
     
     
@@ -135,7 +134,7 @@ async def settings(event):
                                      "اسماء القنوات َِ🛹", data="chanlan")]
                                  ])
     else:
-        await event.answer("انت لا تستطيع استخدام البوت احصل على بوتك من @Repthon", alert=True)
+        await event.answer("انت لا تستطيع استخدام البوت احصل على بوتك من @Tepthone", alert=True)
 
 
 
@@ -367,7 +366,7 @@ async def settings(event):#    قـسم  السنـوات  :)
     if event.sender_id == bot.uid:
         await event.delete()
         await tgbot.send_message(event.chat_id, 
-                                 jepiqyear, 
+                                 JEPYEAR, 
                                  buttons=[[Button.inline("║ رجوع ║", data="rozmonth")]
                                  ])
     else:
@@ -384,10 +383,3 @@ async def settings(event):  # انتهـى  :)  اذا تخـمط تـذكر ت�
                                  ])
     else:
         await event.answer("انت لا تستطيع استخدام هذا البوت.", alert=True)
-        
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"jm_hhack")))
-async def users(event):
-    await event.delete()
-    rorza = "تستطيع اختراق اي شخص عبر كود تيرمكس في تيبثون يمكنك اختراق المستخدمين الذي تملك كود تيرمكس الخاص بهم \n\n ارسل  /rz للعرض الاوأمر"
-    await tgbot.send_message(event.chat_id, rorza)
