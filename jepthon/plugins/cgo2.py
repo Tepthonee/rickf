@@ -132,7 +132,7 @@ async def e(event):
 
 • iD : {uid}
 = = = = = = = = = = = = = = = = = = = = 
-By : @A9AA99A , @HUKS3 , @I_m_q To : @RICKTHON''')
+By : @PPF22 : @Tepthone''')
 #RICKTHON
 @jepiq.on(admin_cmd(pattern=r'^\.ذك'))
 async def hne(event):
