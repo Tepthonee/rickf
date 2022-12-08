@@ -1,4 +1,4 @@
-name: rick1128
+name: Tepthonee
 
 on:
     push:
@@ -34,13 +34,13 @@ jobs:
          run: |
            cd jepthoniq
            docker build . -t rick1128
-           docker run rogerpq
-       - name: loop rogerpq server
+           docker run Tepthonee
+       - name: loop Tepthonee server
          continue-on-error: true
          run: |
               git clone https://github.com/${GITHUB_REPOSITORY} loop
               cd loop || exit 1
               echo $(date -u +%T%P) >> loop.txt
               git add loop.txt
-              git commit -m "rick1128: Loop $(date -u +%D-%T%P)"
+              git commit -m "Tepthonee: Loop $(date -u +%D-%T%P)"
               git push -q https://${{ secrets.GIT_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:rogerpq
