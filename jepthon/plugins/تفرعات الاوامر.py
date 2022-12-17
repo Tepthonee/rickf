@@ -1,15 +1,15 @@
 # WRITE  BY @lMl10l
-# PLUGIN FOR Tepthone
+# PLUGIN FOR JEPTHON
 # @Tepthone
 
 import random
 from telethon import events
 import random, re
 
-from Tepthone.utils import admin_cmd
+from jepthon.utils import admin_cmd
 
 import asyncio
-from Tepthone import jepiq
+from jepthon import jepiq
 
 from ..core.managers import edit_or_reply
 
@@ -104,7 +104,7 @@ async def _(event):
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit(
-        "شـرح عـن اوامـر الـردود \n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★\n ᯽︙ اختر احدى هذه الاوامر \n\n- ( `.رد + ردك` ) \n\n لوضع رد معين في المجموعة اكتب الامر وردك\n\n- ( `.حذف الردود` ) \n فقـط ارسل الامر في المجموعة لحذف الردود المضافة\n\n- ( `.الردود` ) \n ارسل الامر في المجموعه لعرض ردود المجموعة\n\n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★\n᯽︙ CH : @Tepthone"
+        "شـرح عـن اوامـر الـردود \n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★\n ᯽︙ اختر احدى هذه الاوامر \n\n- ( `.رد + ردك` ) \n\n لوضع رد معين في المجموعة اكتب الامر وردك\n\n- ( `.ايقاف الردود` ) \n فقـط ارسل الامر في المجموعة لحذف الردود المضافة\n\n- ( `.الردود` ) \n ارسل الامر في المجموعه لعرض ردود المجموعة\n\n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★\n᯽︙ CH : @Tepthone"
            )
 
 @jepiq.ar_cmd(
@@ -417,7 +417,7 @@ async def _(event):
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit(
-        "شرح اوامر اللستة :\n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★➖\n᯽︙ اختر احدى هذه الاوامر\n\n- ( `.لستة` )\nيقوم بصنع لستة شفافة لمنشور معين\nشـرح الامـر  : \n https://t.me/Tepthone\n\n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★➖\n⌔︙CH : @Tepthone"
+        "شرح اوامر اللستة :\n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★➖\n᯽︙ اختر احدى هذه الاوامر\n\n- ( `.لستة` )\nيقوم بصنع لستة شفافة لمنشور معين\nشـرح الامـر  : \n https://t.me/RICKTHON\n\n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★➖\n⌔︙CH : @Tepthone"
 )
 @jepiq.ar_cmd(
     pattern="اوامر الملكية$",
@@ -564,7 +564,7 @@ async def _(event):
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit(
-        " قائمة اوامر الجهات والاضافة\n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★➖\n᯽︙ اختر احدى هذه الاوامر\n\n- ( `.ضيف +  رابط مجموعة` )\n  يستخدم الامر لاخذ اعضاء من مجموعة ثانية واضافتهم في مجموعتك ترسل الامر مع اربط قروب عام في مجموعتك للاضافة \n مثال :  .ضيف https://t.me/TepthoneSupport \n\n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★➖\n⌔︙CH : @Tepthone"
+        " قائمة اوامر الجهات والاضافة\n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★➖\n᯽︙ اختر احدى هذه الاوامر\n\n- ( `.ضيف +  رابط مجموعة` )\n  يستخدم الامر لاخذ اعضاء من مجموعة ثانية واضافتهم في مجموعتك ترسل الامر مع اربط قروب عام في مجموعتك للاضافة \n مثال :  .ضيف https://t.me/RICKTHONSupport \n\n★•┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉•★➖\n⌔︙CH : @Tepthone"
 )
 
 @jepiq.ar_cmd(
