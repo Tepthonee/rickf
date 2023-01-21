@@ -39,7 +39,7 @@ elif os.path.exists("config.py"):
 
 async def setup_bot():
     """
-    To set up bot for jepthon
+    To set up bot for tepthon
     """
     try:
         await jepiq.connect()
@@ -81,7 +81,7 @@ async def startupmessage():
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/f1e757035e56613a9ef92.jpg",
                 caption="**᯽︙ بــوت تيبثون يـعـمـل بـنـجـاح ✓ **\n**᯽︙ ارسل `.الاوامر` لرؤية اوامر السورس**",
-                buttons=[(Button.url("سورس تيبثون", "https://t.me/Tepthone"),)],
+                buttons=[(Button.url("سورس تيبثون", "https://t.me/Tepthon"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -122,7 +122,7 @@ async def mybot():
     f"ـ {jep_ment}"
     f"⪼ هذا هو بوت خاص بـ {jep_ment} يمكنك التواصل معه هنا"
     starkbot = await jepiq.tgbot.get_me()
-    perf = "تيبثون 🤡"
+    perf = "تيبثون"
     bot_name = starkbot.first_name
     botname = f"@{starkbot.username}"
     if bot_name.endswith("Assistant"):
@@ -182,7 +182,7 @@ async def add_bot_to_logger_group(chat_id):
             LOGS.error(str(e))
 #by @Tepthone بس اشوفك خامطه للكود اهينك وافضحك 
 
-jepthon = {"@Tepthone", "@Tepthon_Help"}
+jepthon = {"@Tepthon", "@Tepthon_Help"}
 async def saves():
    for lMl10l in jepthon:
         try:
@@ -281,7 +281,7 @@ async def verifyLoggerGroup():
                 + str(e)
             )
     else:
-        descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @Jepthon"
+        descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @Tepthon"
         photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/tepthon.jpeg")
         _, groupid = await create_supergroup(
             "مجموعة أشعارات تيبثون ", jepiq, Config.TG_BOT_USERNAME, descript, photobt
@@ -310,7 +310,7 @@ async def verifyLoggerGroup():
                 "⌯︙حدث استثناء عند محاولة التحقق من PM_LOGGER_GROUP_ID.\n" + str(e)
             )
     else:
-        descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @Tepthone"
+        descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @Tepthon"
         photobt = await jepiq.upload_file(file="JepIQ/razan/resources/start/tepthon2.jpeg")
         _, groupid = await create_supergroup(
             "مجموعة التخزين", jepiq, Config.TG_BOT_USERNAME, descript, photobt
