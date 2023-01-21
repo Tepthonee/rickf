@@ -53,7 +53,7 @@ def ibuild_keyboard(buttons):
 
 
 def main_menu():
-    text = f"**- [سـورس تيبثون](https://t.me/Tepthone)\
+    text = f"**- [سـورس تيبثون](https://t.me/Tepthon)\
         \n المسـاعد\
         \n\
         \n◽ تيبثون لـ {mention}**"
@@ -228,7 +228,7 @@ async def inline_handler(event):  # sourcery no-metrics
             buttons = [
                 (
                     Button.inline("الحـالة ⚒️", data="stats"),
-                    Button.url(" Jepthon UsᴇʀBoᴛ", "https://t.me/Tepthone"),
+                    Button.url("Tepthon UsᴇʀBoᴛ", "https://t.me/Tepthon"),
                 )
             ]
             ALIVE_PIC = gvarstatus("ALIVE_PIC")
@@ -447,7 +447,7 @@ async def inline_handler(event):  # sourcery no-metrics
                             data=f"ytdl_next_{key_}_1",
                         ),
                         Button.inline(
-                            "📜  اضهار القائمة",
+                            "📜  اظهار القائمة",
                             data=f"ytdl_listall_{key_}_1",
                         ),
                         Button.inline(
@@ -559,7 +559,7 @@ async def inline_handler(event):  # sourcery no-metrics
     else:
         buttons = [
             (
-                Button.url("قنـاة السـورس ⚒️", "https://t.me/Tepthone"),
+                Button.url("قنـاة السـورس ⚒️", "https://t.me/Tepthon"),
                 Button.url(
                     "كـروب المـساعدة 📬",
                     "https://t.me/+NOkvLLXUKAU0ODRk",
@@ -571,7 +571,7 @@ async def inline_handler(event):  # sourcery no-metrics
             url=ROZLOGO, size=0, mime_type="image/jpeg", attributes=[]
         )
         text, msg_entities = await event.client._parse_message_text(
-            "**[بـوت تيبثون 🧸♥](https://t.me/Tepthone)**\
+            "**[بـوت تيبثون 🧸♥](https://t.me/Tepthon)**\
             \n\
             \n❤ تيبثون هـو بـوت بسـيط يدخـل الـى حسـابك لجعـلك تتحـكم به معـ اوامـر معينـة.\
             \n\
@@ -738,7 +738,7 @@ async def on_plug_in_callback_query_handler(event):
     buttons = [
         (
             Button.inline(
-                "⬅️ Back ",
+                "⬅️ رجوع ",
                 data=f"back_command_{category}_{pgno}_{category_plugins}_{category_pgno}",
             ),
             Button.inline("⚙️ Main Menu", data="mainmenu"),
