@@ -11,7 +11,7 @@ JEP = [
 `• Smile, no one cares how you feel!`
 `• The sweetest thing said in consolation : if I can't light you, I'll turn it off with you.`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
- ⌔︙CH : @Tepthone
+ ⌔︙CH : @Tepthon
 """,
     """
 `• Never let someone who has done nothing tell you how to do anything .`
@@ -20,7 +20,7 @@ JEP = [
 `• 𝒕𝒉𝒆 𝒅𝒂𝒚 𝒘𝒊𝒍𝒍 𝒄𝒐𝒎𝒆 𝒘𝒉𝒆𝒏 𝒚𝒐𝒖 𝒔𝒕𝒂𝒏𝒅 𝒃𝒆𝒓𝒐𝒓𝒆 𝒚𝒐𝒖𝒓 𝒅𝒓𝒆𝒂𝒎,𝒑𝒓𝒐𝒖𝒅 𝒐𝒓 𝒘𝒉𝒂𝒕 𝒚𝒐𝒖 𝒉𝒂𝒗𝒆 𝒑𝒓𝒐𝒗𝒊𝒅𝒆𝒅,𝒂𝒏𝒅 𝒊𝒓 𝒚𝒐𝒖 𝒂𝒓𝒆 𝒕𝒊𝒓𝒆𝒅 𝒓𝒐𝒓 𝒊𝒕,𝒚𝒐𝒖 𝒘𝒊𝒍𝒍 𝒓𝒊𝒏𝒅 𝒊𝒕 𝒊𝒏 𝒓𝒓𝒐𝒏𝒕 𝒐𝒓 𝒚𝒐𝒖.`
 `• Who hates you won't hurt you !Aren't to hurt you only you love.`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
- ⌔︙CH : @Tepthone
+ ⌔︙CH : @Tepthon
 """,
     """
 `• Death ends a life. not a relationship ،`
@@ -29,7 +29,7 @@ JEP = [
 `• No one goes beyond and no one goes beyond everything we tone .`
 `• This suffering will deliver a beast, will never give birth .`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
- ⌔︙CH : @Tepthone
+ ⌔︙CH : @Tepthon
 """,
     """
 `• This suffering will deliver a beast, will never give birth .`
@@ -38,7 +38,7 @@ JEP = [
 `• 𝐁𝐄𝐀𝐔𝐓𝐘 𝐈𝐒 𝐖𝐈𝐓𝐇𝐈𝐍 𝐘𝐎𝐔𝐑𝐄 𝐇𝐄𝐀𝐑𝐓 ⚡️🔱 .`
 `• 𝐃𝐎𝐍𝐓 𝐆𝐈𝐕𝐄 𝐀𝐍𝐘𝐎𝐍𝐄 𝐎𝐕𝐄𝐑 𝐇𝐈𝐒 𝐕𝐀𝐋𝐔𝐄 😴♩✿⇣.`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
- ⌔︙CH : @Tepthone
+ ⌔︙CH : @Tepthon
 """,
     """
 `• Interest will not come you except from someone who wants you .`
@@ -47,7 +47,7 @@ JEP = [
 `• 𝒔𝒖𝒅𝒅𝒆𝒏𝒍𝒚 𝒆𝒗𝒆𝒓𝒚𝒕𝒉𝒊𝒏𝒈 𝒇𝒂𝒍𝒍𝒔 𝒂𝒑𝒂𝒓𝒕 𝒂𝒕 𝒐𝒏𝒄𝒆.🤍. ★`
 `• 𝒅𝒐𝒏 𝒕 𝒄𝒂𝒓𝒆 𝒂𝒃𝒐𝒖𝒕 𝒘𝒉𝒂𝒕 𝒑𝒆𝒐𝒑𝒍𝒆 𝒘𝒂𝒏𝒕 , 𝒄𝒂𝒓𝒆 𝒂𝒃𝒐𝒖𝒕 ، 𝒘𝒉𝒂𝒕 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 .`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
- ⌔︙CH : @Tepthone
+ ⌔︙CH : @Tepthon
 """,
 ]
 
